@@ -1,0 +1,6 @@
+<%= @title if @title %>
+<%= simple_form_for [:admins, @settings] do |f| %>
+  <%= f.input :company_name, required: false %>
+  <%= f.input :catch_phrase, required: false %>
+  <%= f.button :submit, "Save" %>
+<% end %>

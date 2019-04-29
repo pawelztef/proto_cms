@@ -1,0 +1,4 @@
+<% #TODO translations %>
+<% if caregiver_signed_in? %>
+  <%= link_to('Logout', destroy_caregiver_session_path, method: :delete) %>        
+<% end %>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kidsee</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all'  %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application' %>
+  </head>
+  <body>
+    <% #TODO flash messages need to be customized %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    </br>
+    <%= yield %>
+  </body>
+</html>
