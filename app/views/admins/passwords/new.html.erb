@@ -1,18 +1,34 @@
-<h2>Forgot your password?</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "toggle-class", method: :post }) do |f| %>
 
-  <div class="form-inputs">
+  <div class="uk-margin-small">
+  </div>
+
+  <div class="uk-margin-small">
+      <div class="uk-inline uk-width-1-1">
+    <span class="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: mail"></span>	
     <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+      required: true,
+      autofocus: true,
+      label: false,
+      error: false,
+      input_html: {
+        class: 'uk-input uk-border-pill',
+        placeholder: "Email",
+        autocomplete: "email" } %>
+  </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
+  <div class="uk-marign-bottom">
+    <%= f.button :submit, "Reset Password", class: 'uk-button uk-button-primary uk-border-pill uk-width-1-1' %>
   </div>
+
 <% end %>
 
-<%= render "admins/shared/links" %>
+<div class="uk-margin-small">
+  <div class="uk-text-center">
+    <span data-uk-icon="arrow-left"></span>
+    <%= link_to "Back to Login", new_session_path(resource_name), class: "uk-link-reset uk-text-small toggle-class" %>
+  </div>
+</div>
+

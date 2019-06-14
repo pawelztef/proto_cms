@@ -8,11 +8,34 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.js"></script>
   </head>
-  <body>
-    <h1>Admin Auhtentication Layout</h1>
-    <%= yield %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </body>
+    <body class="uk-flex uk-flex-center uk-flex-column uk-flex-middle uk-background-muted uk-height-viewport" data-uk-height-viewport>
+      <div class="uk-width-medium uk-padding-small uk-text-center">
+      <% if notice %>
+        <div class="">
+          <div class="uk-alert-primary" uk-alert>
+            <a class="uk-alert-close" uk-close></a>
+            <p><%= notice %></p>
+          </div>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="uk-width-1-1">
+        <div class="uk-alert-warning" uk-alert>
+          <a class="uk-alert-close" uk-close></a>
+          <p><%= alert %></p>
+        </div>
+          </div>
+      <% end %>
+          </div>
+      <div class="uk-position-bottom-center uk-position-small uk-visible@m uk-position-z-index">
+        <span class="uk-text-small uk-text-muted">© 2019 Lambda Studios - <a href="https://github.com/pawelztef">Created by pawelztef </a> | Built with <a href="http://getuikit.com" title="Visit UIkit 3 site" target="_blank" data-uk-tooltip><span data-uk-icon="uikit"></span></a></span>
+      </div>
+      <div class="uk-width-medium uk-padding-small">
+        <%= yield %>
+      </div>
+    </body>
 </html>

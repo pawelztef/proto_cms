@@ -24,7 +24,7 @@ Turbolinks.start();
 
 
 
-import 'kidsee';
+import 'proto_cms';
 require('custom');
 
 $(() => {
