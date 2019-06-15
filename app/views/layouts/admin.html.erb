@@ -4,11 +4,9 @@
     <title>Kidsee</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all'  %>
-    <%= javascript_include_tag 'application' %>
+    <%= render 'layouts/admins_cdns' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application' %>
-    <%= render 'layouts/admins_cdns' %>
   </head>
   <body>
     <%= render 'admins/shared/dashboard/header' %>

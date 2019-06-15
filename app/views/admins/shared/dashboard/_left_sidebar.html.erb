@@ -4,8 +4,7 @@
     <img class="custom-logo" src="img/dashboard-logo.svg" alt="">
   </div>
   <div class="left-content-box  content-box-dark">
-    <%= image_pack_tag 'avatar.svg'  %>
-    <%# <img src="img/avatar.svg" alt="" class="uk-border-circle profile-img"> %>
+    <%= image_pack_tag 'avatar.svg',  class: "uk-border-circle profile-img" %>
     <h4 class="uk-text-center uk-margin-remove-vertical text-light">John Doe</h4>
 
     <div class="uk-position-relative uk-text-center uk-display-block">
@@ -28,26 +27,8 @@
 
   <div class="left-nav-wrap">
    <%= render 'admins/shared/menues/sidebar_main_nav' %> 
-    
-    <div class="left-content-box uk-margin-top">
-
-      <h5>Daily Reports</h5>
-      <div>
-        <span class="uk-text-small">Traffic <small>(+50)</small></span>
-        <progress class="uk-progress" value="50" max="100"></progress>
-      </div>
-      <div>
-        <span class="uk-text-small">Income <small>(+78)</small></span>
-        <progress class="uk-progress success" value="78" max="100"></progress>
-      </div>
-      <div>
-        <span class="uk-text-small">Feedback <small>(-12)</small></span>
-        <progress class="uk-progress warning" value="12" max="100"></progress>
-      </div>
-
-    </div>
-
   </div>
+
   <div class="bar-bottom">
     <ul class="uk-subnav uk-flex uk-flex-center uk-child-width-1-5" data-uk-grid>
       <li>
