@@ -11,11 +11,11 @@
   <body>
     <%= render 'admins/shared/dashboard/header' %>
     <%= render 'admins/shared/dashboard/left_sidebar' %>
-    <%# <%= yield %1> %>
     <div id="content" data-uk-height-viewport="expand: true">
       <div class="uk-container uk-container-expand">
         <div class="uk-grid uk-grid-medium" data-uk-grid>
           <!-- /panel -->
+          <%= yield %>
           <!-- panel -->
         </div>
       </div>

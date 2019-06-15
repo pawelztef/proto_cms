@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.class == Admin
-      admins_settings_path
+      admins_dashboard_index_path
     elsif resource.class == Caregiver
       caregivers_path
     end
