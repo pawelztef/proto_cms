@@ -27,6 +27,8 @@ Turbolinks.start();
 import 'proto_cms';
 require('custom');
 
+require.context('../images', true);
+
 $(() => {
 //  document.body.style.backgroundColor = 'lime'
 })
