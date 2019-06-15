@@ -1,8 +1,7 @@
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "toggle-class", method: :post }) do |f| %>
 
-  <div class="uk-margin-small">
-  </div>
+    <%= render 'admins/shared/forms_messages', object: f.object %>
 
   <div class="uk-margin-small">
       <div class="uk-inline uk-width-1-1">

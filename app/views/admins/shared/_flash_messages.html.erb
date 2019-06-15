@@ -1,0 +1,16 @@
+<% if notice %>
+  <div class="">
+    <div class="uk-alert-primary" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p><%= notice %></p>
+    </div>
+  </div>
+<% end %>
+<% if alert %>
+  <div class="uk-width-1-1">
+    <div class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
+      <p><%= alert %></p>
+    </div>
+  </div>
+<% end %>
