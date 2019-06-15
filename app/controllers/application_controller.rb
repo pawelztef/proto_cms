@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def after_sign_out_path_for(resource)
+  # def after_sign_out_path_for(resource)
     # byebug
     # if resource == 'Admin'
     #   byebug
@@ -20,12 +20,12 @@ class ApplicationController < ActionController::Base
     # else
     #   root_path 
     # end
-    request.referrer
+    # request.referrer
     # case resource
     # when Admin  then  new_admin_session_path
     # when Caregiver then new_caregiver_session_path
     # end
-  end
+  # end
 
   protected
 
