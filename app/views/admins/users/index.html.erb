@@ -1,24 +1,69 @@
 
-<h1>Admins Users</h1>
+<%# <h1>Admins Users</h1> %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%# <table> %>
+  <%#   <thead> %>
+    <%#     <tr> %>
+      <%#       <th colspan="3"></th> %>
+      <%#     </tr> %>
+    <%#   </thead> %>
 
-  <tbody>
-    <% @admins_users.each do |admins_user| %>
-      <tr>
-        <td><%= link_to 'Show', admins_user %></td>
-        <td><%= link_to 'Edit', edit_admins_user_path(admins_user) %></td>
-        <td><%= link_to 'Destroy', admins_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <%#   <tbody> %>
+    <%#     <% @admins_users.each do |admins_user| %1> %>
+    <%#       <tr> %>
+      <%#         <1%# <td><%= link_to 'Show', admins_user %2></td> %1> %>
+      <%#         <1%# <td><%= link_to 'Edit', edit_admins_user_path(admins_user) %2></td> %1> %>
+      <%#         <1%# <td><%= link_to 'Destroy', admins_user, method: :delete, data: { confirm: 'Are you sure?' } %2></td> %1> %>
+      <%#       </tr> %>
+    <%#     <% end %1> %>
+  <%#   </tbody> %>
+<%# </table> %>
 
-<br>
+<%# <br> %>
 
 <%= link_to 'New Admins User', new_admins_user_path %>
+<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+  <div class="uk-card uk-card-default uk-card-large">
+    <div class="uk-card-header">
+      <div class="uk-grid uk-grid-small">
+        <div class="uk-width-auto"><h3 class="uk-card-title"><span uk-icon="folder"></span><%= @title if @title %></h3></div>
+        <div class="uk-width-expand uk-text-right panel-icons">
+          <a href= <%= new_admins_user_path %> class="uk-icon-link" title="Add User" data-uk-tooltip data-uk-icon="icon: plus"></a>
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body">
+      <table class="uk-table uk-table-justify uk-table-divider">
+        <thead>
+          <tr>
+            <th class="uk-width-small">ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Last login</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @admins_users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.email %></td>
+              <td><%= user.email %></td>
+              <td>administrator</td>
+              <td>June 16, 2019 15:38</td>
+              <td>
+                <ul class="uk-iconnav">
+                  <li><a href="#" uk-icon="icon: file-edit"></a></li>
+                  <li><a href="#" uk-icon="icon: trash"></a></li>
+                </ul>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
