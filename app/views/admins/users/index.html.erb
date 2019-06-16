@@ -1,0 +1,24 @@
+
+<h1>Admins Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins_users.each do |admins_user| %>
+      <tr>
+        <td><%= link_to 'Show', admins_user %></td>
+        <td><%= link_to 'Edit', edit_admins_user_path(admins_user) %></td>
+        <td><%= link_to 'Destroy', admins_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admins User', new_admins_user_path %>
