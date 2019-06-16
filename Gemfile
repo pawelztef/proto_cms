@@ -16,6 +16,9 @@ end
 
 group :development do
   gem "better_errors"
+  gem 'hirb'
+  gem "awesome_print", require:"ap"
+  gem "pry-rails"
   gem "binding_of_caller"
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
