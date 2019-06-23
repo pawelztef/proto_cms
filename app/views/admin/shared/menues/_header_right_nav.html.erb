@@ -1,0 +1,11 @@
+<% #TODO translations %>
+
+<div class="uk-navbar-right">
+  <ul class="uk-navbar-nav">
+    <li><a href="#" data-uk-icon="icon:user" title="Your profile" data-uk-tooltip></a></li>
+    <li><a href="/admin/settings" data-uk-icon="icon: settings" title="Settings" data-uk-tooltip></a></li>
+    <% if user_signed_in? %>
+      <li><a href= <%= destroy_user_session_path %> data-uk-icon="icon:  sign-out" title="Sign Out" data-method="delete" ></a></li>
+    <% end %>
+  </ul>
+</div>
