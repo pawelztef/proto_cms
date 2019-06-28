@@ -15,6 +15,7 @@
 
   # GET /admins/users/new
   def new
+    @title = "New User"
     @admins_user = User.new
   end
 
