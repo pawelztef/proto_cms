@@ -1,59 +1,83 @@
 
-<%# <%= simple_form_for([:admin, @admins_user]) do |f| %1> %>
-<%#   <%= f.error_notification %1> %>
-<%#   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %1> %>
-
-<%#   <div class="form-inputs"> %>
-  <%#     hello %>
-  <%#   </div> %>
-
-<%#   <div class="form-actions"> %>
-  <%#     <%= f.button :submit %1> %>
-  <%#   </div> %>
-
-
-<%= simple_form_for [:admin, @admins_user],  class: "uk-form-stacked" do |f| %>
-<%# <form class="uk-form-stacked"> %>
+<%= simple_form_for [:admin, @admins_user],  class: "form__user-form uk-form-stacked" do |f| %>
   <div uk-grid>
     <div class="uk-width-auto">
-      <div class="form__user_avatar-img">
+      <div class="form__user-form_avatar-img">
         <%= image_pack_tag 'avatar.jpg', class: 'form__user_avatar-img', width: "200", height: "200" %>
         <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-top">Add Photo</button>
       </div>
     </div>
-    <div class="uk-width-2-5">
+    <div class="uk-width-2-5 uk-width-3-5@s">
+      <div class="uk-margin-small">
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      </div>
       <div class="uk-margin-small">
         <label class="uk-form-label" for="form-stacked-text">Username</label>
         <div class="uk-form-controls">
-          <input class="uk-input" id="form-stacked-text" type="text" >
-        </div>
+          <%= f.input :username,
+            required: false,
+            autofocus: false,
+            label: false,
+            input_html: {
+              class: "uk-input",
+              autocomplete: "username"
+            } %>
+      </div>
       </div>
       <div class="uk-margin-small">
         <label class="uk-form-label" for="form-stacked-text">First Name</label>
         <div class="uk-form-controls">
-          <input class="uk-input" id="form-stacked-text" type="text" >
-        </div>
+          <%= f.input :first_name,
+            required: false,
+            autofocus: false,
+            label: false,
+            input_html: {
+              class: "uk-input",
+              autocomplete: "first_name"
+            } %>
+      </div>
       </div>
       <div class="uk-margin-small">
         <label class="uk-form-label" for="form-stacked-text">Last Name</label>
         <div class="uk-form-controls">
-          <input class="uk-input" id="form-stacked-text" type="text" >
-        </div>
+          <%= f.input :second_name,
+            required: false,
+            autofocus: false,
+            label: false,
+            input_html: {
+              class: "uk-input",
+              autocomplete: "second_name"
+            } %>
+      </div>
       </div>
       <div class="uk-margin-small">
         <label class="uk-form-label" for="form-stacked-text">E-mail</label>
         <div class="uk-form-controls">
-          <input class="uk-input" id="form-stacked-text" type="text" >
-        </div>
+          <%= f.input :email,
+            required: false,
+            autofocus: false,
+            label: false,
+            input_html: {
+              class: "uk-input",
+              autocomplete: "email"
+            } %>
       </div>
-      <div class="">
+      </div>
+      <div> 
         <label class="uk-form-label" for="form-stacked-text">Password</label>
         <div class="uk-form-controls">
-          <input class="uk-input" id="form-stacked-text" type="text" >
+          <%= f.input :password,
+            required: false,
+            label: false,
+            input_html: { 
+              class: 'uk-input',
+              autocomplete: "current-password"
+            }
+          %>
         </div>
+      <%= f.button :submit, class: "uk-button uk-button-primary uk-margin-top" %>
       </div>
-      <button class="uk-button uk-button-primary uk-margin-top">Create</button>
     </div>
-
-  </div>
-<% end %>
+    
+  <% end %>
