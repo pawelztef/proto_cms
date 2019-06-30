@@ -72,12 +72,18 @@
             label: false,
             input_html: { 
               class: 'uk-input',
-              autocomplete: "current-password"
+              autocomplete: "current-password",
+              placeholder: @admins_user.password
             }
           %>
-        </div>
+      </div>
       <%= f.button :submit, class: "uk-button uk-button-primary uk-margin-top" %>
+      <span id="password_button" class="uk-button uk-button-default uk-margin-top uk-margin-left">Generate Passoword</span>
       </div>
     </div>
-    
+
   <% end %>
+
+  <script>
+
+  </script>
