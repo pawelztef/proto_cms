@@ -1,4 +1,4 @@
-  class Admin::UsersController < Admin::AdminsController
+class Admin::UsersController < Admin::AdminsController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /admins/users
@@ -44,6 +44,10 @@
   # PATCH/PUT /admins/users/1
   # PATCH/PUT /admins/users/1.json
   def update
+    if params[:user][:password].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
     respond_to do |format|
       if @admins_user.update(admins_user_params)
         format.html { redirect_to admin_users_path, notice: 'User was successfully updated.' }
@@ -66,13 +70,13 @@
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @admins_user = User.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @admins_user = User.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admins_user_params
-      params.require(:user).permit(:username, :first_name, :second_name, :email, :password)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def admins_user_params
+    params.require(:user).permit(:username, :first_name, :second_name, :email, :password)
+  end
 end
