@@ -11,6 +11,7 @@
   # GET /admins/users/1
   # GET /admins/users/1.json
   def show
+
   end
 
   # GET /admins/users/new
@@ -21,6 +22,7 @@
 
   # GET /admins/users/1/edit
   def edit
+    @title = "Edit Profile"
   end
 
   # POST /admins/users
