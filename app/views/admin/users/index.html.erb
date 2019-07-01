@@ -12,7 +12,8 @@
       <table class="uk-table uk-table-justify uk-table-divider">
         <thead>
           <tr>
-            <th class="uk-width-small">ID</th>
+            <th>ID</th>
+            <th>Avatar</th>
             <th>Username</th>
             <th>Email</th>
             <th>Role</th>
@@ -24,6 +25,13 @@
           <% @admins_users.each do |user| %>
             <tr>
               <td><%= user.ID %></td>
+              <td>
+                <% if user.avatar.attached? %>
+                  <%= image_tag user.avatar.variant(combine_options: { resize: "35x35", extent: "35x35", background: "grey", gravity: "center"}), class: "index__user_avatar-img uk-border-circle" if user.avatar.attached? %>
+                <% else %>
+                  <%= image_pack_tag 'avatar.jpg', class: 'index__user_avatar-img uk-border-circle', width: "35", height: "35" %>
+                <% end %>
+              </td>
               <td><%= user.username %></td>
               <td><%= user.email %></td>
               <td>administrator</td>
