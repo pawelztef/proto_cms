@@ -2,7 +2,7 @@ $(() => {
   document.getElementById('password_button').addEventListener('click', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    <%# let target = document.getElementById('user_password'); %>
-    <%# target.value = x; %>
+    let token = Math.random().toString(36).slice(2);
+    document.getElementById('user_password').value = token;
   });
 });
