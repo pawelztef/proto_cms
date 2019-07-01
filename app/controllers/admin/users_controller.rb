@@ -18,7 +18,7 @@ class Admin::UsersController < Admin::AdminsController
   def new
     @title = "New User"
     @admins_user = User.new
-    @admins_user.generate_password
+    @admins_user.username = "pawel"
   end
 
   # GET /admins/users/1/edit

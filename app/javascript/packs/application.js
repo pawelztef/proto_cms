@@ -4,12 +4,12 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 //
-// To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
+// To reference this file, add <%%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
-// them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
+// them with the image_pack_tag helper in views (e.g <%%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
 //
 // const images = require.context('../images', true)
@@ -24,8 +24,9 @@ Turbolinks.start();
 
 
 
-import 'proto_cms';
-require('custom');
+import 'styles';
+require('packs/custom.js.erb');
+require('packs/hello_erb.js.erb');
 
 require.context('../images', true);
 

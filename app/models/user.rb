@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
 
   # TODO add button to form new 
-  def generate_password 
+  def self.generate_password 
     token = SecureRandom.urlsafe_base64
     self.password = token
   end
