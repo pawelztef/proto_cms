@@ -11,6 +11,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'simple_form'
 gem 'devise'
+gem 'gon'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -18,7 +19,6 @@ end
 
 group :development do
   gem "better_errors"
-  gem 'hirb'
   gem "pry-rails"
   gem "binding_of_caller"
   gem 'web-console', '>= 3.3.0'

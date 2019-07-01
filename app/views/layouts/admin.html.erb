@@ -4,6 +4,7 @@
     <title>Kidsee</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= Gon::Base.render_data %>
     <%= render 'layouts/admin_cdns' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application' %>
