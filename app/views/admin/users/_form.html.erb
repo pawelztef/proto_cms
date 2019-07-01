@@ -1,10 +1,15 @@
-
 <%= simple_form_for [:admin, @admins_user],  class: "form__user-form uk-form-stacked" do |f| %>
   <div uk-grid>
     <div class="uk-width-auto">
       <div class="form__user-form_avatar-img uk-margin-top">
-        <%= image_pack_tag 'avatar.jpg', class: 'form__user_avatar-img', width: "200", height: "200" %>
-        <span id="image_button" class="uk-button uk-button-default uk-margin-top uk-width-1-1">Add Photo</span>
+        <% if @admins_user.avatar.attached? %>
+          <%= image_tag @admins_user.avatar, class: 'form__user_avatar-img', width: "200", height: "200" %>
+        <% else %>
+          <%= image_pack_tag 'avatar.jpg', class: 'form__user_avatar-img', width: "200", height: "200" %>
+        <% end %>
+        <%= f.input :avatar, as: :file, label: false %>
+        <button id="avatar_button" class="uk-button uk-button-default uk-margin-top uk-width-1-1" type="button" tabindex="-1">Add Photo</button>
+        <span id="avatar_meta" class="uk-text-meta"></span>
       </div>
     </div>
     <div class="uk-width-2-5 uk-width-3-5@s">
