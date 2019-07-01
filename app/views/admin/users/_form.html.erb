@@ -3,7 +3,8 @@
     <div class="uk-width-auto">
       <div class="form__user-form_avatar-img uk-margin-top">
         <% if @admins_user.avatar.attached? %>
-          <%= image_tag @admins_user.avatar, class: 'form__user_avatar-img', width: "200", height: "200" %>
+          <%# <%= image_tag @admins_user.avatar, class: 'form__user_avatar-img', width: "200", height: "200" %1> %>
+          <%= image_tag @admins_user.avatar.variant(resize: "200x200"), class: 'form__user_avatar-img' %>
         <% else %>
           <%= image_pack_tag 'avatar.jpg', class: 'form__user_avatar-img', width: "200", height: "200" %>
         <% end %>
