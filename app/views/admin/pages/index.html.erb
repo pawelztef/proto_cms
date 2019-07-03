@@ -1,29 +1,44 @@
-<p id="notice"><%= notice %></p>
+<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+  <div class="uk-card uk-card-default uk-card-large">
+    <div class="uk-card-header">
+      <div class="uk-grid uk-grid-small">
+        <div class="uk-width-auto"><h3 class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %></h3></div>
+        <div class="uk-width-expand uk-text-right panel-icons">
+          <a href= <%= new_admin_page_path %> class="uk-icon-link" title="Add Page" data-uk-tooltip data-uk-icon="icon: plus"></a>
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body">
+      <table class="uk-table uk-table-justify uk-table-divider">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Permalink</th>
+            <th>Content</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @admin_pages.each do |admin_page| %>
+            <tr>
+              <td><%= admin_page.name %></td>
+              <td><%= admin_page.permalink %></td>
+              <td><%= admin_page.content %></td>
+              <td>
+                <ul class="uk-iconnav">
+                  <li><a href="<%= edit_admin_page_path(admin_page) %>" uk-icon="icon: file-edit"></a></li>
+                  <li><a href= <%= admin_page_path(admin_page)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                </ul>
+              </td>
+              <%# <td><%= link_to 'Show', admin_page_path %1></td> %>
+              <%# <td><%= link_to 'Edit', edit_admin_page_path(admin_page) %1></td> %>
+              <%# <td><%= link_to 'Destroy', admin_page, method: :delete, data: { confirm: 'Are you sure?' } %1></td> %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<h1>Admin Pages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Permalink</th>
-      <th>Content</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @admin_pages.each do |admin_page| %>
-      <tr>
-        <td><%= admin_page.permalink %></td>
-        <td><%= admin_page.content %></td>
-        <td><%= link_to 'Show', admin_page %></td>
-        <td><%= link_to 'Edit', edit_admin_page_path(admin_page) %></td>
-        <td><%= link_to 'Destroy', admin_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Admin Page', new_admin_page_path %>

@@ -4,7 +4,8 @@ class Admin::PagesController < Admin::AdminsController
   # GET /admin/pages
   # GET /admin/pages.json
   def index
-    @admin_pages = Admin::Page.all
+    @title = "List Pages"
+    @admin_pages = Page.all
   end
 
   # GET /admin/pages/1
@@ -14,21 +15,23 @@ class Admin::PagesController < Admin::AdminsController
 
   # GET /admin/pages/new
   def new
-    @admin_page = Admin::Page.new
+    @title = "New Page"
+    @admin_page = Page.new
   end
 
   # GET /admin/pages/1/edit
   def edit
+    @title = "Edit page"
   end
 
   # POST /admin/pages
   # POST /admin/pages.json
   def create
-    @admin_page = Admin::Page.new(admin_page_params)
+    @admin_page = Page.new(admin_page_params)
 
     respond_to do |format|
       if @admin_page.save
-        format.html { redirect_to @admin_page, notice: 'Page was successfully created.' }
+        format.html { redirect_to admin_pages_path, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @admin_page }
       else
         format.html { render :new }
@@ -64,11 +67,11 @@ class Admin::PagesController < Admin::AdminsController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_page
-      @admin_page = Admin::Page.find(params[:id])
+      @admin_page = Page.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_page_params
-      params.require(:admin_page).permit(:permalink, :content)
+      params.require(:page).permit(:permalink, :content, :name)
     end
 end
