@@ -4,9 +4,11 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <%# TODO permalink live helper %> 
     <%= f.input :permalink %>
     <%= f.input :content, as: :hidden %>
   </div>
+
   <trix-editor input="page_content"></trix-editor>
   <div class="form-actions">
     <%= f.button :submit %>
