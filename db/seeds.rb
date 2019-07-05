@@ -15,3 +15,11 @@ admin.owner = 1
 admin.password = 'password'
 admin.password_confirmation = 'password'
 admin.save!
+
+["about", "products", "contact"].each do |n| 
+  page = Page.new
+  page.name = n
+  page.permalink = "perm_" + n
+  page.content = "lorem ipsum"
+  page.save!
+end
