@@ -15,7 +15,7 @@
             <th>Name</th>
             <th>Permalink</th>
             <th>Content</th>
-            <th>Actions</th>
+            <th>actions</th>
           </tr>
         </thead>
         <tbody>
@@ -30,9 +30,6 @@
                   <li><a href= <%= admin_page_path(admin_page)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
                 </ul>
               </td>
-              <%# <td><%= link_to 'Show', admin_page_path %1></td> %>
-              <%# <td><%= link_to 'Edit', edit_admin_page_path(admin_page) %1></td> %>
-              <%# <td><%= link_to 'Destroy', admin_page, method: :delete, data: { confirm: 'Are you sure?' } %1></td> %>
             </tr>
           <% end %>
         </tbody>

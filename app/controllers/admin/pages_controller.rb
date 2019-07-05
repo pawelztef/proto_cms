@@ -1,31 +1,23 @@
 class Admin::PagesController < Admin::AdminsController
   before_action :set_admin_page, only: [:show, :edit, :update, :destroy]
 
-  # GET /admin/pages
-  # GET /admin/pages.json
   def index
     @title = "List Pages"
     @admin_pages = Page.all
   end
 
-  # GET /admin/pages/1
-  # GET /admin/pages/1.json
   def show
   end
 
-  # GET /admin/pages/new
   def new
     @title = "New Page"
     @admin_page = Page.new
   end
 
-  # GET /admin/pages/1/edit
   def edit
-    @title = "Edit page"
+    @title = "Edit Page"
   end
 
-  # POST /admin/pages
-  # POST /admin/pages.json
   def create
     @admin_page = Page.new(admin_page_params)
 
@@ -40,12 +32,10 @@ class Admin::PagesController < Admin::AdminsController
     end
   end
 
-  # PATCH/PUT /admin/pages/1
-  # PATCH/PUT /admin/pages/1.json
   def update
     respond_to do |format|
       if @admin_page.update(admin_page_params)
-        format.html { redirect_to @admin_page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to admin_pages_path, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_page }
       else
         format.html { render :edit }
@@ -54,8 +44,6 @@ class Admin::PagesController < Admin::AdminsController
     end
   end
 
-  # DELETE /admin/pages/1
-  # DELETE /admin/pages/1.json
   def destroy
     @admin_page.destroy
     respond_to do |format|
@@ -65,12 +53,9 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_admin_page
-      @admin_page = Page.find(params[:id])
+      @admin_page = Page.find_by_permalink!(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
     def admin_page_params
       params.require(:page).permit(:permalink, :content, :name)
     end
