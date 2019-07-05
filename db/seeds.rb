@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 #
+puts "Seeding started"
+created_objects = 0
+
 admin = User.new
 admin.username = 'admin'
 admin.first_name = 'Admin'
@@ -15,6 +18,7 @@ admin.owner = 1
 admin.password = 'password'
 admin.password_confirmation = 'password'
 admin.save!
+created_objects += 1
 
 ["about", "products", "contact"].each do |n| 
   page = Page.new
@@ -22,4 +26,7 @@ admin.save!
   page.permalink = "perm_" + n
   page.content = "lorem ipsum"
   page.save!
+  created_objects += 1
 end
+
+puts "Seeding finished - #{ created_objects } objects created."

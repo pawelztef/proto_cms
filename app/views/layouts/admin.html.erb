@@ -15,9 +15,12 @@
     <div id="content" data-uk-height-viewport="expand: true">
       <div class="uk-container uk-container-expand">
         <div class="uk-grid uk-grid-medium" data-uk-grid>
-          <%= render "admin/shared/flash_messages" %>
           <!-- panel -->
-          <%= yield %>
+          <div class="uk-width-expand" >
+            <%= render "admin/shared/flash_messages" %>
+            <%= yield %>
+          </div>
+            <%= yield :right_column %>
           <!-- /panel -->
         </div>
       </div>

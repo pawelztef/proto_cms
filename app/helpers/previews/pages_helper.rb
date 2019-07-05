@@ -1,0 +1,2 @@
+module Previews::PagesHelper
+end

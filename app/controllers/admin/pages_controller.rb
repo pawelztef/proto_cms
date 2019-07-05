@@ -1,5 +1,5 @@
 class Admin::PagesController < Admin::AdminsController
-  before_action :set_admin_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin_page, only: [:show, :edit, :update, :destroy, :draft]
 
   def index
     @title = "List Pages"
@@ -35,7 +35,14 @@ class Admin::PagesController < Admin::AdminsController
 
   def update
     respond_to do |format|
-      if @admin_page.update(admin_page_params)
+      if params[:preview_button] 
+        if @admin_page.update(admin_page_params)
+          format.html { redirect_to previews_page_url(@admin_page.permalink) }
+        else
+          format.html { render :new }
+        end
+      elsif params[:commit]
+        @admin_page.update(admin_page_params)
         format.html { redirect_to admin_pages_path, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_page }
       else
@@ -58,6 +65,6 @@ class Admin::PagesController < Admin::AdminsController
       @admin_page = Page.find_by_permalink!(params[:id])
     end
     def admin_page_params
-      params.require(:page).permit(:permalink, :content, :name)
+      params.require(:page).permit(:permalink, :content, :name, :status)
     end
 end

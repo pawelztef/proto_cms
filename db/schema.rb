@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_03_144726) do
+ActiveRecord::Schema.define(version: 2019_07_05_204449) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 2019_07_03_144726) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.string "stamp", null: false
     t.index ["permalink"], name: "index_pages_on_permalink"
+    t.index ["status"], name: "index_pages_on_status"
   end
 
   create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

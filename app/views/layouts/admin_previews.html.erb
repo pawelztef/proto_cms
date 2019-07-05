@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @title if @title %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= render 'layouts/admin_cdns'%>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application' %>
+  </head>
+  <body id="preview__body">
+
+    <!-- NAV -->
+    <nav class="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+        <a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
+      </div>
+      <div class="uk-navbar-center">logo</div>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          <%= yield :back_to_admin_content_form %>
+          <li class="uk-active uk-visible@m"><a href="" data-uk-icon="sign-out"></a></li>
+        </ul>
+        <div>
+    </nav>
+    <!-- /NAV -->
+
+    <!-- TEXT -->
+    <div class="uk-container uk-container-small uk-flex-auto uk-text-center">
+      <div class="uk-width-4-5@m uk-margin-auto">
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <%= yield %>
+      </div>
+    </div>
+    <!-- /TEXT -->
+
+    <!-- OFFCANVAS -->
+    <div id="offcanvas-nav" uk-offcanvas="overlay: true">
+      <div class="uk-offcanvas-bar">
+        <button class="uk-offcanvas-close" type="button" uk-close></button>
+        <ul class="uk-nav uk-nav-default">
+          <li class="uk-active"><a href="#">Active</a></li>
+          <li class="uk-parent">
+            <a href="#">Parent</a>
+            <ul class="uk-nav-sub">
+              <li><a href="#">Sub item</a></li>
+              <li><a href="#">Sub item</a></li>
+            </ul>
+          </li>
+          <li class="uk-nav-header">Header</li>
+          <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+          <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+          <li class="uk-nav-divider"></li>
+          <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+        </ul>
+      </div>
+    </div>
+    <!-- /OFFCANVAS -->
+
+  </body>
+</html>
