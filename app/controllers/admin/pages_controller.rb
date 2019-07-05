@@ -19,6 +19,7 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   def create
+    @title = "New Page"
     @admin_page = Page.new(admin_page_params)
 
     respond_to do |format|
