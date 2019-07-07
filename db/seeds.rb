@@ -17,6 +17,7 @@ admin.email = 'admin@admin.com'
 admin.owner = 1
 admin.password = 'password'
 admin.password_confirmation = 'password'
+admin.subscriber!
 admin.save!
 created_objects += 1
 
