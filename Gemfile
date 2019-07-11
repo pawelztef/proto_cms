@@ -14,7 +14,7 @@ gem "devise"
 gem "gon"
 gem "image_processing", "~> 1.2"
 gem "mini_magick"
-gem "cancan"
+gem "cancancan"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

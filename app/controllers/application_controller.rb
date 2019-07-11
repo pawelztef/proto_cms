@@ -30,6 +30,11 @@ class ApplicationController < ActionController::Base
   # end
   # end
 
+  # TODO resue_from CanCan access denied
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied."
+    redirect_to admin_dashboard_index
+  end
   protected
 
   def layout_by_controller

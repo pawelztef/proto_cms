@@ -4,7 +4,9 @@
       <div class="uk-grid uk-grid-small">
         <div class="uk-width-auto"><h3 class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %></h3></div>
         <div class="uk-width-expand uk-text-right panel-icons">
-          <a href= <%= new_admin_page_path %> class="uk-icon-link" title="Add Page" data-uk-tooltip data-uk-icon="icon: plus"></a>
+          <% if can? :create, Page %>
+            <a href= <%= new_admin_page_path %> class="uk-icon-link" title="Add Page" data-uk-tooltip data-uk-icon="icon: plus"></a>
+          <% end %>
         </div>
       </div>
     </div>
@@ -25,10 +27,20 @@
               <td><%= admin_page.permalink %></td>
               <td><%= admin_page.status %></td>
               <td>
+              <% if can?(:update, Page) || can?(:destroy, Page) %>
                 <ul class="uk-iconnav">
-                  <li><a href="<%= edit_admin_page_path(admin_page) %>" uk-icon="icon: file-edit"></a></li>
-                  <li><a href= <%= admin_page_path(admin_page)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                  <% if can? :update, Page %>
+                    <li><a href="<%= edit_admin_page_path(admin_page) %>" uk-icon="icon: file-edit"></a></li>
+                  <% end %>
+                  <% if can? :destroy, Page %>
+                    <li><a href= <%= admin_page_path(admin_page)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                  <% end %>
                 </ul>
+              <% else %>
+                <ul class="uk-iconnav">
+                  <li>Not authorized</li>
+                </ul>
+              <% end %>
               </td>
             </tr>
           <% end %>

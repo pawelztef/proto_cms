@@ -1,5 +1,6 @@
 class Admin::PagesController < Admin::AdminsController
   before_action :set_admin_page, only: [:show, :edit, :update, :destroy, :draft]
+  load_and_authorize_resource
 
   def index
     @title = "List Pages"

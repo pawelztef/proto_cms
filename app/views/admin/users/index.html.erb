@@ -34,13 +34,23 @@
               </td>
               <td><%= user.username %></td>
               <td><%= user.email %></td>
-              <td>administrator</td>
+              <td><%= user.role %></td>
               <td><%= user.last_sign_in_at ? user.last_sign_in_at : "No data" %></td>
               <td>
-                <ul class="uk-iconnav">
-                  <li><a href="<%= edit_admin_user_path(user) %>" uk-icon="icon: file-edit"></a></li>
-                  <li><a href= <%= admin_user_path(user)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
-                </ul>
+                <% if can?(:update, User) || can?(:destroy, User) %>
+                  <ul class="uk-iconnav">
+                    <% if can? :update, User %>
+                      <li><a href="<%= edit_admin_user_path(user) %>" uk-icon="icon: file-edit"></a></li>
+                    <% end %>
+                    <% if can? :destroy, User %>
+                      <li><a href= <%= admin_user_path(user)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  <ul class="uk-iconnav">
+                    <li>Not authorized</li>
+                  </ul>
+                <% end %>
               </td>
             </tr>
           <% end %>
