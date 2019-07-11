@@ -1,5 +1,6 @@
-class Role < ApplicationRecord
-  has_and_belongs_to_many :permission
-  has_many :users
-  enum name: [:subscriber, :author, :admin]
+class Role 
+  ROLES = %w(editor admin owner).freeze
+  def initialize(role)
+    @role = role 
+  end
 end
