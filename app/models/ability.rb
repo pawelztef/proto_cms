@@ -6,7 +6,9 @@ class Ability
       if user.owner?
         can :manage, :all
       elsif user.admin?
-        can :manage, Page
+        can :read, Page
+        can :create, Page
+        can :update, Page
         can :read, User
         can :create, User
         can :update, User

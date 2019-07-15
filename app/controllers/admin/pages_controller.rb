@@ -1,6 +1,6 @@
 class Admin::PagesController < Admin::AdminsController
   before_action :set_admin_page, only: [:show, :edit, :update, :destroy, :draft]
-  load_and_authorize_resource
+  load_and_authorize_resource param_method: :admin_page_params
 
   def index
     @title = "List Pages"
@@ -20,9 +20,9 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   def create
+    byebug
     @title = "New Page"
     @admin_page = Page.new(admin_page_params)
-
     respond_to do |format|
       if @admin_page.save
         format.html { redirect_to admin_pages_path, notice: 'Page was successfully created.' }
@@ -63,6 +63,7 @@ class Admin::PagesController < Admin::AdminsController
 
   private
     def set_admin_page
+      byebug
       @admin_page = Page.find_by_permalink!(params[:id])
     end
     def admin_page_params
