@@ -1,5 +1,7 @@
 class Admin::PagesController < Admin::AdminsController
   before_action :set_admin_page, only: [:show, :edit, :update, :destroy, :draft]
+  load_resource :find_by => :permalink, param_method: :admin_page_params 
+  authorize_resource 
 
   def index
     @title = "List Pages"
@@ -12,16 +14,13 @@ class Admin::PagesController < Admin::AdminsController
   def new
     @title = "New Page"
     @admin_page = Page.new
-    authorize! :new, @post
   end
 
   def edit
     @title = "Edit Page"
-    authorize! :edit, @post
   end
 
   def create
-    authorize! :create, @post
     @title = "New Page"
     @admin_page = Page.new(admin_page_params)
     respond_to do |format|
@@ -36,7 +35,6 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   def update
-    authorize! :update, @post
     respond_to do |format|
       if params[:preview_button] 
         if @admin_page.update(admin_page_params)
@@ -56,7 +54,6 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   def destroy
-    authorize! :destroy, @post
     @admin_page.destroy
     respond_to do |format|
       format.html { redirect_to admin_pages_url, notice: 'Page was successfully destroyed.' }
