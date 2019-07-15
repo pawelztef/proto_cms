@@ -1,13 +1,6 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_controller
 
-  # def after_sign_in_path_for(resource)
-  #   if resource.class == User
-  #     admin_dashboard_index_path
-  #   elsif resource.class == Caregiver
-  #     caregivers_path
-  #   end
-  # end
   def after_sign_in_path_for(resource)
     admin_dashboard_index_path
   end

@@ -39,20 +39,17 @@
               <td><%= user.role %></td>
               <td><%= user.last_sign_in_at ? user.last_sign_in_at : "No data" %></td>
               <td>
-                <% if (can?(:update, User) || can?(:destroy, User)) %>
-                  <ul class="uk-iconnav">
-                    <% if can?( :update, User)  %>
-                      <li><a href="<%= edit_admin_user_path(user) %>" uk-icon="icon: file-edit"></a></li>
-                    <% end %>
-                    <% if can?(:destroy, User) %>
-                      <li><a href= <%= admin_user_path(user)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
-                    <% end %>
-                  </ul>
-                <% else %>
-                  <ul class="uk-iconnav">
+                <ul class="uk-iconnav">
+                  <% if can?( :update, user)   %>
+                    <li><a href="<%= edit_admin_user_path(user) %>" uk-icon="icon: file-edit"></a></li>
+                  <% end %>
+                  <% if can?(:destroy, user)  %>
+                    <li><a href= <%= admin_user_path(user)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                  <% end %>
+                  <% if cannot?(:update, user) || cannot?(:destroy, user) %>
                     <li>Not authorized</li>
-                  </ul>
-                <% end %>
+                  <% end %>
+                </ul>
               </td>
             </tr>
           <% end %>
@@ -61,5 +58,4 @@
     </div>
   </div>
 </div>
-<% console %>
 
