@@ -1,5 +1,7 @@
 class Admin::UsersController < Admin::AdminsController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  load_resource  param_method: :admins_user_params
+  authorize_resource 
 
   # GET /admins/users
   # GET /admins/users.json
