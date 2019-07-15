@@ -12,23 +12,9 @@ class ApplicationController < ActionController::Base
     admin_dashboard_index_path
   end
 
-  # def after_sign_out_path_for(resource)
-  # byebug
-  # if resource == 'Admin'
-  #   byebug
-  #   new_admin_session_path
-  # elsif resource == 'Caregiver'
-  #   byebug
-  #   new_caregiver_session_path
-  # else
-  #   root_path 
-  # end
-  # request.referrer
-  # case resource
-  # when Admin  then  new_admin_session_path
-  # when Caregiver then new_caregiver_session_path
-  # end
-  # end
+  def after_sign_out_path_for(resource_or_scope)
+    new_user_session_path 
+  end
 
   # TODO resue_from CanCan access denied
   rescue_from CanCan::AccessDenied do |exception|
