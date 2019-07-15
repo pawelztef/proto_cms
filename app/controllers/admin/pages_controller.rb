@@ -1,6 +1,5 @@
 class Admin::PagesController < Admin::AdminsController
   before_action :set_admin_page, only: [:show, :edit, :update, :destroy, :draft]
-  load_and_authorize_resource param_method: :admin_page_params
 
   def index
     @title = "List Pages"
@@ -13,14 +12,16 @@ class Admin::PagesController < Admin::AdminsController
   def new
     @title = "New Page"
     @admin_page = Page.new
+    authorize! :new, @post
   end
 
   def edit
     @title = "Edit Page"
+    authorize! :edit, @post
   end
 
   def create
-    byebug
+    authorize! :create, @post
     @title = "New Page"
     @admin_page = Page.new(admin_page_params)
     respond_to do |format|
@@ -35,6 +36,7 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   def update
+    authorize! :update, @post
     respond_to do |format|
       if params[:preview_button] 
         if @admin_page.update(admin_page_params)
@@ -54,6 +56,7 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   def destroy
+    authorize! :destroy, @post
     @admin_page.destroy
     respond_to do |format|
       format.html { redirect_to admin_pages_url, notice: 'Page was successfully destroyed.' }
@@ -62,11 +65,10 @@ class Admin::PagesController < Admin::AdminsController
   end
 
   private
-    def set_admin_page
-      byebug
-      @admin_page = Page.find_by_permalink!(params[:id])
-    end
-    def admin_page_params
-      params.require(:page).permit(:permalink, :content, :name, :status)
-    end
+  def set_admin_page
+    @admin_page = Page.find_by_permalink!(params[:id])
+  end
+  def admin_page_params
+    params.require(:page).permit(:permalink, :content, :name, :status)
+  end
 end
