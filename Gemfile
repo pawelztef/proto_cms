@@ -15,6 +15,8 @@ gem "gon"
 gem "image_processing", "~> 1.2"
 gem "mini_magick"
 gem "cancancan"
+gem 'ancestry'
+
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
