@@ -12,6 +12,14 @@ class User < ApplicationRecord
     self.id.to_s.rjust(5, '0')
   end
 
+  def self.search_by_role(role)
+    if role.blank?
+      User.all
+    else
+      User.find_by(role: role)
+    end
+  end
+
   def self.generate_password 
     token = SecureRandom.urlsafe_base64
     self.password = token

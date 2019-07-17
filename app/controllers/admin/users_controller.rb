@@ -7,7 +7,7 @@ class Admin::UsersController < Admin::AdminsController
   # GET /admins/users.json
   def index
     @title = "List Users"
-    @admins_users = User.all
+    @admins_users = User.search_by_role(params[:role])
   end
 
   # GET /admins/users/1

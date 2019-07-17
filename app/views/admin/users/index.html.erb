@@ -24,32 +24,40 @@
           </tr>
         </thead>
         <tbody>
-          <% @admins_users.each do |user| %>
+          <% if @admins_users %>
+            <% Array(@admins_users).each do |user| %>
+              <tr>
+                <td><%= user.ID %></td>
+                <td>
+                  <% if user.avatar.attached? %>
+                    <%= image_tag user.avatar.variant(combine_options: { resize: "35x35", extent: "35x35", background: "grey", gravity: "center"}), class: "index__user_avatar-img uk-border-circle" if user.avatar.attached? %>
+                  <% else %>
+                    <%= image_pack_tag 'avatar.jpg', class: 'index__user_avatar-img uk-border-circle', width: "35", height: "35" %>
+                  <% end %>
+                </td>
+                <td><%= user.username %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+                <td><%= user.last_sign_in_at ? user.last_sign_in_at : "No data" %></td>
+                <td>
+                  <ul class="uk-iconnav">
+                    <% if can?( :update, user)   %>
+                      <li><a href="<%= edit_admin_user_path(user) %>" uk-icon="icon: file-edit"></a></li>
+                    <% end %>
+                    <% if can?(:destroy, user)  %>
+                      <li><a href= <%= admin_user_path(user)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                    <% end %>
+                    <% if cannot?(:update, user) || cannot?(:destroy, user) %>
+                      <li>Not authorized</li>
+                    <% end %>
+                  </ul>
+                </td>
+              </tr>
+            <% end %>
+          <% else %>
             <tr>
-              <td><%= user.ID %></td>
-              <td>
-                <% if user.avatar.attached? %>
-                  <%= image_tag user.avatar.variant(combine_options: { resize: "35x35", extent: "35x35", background: "grey", gravity: "center"}), class: "index__user_avatar-img uk-border-circle" if user.avatar.attached? %>
-                <% else %>
-                  <%= image_pack_tag 'avatar.jpg', class: 'index__user_avatar-img uk-border-circle', width: "35", height: "35" %>
-                <% end %>
-              </td>
-              <td><%= user.username %></td>
-              <td><%= user.email %></td>
-              <td><%= user.role %></td>
-              <td><%= user.last_sign_in_at ? user.last_sign_in_at : "No data" %></td>
-              <td>
-                <ul class="uk-iconnav">
-                  <% if can?( :update, user)   %>
-                    <li><a href="<%= edit_admin_user_path(user) %>" uk-icon="icon: file-edit"></a></li>
-                  <% end %>
-                  <% if can?(:destroy, user)  %>
-                    <li><a href= <%= admin_user_path(user)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
-                  <% end %>
-                  <% if cannot?(:update, user) || cannot?(:destroy, user) %>
-                    <li>Not authorized</li>
-                  <% end %>
-                </ul>
+              <td colspan="7" class="uk-text-center">
+                No data!
               </td>
             </tr>
           <% end %>
@@ -58,4 +66,21 @@
     </div>
   </div>
 </div>
+
+<%= content_for :right_column  do %>
+  <div class="uk-width-medium admin__right_column" >
+    <div class="uk-card uk-card-large uk-card-header uk-card-default ">
+      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body">
+      <span>Show by role</span>
+
+      <%= form_tag admin_users_path, method: :get, class: "form__user-form uk-form-stacked" do |f| %>
+        <%= select_tag "role", options_for_select(Role::ROLES), include_blank: "",  class: 'uk-select' %>
+        <%= submit_tag :submit , class: "uk-button uk-button-primary uk-margin-top" %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
 
