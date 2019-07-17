@@ -16,7 +16,7 @@ class User < ApplicationRecord
     if role.blank?
       User.all
     else
-      User.find_by(role: role)
+      User.where(role: role)
     end
   end
 

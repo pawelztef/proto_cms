@@ -21,28 +21,36 @@
           </tr>
         </thead>
         <tbody>
-          <% @admin_pages.each do |admin_page| %>
+          <% if @admin_pages.blank? %>
             <tr>
-              <td><%= admin_page.name %></td>
-              <td><%= admin_page.permalink %></td>
-              <td><%= admin_page.status %></td>
-              <td>
-              <% if can?(:update, Page) || can?(:destroy, Page) %>
-                <ul class="uk-iconnav">
-                  <% if can? :update, Page %>
-                    <li><a href="<%= edit_admin_page_path(admin_page) %>" uk-icon="icon: file-edit"></a></li>
-                  <% end %>
-                  <% if can? :destroy, Page %>
-                    <li><a href= <%= admin_page_path(admin_page)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
-                  <% end %>
-                </ul>
-              <% else %>
-                <ul class="uk-iconnav">
-                  <li>Not authorized</li>
-                </ul>
-              <% end %>
+              <td colspan="7" class="uk-text-center">
+                No data!
               </td>
             </tr>
+          <% else %>
+            <% @admin_pages.each do |admin_page| %>
+              <tr>
+                <td><%= admin_page.name %></td>
+                <td><%= admin_page.permalink %></td>
+                <td><%= admin_page.status %></td>
+                <td>
+                  <% if can?(:update, Page) || can?(:destroy, Page) %>
+                    <ul class="uk-iconnav">
+                      <% if can? :update, Page %>
+                        <li><a href="<%= edit_admin_page_path(admin_page) %>" uk-icon="icon: file-edit"></a></li>
+                      <% end %>
+                      <% if can? :destroy, Page %>
+                        <li><a href= <%= admin_page_path(admin_page)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                      <% end %>
+                    </ul>
+                  <% else %>
+                    <ul class="uk-iconnav">
+                      <li>Not authorized</li>
+                    </ul>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>
@@ -51,3 +59,19 @@
 </div>
 
 
+<%= content_for :right_column  do %>
+  <div class="uk-width-medium admin__right_column" >
+    <div class="uk-card uk-card-large uk-card-header uk-card-default ">
+      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body">
+      <span>Show by status</span>
+
+      <%= form_tag admin_pages_path, method: :get, class: "form__user-form uk-form-stacked" do |f| %>
+        <%= select_tag "status", options_for_select(ContentStatus::STATUSES), include_blank: "",  class: 'uk-select' %>
+        <%= submit_tag :submit , class: "uk-button uk-button-primary uk-margin-top" %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>

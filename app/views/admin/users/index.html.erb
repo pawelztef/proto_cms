@@ -24,8 +24,14 @@
           </tr>
         </thead>
         <tbody>
-          <% if @admins_users %>
-            <% Array(@admins_users).each do |user| %>
+          <% if @admins_users.blank? %>
+            <tr>
+              <td colspan="7" class="uk-text-center">
+                No data!
+              </td>
+            </tr>
+          <% else %>
+            <% @admins_users.each do |user| %>
               <tr>
                 <td><%= user.ID %></td>
                 <td>
@@ -54,12 +60,6 @@
                 </td>
               </tr>
             <% end %>
-          <% else %>
-            <tr>
-              <td colspan="7" class="uk-text-center">
-                No data!
-              </td>
-            </tr>
           <% end %>
         </tbody>
       </table>

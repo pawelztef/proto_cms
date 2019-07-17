@@ -8,6 +8,14 @@ class Page < ApplicationRecord
   scope :draft, -> { where(status: :draft) }
 
 
+  def self.search_by_status(status)
+    if status.blank?
+      Page.all
+    else
+      Page.where(status: status)
+    end
+  end
+
   def to_param
     permalink
   end

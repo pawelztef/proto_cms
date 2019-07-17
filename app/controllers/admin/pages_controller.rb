@@ -5,7 +5,7 @@ class Admin::PagesController < Admin::AdminsController
 
   def index
     @title = "List Pages"
-    @admin_pages = Page.all
+    @admin_pages = Page.search_by_status(params[:status])
   end
 
   def show
