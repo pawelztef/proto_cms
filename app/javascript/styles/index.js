@@ -10,4 +10,5 @@ import './front/header.scss';
 import './front/hero.scss';
 import './front/navigation.scss';
 import './front/offcanvas.scss';
+import './front/default.scss';
 

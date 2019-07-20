@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_navigation
-    @roots_pages = Page.roots
+    @roots_pages = Page.roots.where(status: :published)
   end
 end

@@ -1,12 +1,8 @@
-<nav class="uk-navbar">
-  <div class="uk-navbar-flip uk-navbar-center uk-visible-large">
-    <ul class="uk-navbar-nav">
-      <% @page.children.each do |page| %>
-        <li>
-          <%= link_to_unless_current page.name, page %>
-          <%= render 'shared/submenu_pages', pages: page.children if page.children.present? %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
+<ul class="uk-nav uk-dropdown-nav">
+  <% pages.each do |subpage| %>
+    <li>
+      <%= link_to subpage.name, subpage, class: "submenu-link" %>
+      <%= render "shared/submenu_pages", pages: subpage.children if subpage.has_children? %>
+    </li>
+  <% end %>
+</ul>
