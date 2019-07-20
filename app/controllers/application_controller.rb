@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   layout :layout_by_controller
+  before_action :set_navigation
 
   def after_sign_in_path_for(resource)
     admin_dashboard_index_path
@@ -22,5 +23,9 @@ class ApplicationController < ActionController::Base
     elsif devise_controller? && resource_name == :caregiver
       "front_authentication" 
     end
+  end
+
+  def set_navigation
+    @roots_pages = Page.roots
   end
 end

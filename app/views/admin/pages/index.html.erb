@@ -17,6 +17,7 @@
             <th>Name</th>
             <th>Permalink</th>
             <th>Status</th>
+            <th>Ancestry</th>
             <th>actions</th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
                 <td><%= admin_page.name %></td>
                 <td><%= admin_page.permalink %></td>
                 <td><%= admin_page.status %></td>
+                <td><%= admin_page.ancestry %></td>
                 <td>
                   <% if can?(:update, Page) || can?(:destroy, Page) %>
                     <ul class="uk-iconnav">

@@ -13,7 +13,7 @@ class Page < ApplicationRecord
 
   def self.search_by_status(status)
     if status.blank?
-      Page.all
+      Page.order(:ancestry)
     else
       Page.where(status: status)
     end

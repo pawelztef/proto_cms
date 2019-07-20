@@ -9,45 +9,7 @@
       </div>
     </div>
     <div class="uk-card-body">
-      <%# <%= render 'form', admin_page: @admin_page %1> %>
-      <%= simple_form_for [:admin, @admin_page],  class: "form__user-form uk-form-stacked" do |f| %>
-        <div uk-grid>
-          <div class="uk-width-1-1">
-            <div class="uk-margin-small">
-              <%= f.error_notification %>
-              <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-            </div>
-          </div>
-          <div class="uk-width-2-5">
-            <label class="uk-form-label" for="form-stacked-text">Name</label>
-            <div class="uk-form-controls">
-              <%= f.input :name, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "name" } %>
-            </div>
-          </div>
-          <div class="uk-width-2-5">
-            <label class="uk-form-label" for="form-stacked-text">Permalink</label>
-            <div class="uk-form-controls">
-              <%= f.input :permalink, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "permalink" } %>
-            </div>
-          </div>
-          <div class="uk-width-1-5">
-            <label class="uk-form-label" for="form-stacked-text">Status</label>
-            <div class="uk-form-controls">
-              <%= f.input :status, as: :select, collection: ContentStatus::STATUSES, label: false, input_html: {class: "uk-select"} %>
-            </div>
-          </div>
-          <div class="uk-width-1-1">
-            <div class="uk-margin-small">
-              <%= f.input :content, as: :hidden %>
-              <trix-editor input="page_content"></trix-editor>
-            </div>
-            <%= submit_tag :submit, class: "uk-button uk-button-primary uk-margin-top" %>
-            <%= submit_tag :Preview, name: "preview_button", class: "uk-button uk-button-default uk-margin-top uk-margin-left" %>
-          </div>
-        </div>
-
-
-
+      <%= render 'form', admin_page: @admin_page %>
     </div>
   </div>
 </div>
@@ -57,10 +19,8 @@
       <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div>
     </div>
     <div class="uk-card uk-card-default uk-card-body">
-      <span>Select Parent Page</span>
-      <%= f.input :parent_id, collection: Page.order(:name),label: false, input_html: {class: "uk-select"}  %>
+      <span>Select </span>
     </div>
   </div>
 <% end %>
 
-<% end %>

@@ -1,28 +1,13 @@
 <nav class="uk-navbar">
-  <%# <a class="uk-navbar-brand" href="/theme-brick/"> %>
-    <%#   <img class="tm-logo uk-responsive-height" src="/theme-brick/storage/logo.svg" alt=""> %>
-    <%#   <img class="tm-logo-contrast uk-responsive-height" src="/theme-brick/storage/logo-contrast.svg" alt=""> %>
-    <%# </a> %>
   <div class="uk-navbar-flip uk-navbar-center uk-visible-large">
     <ul class="uk-navbar-nav">
-      <li class=" uk-active">
-        <a href="/theme-brick/">Home</a>
-      </li>
-      <li class="">
-        <a href="/theme-brick/about">About</a>
-      </li>
-      <li class="">
-        <a href="/theme-brick/team">Team</a>
-      </li>
-      <li class="">
-        <a href="/theme-brick/blog">Blog</a>
-      </li>
-      <li class="">
-        <a href="/theme-brick/positions">Positions</a>
-      </li>
+      <% @roots_pages.each do |page| %>
+        <li><%= link_to page.name, page %></li>
+      <% end %>
     </ul>
   </div>
   <div class="uk-navbar-flip uk-hidden-large">
     <a href="#offcanvas" class="uk-navbar-toggle" data-uk-offcanvas=""></a>
   </div>
 </nav>
+<%# <%= render 'shared/submenu_pages', pages: @page.root.children %1> %>
