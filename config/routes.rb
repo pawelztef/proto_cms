@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'media', to: 'media#index'
+    post 'media', to: 'media#create'
     resources :settings
     resources :dashboard
     resources :users
