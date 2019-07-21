@@ -16,6 +16,7 @@ Rails.application.routes.draw do
                      :sign_up => "new_user"}
 
   namespace :admin do
+    get 'media', to: 'media#index'
     resources :settings
     resources :dashboard
     resources :users
