@@ -11,8 +11,9 @@ class Admin::MediaController < Admin::AdminsController
 
   def create
     respond_to do |format|
+      @media = Media.new
         byebug
-      if @admins_user.save
+      if @media.save
         format.js { redirect_to admin_users_path , notice: 'User was successfully created.' }
       else
         format.js { render :index }
