@@ -45,6 +45,7 @@ GEM
     ancestry (3.0.7)
       activerecord (>= 3.2.0)
     arel (9.0.0)
+    awesome_print (1.8.0)
     bcrypt (3.1.13)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
@@ -199,6 +200,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  awesome_print
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)

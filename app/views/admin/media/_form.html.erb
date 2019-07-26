@@ -1,5 +1,4 @@
-<%# <%= simple_form_for admin_media_path,  class: "form__user-form uk-form-stacked" do |f| %1> %>
-<%# <% end %1> %>
+
 <div class="js-upload uk-placeholder uk-text-center">
   <span uk-icon="icon: cloud-upload"></span>
   <span class="uk-text-middle">Attach binaries by dropping them here or</span>
@@ -18,15 +17,15 @@ var bar = document.getElementById('js-progressbar');
 UIkit.upload('.js-upload', {
 
 url: '',
-  multiple: true,
+multiple: true,
 
-  beforeSend: function () {
+beforeSend: function () {
 console.log('beforeSend', arguments);
 },
   beforeAll: function () {
 console.log('beforeAll', arguments);
 },
-  load: function () {
+load: function () {
 console.log('load', arguments);
 },
   error: function () {
@@ -58,14 +57,14 @@ bar.max = e.total;
 bar.value = e.loaded;
 },
 
-  completeAll: function () {
+completeAll: function () {
 console.log('completeAll', arguments);
 
 setTimeout(function () {
 bar.setAttribute('hidden', 'hidden');
 }, 1000);
 
-alert('Upload Completed');
+<%# alert('Upload Completed'); %>
 }
 
 });

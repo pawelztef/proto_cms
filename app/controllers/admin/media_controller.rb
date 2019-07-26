@@ -3,6 +3,7 @@ class Admin::MediaController < Admin::AdminsController
   skip_before_action :verify_authenticity_token
 
   def index
+    @all_media = Media.all
   end
 
   def new
@@ -12,7 +13,7 @@ class Admin::MediaController < Admin::AdminsController
   def create
     respond_to do |format|
       @media = Media.new
-        byebug
+      @media.attachment = params[:files][0]
       if @media.save
         format.js { redirect_to admin_users_path , notice: 'User was successfully created.' }
       else

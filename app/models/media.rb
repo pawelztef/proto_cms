@@ -1,3 +1,3 @@
 class Media < ApplicationRecord
-    has_one_attached :attachments
+    has_one_attached :attachment
 end

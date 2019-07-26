@@ -31,7 +31,6 @@ class Admin::UsersController < Admin::AdminsController
   # POST /admins/users.json
   def create
     @admins_user = User.new(admins_user_params)
-
     respond_to do |format|
       if @admins_user.save
         format.html { redirect_to admin_users_path , notice: 'User was successfully created.' }
@@ -46,6 +45,7 @@ class Admin::UsersController < Admin::AdminsController
   # PATCH/PUT /admins/users/1
   # PATCH/PUT /admins/users/1.json
   def update
+    binding.pry 
     if params[:user][:password].blank?
       params[:user].delete(:password)
       params[:user].delete(:password_confirmation)

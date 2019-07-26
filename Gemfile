@@ -23,6 +23,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_print'
   gem 'meta_request'
   gem "better_errors"
   gem "pry-rails"

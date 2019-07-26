@@ -9,6 +9,11 @@
     </div>
     <div class="uk-card-body">
       <div class="chart-container">
+            <% @all_media.each do |media| %>
+                  <% if media.attachment.attached? %>
+                    <%= image_tag media.attachment.variant(combine_options: { resize: "135x135", extent: "135x135", background: "grey", gravity: "center"}), class: "" if media.attachment.attached? %>
+                  <% end %>
+            <% end %>
       </div>
     </div>
   </div>
