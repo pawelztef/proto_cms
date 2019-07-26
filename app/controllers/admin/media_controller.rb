@@ -1,4 +1,5 @@
 class Admin::MediaController < Admin::AdminsController
+  before_action :set_media, only: [:destroy]
   before_action :set_title
   skip_before_action :verify_authenticity_token
 
@@ -22,7 +23,20 @@ class Admin::MediaController < Admin::AdminsController
     end
   end
 
+  def destroy
+    @media.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_users_path , notice: 'User was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
+
+  def set_media
+    @media = Media.find(params[:id])
+  end
+
   def set_title
     @title = "Media"
   end
