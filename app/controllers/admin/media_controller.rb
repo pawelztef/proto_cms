@@ -16,7 +16,7 @@ class Admin::MediaController < Admin::AdminsController
       @media = Media.new
       @media.attachment = params[:files][0]
       if @media.save
-        format.js { redirect_to admin_users_path , notice: 'User was successfully created.' }
+        format.js { redirect_to admin_media_index_path, notice: 'Attachment was successfully created.' }
       else
         format.js { render :index }
       end
@@ -26,7 +26,8 @@ class Admin::MediaController < Admin::AdminsController
   def destroy
     @media.destroy
     respond_to do |format|
-      format.html { redirect_to admin_users_path , notice: 'User was successfully destroyed.' }
+      format.html { redirect_to admin_media_index_path, notice: 'Attachement was successfully destroyed.' }
+      format.js 
       format.json { head :no_content }
     end
   end
