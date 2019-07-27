@@ -27,6 +27,7 @@ group :development do
   gem 'meta_request'
   gem "better_errors"
   gem "pry-rails"
+  gem 'pry-byebug'
   gem "binding_of_caller"
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
