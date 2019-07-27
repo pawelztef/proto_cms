@@ -1,14 +1,14 @@
 class Admin::MediaController < Admin::AdminsController
-  before_action :set_media, only: [:destroy]
-  before_action :all_media, only: [:destroy, :index]
-
   before_action :set_title
+  before_action :set_media, only: [:destroy]
+  before_action :all_media, only: [:destroy, :index, :create]
   skip_before_action :verify_authenticity_token
 
-  respond_to :html, :js
-
   def index
-    binding.pry
+    respond_to do |format|
+      format.js {render layout: false }
+      format.html
+    end
   end
 
   def new
@@ -17,24 +17,19 @@ class Admin::MediaController < Admin::AdminsController
 
   def create
     # TODO use sanitaize params
-    respond_to do |format|
       @media = Media.new
       @media.attachment = params[:files][0]
-      if @media.save
-        format.js { redirect_to admin_media_index_path, notice: 'Attachment was successfully created.' }
-      else
-        format.js { render :index }
-      end
+      @media.save
+    respond_to do |format|
+      format.js { render layout: false }
+      format.html
     end
   end
 
   def destroy
-    # binding.pry
     @media.destroy
     respond_to do |format|
-      # format.html { redirect_to admin_media_index_path, notice: 'Attachement was successfully destroyed.' }
       format.js 
-      # format.json { head :no_content }
     end
   end
 
