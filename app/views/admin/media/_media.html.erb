@@ -9,6 +9,9 @@
           <% end %>
           <%# <img class="lazy" data-src="https://picsum.photos/400/350/?random=1" data-width="400" data-height="350" data-uk-img alt="" src="img/transp.gif"> %>
           <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
+            <%= link_to  admin_media_path(media), method: :delete do %>
+              <span data-uk-icon="icon:trash; ratio: 1.3"></span>
+            <% end %>
             <%= link_to  admin_media_path(media), method: :delete, remote: true do %>
               <span data-uk-icon="icon:trash; ratio: 1.3"></span>
             <% end %>
