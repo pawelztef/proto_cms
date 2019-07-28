@@ -1,0 +1,28 @@
+.pz-modal {
+  position: fixed;
+  z-index: 1100;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+.pz-modal-content {
+  background-color: #f4f4f4;
+  margin: 10% auto;
+  padding: 20px;
+  width: 70%;
+  box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 
+  0 7px 20px 0 rgba(0,0,0,0.17);
+}
+.pz-close-modal-btn {
+  color: #ccc;
+  float: right;
+  font-size: 30px;
+  &:hover, &:focus {
+    color: darken(#ccc, 20%);
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
