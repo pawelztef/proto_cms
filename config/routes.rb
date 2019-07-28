@@ -17,10 +17,7 @@ Rails.application.routes.draw do
                      :sign_up => "new_user"}
 
   namespace :admin do
-    # get "media", to: "media#index"
-    # post "media", to: "media#create"
-    # delete "media/:id", to: "media#destroy", as: :delete
-    resources :media, only: [:index, :destroy, :create]
+    resources :media, only: [:index, :destroy, :create, :edit, :update]
     resources :settings
     resources :dashboard
     resources :users

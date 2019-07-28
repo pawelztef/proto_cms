@@ -16,11 +16,7 @@
 // const imagePath = (name) => images(name, true)
 
 import Rails from 'rails-ujs';
-import  DirectUpload  from "activestorage";
 Rails.start();
-
-
-
 
 
 import 'styles';
@@ -32,13 +28,10 @@ require.context('../images', true);
 $(() => {
 
   var bar = document.getElementById('js-progressbar');
-
   UIkit.upload('.js-upload', {
-
     url: '',
     type: 'text/javascript',
     multiple: true,
-
     beforeSend: function () {
       console.log('beforeSend', arguments);
     },
@@ -54,41 +47,31 @@ $(() => {
     complete: function () {
       console.log('complete', arguments);
     },
-
     loadStart: function (e) {
       console.log('loadStart', arguments);
-
       bar.removeAttribute('hidden');
       bar.max = e.total;
       bar.value = e.loaded;
     },
-
     progress: function (e) {
       console.log('progress', arguments);
-
       bar.max = e.total;
       bar.value = e.loaded;
     },
-
     loadEnd: function (e) {
       console.log('loadEnd', arguments);
-
       bar.max = e.total;
       bar.value = e.loaded;
     },
-
     completeAll: function () {
       console.log('completeAll', arguments);
       setTimeout(function () {
         bar.setAttribute('hidden', 'hidden');
       }, 1000);
-
       Rails.ajax({
         url: "/admin/media",
-        type: "get",
-        success: function(data) { Rails.$(".random-number")[0].innerHTML = data.html; }
+        type: "get"
       });
-
     }
   });
 })

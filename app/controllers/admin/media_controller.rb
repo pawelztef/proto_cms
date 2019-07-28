@@ -1,8 +1,9 @@
 class Admin::MediaController < Admin::AdminsController
   before_action :set_title
-  before_action :set_media, only: [:destroy]
+  before_action :set_media, only: [:destroy, :edit]
   before_action :all_media, only: [:destroy, :index, :create]
   skip_before_action :verify_authenticity_token
+  
 
   def index
     respond_to do |format|
@@ -24,6 +25,18 @@ class Admin::MediaController < Admin::AdminsController
       format.js { render layout: false }
       format.html
     end
+  end
+
+  def edit
+    @media = Media.find(params[:id])
+    respond_to do |format|
+      format.js {render layout: false }
+      format.html
+    end
+  end
+
+  def update
+
   end
 
   def destroy
