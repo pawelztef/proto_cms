@@ -1,7 +1,21 @@
+
 document.getElementById("admin__media_modal-target-container").innerHTML = "<%= j render "modal", media: @media %>";
+
 var attachmentModal = document.getElementById("attachment-modal");
 var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
-
 window.Pz.modal(attachmentModal, modalCloseBtn);
 
+const image = document.querySelector('.pz-attachment-image');
 
+const cropper = new Cropper(image, {
+  aspectRatio: 16 / 9,
+  crop(event) {
+    console.log(event.detail.x);
+    console.log(event.detail.y);
+    console.log(event.detail.width);
+    console.log(event.detail.height);
+    console.log(event.detail.rotate);
+    console.log(event.detail.scaleX);
+    console.log(event.detail.scaleY);
+  },
+});

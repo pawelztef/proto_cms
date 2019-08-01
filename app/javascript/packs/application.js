@@ -16,6 +16,7 @@
 // const imagePath = (name) => images(name, true)
 
 import Rails from 'rails-ujs';
+
 Rails.start();
 
 
@@ -29,4 +30,5 @@ require('packs/attachment_upload.js');
 require.context('../images', true);
 
 $(() => { 
+
 })
