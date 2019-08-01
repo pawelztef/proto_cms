@@ -1,1 +1,3 @@
 document.getElementById("admin__media_modal-target-container").innerHTML = "<%= j render "modal", media: @media %>";
+let attachmentModal = document.getElementById("attachment-modal");
+window.Pz.modal.close(attachmentModal);

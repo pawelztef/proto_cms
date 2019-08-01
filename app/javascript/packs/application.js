@@ -28,3 +28,5 @@ require('packs/attachment_upload.js');
 
 require.context('../images', true);
 
+$(() => { 
+})
