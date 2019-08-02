@@ -1,9 +1,31 @@
 
-  <div id="attachment-modal" class="pz-modal" >
-    <div class="pz-modal-content">
-      <span class="pz-modal-close-btn">&times;</span>
-      <div>
-        <%= image_tag media.attachment, class: "lazy pz-attachment-image" if media.attachment.attached? %>
+<div id="attachment-modal" class="pz-modal" >
+
+  <div class="pz-modal-content">
+    <div class="pz-modal-header">
+      <div class="uk-flex uk-flex-right">
+        <ul class="uk-iconnav">
+          <span uk-icon="close" class="pz-modal-close-btn"></span>
+          <%# <span class="pz-modal-close-btn">&times;</span> %>
+        </ul>
       </div>
     </div>
+    <div class="pz-modal-body">
+      <div uk-grid>
+        <div class="uk-width-2-3@m">
+          <div class="uk-flex uk-flex-center uk-flex-middle">
+            <div class="pz-attachment-image-container">
+              <%= image_tag media.attachment, class: "lazy pz-attachment-image" if media.attachment.attached? %>
+            </div>
+          </div>
+        </div>
+        <div class="uk-width-expand@m">
+        </div>
+      </div>
+    </div>
+    <div class="pz-modal-footer">
+      <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+      <button class="uk-button uk-button-primary" type="button">Save</button>
+    </div>
   </div>
+</div>
