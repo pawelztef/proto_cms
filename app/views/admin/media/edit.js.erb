@@ -5,10 +5,12 @@ var attachmentModal = document.getElementById("attachment-modal");
 var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
 window.Pz.modal(attachmentModal, modalCloseBtn);
 
-const image = document.querySelector('.pz-attachment-image');
+image = document.querySelector('.pz-attachment-image');
 
-const cropper = new Cropper(image, {
+cropper = new Cropper(image, {
   aspectRatio: 16 / 9,
+  viewMode: 1,
+  responsive: true,
   crop(event) {
     console.log(event.detail.x);
     console.log(event.detail.y);
