@@ -20,6 +20,7 @@ class Admin::MediaController < Admin::AdminsController
     # TODO use sanitaize params
       @media = Media.new
       @media.attachment = params[:files][0]
+      @media.title = params[:files][0].original_filename
       @media.save
     respond_to do |format|
       format.js { render layout: false }

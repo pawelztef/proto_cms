@@ -9,8 +9,9 @@
           <% end %>
           <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
             <%# TODO uploaded by who? added to model %>
-            <div class="uk-grid uk-grid-small uk-flex uk-flex-middle uk-margin-remove" data-uk-grid="">
+            <div class="uk-grid uk-grid-small uk-flex uk-flex-middle uk-flex-row uk-margin-remove" data-uk-grid="">
               <div class="uk-width-1-1 uk-text-right">
+                <%= media.title %>
               </div>
               <div class="uk-width-1-1 uk-text-right">
                 <%= link_to edit_admin_media_path(media), remote: true, class: 'show-modal' do %>
