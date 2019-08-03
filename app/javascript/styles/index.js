@@ -4,6 +4,7 @@ import './dashboard.scss';
 import './admin_users.scss';
 import './preview.scss';
 import './modal.scss';
+import './photo_editor.scss';
 
 import './front/content.scss';
 import './front/featured.scss';
