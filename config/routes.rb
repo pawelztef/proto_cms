@@ -17,7 +17,9 @@ Rails.application.routes.draw do
                      :sign_up => "new_user"}
 
   namespace :admin do
-    resources :media, only: [:index, :destroy, :create, :edit, :update]
+    resources :media do
+      post "update_image", constraints: { format: 'json' }
+    end
     resources :settings
     resources :dashboard
     resources :users
