@@ -25,7 +25,8 @@ import 'styles';
 require('packs/custom.js.erb');
 require('packs/hello_erb.js.erb');
 require('packs/modal.js');
-require('packs/attachment_upload.js');
+require('packs/images_upload.js');
+require('packs/image_edit.js.erb');
 
 require.context('../images', true);
 
