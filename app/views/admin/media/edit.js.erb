@@ -1,80 +1,93 @@
-
 document.getElementById("admin__media_modal-target-container").innerHTML = "<%= j render "modal", media: @media %>";
 
 var attachmentModal = document.getElementById("attachment-modal");
 var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
+mediaId = <%= @media.id %>;
 window.Pz.modal(attachmentModal, modalCloseBtn);
+window.Pz.image_edit(attachmentModal, mediaId);
 
-image = document.querySelector('.pz-attachment-image');
-var toolbar = document.querySelector('.pz-image-toolbar');
-var dataHeight = document.getElementById('dataHeight');
-var dataWidth = document.getElementById('dataWidth');
+<%# image = document.querySelector('.pz-attachment-image'); %>
+<%# var toolbar = document.querySelector('.pz-image-toolbar'); %>
+<%# var dataHeight = document.getElementById('dataHeight'); %>
+<%# var dataWidth = document.getElementById('dataWidth'); %>
+<%# var saveButton = document.getElementById('save-image'); %>
 
-options = {
-  viewMode: 1,
-  responsive: true,
-  crop(event) {
-    console.log(event.detail.x);
-    console.log(event.detail.y);
-    console.log(event.detail.width);
-    console.log(event.detail.height);
-    console.log(event.detail.rotate);
-    console.log(event.detail.scaleX);
-    console.log(event.detail.scaleY);
-    dataHeight.innerHTML = Math.ceil(event.detail.height);
-    dataWidth.innerHTML = Math.ceil(event.detail.width);
-  }
-}
+<%# console.log("<%= j @media.id.to_s %1>"); %>
+<%# options = { %>
+<%#   viewMode: 1, %>
+<%#   responsive: true, %>
+<%#   crop(event) { %>
+<%#     <1%# console.log(event.detail.x); %1> %>
+<%#     <1%# console.log(event.detail.y); %1> %>
+<%#     <1%# console.log(event.detail.width); %1> %>
+<%#     <1%# console.log(event.detail.height); %1> %>
+<%#     <1%# console.log(event.detail.rotate); %1> %>
+<%#     <1%# console.log(event.detail.scaleX); %1> %>
+<%#     <1%# console.log(event.detail.scaleY); %1> %>
+<%#     dataHeight.innerHTML = Math.ceil(event.detail.height); %>
+<%#     dataWidth.innerHTML = Math.ceil(event.detail.width); %>
+<%#   } %>
+<%# } %>
 
-cropper = new Cropper(image, options);
+<%# cropper = new Cropper(image, options); %>
 
-toolbar.addEventListener("click", function(e) {
-  action = e.target.getAttribute("data-action");
-  actions(action);
-});
+<%# toolbar.addEventListener("click", function(e) { %>
+<%#   action = e.target.getAttribute("data-action"); %>
+<%#   actions(action); %>
+<%# }); %>
 
-actions = function(action) {
-  switch (action) {
-    case 'move':
-      cropper.setDragMode("move");
-      break;
-    case 'crop':
-      cropper.setDragMode("crop");
-      break;
-    case 'zoom-in':
-      cropper.zoom(0.1);
-      break;
-    case 'zoom-out':
-      cropper.zoom(-0.1);
-      break;
-    case 'move-left':
-      cropper.move(-1,0);
-      break;
-    case 'move-right':
-      cropper.move(1,0);
-      break;
-    case 'move-up':
-      cropper.move(0,-1);
-      break;
-    case 'move-down':
-      cropper.move(0,1);
-      break;
-    case 'rotate-left':
-      cropper.rotate(-1);
-      break;
-    case 'rotate-right':
-      cropper.rotate(10);
-      break;
-    case 'flip-horizontal':
-      cropper.scaleX(-cropper.getData().scaleX || -1);
-      break;
-    case 'flip-vertical':
-      cropper.scaleY(-cropper.getData().scaleY || -1);
-      break;
-    case 'restore':
-      cropper.destroy();
-      cropper = new Cropper(image, options);
-      break;
-    default:
-  }
-}
+<%# actions = function(action) { %>
+<%#   switch (action) { %>
+<%#     case 'move': %>
+<%#       cropper.setDragMode("move"); %>
+<%#       break; %>
+<%#     case 'crop': %>
+<%#       cropper.setDragMode("crop"); %>
+<%#       break; %>
+<%#     case 'zoom-in': %>
+<%#       cropper.zoom(0.1); %>
+<%#       break; %>
+<%#     case 'zoom-out': %>
+<%#       cropper.zoom(-0.1); %>
+<%#       break; %>
+<%#     case 'move-left': %>
+<%#       cropper.move(-1,0); %>
+<%#       break; %>
+<%#     case 'move-right': %>
+<%#       cropper.move(1,0); %>
+<%#       break; %>
+<%#     case 'move-up': %>
+<%#       cropper.move(0,-1); %>
+<%#       break; %>
+<%#     case 'move-down': %>
+<%#       cropper.move(0,1); %>
+<%#       break; %>
+<%#     case 'rotate-left': %>
+<%#       cropper.rotate(-1); %>
+<%#       break; %>
+<%#     case 'rotate-right': %>
+<%#       cropper.rotate(10); %>
+<%#       break; %>
+<%#     case 'flip-horizontal': %>
+<%#       cropper.scaleX(-cropper.getData().scaleX || -1); %>
+<%#       break; %>
+<%#     case 'flip-vertical': %>
+<%#       cropper.scaleY(-cropper.getData().scaleY || -1); %>
+<%#       break; %>
+<%#     case 'restore': %>
+<%#       cropper.destroy(); %>
+<%#       cropper = new Cropper(image, options); %>
+<%#       break; %>
+<%#     default: %>
+<%#   } %>
+<%# } %>
+
+<%# sendImage = function(event) { %>
+<%# }; %>
+<%# saveButton.addEventListener('click', function(e) { %>
+<%#       Rails.ajax({ %>
+<%#         url: "/admin/media/update_image", %>
+<%#         type: "post" %>
+<%#       }); %>
+<%# }); %>
+
