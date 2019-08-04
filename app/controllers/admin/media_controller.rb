@@ -3,7 +3,7 @@ class Admin::MediaController < Admin::AdminsController
   before_action :set_media, only: [:destroy, :edit]
   before_action :all_media, only: [:destroy, :index, :create]
   skip_before_action :verify_authenticity_token
-  
+
 
   def index
     respond_to do |format|
@@ -18,10 +18,10 @@ class Admin::MediaController < Admin::AdminsController
 
   def create
     # TODO use sanitaize params
-      @media = Media.new
-      @media.attachment = params[:files][0]
-      @media.title = params[:files][0].original_filename
-      @media.save
+    @media = Media.new
+    @media.attachment = params[:files][0]
+    @media.title = params[:files][0].original_filename
+    @media.save
     respond_to do |format|
       format.js { render layout: false }
       format.html
@@ -36,8 +36,14 @@ class Admin::MediaController < Admin::AdminsController
     end
   end
 
-  def update
-
+  def update_image
+    binding.pry
+    respond_to :js, :json
+    # @media = Media.find(params[:id])
+    # respond_to do |format|
+    #   format.js {render layout: false }
+    #   format.html
+    # end
   end
 
   def destroy
