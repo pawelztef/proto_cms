@@ -75,7 +75,7 @@ $(() => {
         }
       }
       saveButton.addEventListener('click', function(e) {
-        var myData = cropper.getImageData();
+        var myData = {"image": cropper.getImageData()};
         console.log(myData);
         fetch("/admin/media/" + mediaId + "/update_image", {
           method: 'post',
