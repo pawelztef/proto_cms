@@ -68,8 +68,7 @@ $(() => {
             cropper.scaleY(-cropper.getData().scaleY || -1);
             break;
           case 'restore':
-            cropper.destroy();
-            cropper = new Cropper(image, options);
+            cropper.reset();
             break;
           default:
         }
@@ -93,4 +92,4 @@ $(() => {
       });
     }
   };
-})
+});
