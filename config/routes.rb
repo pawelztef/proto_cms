@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # TODO routes to clean up
   root to: "welcome#index"
   # scope "/admin" do
   # EXAMPLE CONFIGURATIONS DEVISE PATHS
@@ -16,12 +17,15 @@ Rails.application.routes.draw do
                      :sign_up => "new_user"}
 
   namespace :admin do
+    resources :media do
+      post "update_image", constraints: { format: 'json' }
+    end
     resources :settings
     resources :dashboard
     resources :users
     resources :pages do
       member do
-        get 'draft'
+        get "draft"
       end
     end
   end

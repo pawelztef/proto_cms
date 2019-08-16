@@ -8,6 +8,7 @@ gem "puma", "~> 3.11"
 gem "webpacker"
 gem "jbuilder", "~> 2.5"
 gem "bootsnap", ">= 1.1.0", require: false
+gem 'jquery-rails'
 
 gem "simple_form"
 gem "devise"
@@ -23,8 +24,11 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_print'
+  gem 'meta_request'
   gem "better_errors"
   gem "pry-rails"
+  gem 'pry-byebug'
   gem "binding_of_caller"
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"

@@ -1,0 +1,31 @@
+<% @all_media.each do |media| %>
+  <!-- card -->
+  <div class="nature-card" data-tags="a beautiful landscape - nature outdoor">
+    <div class="uk-card uk-card-small uk-card-default">
+      <div class="uk-card-media">
+        <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+          <% if media.attachment.attached? %>
+            <%= image_tag media.attachment, class: "lazy" if media.attachment.attached? %>
+          <% end %>
+          <div class="uk-transition-slide-bottom uk-position-bottom uk-overlay uk-overlay-primary">
+            <%# TODO uploaded by who? added to model %>
+            <div class="uk-grid uk-grid-small uk-flex uk-flex-middle uk-flex-row uk-margin-remove" data-uk-grid="">
+              <div class="uk-width-1-1 uk-text-right">
+                <%= media.title %>
+              </div>
+              <div class="uk-width-1-1 uk-text-right">
+                <%= link_to edit_admin_media_path(media), remote: true, class: 'show-modal' do %>
+                  <div data-uk-icon="icon:pencil; ratio: 1.0"></div>
+                <% end %>
+                <%= link_to  admin_media_path(media), method: :delete, remote: true do %>
+                  <div data-uk-icon="icon:trash; ratio: 1.0"></div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /card -->
+<% end %>

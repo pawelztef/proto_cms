@@ -12,7 +12,8 @@ let createPermalink = function() {
     pageName.addEventListener('keyup', function(e) {
       e.preventDefault();
       permalinkName.value = slugify(pageName.value);
-    });
+    }
+    );
   }
 }
 
@@ -29,7 +30,7 @@ let slugify = function(text) {
 let generatePassword = function() {
   let passwordButton = document.getElementById("password_button");
   if (passwordButton != null) {
-    passBut.addEventListener("click", function(e) {
+    passwordButton.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       let token = Math.random().toString(36).slice(2);

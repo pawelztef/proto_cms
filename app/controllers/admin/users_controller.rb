@@ -31,7 +31,6 @@ class Admin::UsersController < Admin::AdminsController
   # POST /admins/users.json
   def create
     @admins_user = User.new(admins_user_params)
-
     respond_to do |format|
       if @admins_user.save
         format.html { redirect_to admin_users_path , notice: 'User was successfully created.' }
