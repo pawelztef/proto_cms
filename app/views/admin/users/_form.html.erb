@@ -83,6 +83,20 @@
             }
           %>
       </div>
+      <div> 
+        <label class="uk-form-label" for="form-stacked-text">Role</label>
+        <div class="uk-form-controls">
+          <%= f.input :role,
+            required: false,
+            label: false,
+            as: :radio_buttons,
+            collection: Role::ROLES, 
+            input_html: { 
+              class: 'uk-radio',
+              type: 'radio'
+            }
+          %>
+      </div>
       <%= f.button :submit, class: "uk-button uk-button-primary uk-margin-top" %>
       <span id="password_button" class="uk-button uk-button-default uk-margin-top uk-margin-left" data-no-turbolink="true">Generate Passoword</span>
       </div>

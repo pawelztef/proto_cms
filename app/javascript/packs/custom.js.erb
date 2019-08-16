@@ -1,16 +1,42 @@
 $(() => {
   generatePassword();
   avatarCustomUploadButton();
+  createPermalink();
 });
 
 
+let createPermalink = function() {
+  let pageName = document.getElementById("page_name");
+  let permalinkName = document.getElementById("page_permalink");
+  if(pageName != null ){
+    pageName.addEventListener('keyup', function(e) {
+      e.preventDefault();
+      permalinkName.value = slugify(pageName.value);
+    }
+    );
+  }
+}
+
+let slugify = function(text) {
+  return text.toLowerCase()
+    .replace(/\s+/g, '-')           // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/^-+/, '')             // Trim - from start of text
+    .replace(/-+$/, '');            // Trim - from end of text
+}
+
+
 let generatePassword = function() {
-  document.getElementById("password_button").addEventListener("click", function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    let token = Math.random().toString(36).slice(2);
-    document.getElementById("user_password").value = token;
-  });
+  let passwordButton = document.getElementById("password_button");
+  if (passwordButton != null) {
+    passwordButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      let token = Math.random().toString(36).slice(2);
+      document.getElementById("user_password").value = token;
+    });
+  }
 }
 
 let avatarCustomUploadButton = function() {
@@ -18,15 +44,18 @@ let avatarCustomUploadButton = function() {
   let avatarCustomUploadButton = document.getElementById("avatar_button");
   let avatarCustomMetaInfo = document.getElementById("avatar_meta");
 
-  avatarCustomUploadButton.addEventListener("click", function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    avatarRealInput.click();
-  });
-
-  avatarRealInput.addEventListener("change", function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    avatarCustomMetaInfo.innerHTML = avatarRealInput.files[0].name;
-  });
+  if(avatarCustomUploadButton != null) {
+    avatarCustomUploadButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      avatarRealInput.click();
+    });
+  }
+  if(avatarRealInput != null) {
+    avatarRealInput.addEventListener("change", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      avatarCustomMetaInfo.innerHTML = avatarRealInput.files[0].name;
+    });
+  }
 }

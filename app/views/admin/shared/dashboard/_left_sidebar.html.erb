@@ -4,11 +4,15 @@
     <%# <img class="custom-logo" src="img/dashboard-logo.svg" alt=""> %>
   </div>
   <div class="left-content-box  content-box-dark">
-    <%= image_pack_tag 'avatar.jpg',  class: "uk-border-circle profile-img" %>
-    <h4 class="uk-text-center uk-margin-remove-vertical text-light">John Doe</h4>
-
+    <%# <%= image_pack_tag 'avatar.jpg',  class: "uk-border-circle profile-img" %1> %>
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar.variant(combine_options: { resize: "45x45", extent: "45x45", background: "black", gravity: "center"}), class: "uk-border-circle profile-img" if current_user.avatar.attached? %>
+    <% else %>
+      <%= image_pack_tag 'avatar.jpg', class: 'uk-border-circle profile-img', width: "35", height: "35" %>
+    <% end %>
+    <h4 class="uk-text-center uk-margin-remove-vertical text-light"><%= current_user.username %></h4>
     <div class="uk-position-relative uk-text-center uk-display-block" >
-      <a href="#" class="uk-text-small uk-text-muted uk-display-block uk-text-center" data-uk-icon="icon: triangle-down; ratio: 0.7">Admin</a>
+      <a href="#" class="uk-text-small uk-text-muted uk-display-block uk-text-center" data-uk-icon="icon: triangle-down; ratio: 0.7"><%= current_user.role %></a>
       <!-- user dropdown -->
       <div class="uk-dropdown user-drop" data-uk-dropdown="mode: click; pos: bottom-center; animation: uk-animation-slide-bottom-small; duration: 150">
         <ul class="uk-nav uk-dropdown-nav uk-text-left">
@@ -26,7 +30,7 @@
   </div>
 
   <div class="left-nav-wrap">
-   <%= render 'admin/shared/menues/sidebar_main_nav' %> 
+    <%= render 'admin/shared/menues/sidebar_main_nav' %> 
   </div>
 
   <div class="bar-bottom">

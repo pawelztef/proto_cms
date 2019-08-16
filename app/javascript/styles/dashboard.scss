@@ -113,6 +113,11 @@
 .panel-icons {
   margin: 0 4px;
 }
+span.uk-margin-small-right.zmdi.zmdi-view-dashboard {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
 .uk-tooltip {
   background-color: white;
   color: #242C33;
@@ -121,9 +126,17 @@
 #content {
   margin-top: 52px;
   padding: 30px 0 0 0;
-  background-color: #f7f7f7;
+  background-color: darken(#ffffff, 5%);
   margin-left: 0;
   transition: margin 0.2s cubic-bezier(.4,0,.2,1);
+}
+
+.admin__right_column {
+  .uk-card-header {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 13px 20px;
+
+  }
 }
 @media screen and (min-width: 960px){
   #content {

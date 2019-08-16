@@ -1,0 +1,101 @@
+import Rails from 'rails-ujs';
+$(() => {
+  window.Pz = window.Pz || {};
+
+  Pz.image_edit = function(imageContainer, mediaId) {
+    if(imageContainer != null) {
+      const imageId = mediaId;
+      const image = imageContainer.querySelector('.pz-attachment-image');
+      const toolbar = imageContainer.querySelector('.pz-image-toolbar');
+      const dataHeight = imageContainer.querySelector('#dataHeight');
+      const dataWidth = imageContainer.querySelector('#dataWidth');
+      const saveButton = imageContainer.querySelector('#save-image');
+
+
+      const options = {
+        viewMode: 0,
+        responsive: true,
+        crop(event) {
+          dataHeight.innerHTML = (event.detail.height == 0) ? cropper.getImageData().naturalHeight : Math.ceil(event.detail.height);
+          dataWidth.innerHTML = (event.detail.width == 0) ? cropper.getImageData().naturalWidth : Math.ceil(event.detail.width); 
+        }
+      }
+
+      const cropper = new Cropper(image, options);
+
+      toolbar.addEventListener("click", function(e) {
+        const action = e.target.getAttribute("data-action");
+        actions(action);
+      });
+
+      const actions = function(action) {
+        switch (action) {
+          case 'move':
+            cropper.setDragMode("move");
+            break;
+          case 'crop':
+            cropper.setDragMode("crop");
+            break;
+          case 'clear':
+            cropper.clear();
+            break;
+          case 'zoom-in':
+            cropper.zoom(0.1);
+            break;
+          case 'zoom-out':
+            cropper.zoom(-0.1);
+            break;
+          case 'move-left':
+            cropper.move(-5,0);
+            break;
+          case 'move-right':
+            cropper.move(5,0);
+            break;
+          case 'move-up':
+            cropper.move(0,-5);
+            break;
+          case 'move-down':
+            cropper.move(0,5);
+            break;
+          case 'rotate-left':
+            cropper.rotate(-5);
+            break;
+          case 'rotate-right':
+            cropper.rotate(5);
+            break;
+          case 'flip-horizontal':
+            cropper.scaleX(-cropper.getData().scaleX || -1);
+            break;
+          case 'flip-vertical':
+            cropper.scaleY(-cropper.getData().scaleY || -1);
+            break;
+          case 'restore':
+            cropper.reset();
+            break;
+          default:
+        }
+      }
+      saveButton.addEventListener('click', function(e) {
+        var myData = {"image": cropper.getData()};
+        console.log(myData);
+        fetch("/admin/media/" + mediaId + "/update_image", {
+          method: 'post',
+          body: JSON.stringify(myData),
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': Rails.csrfToken()
+          },
+          credentials: 'same-origin'
+        }).then(function(response) {
+          Rails.ajax({
+            url: "/admin/media",
+            type: "get"
+          });
+          document.querySelector('.pz-modal').style.display = 'none'; 
+        }).then(function(data) {
+          console.log(data);
+        });
+      });
+    }
+  };
+});

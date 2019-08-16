@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_01_074331) do
+ActiveRecord::Schema.define(version: 2019_08_03_203421) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,25 @@ ActiveRecord::Schema.define(version: 2019_07_01_074331) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title", null: false
+  end
+
+  create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "permalink"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "status", default: 0
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_pages_on_ancestry"
+    t.index ["permalink"], name: "index_pages_on_permalink"
+    t.index ["status"], name: "index_pages_on_status"
+  end
+
   create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name"
     t.string "catch_phrase"
@@ -45,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_074331) do
     t.string "username"
     t.string "first_name"
     t.string "second_name"
-    t.integer "owner", default: 0
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email", default: "", null: false
@@ -60,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_07_01_074331) do
     t.string "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["role"], name: "index_users_on_role"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

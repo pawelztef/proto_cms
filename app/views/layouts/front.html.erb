@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @title if @title %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= render 'layouts/admin_cdns'%>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.js"></script>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application' %>
+  </head>
+  <%# <body class="uk-flex uk-flex-center uk-flex-column uk-flex-middle uk-background-muted uk-height-viewport" data-uk-height-viewport> %>
+    <%#   <%= render 'shared/main_nav' %1> %> 
+    <%#   <div class="uk-width-medium uk-padding-small"> %>
+      <%#   </div> %>
+    <%# </body> %>
+
+  <body>
+    <!--HEADER-->
+    <%= render 'shared/header' %>
+    <!--/HEADER-->
+    <!-- NAVIGATION -->
+    <%= render 'shared/navigation' %>
+    <!-- /NAVIGATION -->
+    <!-- HERO -->
+    <%= render 'shared/hero' %>
+    <!-- HERO -->
+    <!-- FEATURED -->
+    <%= render 'shared/featured' %>
+    <!-- /FEATURED -->
+    <!--CONTENT-->
+    <%= render 'shared/content' %>
+    <%# <%= @page.content.html_safe %1> %>
+    <!--/CONTENT-->
+    <!--FOOTER-->
+    <%= render 'shared/footer' %>
+    <!--/FOOTER-->
+    <!-- OFFCANVAS -->
+    <%# <%= render 'shared/offcanvas' %1> %>
+    <!-- /OFFCANVAS -->
+  </body>  
+</html>

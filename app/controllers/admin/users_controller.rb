@@ -1,11 +1,13 @@
 class Admin::UsersController < Admin::AdminsController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  load_resource  param_method: :admins_user_params
+  authorize_resource 
 
   # GET /admins/users
   # GET /admins/users.json
   def index
     @title = "List Users"
-    @admins_users = User.all
+    @admins_users = User.search_by_role(params[:role])
   end
 
   # GET /admins/users/1
@@ -29,7 +31,6 @@ class Admin::UsersController < Admin::AdminsController
   # POST /admins/users.json
   def create
     @admins_user = User.new(admins_user_params)
-
     respond_to do |format|
       if @admins_user.save
         format.html { redirect_to admin_users_path , notice: 'User was successfully created.' }
@@ -77,6 +78,6 @@ class Admin::UsersController < Admin::AdminsController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def admins_user_params
-    params.require(:user).permit(:username, :first_name, :second_name, :email, :password, :avatar)
+    params.require(:user).permit(:role, :username, :first_name, :second_name, :email, :password, :avatar)
   end
 end
