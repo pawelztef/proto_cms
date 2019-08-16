@@ -1,30 +1,23 @@
-class Admin::PostsController < ApplicationController
+class PostsController < Admin::AdminsController 
   before_action :set_admin_post, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
-  # GET /admin/posts
-  # GET /admin/posts.json
   def index
-    @admin_posts = Admin::Post.all
+    @admin_posts = Post.all
   end
 
-  # GET /admin/posts/1
-  # GET /admin/posts/1.json
   def show
   end
 
-  # GET /admin/posts/new
   def new
-    @admin_post = Admin::Post.new
+    @admin_post = Post.new
   end
 
-  # GET /admin/posts/1/edit
   def edit
   end
 
-  # POST /admin/posts
-  # POST /admin/posts.json
   def create
-    @admin_post = Admin::Post.new(admin_post_params)
+    @admin_post = Post.new(admin_post_params)
 
     respond_to do |format|
       if @admin_post.save
@@ -37,8 +30,6 @@ class Admin::PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /admin/posts/1
-  # PATCH/PUT /admin/posts/1.json
   def update
     respond_to do |format|
       if @admin_post.update(admin_post_params)
@@ -51,8 +42,6 @@ class Admin::PostsController < ApplicationController
     end
   end
 
-  # DELETE /admin/posts/1
-  # DELETE /admin/posts/1.json
   def destroy
     @admin_post.destroy
     respond_to do |format|
@@ -62,13 +51,11 @@ class Admin::PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin_post
-      @admin_post = Admin::Post.find(params[:id])
-    end
+  def set_admin_post
+    @admin_post = Post.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_post_params
-      params.require(:admin_post).permit(:title, :content, :summary)
-    end
+  def admin_post_params
+    params.require(:admin_post).permit(:title, :content, :summary)
+  end
 end
