@@ -37,12 +37,11 @@ class Admin::MediaController < Admin::AdminsController
   end
 
   def update_image
-    respond_to :js, :json
     @media = Media.find(params[:media_id])
     @media.crop_and_save_with_options("new_file", params[:image])
-    respond_to do |format|
-      format.js {redirect_to admin_media_index_path}
-    end
+    # respond_to do |format|
+    #   format.js {redirect_to admin_media_index_path}
+    # end
   end
 
   def destroy

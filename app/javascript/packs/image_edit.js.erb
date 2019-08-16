@@ -37,6 +37,9 @@ $(() => {
           case 'crop':
             cropper.setDragMode("crop");
             break;
+          case 'clear':
+            cropper.clear();
+            break;
           case 'zoom-in':
             cropper.zoom(0.1);
             break;
@@ -74,7 +77,7 @@ $(() => {
         }
       }
       saveButton.addEventListener('click', function(e) {
-        var myData = {"image": cropper.getImageData()};
+        var myData = {"image": cropper.getData()};
         console.log(myData);
         fetch("/admin/media/" + mediaId + "/update_image", {
           method: 'post',
@@ -85,7 +88,12 @@ $(() => {
           },
           credentials: 'same-origin'
         }).then(function(response) {
-          return response.json();
+          Rails.ajax({
+            url: "/admin/media",
+            type: "get"
+          });
+          document.querySelector('.pz-modal').style.display = 'none'; 
+          console.log('hei');
         }).then(function(data) {
           console.log(data);
         });
