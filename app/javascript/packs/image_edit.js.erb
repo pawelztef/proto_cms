@@ -11,14 +11,13 @@ $(() => {
       const dataWidth = imageContainer.querySelector('#dataWidth');
       const saveButton = imageContainer.querySelector('#save-image');
 
-      console.log(imageId);
 
       const options = {
-        viewMode: 1,
+        viewMode: 0,
         responsive: true,
         crop(event) {
-          dataHeight.innerHTML = Math.ceil(event.detail.height);
-          dataWidth.innerHTML = Math.ceil(event.detail.width);
+          dataHeight.innerHTML = (event.detail.height == 0) ? cropper.getImageData().naturalHeight : Math.ceil(event.detail.height);
+          dataWidth.innerHTML = (event.detail.width == 0) ? cropper.getImageData().naturalWidth : Math.ceil(event.detail.width); 
         }
       }
 
@@ -47,22 +46,22 @@ $(() => {
             cropper.zoom(-0.1);
             break;
           case 'move-left':
-            cropper.move(-1,0);
+            cropper.move(-5,0);
             break;
           case 'move-right':
-            cropper.move(1,0);
+            cropper.move(5,0);
             break;
           case 'move-up':
-            cropper.move(0,-1);
+            cropper.move(0,-5);
             break;
           case 'move-down':
-            cropper.move(0,1);
+            cropper.move(0,5);
             break;
           case 'rotate-left':
-            cropper.rotate(-1);
+            cropper.rotate(-5);
             break;
           case 'rotate-right':
-            cropper.rotate(10);
+            cropper.rotate(5);
             break;
           case 'flip-horizontal':
             cropper.scaleX(-cropper.getData().scaleX || -1);
@@ -93,7 +92,6 @@ $(() => {
             type: "get"
           });
           document.querySelector('.pz-modal').style.display = 'none'; 
-          console.log('hei');
         }).then(function(data) {
           console.log(data);
         });

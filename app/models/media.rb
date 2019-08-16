@@ -8,10 +8,9 @@ class Media < ApplicationRecord
 
     #formating options
     crop_img_params = "#{image_options[:width].to_i.round(1)}x#{image_options[:height].to_i.round(1)}+#{image_options[:x].to_i}+#{image_options[:y].to_i}"
-    rotate_img_params = image_options[:scaleX] == -1 ? image_options[:rotate] + 180 : image_options[:rotate]
-    flip_img_params = image_options[:scaleY] == -1
+    rotate_img_params = image_options[:rotate]
+    flip_img_params = image_options[:scaleX] == -1 ? "flip".to_sym : nil
     resize_img_params ="#{image_options[:width].to_i.round(1)}x#{image_options[:height].to_i.round(1)}" 
-
     #creating variant
     processed_attachment = self.attachment.variant(crop: crop_img_params, rotate: rotate_img_params, flip: flip_img_params).processed
     #absolute path to variant file
@@ -19,7 +18,6 @@ class Media < ApplicationRecord
 
     #open new file
     file = File.open(processed_attachment_path)
-
 
     #create file name
     if(!filename.present?)
