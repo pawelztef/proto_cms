@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :posts
-  end
   # TODO routes to clean up
   root to: "welcome#index"
   # scope "/admin" do
@@ -23,6 +20,7 @@ Rails.application.routes.draw do
     resources :media do
       post "update_image", constraints: { format: 'json' }
     end
+    resources :posts
     resources :settings
     resources :dashboard
     resources :users

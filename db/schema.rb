@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_03_203421) do
+ActiveRecord::Schema.define(version: 2019_08_16_123139) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 2019_08_03_203421) do
     t.index ["ancestry"], name: "index_pages_on_ancestry"
     t.index ["permalink"], name: "index_pages_on_permalink"
     t.index ["status"], name: "index_pages_on_status"
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
