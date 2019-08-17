@@ -54,10 +54,13 @@ ActiveRecord::Schema.define(version: 2019_08_16_123139) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
+    t.string "permalink"
     t.text "content"
     t.string "summary"
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["permalink"], name: "index_posts_on_permalink"
   end
 
   create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -8,7 +8,7 @@
     <% if current_user.avatar.attached? %>
       <%= image_tag current_user.avatar.variant(combine_options: { resize: "45x45", extent: "45x45", background: "black", gravity: "center"}), class: "uk-border-circle profile-img" if current_user.avatar.attached? %>
     <% else %>
-      <%= image_pack_tag 'avatar.jpg', class: 'uk-border-circle profile-img', width: "35", height: "35" %>
+      2<%= image_pack_tag 'avatar.jpg', class: 'uk-border-circle profile-img', width: "35", height: "35" %>
     <% end %>
     <h4 class="uk-text-center uk-margin-remove-vertical text-light"><%= current_user.username %></h4>
     <div class="uk-position-relative uk-text-center uk-display-block" >
