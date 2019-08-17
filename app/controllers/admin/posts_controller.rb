@@ -1,8 +1,10 @@
-class PostsController < Admin::AdminsController 
+class Admin::PostsController < Admin::AdminsController 
   before_action :set_admin_post, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
+  authorize_resource 
 
   def index
+    @title = "List Posts"
     @admin_posts = Post.all
   end
 
@@ -10,13 +12,16 @@ class PostsController < Admin::AdminsController
   end
 
   def new
+    @title = "New Post"
     @admin_post = Post.new
   end
 
   def edit
+    @title = "Edit Post"
   end
 
   def create
+    @title = "New Post"
     @admin_post = Post.new(admin_post_params)
 
     respond_to do |format|
@@ -56,6 +61,6 @@ class PostsController < Admin::AdminsController
   end
 
   def admin_post_params
-    params.require(:admin_post).permit(:title, :content, :summary)
+    params.require(:admin_post).permit(:title, :content, :summary, :permalink, :status)
   end
 end
