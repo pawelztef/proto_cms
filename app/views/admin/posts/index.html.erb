@@ -1,31 +1,76 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Admin Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Content</th>
-      <th>Summary</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @admin_posts.each do |admin_post| %>
-      <tr>
-        <td><%= admin_post.title %></td>
-        <td><%= admin_post.content %></td>
-        <td><%= admin_post.summary %></td>
-        <td><%= link_to 'Show', admin_post %></td>
-        <td><%= link_to 'Edit', edit_admin_post_path(admin_post) %></td>
-        <td><%= link_to 'Destroy', admin_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+  <div class="uk-card uk-card-default uk-card-small">
+    <div class="uk-card-header">
+      <div class="uk-grid uk-grid-small">
+        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %></div></div>
+        <div class="uk-width-expand uk-text-right panel-icons">
+          <% if can? :create, Post %>
+            <a href= <%= new_admin_post_path %> class="uk-icon-link" title="Add Post" data-uk-tooltip data-uk-icon="icon: plus"></a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body">
+      <table class="uk-table uk-table-justify uk-table-divider">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @admin_posts.blank? %>
+            <tr>
+              <td colspan="7" class="uk-text-center">
+                No data!
+              </td>
+            </tr>
+          <% else %>
+            <% @admin_posts.each do |admin_post| %>
+              <tr>
+                <td><%= admin_post.status %></td>
+                <td><%= admin_post.title %></td>
+                <td>
+                  <% if can?(:update, Post) || can?(:destroy, Post) %>
+                    <ul class="uk-iconnav">
+                      <% if can? :update, Post %>
+                        <li><a href="<%= edit_admin_post_path(admin_post) %>" uk-icon="icon: file-edit"></a></li>
+                      <% end %>
+                      <% if can? :destroy, Post %>
+                        <li><a href= <%= admin_post_path(admin_post)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                      <% end %>
+                    </ul>
+                  <% else %>
+                    <ul class="uk-iconnav">
+                      <li>Not authorized</li>
+                    </ul>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'New Admin Post', new_admin_post_path %>
+
+<%= content_for :right_column  do %>
+  <div class="uk-width-medium admin__right_column" >
+    <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body">
+      <span>Show by status</span>
+
+      <%= form_tag admin_posts_path, method: :get, class: "form__user-form uk-form-stacked" do |f| %>
+        <%= select_tag "status", options_for_select(ContentStatus::STATUSES), include_blank: "",  class: 'uk-select' %>
+        <%= submit_tag :submit , class: "uk-button uk-button-primary uk-margin-top" %>
+      <% end %>
+
+    </div>
+  </div>
+<% end %>
