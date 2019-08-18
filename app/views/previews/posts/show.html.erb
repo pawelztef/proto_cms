@@ -1,0 +1,4 @@
+<%= content_for :back_to_admin_content_form do %>
+  <li class="uk-active uk-visible@m"><a href= <%= edit_admin_post_path(@post.permalink) %> data-uk-icon="home" ></a></li>
+<% end %>
+<%= @post.content.html_safe %>

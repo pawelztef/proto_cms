@@ -33,7 +33,9 @@ Rails.application.routes.draw do
 
   namespace :previews do
     resources :pages, only: :show
+    resources :posts, only: :show
   end
 
   get ":id", to: "pages#show", as: :page
+  get ":id", to: "posts#show", as: :post
 end
