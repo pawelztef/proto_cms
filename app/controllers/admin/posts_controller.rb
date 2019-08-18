@@ -36,7 +36,13 @@ class Admin::PostsController < Admin::AdminsController
 
   def update
     respond_to do |format|
-      if @admin_post.update(admin_post_params)
+      if params[:preview_button] 
+        if @admin_post.update(admin_post_params)
+          format.html { redirect_to previews_post_url(@admin_post.permalink) }
+        else
+          format.html { render :new }
+        end
+      elsif params[:commit]
         format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_post }
       else

@@ -2,7 +2,6 @@
   <div class="uk-card uk-card-default uk-card-small">
     <div class="uk-card-header">
       <div class="uk-grid uk-grid-small">
-        <%# TODO refactor published/unplished %>
         <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %>: <%= @admin_post.title %></div></div>
         <div class="uk-width-expand uk-text-right panel-icons">
           <a href= <%= admin_posts_path %> class="uk-icon-link" title="Back" data-uk-tooltip data-uk-icon="icon: arrow-left"></a>
@@ -13,3 +12,13 @@
       <%= render 'form', admin_post: @admin_post %>
     </div>
   </div>
+</div>
+<%= content_for :right_column  do %>
+  <div class="uk-width-large admin__right_column" >
+    <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span> Categroies and Tags</div></div>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body">
+    </div>
+  </div>
+<% end %>
