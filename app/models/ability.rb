@@ -14,6 +14,9 @@ class Ability
         can :read, Post
         can :create, Post
         can :update, Post
+        can :read, Category
+        can :create, Category
+        can :update, Category
         can :read, User
         can :create, User
         can :update, User
@@ -21,6 +24,7 @@ class Ability
         can :read, :all
         can :manage, Page
         can :manage, Post
+        can :manage, Category
       end
     end
   end
