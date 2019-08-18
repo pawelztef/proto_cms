@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :media do
       post "update_image", constraints: { format: 'json' }
     end
+    resources :categories
     resources :posts
     resources :settings
     resources :dashboard
