@@ -5,7 +5,7 @@ class Admin::PostsController < Admin::AdminsController
 
   def index
     @title = "List Posts"
-    @admin_posts = Post.all
+    @admin_posts = Post.search_by_status(params[:status])
   end
 
   def show
@@ -57,7 +57,7 @@ class Admin::PostsController < Admin::AdminsController
 
   private
   def set_admin_post
-    @admin_post = Post.find(params[:id])
+    @admin_post = Post.find_by_permalink!(params[:id])
   end
 
   def admin_post_params
