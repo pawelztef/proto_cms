@@ -4,7 +4,7 @@ class CreatePosts< ActiveRecord::Migration[5.2]
       t.string :title
       t.string :permalink
       t.text :content
-      t.string :summary
+      t.text :summary
       t.integer :status, default: 0
 
       t.timestamps

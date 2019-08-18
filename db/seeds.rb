@@ -41,6 +41,7 @@ puts "Creating posts"
   post.title = post.permalink = Faker::Book.title
   post.content = Faker::Lorem.paragraph(sentence_count: 5)
   post.summary = Faker::Lorem.sentence(word_count: 5)
+  post.save!
   created_objects += 1
 end
 

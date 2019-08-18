@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_08_16_123139) do
     t.string "title"
     t.string "permalink"
     t.text "content"
-    t.string "summary"
+    t.text "summary"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
