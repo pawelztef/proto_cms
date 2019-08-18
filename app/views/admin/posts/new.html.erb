@@ -1,5 +1,26 @@
-<h1>New Admin Post</h1>
+<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+  <div class="uk-card uk-card-default uk-card-small">
+    <div class="uk-card-header">
+      <div class="uk-grid uk-grid-small">
+        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %></div></div>
+        <div class="uk-width-expand uk-text-right panel-icons">
+          <a href= <%= admin_posts_path %> class="uk-icon-link" title="Back" data-uk-tooltip data-uk-icon="icon: arrow-left"></a>
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body">
+      <%= render 'form', admin_page: @admin_post %>
+    </div>
+  </div>
+</div>
+<%= content_for :right_column  do %>
+  <div class="uk-width-medium admin__right_column" >
+    <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body">
+      <span>Select </span>
+    </div>
+  </div>
+<% end %>
 
-<%= render 'form', admin_post: @admin_post %>
-
-<%= link_to 'Back', admin_posts_path %>
