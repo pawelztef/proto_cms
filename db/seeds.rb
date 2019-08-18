@@ -40,6 +40,7 @@ puts "Creating categories"
   cat = Category.new
   cat.name = cat.slug = Faker::Music.genre
   cat.description = Faker::Lorem.sentence(word_count: 5)
+  cat.save!
   created_objects += 1
 end
 
