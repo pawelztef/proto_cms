@@ -34,6 +34,15 @@ puts "Creating pages"
   created_objects += 1
 end
 
+puts "Creating categories"
+
+15.times do |n|
+  cat = Category.new
+  cat.name = cat.slug = Faker::Music.genre
+  cat.description = Faker::Lorem.sentence(word_count: 5)
+  created_objects += 1
+end
+
 puts "Creating posts"
 
 10.times do |n|
