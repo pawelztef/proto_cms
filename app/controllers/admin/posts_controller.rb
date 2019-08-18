@@ -23,10 +23,9 @@ class Admin::PostsController < Admin::AdminsController
   def create
     @title = "New Post"
     @admin_post = Post.new(admin_post_params)
-
     respond_to do |format|
       if @admin_post.save
-        format.html { redirect_to @admin_post, notice: 'Post was successfully created.' }
+        format.html { redirect_to admin_posts_path, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @admin_post }
       else
         format.html { render :new }
@@ -38,7 +37,7 @@ class Admin::PostsController < Admin::AdminsController
   def update
     respond_to do |format|
       if @admin_post.update(admin_post_params)
-        format.html { redirect_to @admin_post, notice: 'Post was successfully updated.' }
+        format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_post }
       else
         format.html { render :edit }
@@ -61,6 +60,6 @@ class Admin::PostsController < Admin::AdminsController
   end
 
   def admin_post_params
-    params.require(:admin_post).permit(:title, :content, :summary, :permalink, :status)
+    params.require(:post).permit(:title, :content, :summary, :permalink, :status)
   end
 end
