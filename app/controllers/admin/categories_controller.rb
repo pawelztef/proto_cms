@@ -3,6 +3,7 @@ class Admin::CategoriesController < Admin::AdminsController
   authorize_resource 
 
   def index
+    @title = "List Categories"
     @admin_categories = Category.all
   end
 
