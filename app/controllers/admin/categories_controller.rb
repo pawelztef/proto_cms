@@ -1,10 +1,10 @@
 class Admin::CategoriesController < Admin::AdminsController
   before_action :set_admin_category, only: [:show, :edit, :update, :destroy]
+  before_action :all_categories, only: [:index, :destroy, :create]
   authorize_resource 
 
   def index
     @title = "List Categories"
-    @admin_categories = Category.all
   end
 
   def show
@@ -18,16 +18,12 @@ class Admin::CategoriesController < Admin::AdminsController
   end
 
   def create
+    byebug
     @admin_category = Category.new(admin_category_params)
-
+    @admin_category.save
     respond_to do |format|
-      if @admin_category.save
-        format.html { redirect_to @admin_category, notice: 'Category was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_category }
-      else
-        format.html { render :new }
-        format.json { render json: @admin_category.errors, status: :unprocessable_entity }
-      end
+      format.js { render  layout: false }
+      format.html
     end
   end
 
@@ -58,5 +54,9 @@ class Admin::CategoriesController < Admin::AdminsController
 
     def admin_category_params
       params.require(:category).permit(:name, :slug, :description, :parent_id)
+    end
+
+    def all_categories
+      @admin_categories = Category.all
     end
 end
