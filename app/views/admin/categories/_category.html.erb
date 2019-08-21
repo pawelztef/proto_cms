@@ -1,45 +1,53 @@
 <table class="uk-table uk-table-justify uk-table-divider">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Slug</th>
-            <th>Ancestry</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @admin_categories.blank? %>
-            <tr>
-              <td colspan="7" class="uk-text-center">
-                No data!
-              </td>
-            </tr>
-          <% else %>
-            <% @admin_categories.each do |admin_category| %>
-              <tr>
-                <td><%= admin_category.name %></td>
-                <td><%= admin_category.description %></td>
-                <td><%= admin_category.slug %></td>
-                <td><%= admin_category.ancestry %></td>
-                <td>
-                  <% if can?(:update, Category) || can?(:destroy, Category) %>
-                    <ul class="uk-iconnav">
-                      <% if can? :update, Category %>
-                        <li><a href="<%= edit_admin_category_path(admin_category) %>" uk-icon="icon: file-edit"></a></li>
-                      <% end %>
-                      <% if can? :destroy, Category %>
-                        <li><a href= <%= admin_category_path(admin_category)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
-                      <% end %>
-                    </ul>
-                  <% else %>
-                    <ul class="uk-iconnav">
-                      <li>Not authorized</li>
-                    </ul>
-                  <% end %>
-                </td>
-              </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Slug</th>
+      <th>Ancestry</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @admin_categories.blank? %>
+      <tr>
+        <td colspan="7" class="uk-text-center">
+          No data!
+        </td>
+      </tr>
+    <% else %>
+      <% @admin_categories.each do |admin_category| %>
+        <tr>
+          <td><%= admin_category.name %></td>
+          <td><%= admin_category.description %></td>
+          <td><%= admin_category.slug %></td>
+          <td><%= admin_category.ancestry %></td>
+          <td>
+            <% if can?(:update, Category) || can?(:destroy, Category) %>
+              <ul class="uk-iconnav">
+                <% if can? :update, Category %>
+                  <li>
+                <%= link_to edit_admin_category_path(admin_category), remote: true, class: 'show-modal' do %>
+                  <span data-uk-icon="icon:file-edit; ratio: 1.0"></span>
+                <% end %>
+                  </li>
+                <% end %>
+                <% if can? :destroy, Category %>
+                  <li>
+                    <%= link_to  admin_category_path(admin_category), method: :delete, remote: true do %>
+                      <span data-uk-icon="icon:trash; ratio: 1.0"></span>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <ul class="uk-iconnav">
+                <li>Not authorized</li>
+              </ul>
             <% end %>
-          <% end %>
-        </tbody>
-      </table>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
