@@ -18,7 +18,6 @@ class Admin::CategoriesController < Admin::AdminsController
   end
 
   def create
-    byebug
     @admin_category = Category.new(admin_category_params)
     @admin_category.save
     respond_to do |format|
@@ -42,21 +41,20 @@ class Admin::CategoriesController < Admin::AdminsController
   def destroy
     @admin_category.destroy
     respond_to do |format|
-      format.html { redirect_to admin_categories_url, notice: 'Category was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js
     end
   end
 
   private
-    def set_admin_category
-      @admin_category = Category.find(params[:id])
-    end
+  def set_admin_category
+    @admin_category = Category.find(params[:id])
+  end
 
-    def admin_category_params
-      params.require(:category).permit(:name, :slug, :description, :parent_id)
-    end
+  def admin_category_params
+    params.require(:category).permit(:name, :slug, :description, :parent_id)
+  end
 
-    def all_categories
-      @admin_categories = Category.all
-    end
+  def all_categories
+    @admin_categories = Category.all
+  end
 end
