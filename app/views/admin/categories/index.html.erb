@@ -13,44 +13,15 @@
   </div>
 </div>
 
-
 <%= content_for :right_column  do %>
   <div class="uk-width-large admin__right_column" >
     <div class="uk-card uk-card-small uk-card-header uk-card-default ">
       <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>New Category</div></div>
     </div>
     <div class="uk-card uk-card-default uk-card-body">
-      <%= simple_form_for [:admin, Category.new], method: :post,  class: "form__user-form uk-form-stacked", remote: true do |f| %>
-        <div uk-grid>
-          <div class="uk-width-1-1 uk-margin-small">
-            <label class="uk-form-label" for="form-stacked-text">Name</label>
-            <div class="uk-form-controls">
-              <%= f.input :name, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "name" } %>
-            </div>
-          </div>
-          <div class="uk-width-1-1 uk-margin-small">
-            <label class="uk-form-label" for="form-stacked-text">Slug</label>
-            <div class="uk-form-controls">
-              <%= f.input :slug, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "slug" } %>
-            </div>
-          </div>
-          <div class="uk-width-1-1 uk-margin-small">
-            <label class="uk-form-label" for="form-stacked-text">Parent Category</label>
-            <div class="uk-form-controls">
-              <%= f.input :parent_id, collection: Category.order(:name),label: false, input_html: {class: "uk-select"}  %>
-            </div>
-          </div>
-          <div class="uk-width-1-1 uk-margin-small">
-            <label class="uk-form-label" for="form-stacked-text">Description</label>
-            <div class="uk-form-controls">
-              <%= f.input :description, as: :text, required: false, autofocus: false, label: false, input_html: { class: "uk-textarea", autocomplete: "description", rows: "5" } %>
-            </div>
-          </div>
-          <div class="uk-width-1-1 uk-margin-small">
-            <%= submit_tag :submit, class: "uk-button uk-button-primary uk-margin-top" %>
-          </div>
-        </div>
-      <% end %>
+      <%= render 'form' %>
     </div>
   </div>
 <% end %>
+
+<div id="admin__media_modal-taarget-container" class="pz-modal-container"></div>

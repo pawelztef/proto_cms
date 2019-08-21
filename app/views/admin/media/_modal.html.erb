@@ -1,8 +1,8 @@
-<div id="attachment-modal" class="pz-modal" >
+<div id="admin__category_modal" class="pz-modal" >
   <div class="pz-modal-content">
     <div class="pz-modal-header">
       <div class="uk-flex uk-flex-between">
-        <span class="uk-text-lead">Image Edit: <%= media.title %></span>
+        <span class="uk-text-lead">Category Edit: <%= admin_category.edit %></span>
         <ul class="uk-iconnav">
           <span uk-icon="close" class="pz-modal-close-btn"></span>
         </ul>
@@ -10,36 +10,10 @@
     </div>
     <div class="pz-modal-body">
       <div class="uk-flex uk-flex-center uk-flex-column uk-flex-middle">
-        <div class="pz-attachment-image-container">
-          <%= image_tag media.attachment, class: "lazy pz-attachment-image" if media.attachment.attached? %>
-        </div>
-        <div class="uk-text-muted pz-image-metadata">
-          <span id="dataWidth">0</span>
-          <span>&times;</span>
-          <span id="dataHeight">0</span>
-        </div>
       </div>
     </div>
     <div class="pz-modal-footer">
       <div class="uk-flex uk-flex-between">
-        <div>
-          <ul class="uk-iconnav pz-image-toolbar">
-            <li><span data-action="move" class="zmdi zmdi-hc-lg zmdi-arrows"></span></li>
-            <li><span data-action="crop" class="zmdi zmdi-hc-lg zmdi-crop"></span></li>
-            <li><span data-action="clear" class="zmdi zmdi-hc-lg zmdi-close-circle-o"></span></li>
-            <li><span data-action="zoom-in" class="zmdi zmdi-hc-lg zmdi-zoom-in"></span></li>
-            <li><span data-action="zoom-out" class="zmdi zmdi-hc-lg zmdi-zoom-out"></span></li>
-            <li><span data-action="move-left" class="zmdi zmdi-hc-lg zmdi-long-arrow-left"></span></li>
-            <li><span data-action="move-right" class="zmdi zmdi-hc-lg zmdi-long-arrow-right"></span></li>
-            <li><span data-action="move-up" class="zmdi zmdi-hc-lg zmdi-long-arrow-up"></span></li>
-            <li><span data-action="move-down" class="zmdi zmdi-hc-lg zmdi-long-arrow-down"></span></li>
-            <li><span data-action="rotate-left" class="zmdi zmdi-hc-lg zmdi-rotate-ccw"></span></li>
-            <li><span data-action="rotate-right" class="zmdi zmdi-hc-lg zmdi-rotate-cw"></span></li>
-            <%# <li><span data-action="flip-horizontal" class="zmdi zmdi-hc-lg zmdi-swap"></span></li> %>
-            <li><span data-action="flip-vertical" class="zmdi zmdi-hc-lg zmdi-swap-vertical"></span></li>
-            <li><span data-action="restore" class="zmdi zmdi-hc-lg zmdi-refresh-alt"></span></li>
-          </ul>
-        </div>
         <button id="save-image" class="uk-button uk-button-primary" type="button">Save</button>
       </div>
     </div>

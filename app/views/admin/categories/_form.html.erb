@@ -1,12 +1,31 @@
-
-<%= simple_form_for(@admin_category) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-  <div class="form-inputs">
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+<%= simple_form_for [:admin, Category.new], method: :post,  class: "form__user-form uk-form-stacked", remote: true do |f| %>
+  <div uk-grid>
+    <div class="uk-width-1-1 uk-margin-small">
+      <label class="uk-form-label" for="form-stacked-text">Name</label>
+      <div class="uk-form-controls">
+        <%= f.input :name, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "name" } %>
+      </div>
+    </div>
+    <div class="uk-width-1-1 uk-margin-small">
+      <label class="uk-form-label" for="form-stacked-text">Slug</label>
+      <div class="uk-form-controls">
+        <%= f.input :slug, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "slug" } %>
+      </div>
+    </div>
+    <div class="uk-width-1-1 uk-margin-small">
+      <label class="uk-form-label" for="form-stacked-text">Parent Category</label>
+      <div class="uk-form-controls">
+        <%= f.input :parent_id, collection: Category.order(:name),label: false, input_html: {class: "uk-select"}  %>
+      </div>
+    </div>
+    <div class="uk-width-1-1 uk-margin-small">
+      <label class="uk-form-label" for="form-stacked-text">Description</label>
+      <div class="uk-form-controls">
+        <%= f.input :description, as: :text, required: false, autofocus: false, label: false, input_html: { class: "uk-textarea", autocomplete: "description", rows: "5" } %>
+      </div>
+    </div>
+    <div class="uk-width-1-1 uk-margin-small">
+      <%= submit_tag :submit, class: "uk-button uk-button-primary uk-margin-top" %>
+    </div>
   </div>
 <% end %>

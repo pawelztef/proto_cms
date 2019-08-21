@@ -1,0 +1,6 @@
+document.getElementById("admin__category_modal-target-container").innerHTML = "<%= j render "modal", admin_category: @admin_category %>";
+
+var categoryModal = document.getElementById("admin__category_modal");
+var modalCloseBtn = categoryModal.getElementsByClassName('pz-modal-close-btn')[0];
+window.Pz.modal(categoryModal, modalCloseBtn);
+
