@@ -14,8 +14,9 @@
       <table class="uk-table uk-table-justify uk-table-divider">
         <thead>
           <tr>
+            <th>Id</th>
             <th>Name</th>
-            <th>Permalink</th>
+            <th>Slug</th>
             <th>Status</th>
             <th>Ancestry</th>
             <th>Actions</th>
@@ -31,6 +32,7 @@
           <% else %>
             <% @admin_pages.each do |admin_page| %>
               <tr>
+                <td><%= admin_page.id %></td>
                 <td><%= admin_page.name %></td>
                 <td><%= admin_page.permalink %></td>
                 <td><%= admin_page.status %></td>

@@ -1,17 +1,29 @@
 $(() => {
   generatePassword();
   avatarCustomUploadButton();
-  createPermalink();
+  createPageSlug();
+  createCategorySlug();
 });
 
 
-let createPermalink = function() {
+let createPageSlug = function() {
   let pageName = document.getElementById("page_name");
-  let permalinkName = document.getElementById("page_permalink");
+  let slugName = document.getElementById("page_permalink");
   if(pageName != null ){
     pageName.addEventListener('keyup', function(e) {
       e.preventDefault();
-      permalinkName.value = slugify(pageName.value);
+      slugName.value = slugify(pageName.value);
+    }
+    );
+  }
+}
+let createCategorySlug = function() {
+  let categoryName = document.getElementById("category_name");
+  let slugName = document.getElementById("category_slug");
+  if(categoryName != null ){
+    categoryName.addEventListener('keyup', function(e) {
+      e.preventDefault();
+      slugName.value = slugify(categoryName.value);
     }
     );
   }
