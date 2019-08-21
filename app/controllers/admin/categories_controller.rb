@@ -5,6 +5,7 @@ class Admin::CategoriesController < Admin::AdminsController
 
   def index
     @title = "List Categories"
+    @admin_category = Category.new
   end
 
   def show
@@ -28,8 +29,8 @@ class Admin::CategoriesController < Admin::AdminsController
 
   def update
     respond_to do |format|
-      if @admin_category.update(admin_category_params)
-        format.html { redirect_to @admin_category, notice: 'Category was successfully updated.' }
+      if @admin_category.update(admin_category_params) 
+      format.html { redirect_to admin_categories_path, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_category }
       else
         format.html { render :edit }

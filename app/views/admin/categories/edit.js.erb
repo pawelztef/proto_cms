@@ -2,5 +2,16 @@ document.getElementById("admin__category_modal-target-container").innerHTML = "<
 
 var categoryModal = document.getElementById("admin__category_modal");
 var modalCloseBtn = categoryModal.getElementsByClassName('pz-modal-close-btn')[0];
+var submitButton = categoryModal.querySelector("[type='submit']");
+var saveCategory = categoryModal.querySelector("#save-category");
+
 window.Pz.modal(categoryModal, modalCloseBtn);
+submitButton.parentNode.removeChild(submitButton);
+saveCategory.addEventListener('click', function(e) {
+  x = document.querySelector('.edit_category');
+  x.submit();
+  <%# Rails.fire(x, 'submit'); %>
+});
+
+
 

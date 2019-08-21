@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, Category.new], method: :post,  class: "form__user-form uk-form-stacked", remote: true do |f| %>
+<%= simple_form_for [:admin, @admin_category], class: "form__user-form uk-form-stacked", remote: true do |f| %>
   <div uk-grid>
     <div class="uk-width-1-1 uk-margin-small">
       <label class="uk-form-label" for="form-stacked-text">Name</label>

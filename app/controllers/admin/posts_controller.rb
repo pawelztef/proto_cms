@@ -1,6 +1,5 @@
 class Admin::PostsController < Admin::AdminsController 
   before_action :set_admin_post, only: [:show, :edit, :update, :destroy]
-  skip_before_action :verify_authenticity_token
   authorize_resource 
 
   def index

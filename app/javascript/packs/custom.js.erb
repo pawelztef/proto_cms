@@ -12,6 +12,7 @@ let createPageSlug = function() {
   if(pageName != null ){
     pageName.addEventListener('keyup', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       slugName.value = slugify(pageName.value);
     }
     );
@@ -23,6 +24,7 @@ let createCategorySlug = function() {
   if(categoryName != null ){
     categoryName.addEventListener('keyup', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       slugName.value = slugify(categoryName.value);
     }
     );
