@@ -1,5 +1,6 @@
 $(() => {
   window.Pz = window.Pz || {};
+  
   Pz.modal = function(modal, modalCloseBtn) {
     if(modalCloseBtn != null) {
       modalCloseBtn.addEventListener('click', function() {

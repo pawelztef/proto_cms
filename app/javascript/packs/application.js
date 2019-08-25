@@ -24,6 +24,7 @@ import 'styles';
 
 require('packs/custom.js.erb');
 require('packs/modal.js');
+require('packs/slugify.js');
 require('packs/images_upload.js');
 require('packs/image_edit.js.erb');
 

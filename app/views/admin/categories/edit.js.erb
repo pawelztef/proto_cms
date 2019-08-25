@@ -4,13 +4,16 @@ var categoryModal = document.getElementById("admin__category_modal");
 var modalCloseBtn = categoryModal.getElementsByClassName('pz-modal-close-btn')[0];
 var submitButton = categoryModal.querySelector("[type='submit']");
 var saveCategory = categoryModal.querySelector("#save-category");
+var inputSource = categoryModal.querySelector('#category_name');
+var inputTarget = categoryModal.querySelector('#category_slug');
 
 window.Pz.modal(categoryModal, modalCloseBtn);
+window.Pz.slugify(inputSource, inputTarget);
+
 submitButton.parentNode.removeChild(submitButton);
 saveCategory.addEventListener('click', function(e) {
   x = document.querySelector('.edit_category');
   x.submit();
-  <%# Rails.fire(x, 'submit'); %>
 });
 
 
