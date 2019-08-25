@@ -5,6 +5,21 @@ $(() => {
   avatarCustomUploadButton();
   createPageSlug();
   createCategorySlug();
+  var select = new SlimSelect({
+    select: '#new_post_categories'
+  });
+
+  var selector = document.querySelector("#new_post_categories");
+  
+
+  console.log(selector);
+
+  
+  selector.addEventListener('change', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log(select.selected());
+  });
 
 });
 
@@ -21,19 +36,19 @@ let createCategorySlug = function() {
   window.Pz.slugify(inputSource, inputTarget);
 }
 
-<%# TODO Extract methods to separate files %>
+  <%# TODO Extract methods to separate files %>
 
-let generatePassword = function() {
-  let passwordButton = document.getElementById("password_button");
-  if (passwordButton != null) {
-    passwordButton.addEventListener("click", function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      let token = Math.random().toString(36).slice(2);
-      document.getElementById("user_password").value = token;
-    });
+  let generatePassword = function() {
+    let passwordButton = document.getElementById("password_button");
+    if (passwordButton != null) {
+      passwordButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        let token = Math.random().toString(36).slice(2);
+        document.getElementById("user_password").value = token;
+      });
+    }
   }
-}
 
 let avatarCustomUploadButton = function() {
   let avatarRealInput = document.getElementById("user_avatar");
