@@ -66,7 +66,6 @@ class Admin::PagesController < Admin::AdminsController
     @admin_page = Page.find_by_permalink!(params[:id])
   end
   def admin_page_params
-    byebug
     params.require(:page).permit(:parent_id, :permalink, :content, :name, :status)
   end
 end

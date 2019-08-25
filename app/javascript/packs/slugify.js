@@ -13,7 +13,7 @@ $(() => {
   };
 });
 
-let slugify = function(text) {
+var slugify = function(text) {
   return text.toLowerCase()
     .replace(/\s+/g, '-')           // Replace spaces with -
     .replace(/[^\w\-]+/g, '')       // Remove all non-word chars

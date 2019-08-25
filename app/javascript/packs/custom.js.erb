@@ -1,45 +1,27 @@
+require('./slugify.js');
+
 $(() => {
   generatePassword();
   avatarCustomUploadButton();
   createPageSlug();
   createCategorySlug();
+
 });
 
 
 let createPageSlug = function() {
   let pageName = document.getElementById("page_name");
   let slugName = document.getElementById("page_permalink");
-  if(pageName != null ){
-    pageName.addEventListener('keyup', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      slugName.value = slugify(pageName.value);
-    }
-    );
-  }
+  window.Pz.slugify(pageName, slugName);
 }
+
 let createCategorySlug = function() {
-  let categoryName = document.getElementById("category_name");
-  let slugName = document.getElementById("category_slug");
-  if(categoryName != null ){
-    categoryName.addEventListener('keyup', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      slugName.value = slugify(categoryName.value);
-    }
-    );
-  }
+  var inputSource = document.querySelector('#category_name');
+  var inputTarget = document.querySelector('#category_slug');
+  window.Pz.slugify(inputSource, inputTarget);
 }
 
-let slugify = function(text) {
-  return text.toLowerCase()
-    .replace(/\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-    .replace(/^-+/, '')             // Trim - from start of text
-    .replace(/-+$/, '');            // Trim - from end of text
-}
-
+<%# TODO Extract methods to separate files %>
 
 let generatePassword = function() {
   let passwordButton = document.getElementById("password_button");
