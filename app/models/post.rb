@@ -1,4 +1,8 @@
 class Post < ApplicationRecord
+  has_many :categorizations
+  has_many :categories, :through => :categorizations
+
+
   enum status: ContentStatus::STATUSES
 
   scope :published, ->  { where(status: :published) }
