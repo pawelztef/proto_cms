@@ -11,11 +11,21 @@
       </div>
     </div>
     <div class="uk-card-body">
+
+
+      <ul class="pz-tab">
+        <%= render partial: 'status_link', collection: ContentStatus::STATUSES, as: :status %>
+      </ul> 
+
       <table class="uk-table uk-table-justify uk-table-divider">
         <thead>
           <tr>
             <th>Status</th>
             <th>Title</th>
+            <th>Author</th>
+            <th>Categories</th>
+            <th>Tags</th>
+            <th>Updated at</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -29,8 +39,12 @@
           <% else %>
             <% @admin_posts.each do |admin_post| %>
               <tr>
-                <td> <%= status_label(admin_post.status) %> </td>
+                <td><%= status_label(admin_post.status) %></td>
                 <td><%= admin_post.title %></td>
+                <td><%= "John Doe" %></td>
+                <td><%= admin_post.title %></td>
+                <td><%= admin_post.title %></td>
+                <td><%= admin_post.updated_at %></td>
                 <td>
                   <% if can?(:update, Post) || can?(:destroy, Post) %>
                     <ul class="uk-iconnav">
@@ -58,17 +72,17 @@
 
 <%# <%= content_for :right_column  do %1> %>
 <%#   <div class="uk-width-large admin__right_column" > %>
-<%#     <div class="uk-card uk-card-small uk-card-header uk-card-default "> %>
-<%#       <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div> %>
-<%#     </div> %>
-<%#     <div class="uk-card uk-card-default uk-card-body"> %>
-<%#       <span>Show by status</span> %>
+  <%#     <div class="uk-card uk-card-small uk-card-header uk-card-default "> %>
+    <%#       <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div> %>
+    <%#     </div> %>
+  <%#     <div class="uk-card uk-card-default uk-card-body"> %>
+    <%#       <span>Show by status</span> %>
 
-<%#       <%= form_tag admin_posts_path, method: :get, class: "form__user-form uk-form-stacked" do |f| %1> %>
-<%#         <%= select_tag "status", options_for_select(ContentStatus::STATUSES), include_blank: "",  class: 'uk-select' %1> %>
-<%#         <%= submit_tag :submit , class: "uk-button uk-button-primary uk-margin-top" %1> %>
-<%#       <% end %1> %>
+    <%#       <%= form_tag admin_posts_path, method: :get, class: "form__user-form uk-form-stacked" do |f| %1> %>
+    <%#         <%= select_tag "status", options_for_select(ContentStatus::STATUSES), include_blank: "",  class: 'uk-select' %1> %>
+    <%#         <%= submit_tag :submit , class: "uk-button uk-button-primary uk-margin-top" %1> %>
+    <%#       <% end %1> %>
 
-<%#     </div> %>
+  <%#     </div> %>
 <%#   </div> %>
 <%# <% end %1> %>
