@@ -45,7 +45,7 @@
                 <td><%= "John Doe" %></td>
                 <td><%= admin_post.title %></td>
                 <td><%= admin_post.title %></td>
-                <td><%= admin_post.updated_at %></td>
+                <td><%= standard_date(admin_post.updated_at) %></td>
                 <td>
                   <% if can?(:update, Post) || can?(:destroy, Post) %>
                     <ul class="uk-iconnav">
