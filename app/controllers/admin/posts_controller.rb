@@ -22,6 +22,8 @@ class Admin::PostsController < Admin::AdminsController
   def create
     @title = "New Post"
     @admin_post = Post.new(admin_post_params)
+    @admin_post.category_ids = admin_post_params[:category_ids][0].split(',').to_a
+    byebug
     respond_to do |format|
       if @admin_post.save
         format.html { redirect_to admin_posts_path, notice: 'Post was successfully created.' }
@@ -65,6 +67,6 @@ class Admin::PostsController < Admin::AdminsController
   end
 
   def admin_post_params
-    params.require(:post).permit(:title, :content, :summary, :permalink, :status)
+    params.require(:post).permit(:title, :content, :summary, :permalink, :status, category_ids: [] )
   end
 end

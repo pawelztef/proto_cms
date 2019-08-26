@@ -1,26 +1,12 @@
 require('./slugify.js');
+const categoriesMultiselect = require('./categories.js');
 
 $(() => {
   generatePassword();
   avatarCustomUploadButton();
   createPageSlug();
   createCategorySlug();
-  var select = new SlimSelect({
-    select: '#new_post_categories'
-  });
-
-  var selector = document.querySelector("#new_post_categories");
-  
-
-  console.log(selector);
-
-  
-  selector.addEventListener('change', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log(select.selected());
-  });
-
+  categoriesMultiselect();
 });
 
 
