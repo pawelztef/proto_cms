@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_200859) do
 
   create_table "admin_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.string "slug"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
