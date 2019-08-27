@@ -5,7 +5,6 @@ module Admin::PostsHelper
     end
   end
 
-
   def generate_categories_labels post
     tags = ""
     post.categories.each do |cat|
