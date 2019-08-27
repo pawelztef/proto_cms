@@ -18,4 +18,12 @@ module Admin::PostsHelper
     ContentStatus::STATUSES.dup << "all"
   end
 
+  def current_status?(status)
+    if params[:status] == status 
+      "pz-active"
+    elsif !params[:status].present? && status == "all"
+      "pz-active"
+    end
+  end
+
 end

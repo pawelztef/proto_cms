@@ -1,5 +1,5 @@
 <li>
- <%= link_to  admin_posts_path(status: status), class: "pz-active" do %>
-   <span><%= "#{status} (#{})" %><span>
+ <%= link_to  admin_posts_path(status: status), class: current_status?(status)  do %>
+   <span><%= "#{status} (#{@admin_posts_stats[status]})" %><span>
  <% end %> 
 </li>

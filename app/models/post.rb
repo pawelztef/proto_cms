@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 
 
   def self.search_by_status(status)
-    if status == "all" 
+    if status == "all" || !status.present?
       Post.all
     else
       Post.where(status: status)
