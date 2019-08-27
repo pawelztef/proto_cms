@@ -1,4 +1,4 @@
-class Admin::TagsController < Admin::AdminsControler
+class Admin::TagsController < Admin::AdminsController
   before_action :set_admin_tag, only: [:show, :edit, :update, :destroy]
   before_action :all_tags, only: [:index, :destroy, :create]
   authorize_resource 
