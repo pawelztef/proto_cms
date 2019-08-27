@@ -1,5 +1,6 @@
-class Admin::TagsController < ApplicationController
+class Admin::TagsController < Admin::AdminsControler
   before_action :set_admin_tag, only: [:show, :edit, :update, :destroy]
+  authorize_resource 
 
   def index
     @admin_tags = Tag.all
