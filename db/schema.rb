@@ -33,14 +33,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_200859) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admin_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -94,6 +86,14 @@ ActiveRecord::Schema.define(version: 2019_08_27_200859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "singleton_guard", default: 0
+  end
+
+  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
