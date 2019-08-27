@@ -1,8 +1,10 @@
 class Admin::TagsController < Admin::AdminsControler
   before_action :set_admin_tag, only: [:show, :edit, :update, :destroy]
+  before_action :all_tags, only: [:index, :destroy, :create]
   authorize_resource 
 
   def index
+    @title = "List Tags"
     @admin_tags = Tag.all
   end
 
@@ -51,11 +53,16 @@ class Admin::TagsController < Admin::AdminsControler
   end
 
   private
-    def set_admin_tag
-      @admin_tag = Tag.find(params[:id])
-    end
+  def set_admin_tag
+    @admin_tag = Tag.find(params[:id])
+  end
 
-    def admin_tag_params
-      params.require(:admin_tag).permit(:name)
-    end
+  def admin_tag_params
+    params.require(:admin_tag).permit(:name)
+  end
+
+  def all_tags
+    @admin_categories = Category.all
+  end
+
 end
