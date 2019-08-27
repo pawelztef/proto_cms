@@ -5,7 +5,7 @@ class Admin::TagsController < Admin::AdminsController
 
   def index
     @title = "List Tags"
-    @admin_tags = Tag.all
+    @admin_tag = Tag.new
   end
 
   def show
