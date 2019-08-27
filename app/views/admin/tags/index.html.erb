@@ -1,27 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+  <div class="uk-card uk-card-default uk-card-small">
+    <div class="uk-card-header">
+      <div class="uk-grid uk-grid-small">
+        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %></div></div>
+        <div class="uk-width-expand uk-text-right panel-icons">
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body" id="admin__category_target-container">
+      <%= render "category", admin_categories: @admin_categories %>
+    </div>
+  </div>
+</div>
 
-<h1>Admin Tags</h1>
+<%= content_for :right_column  do %>
+  <div class="uk-width-large admin__right_column" >
+    <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>New Category</div></div>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body">
+      <%= render 'form' %>
+    </div>
+  </div>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div id="admin__category_modal-target-container" class="pz-modal-container"></div>
 
-  <tbody>
-    <% @admin_tags.each do |admin_tag| %>
-      <tr>
-        <td><%= admin_tag.name %></td>
-        <td><%= link_to 'Show', admin_tag %></td>
-        <td><%= link_to 'Edit', edit_admin_tag_path(admin_tag) %></td>
-        <td><%= link_to 'Destroy', admin_tag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Admin Tag', new_admin_tag_path %>
