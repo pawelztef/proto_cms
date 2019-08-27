@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :tags
+  end
   # TODO routes to clean up
   root to: "welcome#index"
   # scope "/admin" do
