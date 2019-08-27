@@ -44,11 +44,13 @@ class Admin::PostsController < Admin::AdminsController
           format.html { render :new }
         end
       elsif params[:commit]
-        format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_post }
-      else
-        format.html { render :edit }
-        format.json { render json: @admin_post.errors, status: :unprocessable_entity }
+        if @admin_post.update(admin_post_params)
+          format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
+          format.json { render :show, status: :ok, location: @admin_post }
+        else
+          format.html { render :edit }
+          format.json { render json: @admin_post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
