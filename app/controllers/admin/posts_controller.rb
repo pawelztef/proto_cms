@@ -5,6 +5,7 @@ class Admin::PostsController < Admin::AdminsController
   def index
     @title = "List Posts"
     @admin_posts = Post.search_by_status(params[:status])
+    @admin_posts_quantity = Post.get_stats
   end
 
   def show

@@ -10,15 +10,22 @@ class Post < ApplicationRecord
 
 
   def self.search_by_status(status)
-    if status.blank?
+    if status == "all" 
       Post.all
     else
       Post.where(status: status)
     end
   end
 
+  def self.get_stats
+    stats = Post.all.group(:status).count
+    stats["all"] = stats.inject(0) { |sum, hash| sum += hash[1] }
+    return stats
+  end
+
   def to_param
     permalink
   end
+
 
 end

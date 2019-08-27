@@ -14,7 +14,7 @@
 
 
       <ul class="pz-tab">
-        <%= render partial: 'status_link', collection: ContentStatus::STATUSES, as: :status %>
+        <%= render partial: 'status_link', collection: generate_tabs_collection, as: :status %>
       </ul> 
 
       <table class="uk-table uk-table-justify uk-table-divider">

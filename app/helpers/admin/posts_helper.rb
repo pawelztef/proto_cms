@@ -14,4 +14,8 @@ module Admin::PostsHelper
     tags.html_safe
   end
 
+  def generate_tabs_collection
+    ContentStatus::STATUSES.dup << "all"
+  end
+
 end
