@@ -22,8 +22,7 @@ class Admin::PostsController < Admin::AdminsController
   def create
     @title = "New Post"
     @admin_post = Post.new(admin_post_params)
-    @admin_post.category_ids = admin_post_params[:category_ids][0].split(',').to_a
-    byebug
+    # @admin_post.category_ids = admin_post_params[:category_ids][0].split(',').to_a
     respond_to do |format|
       if @admin_post.save
         format.html { redirect_to admin_posts_path, notice: 'Post was successfully created.' }
@@ -39,12 +38,14 @@ class Admin::PostsController < Admin::AdminsController
     respond_to do |format|
       if params[:preview_button] 
         if @admin_post.update(admin_post_params)
+    # @admin_post.category_ids = admin_post_params[:category_ids][0].split(',').to_a
           format.html { redirect_to previews_post_url(@admin_post.permalink) }
         else
           format.html { render :new }
         end
       elsif params[:commit]
         if @admin_post.update(admin_post_params)
+    # @admin_post.category_ids = admin_post_params[:category_ids][0].split(',').to_a
           format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
           format.json { render :show, status: :ok, location: @admin_post }
         else
@@ -69,6 +70,7 @@ class Admin::PostsController < Admin::AdminsController
   end
 
   def admin_post_params
+     params[:post][:category_ids] = params[:post][:category_ids][0].split(',') 
     params.require(:post).permit(:title, :content, :summary, :permalink, :status, category_ids: [] )
   end
 end
