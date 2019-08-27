@@ -39,11 +39,11 @@
           <% else %>
             <% @admin_posts.each do |admin_post| %>
               <tr>
-                <td><%= status_label(admin_post.status) %></td>
+                <td><%= generate_status_label(admin_post) %></td>
                 <td><%= admin_post.title %></td>
                 <%# TODO assotioation with author %>
                 <td><%= "John Doe" %></td>
-                <td><%= admin_post.title %></td>
+                <td><%= generate_categories_labels(admin_post) %></td>
                 <td><%= admin_post.title %></td>
                 <td><%= standard_date(admin_post.updated_at) %></td>
                 <td>
