@@ -20,15 +20,10 @@ class Admin::TagsController < Admin::AdminsController
 
   def create
     @admin_tag = Tag.new(admin_tag_params)
-
+    @admin_tag.save
     respond_to do |format|
-      if @admin_tag.save
-        format.html { redirect_to @admin_tag, notice: 'Tag was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_tag }
-      else
-        format.html { render :new }
-        format.json { render json: @admin_tag.errors, status: :unprocessable_entity }
-      end
+      format.js { render  layout: false }
+      format.html
     end
   end
 
@@ -47,8 +42,7 @@ class Admin::TagsController < Admin::AdminsController
   def destroy
     @admin_tag.destroy
     respond_to do |format|
-      format.html { redirect_to admin_tags_url, notice: 'Tag was successfully destroyed.' }
-      format.json { head :no_content }
+      format.js
     end
   end
 
@@ -58,11 +52,11 @@ class Admin::TagsController < Admin::AdminsController
   end
 
   def admin_tag_params
-    params.require(:admin_tag).permit(:name)
+    params.require(:tag).permit(:name, :slug, :description)
   end
 
   def all_tags
-    @admin_categories = Category.all
+    @admin_tags = Tag.all
   end
 
 end
