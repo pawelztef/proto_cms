@@ -29,8 +29,8 @@ class Admin::TagsController < Admin::AdminsController
 
   def update
     respond_to do |format|
-      if @admin_tag.update(admin_tag_params)
-        format.html { redirect_to @admin_tag, notice: 'Tag was successfully updated.' }
+      if @admin_tag.update(admin_tag_params) 
+      format.html { redirect_to admin_tags_path, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @admin_tag }
       else
         format.html { render :edit }
