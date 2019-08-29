@@ -1,0 +1,53 @@
+<table class="uk-table uk-table-justify uk-table-divider">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Slug</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @admin_tags.blank? %>
+      <tr>
+        <td colspan="7" class="uk-text-center">
+          No data!
+        </td>
+      </tr>
+    <% else %>
+      <% @admin_tags.each do |admin_tag| %>
+        <tr>
+          <td><%= admin_tag.id %></td>
+          <td><%= admin_tag.name %></td>
+          <td><%= truncate(admin_tag.description, length: 25) %></td>
+          <td><%= admin_tag.slug %></td>
+          <td>
+            <% if can?(:update, Tag) || can?(:destroy, Tag) %>
+              <ul class="uk-iconnav">
+                <% if can? :update, Tag %>
+                  <li>
+                    <%= link_to edit_admin_tag_path(admin_tag), remote: true, class: 'show-modal' do %>
+                      <span data-uk-icon="icon:file-edit; ratio: 1.0"></span>
+                    <% end %>
+                  </li>
+                <% end %>
+                <% if can? :destroy, Tag %>
+                  <li>
+                    <%= link_to  admin_tag_path(admin_tag), method: :delete, remote: true do %>
+                      <span data-uk-icon="icon:trash; ratio: 1.0"></span>
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            <% else %>
+              <ul class="uk-iconnav">
+                <li>Not authorized</li>
+              </ul>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

@@ -10,6 +10,7 @@ puts "Seeding started"
 created_objects = 0
 
 
+puts "Creating Users"
 
 admin = User.new
 admin.username = 'admin'
@@ -22,12 +23,35 @@ admin.password_confirmation = 'password'
 admin.save!
 created_objects += 1
 
+puts "Creating pages"
+
 ["about", "products", "contact"].each do |n| 
   page = Page.new
   page.name = n
   page.permalink = "perm_" + n
   page.content = "lorem ipsum"
   page.save!
+  created_objects += 1
+end
+
+puts "Creating categories"
+
+15.times do |n|
+  cat = Category.new
+  cat.name = cat.slug = Faker::Music.genre
+  cat.description = Faker::Lorem.sentence(word_count: 5)
+  cat.save!
+  created_objects += 1
+end
+
+puts "Creating posts"
+
+10.times do |n|
+  post = Post.new
+  post.title = post.permalink = Faker::Book.title
+  post.content = Faker::Lorem.paragraph(sentence_count: 5)
+  post.summary = Faker::Lorem.sentence(word_count: 5)
+  post.save!
   created_objects += 1
 end
 

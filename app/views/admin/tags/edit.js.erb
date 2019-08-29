@@ -1,0 +1,20 @@
+document.getElementById("admin__tag_modal-target-container").innerHTML = "<%= j render "modal", admin_tag: @admin_tag %>";
+
+var tagModal = document.getElementById("admin__tag_modal");
+var modalCloseBtn = tagModal.getElementsByClassName('pz-modal-close-btn')[0];
+var submitButton = tagModal.querySelector("[type='submit']");
+var saveTag = tagModal.querySelector("#save-tag");
+var inputSource = tagModal.querySelector('#tag_name');
+var inputTarget = tagModal.querySelector('#tag_slug');
+
+window.Pz.modal(tagModal, modalCloseBtn);
+window.Pz.slugify(inputSource, inputTarget);
+
+submitButton.parentNode.removeChild(submitButton);
+saveTag.addEventListener('click', function(e) {
+  x = document.querySelector('.edit_tag');
+  x.submit();
+});
+
+
+

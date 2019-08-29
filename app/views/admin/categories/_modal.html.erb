@@ -1,0 +1,22 @@
+<div id="admin__category_modal" class="pz-modal" >
+  <div class="pz-modal-content">
+    <div class="pz-modal-header">
+      <div class="uk-flex uk-flex-between">
+        <span class="uk-text-lead">Category Edit: <%= admin_category.name %></span>
+        <ul class="uk-iconnav">
+          <span uk-icon="close" class="pz-modal-close-btn"></span>
+        </ul>
+      </div>
+    </div>
+    <div class="pz-modal-body">
+        <div class="uk-card uk-card-default uk-card-body">
+        <%= render 'form' %>
+        </div>
+    </div>
+    <div class="pz-modal-footer">
+      <div class="uk-flex uk-flex-between">
+        <button id="save-category" class="uk-button uk-button-primary" type="button">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

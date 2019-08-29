@@ -1,0 +1,4 @@
+<form>
+  <%= select_tag "new_post_categories", options_from_collection_for_select(Category.all, "id", "name"), multiple: true  %>
+</form>
+

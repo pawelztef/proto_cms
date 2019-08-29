@@ -11,12 +11,24 @@ class Ability
         can :read, Page
         can :create, Page
         can :update, Page
+        can :read, Post
+        can :create, Post
+        can :update, Post
+        can :read, Category
+        can :create, Category
+        can :update, Category
+        can :read, Tag
+        can :create, Tag
+        can :update, Tag
         can :read, User
         can :create, User
         can :update, User
       elsif user.editor?
         can :read, :all
         can :manage, Page
+        can :manage, Post
+        can :manage, Category
+        can :manage, Tag
       end
     end
   end

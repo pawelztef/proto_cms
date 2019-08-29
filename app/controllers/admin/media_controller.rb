@@ -2,7 +2,6 @@ class Admin::MediaController < Admin::AdminsController
   before_action :set_title
   before_action :set_media, only: [:destroy, :edit]
   before_action :all_media, only: [:destroy, :index, :create]
-  skip_before_action :verify_authenticity_token
 
 
   def index

@@ -44,7 +44,7 @@
                 <td><%= user.username %></td>
                 <td><%= user.email %></td>
                 <td><%= user.role %></td>
-                <td><%= user.last_sign_in_at ? user.last_sign_in_at : "No data" %></td>
+                <td><%= user.last_sign_in_at ? standard_date(user.last_sign_in_at) : "No data" %></td>
                 <td>
                   <ul class="uk-iconnav">
                     <% if can?( :update, user)   %>
@@ -68,7 +68,7 @@
 </div>
 
 <%= content_for :right_column  do %>
-  <div class="uk-width-medium admin__right_column" >
+  <div class="uk-width-large admin__right_column" >
     <div class="uk-card uk-card-small uk-card-header uk-card-default ">
       <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div>
     </div>

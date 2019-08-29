@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     resources :media do
       post "update_image", constraints: { format: 'json' }
     end
+    resources :categories
+    resources :tags
+    resources :posts
     resources :settings
     resources :dashboard
     resources :users
@@ -32,7 +35,9 @@ Rails.application.routes.draw do
 
   namespace :previews do
     resources :pages, only: :show
+    resources :posts, only: :show
   end
 
   get ":id", to: "pages#show", as: :page
+  get ":id", to: "posts#show", as: :post
 end
