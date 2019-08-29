@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   has_many :categorizations
   has_many :categories, :through => :categorizations
+  has_many :tagizations
+  has_many :tags, :through => :tagizations
 
 
   enum status: ContentStatus::STATUSES

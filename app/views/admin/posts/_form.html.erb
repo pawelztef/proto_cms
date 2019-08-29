@@ -1,5 +1,6 @@
 <%= simple_form_for [:admin, @admin_post],  class: "form__user-form uk-form-stacked" do |f| %>
  <%= f.hidden_field :category_ids, multiple: true %>
+ <%= f.hidden_field :tag_ids, multiple: true %>
   <div uk-grid>
     <div class="uk-width-1-1">
       <div class="uk-margin-small">

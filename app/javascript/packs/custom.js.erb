@@ -1,5 +1,6 @@
 require('./slugify.js');
 const categoriesMultiselect = require('./categories.js');
+const tagsMultiselect = require('./tags.js');
 
 $(() => {
   generatePassword();
@@ -8,6 +9,7 @@ $(() => {
   createTagSlug();
   createCategorySlug();
   categoriesMultiselect();
+  tagsMultiselect();
 });
 
 
