@@ -18,10 +18,8 @@ class Admin::PostsController < Admin::AdminsController
 
   def edit
     @title = "Edit Post"
-    # gon.post_tags = @admin_post.tags.map { |tag| Hash[tag.name, tag.id].stringify_keys }
-    arr2 = []
-    @admin_post.tags.each { |v| arr2 << Hash["text", v.name] }
-    gon.post_tags = arr2
+    gon.post_tags = @admin_post.tags.map { |tag| Hash[value: tag.name, id: tag.id]}
+    # gon.post_tags = @admin_post.tags.pluck(:name)
   end
 
   def create
@@ -49,6 +47,7 @@ class Admin::PostsController < Admin::AdminsController
           format.html { render :new }
         end
       elsif params[:commit]
+        byebug
         if @admin_post.update(admin_post_params)
     # @admin_post.category_ids = admin_post_params[:category_ids][0].split(',').to_a
           format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
@@ -75,7 +74,8 @@ class Admin::PostsController < Admin::AdminsController
   end
 
   def admin_post_params
-     params[:post][:category_ids] = params[:post][:category_ids][0].split(',') 
+    params[:post][:category_ids] = params[:post][:category_ids][0].split(',') unless params[:post][:category_ids].empty?
+    params[:post][:tags_ids] = params[:post][:tags_ids][0].split(',') unless params[:post][:tags_ids].empty?
     params.require(:post).permit(:title, :content, :summary, :permalink, :status, category_ids: [] )
   end
 end
