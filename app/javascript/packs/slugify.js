@@ -1,8 +1,6 @@
 $(() => {
-  console.log('in slugify');
   window.Pz = window.Pz || {};
   Pz.slugify = function(sourceInput, targetInput) { 
-    console.log('in slugify method'); 
     if(sourceInput != null && targetInput != null) {
       sourceInput.addEventListener('keyup', function(e) {
         e.preventDefault();

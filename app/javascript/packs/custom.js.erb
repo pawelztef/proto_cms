@@ -9,7 +9,7 @@ $(() => {
   createTagSlug();
   createCategorySlug();
   categoriesMultiselect();
-  tagsMultiselect();
+  createTagsMultiselect();
 });
 
 
@@ -27,6 +27,12 @@ let createTagSlug = function() {
   var inputSource = document.querySelector('#tag_name');
   var inputTarget = document.querySelector('#tag_slug');
   window.Pz.slugify(inputSource, inputTarget);
+}
+
+let createTagsMultiselect = function() {
+  const tags = gon.post_tags;
+  console.log(tags);
+  tagsMultiselect(tags);
 }
 
   <%# TODO Extract methods to separate files %>

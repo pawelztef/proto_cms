@@ -5,9 +5,17 @@ module Admin::PostsHelper
     end
   end
 
+  # TODO create one generic method for generating categories and tags labels
   def generate_categories_labels post
     tags = ""
     post.categories.each do |cat|
+      tags << content_tag(:span, cat.name, class: "uk-label uk-label-default admin__posts-index_category-label").html_safe
+    end
+    tags.html_safe
+  end
+  def generate_tags_labels post
+    tags = ""
+    post.tags.each do |cat|
       tags << content_tag(:span, cat.name, class: "uk-label uk-label-default admin__posts-index_category-label").html_safe
     end
     tags.html_safe

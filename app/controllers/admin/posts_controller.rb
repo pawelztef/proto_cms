@@ -18,6 +18,10 @@ class Admin::PostsController < Admin::AdminsController
 
   def edit
     @title = "Edit Post"
+    # gon.post_tags = @admin_post.tags.map { |tag| Hash[tag.name, tag.id].stringify_keys }
+    arr2 = []
+    @admin_post.tags.each { |v| arr2 << Hash["text", v.name] }
+    gon.post_tags = arr2
   end
 
   def create
