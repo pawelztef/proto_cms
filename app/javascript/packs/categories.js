@@ -2,14 +2,14 @@ const multiSelect = function() {
   const categoriesSelector = document.querySelector("#new_post_categories");
   const postAssociationField = document.querySelector("#post_category_ids");
   if(categoriesSelector != null && postAssociationField != null) {
-    const slimSelect = new SlimSelect({
-      select: '#new_post_categories'
+    const choices = new Choices('#new_post_categories',{
+      removeItemButton: true 
     });
     categoriesSelector.addEventListener('change', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      console.log(slimSelect.selected());
-      postAssociationField.value = slimSelect.selected();
+      // console.log(choices.selected());
+      // postAssociationField.value = choices.selected();
     });
   }
 }
