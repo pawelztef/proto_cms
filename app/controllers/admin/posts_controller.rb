@@ -39,7 +39,6 @@ class Admin::PostsController < Admin::AdminsController
   def update
     respond_to do |format|
       if params[:preview_button] 
-        byebug
         if @admin_post.update(admin_post_params)
           format.html { redirect_to previews_post_url(@admin_post.permalink) }
         else
@@ -71,8 +70,8 @@ class Admin::PostsController < Admin::AdminsController
   end
 
   def admin_post_params
-    params[:post][:category_ids] = params[:post][:category_ids][0].split(',') unless params[:post][:category_ids].empty?
-    params[:post][:tag_ids] = params[:post][:tag_ids][0].split(',') unless params[:post][:tag_ids].empty?
+    params[:post][:category_ids] = params[:post][:category_ids][0].split(/[\s,]+/) unless params[:post][:category_ids].empty?
+    params[:post][:tag_ids] = params[:post][:tag_ids][0].split(/[\s,]+/) unless params[:post][:tag_ids].empty?
     params.require(:post).permit(:title, :content, :summary, :permalink, :status, category_ids: [], tag_ids: [])
   end
 end
