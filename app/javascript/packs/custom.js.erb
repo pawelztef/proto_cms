@@ -8,8 +8,8 @@ $(() => {
   createPageSlug();
   createTagSlug();
   createCategorySlug();
-  categoriesMultiselect();
   createTagsMultiselect();
+  createCategoriesMultiselect();
 });
 
 
@@ -28,11 +28,13 @@ let createTagSlug = function() {
   var inputTarget = document.querySelector('#tag_slug');
   window.Pz.slugify(inputSource, inputTarget);
 }
-
 let createTagsMultiselect = function() {
   const tags = gon.post_tags;
-  console.log(tags);
   tagsMultiselect(tags);
+}
+let createCategoriesMultiselect = function() {
+  const categories = gon.post_categories;
+  categoriesMultiselect(categories);
 }
 
   <%# TODO Extract methods to separate files %>

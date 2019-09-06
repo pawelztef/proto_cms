@@ -19,13 +19,12 @@ class Admin::PostsController < Admin::AdminsController
   def edit
     @title = "Edit Post"
     gon.post_tags = @admin_post.tags.map { |tag| Hash[value: tag.id, label: tag.name]}
-    # gon.post_tags = @admin_post.tags.pluck(:name)
+    gon.post_categories = @admin_post.categories.map { |category| Hash[value: category.id, label: category.name]}
   end
 
   def create
     @title = "New Post"
     @admin_post = Post.new(admin_post_params)
-    # @admin_post.category_ids = admin_post_params[:category_ids][0].split(',').to_a
     respond_to do |format|
       if @admin_post.save
         format.html { redirect_to admin_posts_path, notice: 'Post was successfully created.' }
@@ -40,6 +39,7 @@ class Admin::PostsController < Admin::AdminsController
   def update
     respond_to do |format|
       if params[:preview_button] 
+        byebug
         if @admin_post.update(admin_post_params)
           format.html { redirect_to previews_post_url(@admin_post.permalink) }
         else

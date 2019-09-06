@@ -11,9 +11,8 @@ const tagsMultiSelect = function(currentTags) {
     tagsSelector.addEventListener('change', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      const x = choices.getValue().map( tag => parseInt(tag.value));
-      console.log(x)
-      postAssociationField.value = x;
+      const ids = choices.getValue().map( tag => parseInt(tag.value));
+      postAssociationField.value = ids;
     });
   }
 }
