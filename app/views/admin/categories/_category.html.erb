@@ -20,7 +20,7 @@
       <% @admin_categories.each do |admin_category| %>
         <tr>
           <td><%= admin_category.id %></td>
-          <td><%= admin_category.name %></td>
+          <td><%= link_to admin_category.name, admin_category_path(admin_category) %></td>
           <td><%= truncate(admin_category.description, length: 25) %></td>
           <td><%= admin_category.slug %></td>
           <td><%= admin_category.ancestry %></td>

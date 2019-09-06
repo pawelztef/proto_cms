@@ -9,6 +9,7 @@ class Admin::CategoriesController < Admin::AdminsController
   end
 
   def show
+    @admin_category_posts = @admin_category.posts;
   end
 
   def new
