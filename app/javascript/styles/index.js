@@ -6,6 +6,7 @@ import './preview.scss';
 import './modal.scss';
 import './photo_editor.scss';
 import './posts.scss';
+import './choices.scss';
 
 import './front/content.scss';
 import './front/featured.scss';

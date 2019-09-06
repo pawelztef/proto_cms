@@ -3,13 +3,16 @@ const tagsMultiSelect = function(currentTags) {
   const postAssociationField = document.querySelector("#post_tag_ids");
   if(tagsSelector != null && postAssociationField != null) {
     const choices = new Choices('#new_post_tags', {
-      removeItemButton: true 
+      removeItemButton: true,
+      placeholder: true,
+      placeholderValue: "Enter tag name",
     });
     setSavedTags(currentTags, choices);
     tagsSelector.addEventListener('change', function(e) {
       e.preventDefault();
       e.stopPropagation();
-      const x = choices.getValue().map( tag => tag.id );
+      const x = choices.getValue().map( tag => parseInt(tag.value));
+      console.log(x)
       postAssociationField.value = x;
     });
   }
@@ -17,7 +20,6 @@ const tagsMultiSelect = function(currentTags) {
 
 const setSavedTags = function(currentTags, choices) {
   if(currentTags != null) {
-    console.log('inside' + currentTags);
     choices.setValue(currentTags);
   }
 }

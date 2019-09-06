@@ -3,7 +3,9 @@ const multiSelect = function() {
   const postAssociationField = document.querySelector("#post_category_ids");
   if(categoriesSelector != null && postAssociationField != null) {
     const choices = new Choices('#new_post_categories',{
-      removeItemButton: true 
+      removeItemButton: true,
+      placeholder: true,
+      placeholderValue: "Enter category name",
     });
     categoriesSelector.addEventListener('change', function(e) {
       e.preventDefault();
