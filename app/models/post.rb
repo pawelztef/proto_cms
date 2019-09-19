@@ -25,6 +25,7 @@ class Post < ApplicationRecord
     return stats
   end
 
+  # TODO change permalink post field to slug
   def to_param
     permalink
   end
