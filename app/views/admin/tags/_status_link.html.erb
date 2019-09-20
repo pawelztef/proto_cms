@@ -1,0 +1,5 @@
+<li>
+ <%= link_to  admin_tag_path(@admin_tag.slug, status: status), class: current_status?(status)  do %>
+   <span><%= "#{status} (#{@admin_tag_stats[status]})" %><span>
+ <% end %> 
+</li>

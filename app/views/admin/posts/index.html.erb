@@ -44,7 +44,7 @@
                 <%# TODO assotioation with author %>
                 <td><%= "John Doe" %></td>
                 <td><%= generate_categories_labels(admin_post) %></td>
-                <td><%= admin_post.title %></td>
+                <td><%= generate_tags_labels(admin_post) %></td>
                 <td><%= standard_date(admin_post.updated_at) %></td>
                 <td>
                   <% if can?(:update, Post) || can?(:destroy, Post) %>

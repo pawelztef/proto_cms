@@ -1,9 +1,73 @@
-<p id="notice"><%= notice %></p>
+<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+  <div class="uk-card uk-card-default uk-card-small">
+    <div class="uk-card-header">
+      <div class="uk-grid uk-grid-small">
+        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %></div></div>
+        <div class="uk-width-expand uk-text-right panel-icons">
+          <% if can? :create, Post %>
+            <a href= <%= admin_tags_path %> class="uk-icon-link" title="Back" data-uk-tooltip data-uk-icon="icon: arrow-left"></a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="uk-card-body">
 
-<p>
-  <strong>Name:</strong>
-  <%= @admin_tag.name %>
-</p>
 
-<%= link_to 'Edit', edit_admin_tag_path(@admin_tag) %> |
-<%= link_to 'Back', admin_tags_path %>
+      <ul class="pz-tab">
+        <%= render partial: 'status_link', collection: generate_tabs_collection, as: :status %>
+      </ul> 
+
+      <table class="uk-table uk-table-justify uk-table-divider">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Categories</th>
+            <th>Tags</th>
+            <th>Updated at</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @admin_tag_posts.blank? %>
+            <tr>
+              <td colspan="7" class="uk-text-center">
+                No data!
+              </td>
+            </tr>
+          <% else %>
+            <% @admin_tag_posts.each do |admin_post| %>
+              <tr>
+                <td><%= generate_status_label(admin_post) %></td>
+                <td><%= admin_post.title %></td>
+                <%# TODO assotioation with author %>
+                <td><%= "John Doe" %></td>
+                <td><%= generate_categories_labels(admin_post) %></td>
+                <td><%= generate_tags_labels(admin_post) %></td>
+                <td><%= standard_date(admin_post.updated_at) %></td>
+                <td>
+                  <% if can?(:update, Post) || can?(:destroy, Post) %>
+                    <ul class="uk-iconnav">
+                      <% if can? :update, Post %>
+                        <li><a href="<%= edit_admin_post_path(admin_post.permalink) %>" uk-icon="icon: file-edit"></a></li>
+                      <% end %>
+                      <% if can? :destroy, Post %>
+                        <li><a href= <%= admin_post_path(admin_post.id)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                      <% end %>
+                    </ul>
+                  <% else %>
+                    <ul class="uk-iconnav">
+                      <li>Not authorized</li>
+                    </ul>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

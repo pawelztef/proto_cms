@@ -1,0 +1,5 @@
+<li>
+ <%= link_to  admin_category_path(@admin_category.slug, status: status), class: current_status?(status)  do %>
+   <span><%= "#{status} (#{@admin_category_stats[status]})" %><span>
+ <% end %> 
+</li>

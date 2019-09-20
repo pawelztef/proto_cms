@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_200859) do
+ActiveRecord::Schema.define(version: 2019_08_29_200044) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -86,6 +86,13 @@ ActiveRecord::Schema.define(version: 2019_08_27_200859) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "singleton_guard", default: 0
+  end
+
+  create_table "tagizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

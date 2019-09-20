@@ -9,6 +9,9 @@ class Admin::TagsController < Admin::AdminsController
   end
 
   def show
+    @title = "Tag: #{@admin_tag.name}"
+    @admin_tag_posts = @admin_tag.search_by_status(params[:status])
+    @admin_tag_stats = @admin_tag.get_stats
   end
 
   def new
@@ -48,7 +51,7 @@ class Admin::TagsController < Admin::AdminsController
 
   private
   def set_admin_tag
-    @admin_tag = Tag.find(params[:id])
+    @admin_tag = Tag.find_by_slug!(params[:id])
   end
 
   def admin_tag_params

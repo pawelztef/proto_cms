@@ -9,6 +9,10 @@ class Admin::CategoriesController < Admin::AdminsController
   end
 
   def show
+    # TODO Think about changing attributes of Post Page Category and Tag omodels as such to mach one unified names. e.g. name or title.
+    @title = "Category: #{@admin_category.name}"
+    @admin_category_posts = @admin_category.search_by_status(params[:status])
+    @admin_category_stats = @admin_category.get_stats
   end
 
   def new
@@ -48,7 +52,7 @@ class Admin::CategoriesController < Admin::AdminsController
 
   private
   def set_admin_category
-    @admin_category = Category.find(params[:id])
+    @admin_category = Category.find_by_slug!(params[:id])
   end
 
   def admin_category_params

@@ -16,10 +16,15 @@
 <%= content_for :right_column  do %>
   <div class="uk-width-large admin__right_column" >
     <div class="uk-card uk-card-small uk-card-header uk-card-default ">
-      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Config</div></div>
+      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Categories and Tags</div></div>
     </div>
-    <div class="uk-card uk-card-default uk-card-body">
+    <div class="uk-card uk-card-default uk-card-body uk-padding">
+      <label class="uk-form-label">Categories</label>
       <%= render 'categories_form' %>
+    </div>
+    <div class="uk-card uk-card-default uk-card-body uk-padding-remove-top">
+      <label class="uk-form-label">Tags</label>
+      <%= render 'tags_form' %>
     </div>
   </div>
 <% end %>

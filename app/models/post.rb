@@ -1,6 +1,8 @@
 class Post < ApplicationRecord
   has_many :categorizations
   has_many :categories, :through => :categorizations
+  has_many :tagizations
+  has_many :tags, :through => :tagizations
 
 
   enum status: ContentStatus::STATUSES
@@ -23,6 +25,7 @@ class Post < ApplicationRecord
     return stats
   end
 
+  # TODO change permalink post field to slug
   def to_param
     permalink
   end

@@ -1,12 +1,15 @@
 require('./slugify.js');
 const categoriesMultiselect = require('./categories.js');
+const tagsMultiselect = require('./tags.js');
 
 $(() => {
   generatePassword();
   avatarCustomUploadButton();
   createPageSlug();
+  createTagSlug();
   createCategorySlug();
-  categoriesMultiselect();
+  createTagsMultiselect();
+  createCategoriesMultiselect();
 });
 
 
@@ -15,11 +18,23 @@ let createPageSlug = function() {
   let slugName = document.getElementById("page_permalink");
   window.Pz.slugify(pageName, slugName);
 }
-
 let createCategorySlug = function() {
   var inputSource = document.querySelector('#category_name');
   var inputTarget = document.querySelector('#category_slug');
   window.Pz.slugify(inputSource, inputTarget);
+}
+let createTagSlug = function() {
+  var inputSource = document.querySelector('#tag_name');
+  var inputTarget = document.querySelector('#tag_slug');
+  window.Pz.slugify(inputSource, inputTarget);
+}
+let createTagsMultiselect = function() {
+  const tags = gon.post_tags;
+  tagsMultiselect(tags);
+}
+let createCategoriesMultiselect = function() {
+  const categories = gon.post_categories;
+  categoriesMultiselect(categories);
 }
 
   <%# TODO Extract methods to separate files %>
