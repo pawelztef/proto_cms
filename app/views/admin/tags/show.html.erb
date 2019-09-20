@@ -30,14 +30,14 @@
           </tr>
         </thead>
         <tbody>
-          <% if @admin_category_posts.blank? %>
+          <% if @admin_tag_posts.blank? %>
             <tr>
               <td colspan="7" class="uk-text-center">
                 No data!
               </td>
             </tr>
           <% else %>
-            <% @admin_category_posts.each do |admin_post| %>
+            <% @admin_tag_posts.each do |admin_post| %>
               <tr>
                 <td><%= generate_status_label(admin_post) %></td>
                 <td><%= admin_post.title %></td>
