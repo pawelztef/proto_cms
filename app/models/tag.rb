@@ -1,4 +1,6 @@
 class Tag < ApplicationRecord
+  has_many :tagizations
+  has_many :posts, :through => :tagizations
   enum status: ContentStatus::STATUSES
 
   def get_stats

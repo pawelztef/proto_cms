@@ -19,7 +19,7 @@
       <% @admin_tags.each do |admin_tag| %>
         <tr>
           <td><%= admin_tag.id %></td>
-          <td><%= admin_tag.name %></td>
+          <td><%= link_to admin_tag.name, admin_tag_path(admin_tag) %></td>
           <td><%= truncate(admin_tag.description, length: 25) %></td>
           <td><%= admin_tag.slug %></td>
           <td>

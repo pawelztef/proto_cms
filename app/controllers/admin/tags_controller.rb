@@ -51,7 +51,7 @@ class Admin::TagsController < Admin::AdminsController
 
   private
   def set_admin_tag
-    @admin_tag = Tag.find(params[:id])
+    @admin_tag = Tag.find_by_slug!(params[:id])
   end
 
   def admin_tag_params
