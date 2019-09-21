@@ -7,6 +7,7 @@ import './modal.scss';
 import './photo_editor.scss';
 import './posts.scss';
 import './choices.scss';
+import './trix.css';
 
 import './front/content.scss';
 import './front/featured.scss';

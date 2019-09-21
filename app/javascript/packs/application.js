@@ -27,7 +27,8 @@ require('packs/modal.js');
 require('packs/slugify.js');
 require('packs/images_upload.js');
 require('packs/image_edit.js.erb');
-require('packs/trix_editor.js.erb');
+require('packs/trix_conf.js.erb');
+require('packs/trix.js');
 
 require.context('../images', true);
 
