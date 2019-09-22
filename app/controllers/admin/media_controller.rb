@@ -1,7 +1,7 @@
 class Admin::MediaController < Admin::AdminsController
   before_action :set_title
   before_action :set_media, only: [:destroy, :edit]
-  before_action :all_media, only: [:destroy, :index, :create]
+  before_action :all_media, only: [:destroy, :index, :create, :gallery]
 
 
   def index
@@ -12,7 +12,6 @@ class Admin::MediaController < Admin::AdminsController
   end
 
   def gallery
-    byebug
     respond_to do |format|
       format.js {render layout: false }
       format.html

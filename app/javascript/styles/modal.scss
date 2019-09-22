@@ -17,7 +17,20 @@
   box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 
   0 7px 20px 0 rgba(0,0,0,0.17);
 }
-
+#gallery-modal {
+  .pz-modal-content {
+    width: 80%;
+    .pz-modal-body {
+      padding: 0;
+      margin: -20px 0;
+      background-color: #f4f4f4;
+    }
+  }
+}
+.admin__media_target-container {
+  overflow: auto;
+  height: 60vh;
+}
 .pz-modal-header {
   padding: 15px 30px;
   border-bottom: 1px solid #e5e5e5;
@@ -38,7 +51,7 @@
   float: right;
   font-size: 30px;
   &:hover, &:focus {
-  color: lighten(#222A30, 20%);
+    color: lighten(#222A30, 20%);
     text-decoration: none;
     cursor: pointer;
   }

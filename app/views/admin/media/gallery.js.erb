@@ -1,0 +1,6 @@
+document.getElementById("admin__gallery_modal-target-container").innerHTML = "<%= j render "gallery_media_modal", media: @all_media %>";
+
+var attachmentModal = document.getElementById("gallery-modal");
+var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
+
+window.Pz.modal(attachmentModal, modalCloseBtn);

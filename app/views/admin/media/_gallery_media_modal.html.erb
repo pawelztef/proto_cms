@@ -1,0 +1,56 @@
+<div id="gallery-modal" class="pz-modal" >
+  <div class="pz-modal-content">
+    <div class="pz-modal-header">
+      <div class="uk-flex uk-flex-between">
+        <span class="uk-text-lead"><%= @title  %></span>
+        <ul class="uk-iconnav">
+          <span uk-icon="close" class="pz-modal-close-btn"></span>
+        </ul>
+      </div>
+    </div>
+    <div class="pz-modal-body">
+      <div class="uk-card-body">
+        <section class="uk-section uk-section-small uk-section-default uk-padding-remove-bottom">
+          <div class="uk-container uk-container-expand uk-margin-large-bottom">
+            <div class="uk-grid-divider" uk-grid>
+              <div class="uk-width-expand@m">
+                <div id="admin__media_target-container" class="uk-grid uk-grid-small uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l  uk-child-width-1-7@xl uk-grid-match js-filter" data-uk-grid="masonry: true" data-uk-sortable="handle: .drag-icon">
+                  <% media.each do |medium| %>
+                    <!-- card -->
+                    <div class="nature-card" data-tags="a beautiful landscape - nature outdoor">
+                      <div class="uk-card uk-card-small uk-card-default">
+                        <div class="uk-card-media">
+                          <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
+                            <% if medium.attachment.attached? %>
+                              <%= image_tag medium.attachment, class: "lazy" if medium.attachment.attached? %>
+                            <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- /card -->
+                  <% end %>
+                </div>
+              </div>
+              <div class="uk-width-1-3@m">
+                <ul uk-tab uk-switcher>
+                  <li class="uk-active"><a href="">One</a></li>
+                  <li><a href="">Two</a></li>
+                </ul>
+                <ul class="uk-switcher uk-margin">
+                  <li>Hello!</li>
+                  <li>Hello again!</li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="pz-modal-footer">
+      <div class="uk-flex uk-flex-between">
+      </div>
+    </div>
+  </div>
+</div>
