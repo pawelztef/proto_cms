@@ -1,5 +1,12 @@
-document.addEventListener("trix-action-invoke", function(event) {
+import Rails from 'rails-ujs';
+$(() => {
+  document.addEventListener("trix-action-invoke", function(event) {
     if(event.actionName === "x-attachFiles"){
-        console.log("Log called");  
+      Rails.ajax({
+        url: "admin/media/gallery",
+        type: "get"
+      });
+      <%# console.log("Log called"); %>  
     }
+  })
 })

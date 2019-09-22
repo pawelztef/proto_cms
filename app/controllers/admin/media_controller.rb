@@ -11,12 +11,21 @@ class Admin::MediaController < Admin::AdminsController
     end
   end
 
+  def gallery
+    byebug
+    respond_to do |format|
+      format.js {render layout: false }
+      format.html
+    end
+  end
+
   def new
     @media = Media.new
   end
 
   def create
     # TODO use sanitaize params
+     byebug
     @media = Media.new
     @media.attachment = params[:files][0]
     @media.title = params[:files][0].original_filename
@@ -38,9 +47,6 @@ class Admin::MediaController < Admin::AdminsController
   def update_image
     @media = Media.find(params[:media_id])
     @media.crop_and_save_with_options("new_file", params[:image])
-    # respond_to do |format|
-    #   format.js {redirect_to admin_media_index_path}
-    # end
   end
 
   def destroy
