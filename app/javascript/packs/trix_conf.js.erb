@@ -3,7 +3,7 @@ $(() => {
   document.addEventListener("trix-action-invoke", function(event) {
     if(event.actionName === "x-attachFiles"){
       Rails.ajax({
-        url: "admin/media/gallery",
+        url: "/admin/media/gallery",
         type: "get"
       });
       <%# console.log("Log called"); %>  
