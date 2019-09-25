@@ -29,6 +29,7 @@ require('packs/images_upload.js');
 require('packs/image_edit.js.erb');
 require('packs/trix_conf.js.erb');
 require('packs/trix.js');
+require('packs/media.js.erb');
 
 require.context('../images', true);
 

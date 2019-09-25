@@ -3,6 +3,15 @@
 #content > div > div > div.uk-width-medium.admin__right_column > div.uk-card.uk-card-large.uk-card-header.uk-card-default {
   padding: 36px;
 }
+
+.uk-card-media {
+  // cursor: pointer;
+}
+
+#content > div > div > div.uk-width-large.admin__right_column > div:nth-child(2) {
+    margin-top: 30px;
+}
+
 .uk-card-title {
   font-size: 18px;
   span.uk-icon {
@@ -12,3 +21,13 @@
 
   }
 }
+
+.uk-overlay {
+  padding: 15px 20px;
+}
+
+.show-modal {
+  padding: 0;
+}
+
+

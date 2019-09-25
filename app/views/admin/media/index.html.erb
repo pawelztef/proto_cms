@@ -21,11 +21,22 @@
 
 <%= content_for :right_column  do %>
   <div class="uk-width-large admin__right_column" >
-    <div class="uk-card uk-card-small uk-card-header uk-card-default ">
-      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Upload Media</div></div>
+    <div class="pz-card-wrapper">
+      <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Upload Media</div></div>
+      </div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <%= render 'form' %>
+      </div>
     </div>
-    <div class="uk-card uk-card-default uk-card-body">
-      <%= render 'form' %>
+    <div class="pz-card-wrapper">
+      <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="info"></span>Media Info</div></div>
+      </div>
+      <div class="uk-card uk-card-default uk-card-body">
+        <div>Ipsum blanditiis sed eum temporibus voluptas odio? Natus quasi fugiat obcaecati sint expedita. At quia enim nesciunt eos dolore nemo Explicabo illum libero consectetur cum similique? Consequatur facilis enim et tenetur vel eligendi? Nobis ad sunt consectetur commodi eum Doloremque ea esse officiis autem unde eligendi repellat? Suscipit porro sed</div>
+        <%# <%= render 'form' %1> %>
+      </div>
     </div>
   </div>
 <% end %>

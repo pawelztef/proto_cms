@@ -1,0 +1,11 @@
+$(() => { 
+  const mediaCards = document.getElementsByClassName("uk-card-media");
+  if(mediaCards != null) {
+    Array.from(mediaCards).forEach((card) => {
+      card.addEventListener('click', function(e) {
+        const dataImageId = this.querySelector("img:first-of-type").getAttribute("data-image-id")
+
+      })
+    })
+  }
+})
