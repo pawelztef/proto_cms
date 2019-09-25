@@ -18,8 +18,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :media do
-      post "update_image", constraints: { format: 'json' }
+      get 'stats', on: :member
       get "gallery", on: :collection
+      post "update_image", constraints: { format: 'json' }
     end
     resources :categories
     resources :tags

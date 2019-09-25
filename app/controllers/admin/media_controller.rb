@@ -21,7 +21,7 @@ class Admin::MediaController < Admin::AdminsController
   end
 
   def stats
-    byebug
+    @media = Media.find(params[:id])
     respond_to do |format|
       format.js {render layout: false }
       format.html
