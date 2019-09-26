@@ -1,0 +1,16 @@
+#media-metadata {
+  div { margin: 5px 0 }
+}
+#media-url {
+  a{
+    word-break: break-all;
+  }
+}
+#admin_media_wrapper-container {
+  height: 80vh;
+  overflow: scroll;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-right: 20px;
+  overflow-x: hidden;
+}

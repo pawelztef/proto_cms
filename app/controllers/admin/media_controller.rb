@@ -5,7 +5,6 @@ class Admin::MediaController < Admin::AdminsController
 
 
   def index
-    gon.allMedia = @all_media
     respond_to do |format|
       format.js {render layout: false }
       format.html
@@ -22,6 +21,7 @@ class Admin::MediaController < Admin::AdminsController
 
   def stats
     @media = Media.find(params[:id])
+    @media_metadata = @media.media_metadata
     respond_to do |format|
       format.js {render layout: false }
       format.html

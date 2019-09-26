@@ -77,7 +77,6 @@ $(() => {
       }
       saveButton.addEventListener('click', function(e) {
         var myData = {"image": cropper.getData()};
-        console.log(myData);
         fetch("/admin/media/" + mediaId + "/update_image", {
           method: 'post',
           body: JSON.stringify(myData),
@@ -93,7 +92,6 @@ $(() => {
           });
           document.querySelector('.pz-modal').style.display = 'none'; 
         }).then(function(data) {
-          console.log(data);
         });
       });
     }

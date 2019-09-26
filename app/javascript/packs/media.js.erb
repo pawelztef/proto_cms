@@ -1,15 +1,35 @@
 import Rails from 'rails-ujs';
 $(() => { 
-  const mediaCards = document.getElementsByClassName("uk-card-media");
-  if(mediaCards != null) {
-    Array.from(mediaCards).forEach((card) => {
-      card.addEventListener('click', function(e) {
-        const dataImageId = this.querySelector("img:first-of-type").getAttribute("data-image-id")
-        Rails.ajax({
-          url: "/admin/media/" + dataImageId + "/stats",
-          type: "get"
-        });
+
+    const deleteLinks = document.getElementsByClassName("pz-delete-media");
+    if(deleteLinks != null) {
+      Array.from(deleteLinks).forEach((link) => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          const ln = link.getAttribute("href");
+          Rails.ajax({
+            url: ln, 
+            type: "delete",
+            success: function(data) {
+              console.log('delete success');
+            },
+          });
+        })
       })
-    })
-  }
+    }
+
+    const mediaCards = document.getElementsByClassName("uk-card-media");
+    if(mediaCards != null) {
+      Array.from(mediaCards).forEach((card) => {
+        card.addEventListener('click', function(e) {
+          const dataImageId = this.querySelector("img:first-of-type").getAttribute("data-image-id")
+          Rails.ajax({
+            url: "/admin/media/" + dataImageId + "/stats",
+            type: "get"
+          });
+        })
+      })
+    }
+
 })

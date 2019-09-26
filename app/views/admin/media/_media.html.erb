@@ -13,7 +13,7 @@
                 <%= link_to edit_admin_media_path(media), remote: true, class: 'show-modal' do %>
                   <div data-uk-icon="icon:pencil; ratio: 1.0"></div>
                 <% end %>
-                <%= link_to  admin_media_path(media), method: :delete, remote: true do %>
+                <%= link_to  admin_media_path(media), method: :delete, remote: true, class: "pz-delete-media" do %>
                   <div data-uk-icon="icon:trash; ratio: 1.0"></div>
                 <% end %>
             </div>

@@ -1,6 +1,6 @@
 class Media < ApplicationRecord
-# include Rails.application.routes.url_helpers
-# Rails.application.routes.default_url_options[:host] = "localhost:3000"
+  include ActionView::Helpers::NumberHelper
+  include Rails.application.routes.url_helpers
   has_one_attached :attachment
 
 
@@ -27,9 +27,15 @@ class Media < ApplicationRecord
     #update media with new file
     self.attachment.attach(io: file, filename: filename)
     self.save!
+  end
 
-
-
+  def media_metadata
+    metadata = {}
+    metadata[:name] = self.title 
+    metadata[:url] = url_for(self.attachment)
+    metadata[:size] = number_to_human_size(self.attachment.byte_size) 
+    metadata[:dimension] = "#{self.attachment.metadata[:width]}x#{self.attachment.metadata[:height]}"
+    return metadata
   end
 
 end
