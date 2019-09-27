@@ -32,7 +32,7 @@ class Media < ApplicationRecord
   def media_metadata
     metadata = {}
     metadata[:name] = self.title 
-    metadata[:url] = url_for(self.attachment)
+    metadata[:url] = polymorphic_url(self.attachment, only_path: true)
     metadata[:size] = number_to_human_size(self.attachment.byte_size) 
     metadata[:dimension] = "#{self.attachment.metadata[:width]}x#{self.attachment.metadata[:height]}"
     return metadata

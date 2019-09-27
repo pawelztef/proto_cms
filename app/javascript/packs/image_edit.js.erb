@@ -88,7 +88,11 @@ $(() => {
         }).then(function(response) {
           Rails.ajax({
             url: "/admin/media",
-            type: "get"
+            type: "get",
+            success: () => {
+              mediaCards = document.getElementsByClassName("uk-card-media");
+              window.Pz.mediaCardsInit(mediaCards);
+            }
           });
           document.querySelector('.pz-modal').style.display = 'none'; 
         }).then(function(data) {

@@ -1,25 +1,8 @@
 import Rails from 'rails-ujs';
 $(() => { 
+  window.Pz = window.Pz || {}
 
-    const deleteLinks = document.getElementsByClassName("pz-delete-media");
-    if(deleteLinks != null) {
-      Array.from(deleteLinks).forEach((link) => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          const ln = link.getAttribute("href");
-          Rails.ajax({
-            url: ln, 
-            type: "delete",
-            success: function(data) {
-              console.log('delete success');
-            },
-          });
-        })
-      })
-    }
-
-    const mediaCards = document.getElementsByClassName("uk-card-media");
+  Pz.mediaCardsInit = function(mediaCards) {
     if(mediaCards != null) {
       Array.from(mediaCards).forEach((card) => {
         card.addEventListener('click', function(e) {
@@ -30,6 +13,9 @@ $(() => {
           });
         })
       })
+    } else {
+      console.log("media links not instantiated");
     }
+  }
 
 })

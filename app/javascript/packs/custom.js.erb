@@ -1,4 +1,6 @@
 require('./slugify.js');
+require('./ajax_links.js');
+require('./media.js');
 const categoriesMultiselect = require('./categories.js');
 const tagsMultiselect = require('./tags.js');
 
@@ -10,6 +12,8 @@ $(() => {
   createCategorySlug();
   createTagsMultiselect();
   createCategoriesMultiselect();
+  deleteLinksInit();
+  mediaCardsInit(); 
 });
 
 
@@ -37,19 +41,28 @@ let createCategoriesMultiselect = function() {
   categoriesMultiselect(categories);
 }
 
-  <%# TODO Extract methods to separate files %>
+let deleteLinksInit = function() {
+  deleteLinks = document.getElementsByClassName("pz-delete-media");
+  rest_method = "delete";
+  window.Pz.mediaDeleteLinksInit(deleteLinks, rest_method);
+}
 
-  let generatePassword = function() {
-    let passwordButton = document.getElementById("password_button");
-    if (passwordButton != null) {
-      passwordButton.addEventListener("click", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        let token = Math.random().toString(36).slice(2);
-        document.getElementById("user_password").value = token;
-      });
-    }
+let mediaCardsInit = function() {
+  mediaCards = document.getElementsByClassName("uk-card-media");
+  window.Pz.mediaCardsInit(mediaCards);
+}
+
+let generatePassword = function() {
+  let passwordButton = document.getElementById("password_button");
+  if (passwordButton != null) {
+    passwordButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      let token = Math.random().toString(36).slice(2);
+      document.getElementById("user_password").value = token;
+    });
   }
+}
 
 let avatarCustomUploadButton = function() {
   let avatarRealInput = document.getElementById("user_avatar");

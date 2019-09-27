@@ -45,7 +45,11 @@ $(() => {
       }, 1000);
       Rails.ajax({
         url: "/admin/media",
-        type: "get"
+        type: "get",
+        success: function() {
+          mediaCards = document.getElementsByClassName("uk-card-media");
+          window.Pz.mediaCardsInit(mediaCards);
+        }
       });
     }
   });

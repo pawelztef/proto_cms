@@ -1,5 +1,6 @@
 document.getElementById("admin__media_modal-target-container").innerHTML = "<%= j render "edit_media_modal", media: @media %>";
 
+
 var attachmentModal = document.getElementById("attachment-modal");
 var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
 mediaId = <%= @media.id %>;
