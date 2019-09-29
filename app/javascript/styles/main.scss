@@ -7,9 +7,8 @@
 .uk-card-media {
   // cursor: pointer;
 }
-
 #content > div > div > div.uk-width-large.admin__right_column > div:nth-child(2) {
-    margin-top: 30px;
+  // margin-top: 30px;
 }
 
 .uk-card-title {
@@ -28,6 +27,10 @@
 
 .show-modal {
   padding: 0;
+}
+
+.uk-overlay-primary {
+    background: rgba(0,0,0,.5)
 }
 
 

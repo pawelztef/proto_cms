@@ -1,12 +1,18 @@
 import Rails from 'rails-ujs';
+require('./media.js');
+
+
 $(() => {
   document.addEventListener("trix-action-invoke", function(event) {
     if(event.actionName === "x-attachFiles"){
       Rails.ajax({
         url: "/admin/media/gallery",
-        type: "get"
+        type: "get",
+        success: () => {
+          mediaCards = document.getElementsByClassName("uk-card-media");
+          window.Pz.mediaCardsInit(mediaCards);
+        }
       });
-      <%# console.log("Log called"); %>  
     }
   })
 })

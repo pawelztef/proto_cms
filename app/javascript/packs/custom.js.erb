@@ -42,9 +42,8 @@ let createCategoriesMultiselect = function() {
 }
 
 let deleteLinksInit = function() {
-  deleteLinks = document.getElementsByClassName("pz-delete-media");
-  rest_method = "delete";
-  window.Pz.mediaDeleteLinksInit(deleteLinks, rest_method);
+    deleteLinks = document.getElementsByClassName("pz-delete-media");
+  window.Pz.ajaxMediaDelete(deleteLinks);
 }
 
 let mediaCardsInit = function() {

@@ -20,8 +20,13 @@
           <div class="uk-width-expand" >
             <%= render "admin/shared/flash_messages" %>
             <%= yield %>
+            <%# TODO Refactor modal target containers %>
+            <div id="admin__gallery_modal-target-container"></div>
+            <div id="admin__media_modal-target-container"></div>
+            <div id="admin__tag_modal-target-container"></div>
+            <div id="admin__category_modal-target-container"></div>
           </div>
-            <%= yield :right_column %>
+          <%= yield :right_column %>
           <!-- /panel -->
         </div>
       </div>

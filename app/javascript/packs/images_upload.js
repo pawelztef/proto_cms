@@ -4,7 +4,7 @@ $(() => {
   var bar = document.getElementById('js-progressbar');
 
   UIkit.upload('.js-upload', {
-    url: '',
+    url: '/admin/media',
     type: 'text/javascript',
     multiple: true,
     beforeSend: function () {

@@ -13,6 +13,7 @@ class Admin::MediaController < Admin::AdminsController
 
 
   def gallery
+    @title = "Media Gallery"
     respond_to do |format|
       format.js {render layout: false }
       format.html
