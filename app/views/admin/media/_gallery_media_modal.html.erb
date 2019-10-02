@@ -11,8 +11,8 @@
     <div class="pz-modal-body">
       <div class="uk-card-body uk-margin-left uk-margin-right">
         <section class="uk-section uk-section-small uk-section-default uk-padding-remove-bottom">
-          <div class="uk-container uk-container-expand uk-margin-large-bottom">
-            <div class="uk-grid-divider" uk-grid>
+          <div class="uk-container uk-container-expand uk-margin-medium-bottom">
+            <div class="uk-grid-divider uk-grid-small" uk-grid>
               <div class="uk-width-expand@m">
                 <section id="admin_media_wrapper-container" class="uk-section uk-section-small uk-section-default uk-padding-remove-bottom">
                   <div class="uk-container uk-container-expand uk-margin-large-bottom">
@@ -24,31 +24,38 @@
               </div>
               <div class="uk-width-1-3@m">
                 <div class="uk-width-large admin__right_column" >
-                  <div class="pz-card-wrapper">
-                    <div class="uk-card uk-card-small uk-card-header uk-card-default ">
-                      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span>Upload Media</div></div>
-                    </div>
-                    <div class="uk-card uk-card-default uk-card-body">
-                      <div class="js-upload uk-placeholder uk-text-center">
-                        <span uk-icon="icon: cloud-upload"></span>
-                        <span class="uk-text-middle">Attach binaries by dropping them here or</span>
-                        <div uk-form-custom>
-                          <input type="file" multiple>
-                          <span class="uk-link">selecting one</span>
+                  <ul uk-tab uk-switcher>
+                    <li class="uk-active"><a href="#"><div class="uk-card-title"><span uk-icon="info"></span>Media Info</div></a></li>
+                    <li><a href="#"><div class="uk-card-title"><span uk-icon="cog"></span>Upload Media</div></a></li>
+                  </ul>
+                  <ul class="uk-switcher">
+                    <li>
+                      <div class="pz-card-wrapper">
+                        <div class="uk-card uk-card-default uk-card-body">
+                          <div id="media-metadata">
+                            <div id="media-metadata">
+                              <span class="uk-text-meta">No selected attachemnt.</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
-                    </div>
-                  </div>
-                  <div class="pz-card-wrapper">
-                    <div class="uk-card uk-card-small uk-card-header uk-card-default ">
-                      <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="info"></span>Media Info</div></div>
-                    </div>
-                    <div class="uk-card uk-card-default uk-card-body">
-                      <div id="media-metadata">
+                    </li>
+                    <li>
+                      <div class="pz-card-wrapper">
+                        <div class="uk-card uk-card-default uk-card-body">
+                          <div class="js-upload uk-placeholder uk-text-center">
+                            <span uk-icon="icon: cloud-upload"></span>
+                            <span class="uk-text-middle">Attach binaries by dropping them here or</span>
+                            <div uk-form-custom>
+                              <input type="file" multiple>
+                              <span class="uk-link">selecting one</span>
+                            </div>
+                          </div>
+                          <progress id="js-progressbar" class="uk-progress" value="0" max="100" hidden></progress>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -58,8 +65,9 @@
     </div>
     <div class="pz-modal-footer">
       <div class="uk-flex uk-flex-between">
+        <button class="uk-button uk-button-primary">Primary</button>
       </div>
     </div>
   </div>
 </div>
-  
+

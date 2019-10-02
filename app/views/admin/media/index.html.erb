@@ -30,15 +30,20 @@
       </div>
     </div>
     <div class="pz-card-wrapper uk-margin-top">
-      <div class="uk-card uk-card-small uk-card-header uk-card-default ">
-        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="info"></span>Media Info</div></div>
+      <div class="uk-card uk-card-small uk-card-header uk-card-default uk-flex uk-flex-between">
+        <div class="uk-width-auto">
+          <div class="uk-card-title"><span uk-icon="info"></span>Media Info</div>
+        </div>
+        <ul class="uk-iconnav">
+          <li><a href="#" id="media-info-refresh-link" uk-icon="icon: refresh" uk-tooltip="Refresh"></a></li>
+        </ul>
       </div>
-      <div class="uk-card uk-card-default uk-card-body">
+      <div class="uk-card uk-card-default uk-padding-remove-top uk-card-body">
         <div id="media-metadata">
+          <span class="uk-text-meta">No selected attachemnt.</span>
         </div>
       </div>
     </div>
   </div>
 <% end %>
 
-<div id="admin__media_modal-target-container" class="pz-modal-container"></div>

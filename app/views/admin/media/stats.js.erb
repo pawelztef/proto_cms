@@ -1,6 +1,7 @@
 document.getElementById('media-metadata').innerHTML = '\
-  <div id="media-image"> <%= image_tag @media.attachment.variant(combine_options: { resize: "100x100", extent: "100x100", background: "white", gravity: "center"}) %> </div> \
+  <div id="media-image" data-media-id="<%= @media_metadata[:id] %>" > <%= image_tag @media.attachment.variant(combine_options: { resize: "100x100", extent: "100x100", background: "white", gravity: "center"}) %> </div> \
   <div id="media-title"><span class="uk-text-bold">Name:</span> <%= @media_metadata[:name] %></div> \
   <div id="media-url"><span class="uk-text-bold">Url:</span> <a href= <%= @media_metadata[:url] %> target="_blank" class="uk-text-small" > <%= @media_metadata[:url] %></a></div> \
   <div id="media-size"><span class="uk-text-bold">Size:</span> <%= @media_metadata[:size] %></div> \
-  <div id="media-dimension"><span class="uk-text-bold">Dimension:</span> <%= @media_metadata[:dimension] %></div>'
+  <div id="media-dimension"><span class="uk-text-bold">Dimension:</span> <%= @media_metadata[:dimension] %></div> \
+  <a class="show-modal uk-button uk-button-primary uk-button-small uk-margin-top" data-remote="true" href="/admin/media/<%= @media_metadata[:id] %>/edit">Edit Selected</a> '

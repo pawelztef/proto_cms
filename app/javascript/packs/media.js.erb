@@ -13,8 +13,11 @@ $(() => {
             url: ln, 
             type: 'delete',
             success: function(data) {
+              console.log('1');
               mediaCards = document.getElementsByClassName("uk-card-media");
               window.Pz.mediaCardsInit(mediaCards);
+              window.Pz.clearMediaStatsCard();
+              window.Pz.mediaInfoRefresh();
             },
           });
         })
@@ -51,4 +54,41 @@ $(() => {
     }
   }
 
+  Pz.mediaInfoRefresh = function() {
+    const refreshLink = document.getElementById('media-info-refresh-link');
+    if(refreshLink != null) {
+      refreshLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const  mediaImage = document.querySelector('#media-image');
+        if(mediaImage != null) {
+          const dataMediaId = mediaImage.getAttribute("data-media-id");
+          Rails.ajax({
+            url: "/admin/media/" +  dataMediaId + "/stats",
+            type: "get",
+            error: () => {
+              Pz.clearMediaStatsCard();
+            }
+          });
+        } else {
+          const feedback = document.createElement("span");
+          feedback.className = "uk-text-meta";
+          Pz.clearMediaStatsCard();
+        }
+      });
+    }
+  }
+
+  Pz.clearMediaStatsCard = () => {
+    const feedback = document.createElement("span");
+    feedback.className = "uk-text-meta";
+    feedback.innerHTML = "No selected attachment";
+    const feedbackCon = document.getElementById('media-metadata');
+    feedbackCon.innerHTML = "";
+    feedbackCon.appendChild(feedback);
+    console.log(feedbackCon);
+    console.log(feedback);
+  }
 })
+
+

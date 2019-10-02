@@ -92,6 +92,8 @@ $(() => {
             success: () => {
               mediaCards = document.getElementsByClassName("uk-card-media");
               window.Pz.mediaCardsInit(mediaCards);
+              window.Pz.clearMediaStatsCard();
+              window.Pz.mediaInfoRefresh();
             }
           });
           document.querySelector('#attachment-modal').style.display = 'none'; 

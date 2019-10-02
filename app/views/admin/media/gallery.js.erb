@@ -1,16 +1,17 @@
 document.getElementById("admin__gallery_modal-target-container").innerHTML = "<%= j render "gallery_media_modal", media: @all_media %>";
 
+var bar = document.getElementById('js-progressbar');
 var attachmentModal = document.getElementById("gallery-modal");
 var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
-
-deleteLinks = document.getElementsByClassName("pz-delete-media");
-window.Pz.ajaxMediaDelete(deleteLinks);
+var deleteLinks = document.getElementsByClassName("pz-delete-media");
+var mediaCards = document.getElementsByClassName("uk-card-media");
 
 window.Pz.modal(attachmentModal, modalCloseBtn);
+window.Pz.ajaxMediaDelete(deleteLinks);
+window.Pz.mediaInfoRefresh();
+window.Pz.mediaCardsInit(mediaCards);
 
 
-
-var bar = document.getElementById('js-progressbar');
 
 UIkit.upload('.js-upload', {
   url: '/admin/media',
