@@ -34,7 +34,8 @@
     </div>
     <div class="uk-width-1-1">
       <div class="uk-margin-small">
-        <%= f.input :content, as: :hidden %>
+        <%# <%= f.input :content, as: :hidden %1> %>
+        <%= f.input :content %>
         <trix-editor input="post_content"></trix-editor>
       </div>
       <%= submit_tag :submit, class: "uk-button uk-button-primary uk-margin-top" %>

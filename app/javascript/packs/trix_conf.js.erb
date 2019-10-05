@@ -1,8 +1,7 @@
 import Rails from 'rails-ujs';
 require('./media.js');
-
-
 $(() => {
+  // add attachment button
   document.addEventListener("trix-action-invoke", function(event) {
     if(event.actionName === "x-attachFiles"){
       Rails.ajax({
@@ -15,4 +14,43 @@ $(() => {
       });
     }
   })
-})
+
+
+
+  <%# function uploadAttachment(attachment) { %>
+  <%#   fetch("/admin/media", { %>
+  <%#     method: 'post', %>
+  <%#     body: JSON.stringify(myData), %>
+  <%#     headers: { %>
+  <%#       'Content-Type': 'application/json', %>
+  <%#       'X-CSRF-Token': Rails.csrfToken() %>
+  <%#     }, %>
+  <%#     credentials: 'same-origin' %>
+  <%#   }).then(function(response) { %>
+  <%#     Rails.ajax({ %>
+  <%#       url: "/admin/media", %>
+  <%#       type: "get", %>
+  <%#       success: () => { %>
+  <%#         mediaCards = document.getElementsByClassName("uk-card-media"); %>
+  <%#         window.Pz.mediaCardsInit(mediaCards); %>
+  <%#         window.Pz.clearMediaStatsCard(); %>
+  <%#         window.Pz.mediaInfoRefresh(); %>
+  <%#       } %>
+  <%#     }); %>
+  <%#   } %>
+
+
+      document.addEventListener("trix-attachment-add", function(event) {
+        var attachment = event.attachment;
+
+        if(attachment.file) {
+          console.log(attachment.file);
+        }
+
+      });
+
+
+
+
+
+  })

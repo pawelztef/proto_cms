@@ -57,3 +57,13 @@ UIkit.upload('.js-upload', {
   }
 });
 
+
+  var button = document.getElementById('insert-media-button');
+  if(button) {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementsByTagName('trix_editor')[0];
+      console.log('now');
+    });
+  }
