@@ -16,7 +16,6 @@
 // const imagePath = (name) => images(name, true)
 
 import Rails from 'rails-ujs';
-
 Rails.start();
 
 
@@ -30,9 +29,16 @@ require('packs/image_edit.js.erb');
 require('packs/trix_conf.js.erb');
 require('packs/trix.js');
 require('packs/media.js.erb');
+require('packs/ckeditor.js');
+
 
 require.context('../images', true);
 
 $(() => { 
+  CKEDITOR.replace( 'post_content', {
+    customConfig: '.ckeditor.js'
+  });
+
+
 
 })
