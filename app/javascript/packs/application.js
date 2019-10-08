@@ -29,6 +29,7 @@ require('packs/image_edit.js.erb');
 require('packs/trix_conf.js.erb');
 require('packs/trix.js');
 require('packs/media.js.erb');
+require('packs/ckeditor_media.js.erb');
 require('packs/ckeditor.js');
 
 
@@ -36,7 +37,8 @@ require.context('../images', true);
 
 $(() => { 
   CKEDITOR.replace( 'post_content', {
-    customConfig: '.ckeditor.js'
+    customConfig: 'ckeditor.js',
+    allowedContent: true
   });
 
 

@@ -1,6 +1,6 @@
 $(() => {
   window.Pz = window.Pz || {};
-  
+
   Pz.modal = function(modal, modalCloseBtn) {
     if(modalCloseBtn != null) {
       modalCloseBtn.addEventListener('click', function() {
@@ -13,4 +13,10 @@ $(() => {
       }
     });
   };
+
+  Pz.closeModal = function(modal) {
+    if(modal) {
+      modal.style.display = 'none';
+    }
+  }
 });

@@ -57,13 +57,17 @@ UIkit.upload('.js-upload', {
   }
 });
 
-
-  var button = document.getElementById('insert-media-button');
-  if(button) {
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      document.getElementsByTagName('trix_editor')[0];
-      console.log('now');
-    });
-  }
+var button = document.getElementById('insert-media-button');
+if(button) {
+  button.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    const mediaUrl = document.querySelector('#media-url').getElementsByTagName('a')[0].getAttribute('href');
+    const ckEditor = CKEDITOR.instances.post_content;
+    const html = "<img src='" + mediaUrl + "' />";
+    console.log(html);
+    const newElement = CKEDITOR.dom.element.createFromHtml( html, ckEditor.document );
+    ckEditor.insertElement( newElement );
+    window.Pz.closeModal(attachmentModal);
+  });
+}
