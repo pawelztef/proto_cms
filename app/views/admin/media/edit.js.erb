@@ -1,19 +1,15 @@
 document.getElementById("admin__media_modal-target-container").innerHTML = "<%= j render "edit_media_modal", media: @media %>";
 
-
-var deleteLinks = document.getElementsByClassName("pz-delete-media");
-var mediaCards = document.getElementsByClassName("uk-card-media");
+deleteLinks = document.getElementsByClassName("pz-delete-media");
+mediaCards = document.getElementsByClassName("uk-card-media");
+attachmentModal = document.getElementById("attachment-modal");
+modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
+mediaId = <%= @media.id %>;
 
 window.Pz.modal(attachmentModal, modalCloseBtn);
 window.Pz.ajaxMediaDelete(deleteLinks);
 window.Pz.mediaInfoRefresh();
 window.Pz.mediaCardsInit(mediaCards);
-
-var attachmentModal = document.getElementById("attachment-modal");
-var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
-mediaId = <%= @media.id %>;
-
-window.Pz.modal(attachmentModal, modalCloseBtn);
 window.Pz.image_edit(attachmentModal, mediaId);
 
 

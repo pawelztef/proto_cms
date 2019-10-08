@@ -1,16 +1,16 @@
 document.getElementById("admin__gallery_modal-target-container").innerHTML = "<%= j render "gallery_media_modal", media: @all_media %>";
 
-var bar = document.getElementById('js-progressbar');
-var attachmentModal = document.getElementById("gallery-modal");
-var modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
-var deleteLinks = document.getElementsByClassName("pz-delete-media");
-var mediaCards = document.getElementsByClassName("uk-card-media");
+bar = document.getElementById('js-progressbar');
+attachmentModal = document.getElementById("gallery-modal");
+modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
+deleteLinks = document.getElementsByClassName("pz-delete-media");
+mediaCards = document.getElementsByClassName("uk-card-media");
 
 window.Pz.modal(attachmentModal, modalCloseBtn);
 window.Pz.ajaxMediaDelete(deleteLinks);
 window.Pz.mediaInfoRefresh();
 window.Pz.mediaCardsInit(mediaCards);
-
+window.Pz.clearMediaStatsCard();
 
 
 UIkit.upload('.js-upload', {
@@ -54,10 +54,17 @@ UIkit.upload('.js-upload', {
       bar.setAttribute('hidden', 'hidden');
     }, 1000);
     window.Pz.ajaxMediaAll();
+    const mediaCards = document.getElementsByClassName("uk-card-media");
+    const deleteLinks = document.getElementsByClassName("pz-delete-media");
+    window.Pz.mediaCardsInit(mediaCards);
+    window.Pz.clearMediaStatsCard();
+    window.Pz.mediaInfoRefresh();
+    window.Pz.ajaxMediaDelete(deleteLinks);
   }
 });
 
 var button = document.getElementById('insert-media-button');
+
 if(button) {
   button.addEventListener('click', function(e) {
     e.preventDefault();
@@ -65,9 +72,9 @@ if(button) {
     const mediaUrl = document.querySelector('#media-url').getElementsByTagName('a')[0].getAttribute('href');
     const ckEditor = CKEDITOR.instances.post_content;
     const html = "<img src='" + mediaUrl + "' />";
-    console.log(html);
     const newElement = CKEDITOR.dom.element.createFromHtml( html, ckEditor.document );
     ckEditor.insertElement( newElement );
+    console.log(attachmentModal)
     window.Pz.closeModal(attachmentModal);
   });
 }

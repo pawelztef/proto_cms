@@ -46,9 +46,13 @@ $(() => {
       Rails.ajax({
         url: "/admin/media",
         type: "get",
-        success: function() {
-          mediaCards = document.getElementsByClassName("uk-card-media");
+        success: function(data) {
+          const mediaCards = document.getElementsByClassName("uk-card-media");
+          const deleteLinks = document.getElementsByClassName("pz-delete-media");
           window.Pz.mediaCardsInit(mediaCards);
+          window.Pz.clearMediaStatsCard();
+          window.Pz.mediaInfoRefresh();
+          window.Pz.ajaxMediaDelete(deleteLinks);
         }
       });
     }

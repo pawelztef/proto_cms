@@ -19,7 +19,7 @@ $(() => {
           dataHeight.innerHTML = (event.detail.height == 0) ? cropper.getImageData().naturalHeight : Math.ceil(event.detail.height);
           dataWidth.innerHTML = (event.detail.width == 0) ? cropper.getImageData().naturalWidth : Math.ceil(event.detail.width); 
         }
-      }
+     }
 
       const cropper = new Cropper(image, options);
 
@@ -90,11 +90,14 @@ $(() => {
           Rails.ajax({
             url: "/admin/media",
             type: "get",
-            success: () => {
-              mediaCards = document.getElementsByClassName("uk-card-media");
+            success: (data) => {
+          console.log(JSON.stringify(data));
+              const mediaCards = document.getElementsByClassName("uk-card-media");
+              const deleteLinks = document.getElementsByClassName("pz-delete-media");
               window.Pz.mediaCardsInit(mediaCards);
               window.Pz.clearMediaStatsCard();
               window.Pz.mediaInfoRefresh();
+              window.Pz.ajaxMediaDelete(deleteLinks);
             }
           });
           document.querySelector('#attachment-modal').style.display = 'none'; 

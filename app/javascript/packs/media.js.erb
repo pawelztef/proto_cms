@@ -15,10 +15,10 @@ $(() => {
             type: 'delete',
             success: function(data) {
               console.log('1');
-              mediaCards = document.getElementsByClassName("uk-card-media");
-              window.Pz.mediaCardsInit(mediaCards);
+              const mediaCards = document.getElementsByClassName("uk-card-media");
               window.Pz.clearMediaStatsCard();
               window.Pz.mediaInfoRefresh();
+              window.Pz.mediaCardsInit(mediaCards);
             },
           });
         })
@@ -33,7 +33,7 @@ $(() => {
       url: "/admin/media",
       type: "get",
       success: function() {
-        mediaCards = document.getElementsByClassName("uk-card-media");
+        const mediaCards = document.getElementsByClassName("uk-card-media");
         window.Pz.mediaCardsInit(mediaCards);
       }
     });
