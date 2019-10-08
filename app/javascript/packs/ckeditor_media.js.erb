@@ -1,10 +1,6 @@
-
 import Rails from 'rails-ujs';
-require('./media.js');
 
-
-
-$(() => { 
+const ckEditorInsertImage = function() {
   const addButton = document.querySelector('#add_media_to_editor')
   if(addButton) {
     addButton.addEventListener('click', (e) => {
@@ -19,29 +15,8 @@ $(() => {
       });
     });
   }
+};
 
+export default ckEditorInsertImage;
 
-    <%# function uploadAttachment(attachment) { %>
-      <%#   fetch("/admin/media", { %>
-      <%#     method: 'post', %>
-    <%#     body: JSON.stringify(myData), %>
-    <%#     headers: { %>
-      <%#       'Content-Type': 'application/json', %>
-    <%#       'X-CSRF-Token': Rails.csrfToken() %>
-    <%#     }, %>
-    <%#     credentials: 'same-origin' %>
-    <%#   }).then(function(response) { %>
-      <%#     Rails.ajax({ %>
-      <%#       url: "/admin/media", %>
-    <%#       type: "get", %>
-    <%#       success: () => { %>
-      <%#         mediaCards = document.getElementsByClassName("uk-card-media"); %>
-    <%#         window.Pz.mediaCardsInit(mediaCards); %>
-    <%#         window.Pz.clearMediaStatsCard(); %>
-    <%#         window.Pz.mediaInfoRefresh(); %>
-    <%#       } %>
-    <%#     }); %>
-    <%#   } %>
-
-});
 

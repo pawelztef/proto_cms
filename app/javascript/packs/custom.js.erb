@@ -1,8 +1,9 @@
-require('./slugify.js');
-require('./ajax_links.js');
-require('./media.js');
-const categoriesMultiselect = require('./categories.js');
-const tagsMultiselect = require('./tags.js');
+import './slugify.js';
+import './ajax_links.js';
+import './media.js';
+import categoriesMultiselect from './categories.js';
+import tagsMultiselect from './tags.js';
+import ckEditorInsertImage from './ckeditor_media.js.erb';
 
 $(() => {
   generatePassword();
@@ -15,6 +16,7 @@ $(() => {
   deleteLinksInit();
   mediaCardsInit(); 
   mediaInfoRefresh();
+  ckEditorInsertImage();
 });
 
 
@@ -43,12 +45,12 @@ let createCategoriesMultiselect = function() {
 }
 
 let deleteLinksInit = function() {
-    deleteLinks = document.getElementsByClassName("pz-delete-media");
+  const deleteLinks = document.getElementsByClassName("pz-delete-media");
   window.Pz.ajaxMediaDelete(deleteLinks);
 }
 
 let mediaCardsInit = function() {
-  mediaCards = document.getElementsByClassName("uk-card-media");
+  const mediaCards = document.getElementsByClassName("uk-card-media");
   window.Pz.mediaCardsInit(mediaCards);
 }
 
