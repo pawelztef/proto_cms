@@ -16,7 +16,11 @@
   width: 60%;
   box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 
   0 7px 20px 0 rgba(0,0,0,0.17);
+  .uk-card-body > div {
+    width: 100%;
+  }
 }
+
 #gallery-modal {
   .pz-modal-content {
     width: 80%;
@@ -27,10 +31,12 @@
     }
   }
 }
+
 .admin__media_target-container {
   overflow: auto;
   height: 60vh;
 }
+
 .pz-modal-header {
   padding: 20px 30px;
   border-bottom: 1px solid #e5e5e5;

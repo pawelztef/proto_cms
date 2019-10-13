@@ -1,8 +1,9 @@
 document.getElementById('media-metadata').innerHTML = '\
   <div id="media-image" data-media-id="<%= @media_metadata[:id] %>" > <%= image_tag @media.attachment.variant(combine_options: { resize: "100x100", extent: "100x100", background: "white", gravity: "center"}) %> </div> \
   <div id="media-title"><span class="uk-text-bold">Name:</span> <%= @media_metadata[:name] %></div> \
-  <div id="media-url"><span class="uk-text-bold">Url:</span> <a href= <%= @media_metadata[:url] %> target="_blank" class="uk-text-small" > <%= @media_metadata[:url] %></a></div> \
-  <div id="media-size"><span class="uk-text-bold">Size:</span> <%= @media_metadata[:size] %></div> \
   <div id="media-dimension"><span class="uk-text-bold">Dimension:</span> <%= @media_metadata[:dimension] %></div> \
+  <div id="media-size"><span class="uk-text-bold">Size:</span> <%= @media_metadata[:size] %></div> \
+  <div id="media-url"><span class="uk-text-bold">Url:</span> <a href= <%= @media_metadata[:url] %> target="_blank" class="uk-text-small" > <%= @media_metadata[:url] %></a></div> \
+  <div id="media-caption"><span class="uk-text-bold">Caption:</span> <%= @media_metadata[:caption] %></div> \
   <a class="uk-text-primary" data-remote="true" href="/admin/media/<%= @media_metadata[:id] %>/edit">Edit Selected</a><br> \
   <a class="pz-delete-media uk-text-danger" data-remote="true" rel="nofollow" data-method="delete" href="/admin/media/<%= @media_metadata[:id] %>">Delete permanently</a> '

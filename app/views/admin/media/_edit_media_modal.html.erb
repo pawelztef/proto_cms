@@ -9,15 +9,29 @@
       </div>
     </div>
     <div class="uk-card-body uk-margin-left uk-margin-right">
-      <div class="uk-flex uk-flex-center uk-flex-column uk-flex-middle">
-        <div class="pz-attachment-image-container">
-          <%= image_tag media.attachment, class: "lazy pz-attachment-image" if media.attachment.attached? %>
+      <div class="uk-flex uk-flex-between uk-flex-inline uk-flex-middle">
+        <div class="uk-width-3-4@m uk-margin-medium-right">
+          <div class="pz-attachment-image-container">
+            <%= image_tag media.attachment, class: "lazy pz-attachment-image" if media.attachment.attached? %>
+          </div>
+          <div class="uk-text-muted pz-image-metadata">
+            <span id="dataWidth">0</span>
+            <span>&times;</span>
+            <span id="dataHeight">0</span>
+          </div>
         </div>
-        <div class="uk-text-muted pz-image-metadata">
-          <span id="dataWidth">0</span>
-          <span>&times;</span>
-          <span id="dataHeight">0</span>
+
+        <div class="uk-width-1-3@m">
+          <fieldset class="uk-fieldset">
+            <div class="uk-margin">
+              <input class="uk-input" type="text" placeholder="Title">
+            </div>
+            <div class="uk-margin">
+              <textarea class="uk-textarea" rows="5" placeholder="Caption"></textarea>
+            </div>
+          </fieldset>
         </div>
+
       </div>
     </div>
     <div class="pz-modal-footer">
