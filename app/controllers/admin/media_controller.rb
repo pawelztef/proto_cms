@@ -37,7 +37,8 @@ class Admin::MediaController < Admin::AdminsController
     # TODO use sanitaize params
     @media = Media.new
     @media.attachment = params[:files][0]
-    @media.title = params[:files][0].original_filename
+    file_name = params[:files][0].original_filename
+    @media.title = File.basename(file_name, File.extname(file_name))
     @media.save
     respond_to do |format|
       format.js { render layout: false }
@@ -55,7 +56,9 @@ class Admin::MediaController < Admin::AdminsController
 
   def update_image
     @media = Media.find(params[:media_id])
-    @media.crop_and_save_with_options("new_file", params[:image])
+    @media.crop_and_save((params[:fileName] if params[:fileName]),
+                         (params[:caption] if params[:caption]), 
+                         params[:image])
   end
 
   def destroy
