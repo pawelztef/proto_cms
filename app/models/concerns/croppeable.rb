@@ -4,15 +4,15 @@ module Croppeable
   include ActionView::Helpers::NumberHelper
   include Rails.application.routes.url_helpers
 
-  def crop_and_save_with_options(filename=nil, image_options = {})
-    redraw_params = create_redraw_params(filename, image_options)
+  def crop_and_save(fileName=nil, caption=nil, image_options = {})
+    redraw_params = create_redraw_params(image_options)
     processed_attachment_path = create_variant(redraw_params)
-    save_new_file(processed_attachment_path)
+    save_new_file(fileName, caption, processed_attachment_path)
   end
 
   private
 
-  def create_redraw_params(filename, image_options)
+  def create_redraw_params(image_options)
     redraw_params = {}
     redraw_params[:crop] = "#{image_options[:width].to_i.round(1)}x#{image_options[:height].to_i.round(1)}+#{image_options[:x].to_i}+#{image_options[:y].to_i}"
     redraw_params[:rotate] = image_options[:rotate].to_i
@@ -32,14 +32,18 @@ module Croppeable
     return processed_attachment.service.send(:path_for, processed_attachment.key)
   end
 
-  def save_new_file(filename = nil,  processed_attachment_path)
+  def save_new_file(fileName, caption,  processed_attachment_path)
     file = File.open(processed_attachment_path)
     #create file name
-    if(!filename.present?)
-      filename = Time.zone.now.strftime("%Y%m%d%H%M%S") + self.attachment.blob.filename.to_s
-    end
+    # if(!fileName.present?)
+    #   fileName = Time.zone.now.strftime("%Y%m%d%H%M%S") + self.attachment.blob.fileName.to_s
+    # end
     #update media with new file
-    self.attachment.attach(io: file, filename: filename)
+    newName = fileName.empty? ? self.title : fileName   
+    newCaption = caption.empty? ? self.caption : caption
+    self.attachment.attach(io: file, filename: newName.parameterize)
+    self.title = newName 
+    self.caption = newCaption
     self.save!
   end
 
