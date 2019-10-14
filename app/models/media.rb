@@ -5,6 +5,7 @@ class Media < ApplicationRecord
 
   has_one_attached :attachment
 
+
   def media_metadata
     metadata = {}
     metadata[:id] = self.id

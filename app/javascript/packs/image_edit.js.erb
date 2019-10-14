@@ -13,7 +13,7 @@ $(() => {
 
 
       const options = {
-        viewMode: 0,
+        viewMode: 3,
         responsive: true,
         crop(event) {
           dataHeight.innerHTML = (event.detail.height == 0) ? cropper.getImageData().naturalHeight : Math.ceil(event.detail.height);
@@ -77,7 +77,16 @@ $(() => {
       }
       saveButton.addEventListener('click', function(e) {
         var myData = {"image": cropper.getData()};
+        var fileName = document.getElementById("media_name");
+        var caption = document.getElementById("media_caption");
+
+        if(fileName != null && fileName.length != 0)
+          myData.fileName =fileName.value;
+        if(caption != null && caption.length != 0)
+          myData.caption = caption.value;
+
         console.log(myData);
+
         fetch("/admin/media/" + mediaId + "/update_image", {
           method: 'post',
           body: JSON.stringify(myData),
@@ -91,7 +100,6 @@ $(() => {
             url: "/admin/media",
             type: "get",
             success: (data) => {
-          console.log(JSON.stringify(data));
               const mediaCards = document.getElementsByClassName("uk-card-media");
               const deleteLinks = document.getElementsByClassName("pz-delete-media");
               window.Pz.mediaCardsInit(mediaCards);
