@@ -36,10 +36,6 @@ require('packs/ckeditor.js');
 require.context('../images', true);
 
 $(() => { 
-  CKEDITOR.replace( 'post_content', {
-    customConfig: 'ckeditor.js',
-    allowedContent: true
-  });
 
 
 
