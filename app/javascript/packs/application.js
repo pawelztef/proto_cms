@@ -16,6 +16,8 @@
 // const imagePath = (name) => images(name, true)
 
 import Rails from 'rails-ujs';
+import flatpickr from "flatpickr";
+
 Rails.start();
 
 
@@ -32,10 +34,10 @@ require('packs/media.js.erb');
 require('packs/ckeditor_media.js.erb');
 require('packs/ckeditor.js');
 
-
 require.context('../images', true);
 
 $(() => { 
+  flatpickr("#datepicker", { });
 
 
 

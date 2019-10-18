@@ -1,3 +1,5 @@
+import '../../../node_modules/flatpickr/dist/flatpickr.min.css'
+
 import './main.scss';
 import './auth.scss';
 import './dashboard.scss';
@@ -7,7 +9,6 @@ import './modal.scss';
 import './photo_editor.scss';
 import './posts.scss';
 import './choices.scss';
-import './trix.css';
 import './media.scss';
 
 import './front/content.scss';
