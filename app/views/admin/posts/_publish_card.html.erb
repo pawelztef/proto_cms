@@ -1,0 +1,13 @@
+<section id="publish_cards" class="uk-margin-bottom">
+  <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+    <div class="uk-width-auto uk-flex uk-flex-between">
+      <div class="uk-card-title"><span uk-icon="world"></span> Publish</div>
+      <button class="uk-align-right uk-button uk-button-default uk-button-small">Save Draft</button>
+    </div>
+  </div>
+  <div class="uk-card uk-card-default uk-card-body">
+    <input class="uk-input uk-form-small uk-margin-bottom flatpickr" type="text" placeholder="Published at" value=" <%= @admin_post.created_at %>">
+    <button id="publish_post" class="uk-button uk-button-primary uk-button-small">Publish</button>
+    <button id="delete_post" class="uk-button uk-button-danger uk-button-small">Delete</button>
+  </div>
+</section>

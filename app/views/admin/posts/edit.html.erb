@@ -15,33 +15,7 @@
 </div>
 <%= content_for :right_column  do %>
   <div class="uk-width-large admin__right_column" >
-    <section id="publish_cards" class="uk-margin-bottom">
-      <div class="uk-card uk-card-small uk-card-header uk-card-default ">
-        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="world"></span> Publish</div></div>
-      </div>
-      <div class="uk-card uk-card-default uk-card-body">
-        <input type="text" id="datepicker">
-        </br>
-        </br>
-        </br>
-        </br>
-        <button class="uk-button uk-button-primary uk-button-small">Publish</button>
-        <button class="uk-button uk-button-default uk-button-small">Save Draft</button>
-        <button class="uk-button uk-button-danger uk-button-small">Delete</button>
-      </div>
-    </section>
-    <section id="categories_tags_cards">
-      <div class="uk-card uk-card-small uk-card-header uk-card-default ">
-        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span> Categories and Tags</div></div>
-      </div>
-      <div class="uk-card uk-card-default uk-card-body">
-        <label class="uk-form-label">Categories</label>
-        <%= render 'categories_form' %>
-      </div>
-      <div class="uk-card uk-card-default uk-card-body uk-padding-remove-top">
-        <label class="uk-form-label">Tags</label>
-        <%= render 'tags_form' %>
-      </div>
-    </section>
+    <%= render 'publish_card' %>  
+    <%= render 'categories_and_tags_card' %> 
   </div>
 <% end %>

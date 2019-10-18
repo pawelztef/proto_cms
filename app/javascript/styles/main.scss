@@ -33,4 +33,10 @@
     background: rgba(0,0,0,.5)
 }
 
-
+.flatpickr-day {
+  border-radius: 0;
+  &.selected {
+    background-color: #1e87f0;
+    border-color: #1e87f0;
+  }
+}

@@ -1,0 +1,17 @@
+<section id="categories_tags_cards">
+  <div class="uk-card uk-card-small uk-card-header uk-card-default ">
+    <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="cog"></span> Categories and Tags</div></div>
+  </div>
+  <div class="uk-card uk-card-default uk-card-body">
+    <label class="uk-form-label">Categories</label>
+    <form>
+      <%= select_tag "new_post_categories", options_from_collection_for_select(Category.all, "id", "name"), multiple: true  %>
+    </form>
+  </div>
+  <div class="uk-card uk-card-default uk-card-body uk-padding-remove-top">
+    <label class="uk-form-label">Tags</label>
+    <form>
+      <%= select_tag "new_post_tags", options_from_collection_for_select(Tag.all, "id", "name"), multiple: true  %>
+    </form>
+  </div>
+</section>
