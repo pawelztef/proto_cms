@@ -4,7 +4,6 @@ class Post < ApplicationRecord
   has_many :tagizations
   has_many :tags, :through => :tagizations
 
-
   enum status: ContentStatus::STATUSES
 
   scope :published, ->  { where(status: :published) }
