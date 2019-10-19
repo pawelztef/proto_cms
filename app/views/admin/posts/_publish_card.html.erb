@@ -2,26 +2,18 @@
   <div class="uk-card uk-card-small uk-card-header uk-card-default ">
     <div class="uk-width-auto uk-flex uk-flex-between">
       <div class="uk-card-title"><span uk-icon="world"></span> Publish</div>
-      <%= form_for [:admin, @admin_post] do |f| %>
-        <%# <button class="uk-align-right uk-button uk-button-default uk-button-small">Save Draft</button> %>
-        <%= submit_tag "Save Draft", class: "uk-align-right uk-margin-remove uk-button uk-button-default uk-button-small" %>
-      <% end %>
+      <button id="post_draft_button" name="save_draft" class="commit_buttons uk-align-right uk-button uk-button-default uk-button-small">Save Draft</button>
     </div>
   </div>
   <div class="uk-card uk-card-default uk-card-body">
     <label class="uk-form-label">Published at</label>
     <input type="text" id="post_published_date" class="uk-input uk-form-small uk-margin-bottom flatpickr" placeholder="Enter date" 
     value="<%= @admin_post.created_at ? @admin_post.created_at : standard_date(Date.today)%>" >
-
-    <%= form_for [:admin, @admin_post] do |f| %>
-      <%# <%= f.text_field :created_at, placeholder: "Enter date", class: "uk-input uk-form-small uk-margin-bottom flatpickr"  %1> %>
-      <%= submit_tag :Publish, class: "uk-button uk-button-primary uk-button-small" %>
-      <% if action_name == "edit" %>
-        <a href= <%= admin_post_path(@admin_post)  %> class="uk-button uk-button-danger uk-button-small" data-method="delete" rel="nofollow">Delete</a>
-      <% else %>
-        <a href= <%= admin_posts_path %> class="uk-button uk-button-default uk-button-small" title="Back" >Back</a>
-      <% end %>
+    <button id="post_publish_button" class="commit_buttons uk-button uk-button-primary uk-button-small">Publish</button>
+    <% if action_name == "edit" %>
+      <button class="uk-button uk-button-default uk-button-small uk-margin-small-left">Delete</button>
+    <% else %>
+      <a href= <%= admin_posts_path %> class="uk-button uk-button-default uk-button-small uk-margin-small-left" title="Back" >Back</a>
     <% end %>
   </div>
 </section>
-

@@ -8,7 +8,8 @@ class Post < ApplicationRecord
 
   scope :published, ->  { where(status: :published) }
   scope :draft, -> { where(status: :draft) }
-
+ 
+  attr_accessor :submit_option
 
   def self.search_by_status(status)
     if status == "all" || !status.present?

@@ -2,6 +2,12 @@ import flatpickr from "flatpickr";
 $(() => {
   const postPublishedDate = document.getElementById('post_published_date');
   const postCreatedAt = document.getElementById('post_created_at');
+  const postsForm = document.getElementsByClassName('posts_form')[0];
+  const commitButtons = document.getElementsByClassName('commit_buttons');
+  const submitOption = document.getElementById('post_submit_option');
+
+
+
   if(postPublishedDate && postCreatedAt) {
     flatpickr(postPublishedDate, {
       onChange: function(selectedDates, dateStr, instance) {
@@ -9,4 +15,16 @@ $(() => {
       }
     });
   }
+
+  if(commitButtons && postsForm) {
+    Array.from(commitButtons).forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        submitOption.value = btn.id;
+        postsForm.submit();
+      });
+    });
+  }
+
 })

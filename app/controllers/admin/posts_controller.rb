@@ -38,7 +38,7 @@ class Admin::PostsController < Admin::AdminsController
 
   def update
     respond_to do |format|
-      if params[:preview_button] 
+      if admin_post_params[:submit_option] == 'post_preview_button'
         if @admin_post.update(admin_post_params)
           format.html { redirect_to previews_post_url(@admin_post.permalink) }
           format.json { render :show, status: :ok, location: @admin_post }
@@ -48,15 +48,34 @@ class Admin::PostsController < Admin::AdminsController
           format.json { render json: @admin_post.errors, status: :unprocessable_entity }
           format.js
         end
-      elsif params[:commit]
+
+      elsif admin_post_params[:submit_option] == 'post_submit_button'
+
         if @admin_post.update(admin_post_params)
           format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
           format.json { render :show, status: :ok, location: @admin_post }
           format.js
         end
-      elsif params[:save_draft]
 
-      elsif params[:publish]
+      elsif admin_post_params[:submit_option] == 'post_publish_button'
+
+        @admin_post.attributes = admin_post_params
+        @admin_post.status = "published"
+        if @admin_post.save
+          format.html { redirect_to edit_admin_post_path(@admin_post), notice: 'Post was successfully updated.' }
+          format.json { render :show, status: :ok, location: @admin_post }
+          format.js
+        end
+
+      elsif admin_post_params[:submit_option] = 'post_draft_button'
+
+        @admin_post.attributes = admin_post_params
+        @admin_post.status = "draft"
+        if @admin_post.save
+          format.html { redirect_to edit_admin_post_path(@admin_post), notice: 'Post was successfully updated.' }
+          format.json { render :show, status: :ok, location: @admin_post }
+          format.js
+        end
 
       else
         format.html { render :edit }
@@ -82,6 +101,6 @@ class Admin::PostsController < Admin::AdminsController
   def admin_post_params
     params[:post][:category_ids] = params[:post][:category_ids][0].split(/[\s,]+/) unless params[:post][:category_ids].nil? || params[:post][:category_ids].empty? 
     params[:post][:tag_ids] = params[:post][:tag_ids][0].split(/[\s,]+/) unless params[:post][:tag_ids].nil? || params[:post][:tag_ids].empty?
-    params.require(:post).permit(:created_at, :title, :content, :summary, :permalink, :status, category_ids: [], tag_ids: [])
+    params.require(:post).permit(:submit_option, :created_at, :title, :content, :summary, :permalink, :status, category_ids: [], tag_ids: [])
   end
 end

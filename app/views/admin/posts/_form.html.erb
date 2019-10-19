@@ -1,6 +1,7 @@
-<%= simple_form_for [:admin, @admin_post],  class: "form__user-form uk-form-stacked" do |f| %>
+<%= simple_form_for [:admin, @admin_post],  html: {class: "posts_form"} do |f| %>
   <%= f.hidden_field :category_ids, multiple: true %>
   <%= f.hidden_field :created_at %>
+  <%= f.hidden_field :submit_option %>
   <%= f.hidden_field :tag_ids, multiple: true %>
   <div uk-grid>
     <div class="uk-width-1-1">
@@ -39,8 +40,8 @@
         <%= f.input :content %>
       </div>
       <div class="uk-margin-small uk-margin-medium-top">
-      <%= submit_tag :submit, class: "uk-button uk-button-primary uk-margin-top" %>
-      <%= submit_tag :Preview, name: "preview_button", class: "uk-button uk-button-default uk-margin-top uk-margin-left" %>
+        <button id="post_submit_button" class="commit_buttons uk-button uk-button-primary uk-margin-top"> Submit </button>
+        <button id="post_preview_button" class="commit_buttons uk-button uk-button-default uk-margin-top uk-margin-left"> Preview </button>
       </div>
     </div>
   </div>
