@@ -1,0 +1,12 @@
+import flatpickr from "flatpickr";
+$(() => {
+  const postPublishedDate = document.getElementById('post_published_date');
+  const postCreatedAt = document.getElementById('post_created_at');
+  if(postPublishedDate && postCreatedAt) {
+    flatpickr(postPublishedDate, {
+      onChange: function(selectedDates, dateStr, instance) {
+        postCreatedAt.value = selectedDates;
+      }
+    });
+  }
+})

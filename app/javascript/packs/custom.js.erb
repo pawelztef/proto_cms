@@ -4,7 +4,6 @@ import './media.js';
 import categoriesMultiselect from './categories.js';
 import tagsMultiselect from './tags.js';
 import ckEditorInsertImage from './ckeditor_media.js.erb';
-import flatpickr from "flatpickr";
 
 $(() => {
   generatePassword();
@@ -18,7 +17,6 @@ $(() => {
   mediaCardsInit(); 
   mediaInfoRefresh();
   ckEditorInsertImage();
-  flatpickr(".flatpickr", { });
 });
 
 

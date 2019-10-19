@@ -27,7 +27,7 @@ require('packs/modal.js');
 require('packs/slugify.js');
 require('packs/images_upload.js');
 require('packs/image_edit.js.erb');
-require('packs/posts.js');
+require('packs/posts.js.erb');
 require('packs/media.js.erb');
 require('packs/ckeditor_media.js.erb');
 require('packs/ckeditor.js');
