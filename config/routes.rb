@@ -54,9 +54,10 @@ Rails.application.routes.draw do
 
   # Front Namespace
   scope module: :front do
-    get "posts", to: "posts#index", as: :posts
-    get ":id", to: "pages#show", as: :page, shallow: true
+    get "posts", to: "posts#index", as: :post
+    get ":id", to: "pages#show", as: :page
   end
+
 
   # get ":id", to: "pages#show", as: :page
   # get ":id", to: "posts#show", as: :post
