@@ -1,7 +1,7 @@
 <ul class="uk-nav uk-dropdown-nav">
   <% pages.each do |subpage| %>
     <li>
-      <%= link_to subpage.name, subpage, class: "submenu-link" %>
+      <%= link_to subpage.name, front_page_path(subpage), class: "submenu-link" %>
       <%= render "shared/submenu_pages", pages: subpage.children if subpage.has_children? %>
     </li>
   <% end %>

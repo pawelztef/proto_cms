@@ -17,38 +17,47 @@ Rails.application.routes.draw do
   devise_for :users, 
     :path_names => { :sign_in => "login",
                      :sign_up => "new_user"}
-
+  # Admin Namespace
   namespace :admin do
     resources :media do
       get 'stats', on: :member
       get "gallery", on: :collection
       post "update_image", constraints: { format: 'json' }
-    end
-    resources :categories
-    resources :tags
-    resources :posts do
-      resources :comments
-    end
-    resources :comments do
-      resources :comments
-    end
+    end 
 
-    resources :settings
-    resources :dashboard
-    resources :users
     resources :pages do
       member do
         get "draft"
       end
     end
+
+    resources :posts do
+      resources :comments
+    end
+
+    resources :comments do
+      resources :comments
+    end
+
+    resources :categories
+    resources :tags
+    resources :settings
+    resources :dashboard
+    resources :users
   end
 
+  # Previews Namespace
   namespace :previews do
     resources :pages, only: :show
     resources :posts, only: :show
   end
 
+  # Front Namespace
+  namespace :front do
+    get "posts", to: "posts#index", as: :posts
+    get ":id", to: "pages#show", as: :page
+  end
 
-  get ":id", to: "pages#show", as: :page
-  get ":id", to: "posts#show", as: :post
+  # get ":id", to: "pages#show", as: :page
+  # get ":id", to: "posts#show", as: :post
 end
