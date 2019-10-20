@@ -16,6 +16,7 @@ $(() => {
 
   Pz.closeModal = function(modal) {
     if(modal) {
+      console.log(modal)
       modal.style.display = 'none';
     }
   }

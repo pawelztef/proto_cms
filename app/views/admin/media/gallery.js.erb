@@ -74,7 +74,7 @@ if(button) {
     const html = "<img src='" + mediaUrl + "' />";
     const newElement = CKEDITOR.dom.element.createFromHtml( html, ckEditor.document );
     ckEditor.insertElement( newElement );
-    console.log(attachmentModal)
+    attachmentModal = document.getElementById("gallery-modal");
     window.Pz.closeModal(attachmentModal);
   });
 }
