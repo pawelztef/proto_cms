@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/new'
+  get 'comments/create'
   # TODO routes to clean up
   root to: "welcome#index"
   # scope "/admin" do
@@ -24,7 +26,13 @@ Rails.application.routes.draw do
     end
     resources :categories
     resources :tags
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
+    resources :comments do
+      resources :comments
+    end
+
     resources :settings
     resources :dashboard
     resources :users
