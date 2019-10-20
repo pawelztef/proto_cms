@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :categories, :through => :categorizations
   has_many :tagizations
   has_many :tags, :through => :tagizations
+  has_many :comments, as: :commentable
 
   enum status: ContentStatus::STATUSES
 
