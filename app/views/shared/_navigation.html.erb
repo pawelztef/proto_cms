@@ -3,7 +3,7 @@
     <ul #="main-menu" class="uk-subnav uk-flex uk-flex-center uk-flex-nowrap">
       <% @roots_pages.each do |page| %>
         <li>
-          <%= link_to page.name, front_page_path(page), class: ( "uk-active" if @page == page ) %>
+          <%= link_to page.name, page, class: ( "uk-active" if @page == page ) %>
           <% if page.has_children? %>
             <div uk-dropdown>
                 <%= render "shared/submenu_pages", pages: page.children if page.has_children? %>
