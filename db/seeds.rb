@@ -57,11 +57,18 @@ end
 puts "Creating posts"
 
 10.times do |n|
+  summary = ""
+  10.times { |n| summary += Faker::Lorem.sentence(word_count: 15) }
+
+  title = Faker::Book.title
+
   post = Post.new
-  post.title = post.permalink = Faker::Book.title
-  post.content = Faker::Lorem.paragraph(sentence_count: 5)
-  post.summary = Faker::Lorem.sentence(word_count: 5)
+  post.title = title
+  post.permalink = title.parameterize
+  post.content = Faker::Lorem.paragraph(sentence_count: 15)
+  post.summary = summary
   post.save!
+
   created_objects += 1
 end
 
