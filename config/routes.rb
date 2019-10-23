@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'comments/new'
-  get 'comments/create'
   # TODO routes to clean up
   root to: "welcome#index"
   # scope "/admin" do
