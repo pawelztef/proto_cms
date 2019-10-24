@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         get "draft"
       end
     end
+    resources :posts
+    resources :comments
     resources :categories
     resources :tags
     resources :settings
