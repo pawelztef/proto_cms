@@ -22,21 +22,11 @@ Rails.application.routes.draw do
       get "gallery", on: :collection
       post "update_image", constraints: { format: 'json' }
     end 
-
     resources :pages do
       member do
         get "draft"
       end
     end
-
-    resources :posts do
-      resources :comments
-    end
-
-    resources :comments do
-      resources :comments
-    end
-
     resources :categories
     resources :tags
     resources :settings
@@ -52,11 +42,13 @@ Rails.application.routes.draw do
 
   # Front Namespace
   scope module: :front do
-    resources :posts
+    resources :posts do
+      resources :comments
+    end
+    resources :comments do
+      resources :comments
+    end
     get ":id", to: "pages#show", as: :page
   end
 
-
-  # get ":id", to: "pages#show", as: :page
-  # get ":id", to: "posts#show", as: :post
 end

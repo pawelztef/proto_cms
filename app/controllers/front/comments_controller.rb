@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Front::CommentsController < ApplicationController
     layout "front"
     
     def new
