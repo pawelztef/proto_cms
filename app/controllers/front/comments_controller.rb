@@ -1,26 +1,25 @@
 class Front::CommentsController < ApplicationController
     layout "front"
+    before_action :authenticate_user!
     
     def new
       @comment = Comment.new
     end
 
     def create
-      @commentable.comments.build(comment_params)
-      @commentable.save
+      @comment = @commentable.comments.new(comment_params)
+      @comment.user = current_user
+      if @comment.save
+        redirect_to @commentable
+      else
+        redirect_to @commentable, alert: "Somethings went wrong"
+      end
     end
 
     private
 
     def comment_params
-      params.require(:comment).permit(:content)
+      params.require(:comment).permit(:body, :parent_id)
     end
 
-    def find_commentable
-      if params[:comment_id] 
-        @commentable = Comment.find_by_id(params[:comment_id])
-      elsif params[:post_id]
-        @commentable = Post.find_by_id(params[:post_id])
-      end
-    end
 end

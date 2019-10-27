@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     resources :settings
     resources :dashboard
     resources :users
+    resources :posts
   end
 
   # Previews Namespace
@@ -45,7 +46,7 @@ Rails.application.routes.draw do
   # Front Namespace
   scope module: :front do
     resources :posts do
-      resources :comments
+      resources :comments, module: :posts
     end
     resources :comments do
       resources :comments
