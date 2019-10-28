@@ -1,5 +1,4 @@
 $(() => { 
-
   const ckSettings = {
     customConfig: 'ckeditor.js',
     allowedContent: true,
