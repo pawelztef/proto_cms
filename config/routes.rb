@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :readers
-  # TODO routes to clean up
   root to: "welcome#index"
+
   # scope "/admin" do
   # EXAMPLE CONFIGURATIONS DEVISE PATHS
   # devise_for :admins, :controllers => { :registrations => "registrations" },
@@ -12,10 +11,27 @@ Rails.application.routes.draw do
   #                    :password => "secret",
   #                    :confirmation => "verification" }
   # end
-  #
-  devise_for :users, 
+   
+  devise_for :users,
+    :path => 'users',
+    :controllers => { :sessions => "admin/users/sessions",
+                      :passwords => "admin/users/passwords",
+                      :registrations => "admin/users/registrations",
+                      :unlocks => "admin/users/unlocks",
+                      :confirmations => "admin/users/confirmations" },
     :path_names => { :sign_in => "login",
                      :sign_up => "new_user"}
+
+  devise_for :readers, 
+    :path => 'readers',
+    :controllers => { :sessions => "front/readers/sessions",
+                      :passwords => "front/readers/passwords",
+                      :registrations => "front/readers/registrations",
+                      :unlocks => "front/readers/unlocks",
+                      :confirmations => "front/readers/confirmations"},
+    :path_names => { :sign_in => "login",
+                     :sign_up => "new_reader"}
+
   # Admin Namespace
   namespace :admin do
     resources :media do
@@ -46,6 +62,7 @@ Rails.application.routes.draw do
 
   # Front Namespace
   scope module: :front do
+    resources :readers
     resources :posts do
       resources :comments, module: :posts
     end
