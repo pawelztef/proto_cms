@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :readers
   # TODO routes to clean up
   root to: "welcome#index"
   # scope "/admin" do
