@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  namespace :front do
-    get 'home_page/show'
-  end
-  root to: "welcome#index"
+  root to: 'front/home_page#show'
 
   # scope "/admin" do
   # EXAMPLE CONFIGURATIONS DEVISE PATHS
