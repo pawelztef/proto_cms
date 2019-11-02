@@ -25,11 +25,12 @@ created_objects += 1
 
 puts "Creating pages"
 
-["about", "products", "contact"].each do |n| 
+["home", "about", "products", "contact"].each do |n| 
   page = Page.new
   page.name = n
   page.permalink = "perm_" + n
   page.content = "lorem ipsum"
+  page.type = "HomePage" if n == "home"
   page.save!
   created_objects += 1
 end

@@ -6,6 +6,8 @@ class Admin::SettingsController < Admin::AdminsController
   end
 
   def update
+    HomePage.set_as_homepage(settings_params[:home_page].to_i)
+    byebug
     @settings = Setting.update(settings_params)
     redirect_to admin_settings_path
   end
@@ -15,6 +17,6 @@ class Admin::SettingsController < Admin::AdminsController
     @title = "Settings"
   end
   def settings_params
-    params.require(:setting).permit(:company_name, :catch_phrase)
+    params.require(:setting).permit(:company_name, :catch_phrase, :home_page)
   end
 end
