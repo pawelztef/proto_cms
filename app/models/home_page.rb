@@ -4,6 +4,10 @@ class HomePage < Page
     Page.all.map { |n| n.type = (n.id == id) ? "HomePage" : nil ; n.save }
   end
 
+  def self.get_page
+    HomePage.first
+  end
+
   # future API development
   def as_json(options={})
     super(options.merge({ methods: :type }))
