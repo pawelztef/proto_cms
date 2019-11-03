@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :categories
     resources :tags
-    resources :settings
+    resources :sites, path: :site_settings
     resources :dashboard
     resources :users
     resources :posts

@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_103534) do
     t.index ["reset_password_token"], name: "index_readers_on_reset_password_token", unique: true
   end
 
-  create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name"
     t.string "catch_phrase"
     t.datetime "created_at", null: false

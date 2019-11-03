@@ -9,7 +9,7 @@
     </div>
     <div class="uk-card-body">
       <div class="chart-container">
-        <%= simple_form_for [:admin, @settings], html: {class: "uk-form-horizontal uk-margin-large"} do |f| %>
+        <%= simple_form_for [:admin, @site], html: {class: "uk-form-horizontal uk-margin-large"} do |f| %>
           <div class="uk-margin">
             <label class="uk-form-label" for="form-horizontal-text">Company name</label>
             <div class="uk-form-controls">
@@ -33,6 +33,32 @@
                 label_method: :permalink, 
                 value_method: :id,
                 input_html: {class: "uk-select"} %>
+          </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text"> Logo </label>
+            <div class="uk-form-controls">
+              <% if @site.logo.attached? %>
+                <%= image_tag @site.logo.variant(resize: "50x50"), class: 'branding-img' %>
+              <% else %>
+                <%= image_pack_tag 'avatar.jpg', class: 'branding-img', width: "65", height: "65" %>
+              <% end %>
+              <%= f.input :logo, as: :file, label: false %>
+              <button id="logo-button" class="uk-button uk-button-default" type="button" tabindex="-1">Add image</button>
+              <button id="delete-logo-button" class="uk-button uk-button-default" type="button" tabindex="-1">Delete image</button>
+            </div>
+          </div>
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text"> Favicon</label>
+            <div class="uk-form-controls">
+              <% if @site.favicon.attached? %>
+                <%= image_tag @site.favicon.variant(resize: "50x50"), class: 'branding-img' %>
+              <% else %>
+                <%= image_pack_tag 'avatar.jpg', class: 'branding-img', width: "65", height: "65" %>
+              <% end %>
+              <%= f.input :favicon, as: :file, label: false %>
+              <button id="favicon-button" class="uk-button uk-button-default" type="button" tabindex="-1">Add image</button>
+              <button id="delete-favicon-button" class="uk-button uk-button-default" type="button" tabindex="-1">Delete image</button>
             </div>
           </div>
           <div class="uk-margin">

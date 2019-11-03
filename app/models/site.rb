@@ -1,7 +1,9 @@
-class Setting < ApplicationRecord
+class Site < ApplicationRecord
   # The "singleton_guard" column is a unique column which must always be set to '0'
-  # This ensures that only one AppSettings row is created
+  # This ensures that only one Site row is created
   validates_inclusion_of :singleton_guard, :in => [0]
+  has_one_attached :logo
+  has_one_attached :favicon
   attr_accessor :home_page
 
   def self.instance
