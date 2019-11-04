@@ -7,7 +7,6 @@ class Admin::SitesController < Admin::AdminsController
 
   def update
     HomePage.set_as_homepage(site_params[:home_page].to_i)
-    byebug
     @site = Site.update(site_params)
     redirect_to admin_sites_path
   end

@@ -4,10 +4,10 @@ import './media.js';
 import categoriesMultiselect from './categories.js';
 import tagsMultiselect from './tags.js';
 import ckEditorInsertImage from './ckeditor_media.js.erb';
+import customUploadButton from  './upload_listeners.js';
 
 $(() => {
   generatePassword();
-  avatarCustomUploadButton();
   createPageSlug();
   createTagSlug();
   createCategorySlug();
@@ -17,6 +17,9 @@ $(() => {
   mediaCardsInit(); 
   mediaInfoRefresh();
   ckEditorInsertImage();
+  avatarCustomUploadButton();
+  faviconCustomUploadButton();
+  logoCustomUploadButton();
 });
 
 
@@ -74,19 +77,21 @@ let avatarCustomUploadButton = function() {
   let avatarRealInput = document.getElementById("user_avatar");
   let avatarCustomUploadButton = document.getElementById("avatar_button");
   let avatarCustomMetaInfo = document.getElementById("avatar_meta");
+  customUploadButton(avatarRealInput, avatarCustomUploadButton, avatarCustomMetaInfo);
+}
 
-  if(avatarCustomUploadButton != null) {
-    avatarCustomUploadButton.addEventListener("click", function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      avatarRealInput.click();
-    });
-  }
-  if(avatarRealInput != null) {
-    avatarRealInput.addEventListener("change", function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      avatarCustomMetaInfo.innerHTML = avatarRealInput.files[0].name;
-    });
-  }
+
+let faviconCustomUploadButton = function() {
+  let realInput = document.getElementById("site_favicon");
+  let customUploadBtn = document.getElementById("favicon_button");
+  let metaCont = document.getElementById("favicon_meta_info");
+  customUploadButton(realInput, customUploadBtn, metaCont);
+}
+
+
+let logoCustomUploadButton = function() {
+  let realInput = document.getElementById("site_logo"); 
+  let customUploadBtn = document.getElementById("logo_button");
+  let metaCont  = document.getElementById("logo_meta_info");
+  customUploadButton(realInput, customUploadBtn, metaCont );
 }
