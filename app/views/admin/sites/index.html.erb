@@ -48,7 +48,10 @@
               <div class="branding-btns-wrp uk-margin-small-bottom">
                 <%= f.input :logo, as: :file, label: false %>
                 <button id="logo_button" class="uk-button uk-button-default" type="button" tabindex="-1">Add image</button>
-                <button id="delete_logo_button" class="uk-button uk-button-default" type="button" tabindex="-1">Delete image</button>
+                <% if @site.logo.attached? %>
+                  <%# <button id="delete_logo_button" class="uk-button uk-button-default" type="button" tabindex="-1">Delete image</button> %>
+                  <%= link_to "Delete image",  destroy_img_admin_sites_path(button: "logo"), class: "uk-button uk-button-default"  %>
+                <% end %>
               </div>
               <span id="logo_meta_info" class="uk-margin-top"></span>
             </div>
@@ -68,7 +71,10 @@
               <div class="branding-btns-wrp uk-margin-small-bottom">
                 <%= f.input :favicon, as: :file, label: false %>
                 <button id="favicon_button" class="uk-button uk-button-default" type="button" tabindex="-1">Add image</button>
-                <button id="delete_favicon_button" class="uk-button uk-button-default" type="button" tabindex="-1">Delete image</button>
+                <% if @site.favicon.attached? %>
+                  <%# <button id="delete_favicon_button" class="uk-button uk-button-default" type="button" tabindex="-1">Delete image</button> %>
+                  <%= link_to "Delete image",  destroy_img_admin_sites_path(button: "favicon"), class: "uk-button uk-button-default"  %>
+                <% end %>
               </div>
               <span id="favicon_meta_info" class="uk-margin-top"></span>
             </div>

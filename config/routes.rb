@@ -48,7 +48,9 @@ Rails.application.routes.draw do
     resources :comments
     resources :categories
     resources :tags
-    resources :sites, path: :site_settings
+    resources :sites, path: :site_settings do
+      get 'destroy_img', on: :collection
+    end
     resources :dashboard
     resources :users
     resources :posts
