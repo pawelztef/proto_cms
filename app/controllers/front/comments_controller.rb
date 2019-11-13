@@ -1,6 +1,6 @@
 class Front::CommentsController < ApplicationController
     layout "front"
-    before_action :authenticate_user!
+    before_action :authenticate_reader!
     
     def new
       @comment = Comment.new
@@ -8,7 +8,7 @@ class Front::CommentsController < ApplicationController
 
     def create
       @comment = @commentable.comments.new(comment_params)
-      @comment.user = current_user
+      @comment.reader = current_reader
       if @comment.save
         redirect_to @commentable
       else

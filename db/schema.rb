@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
   end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "readers_id"
+    t.bigint "reader_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
     t.integer "parent_id"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
-    t.index ["readers_id"], name: "index_comments_on_readers_id"
+    t.index ["reader_id"], name: "index_comments_on_reader_id"
   end
 
   create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname"
     t.index ["email"], name: "index_readers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_readers_on_reset_password_token", unique: true
   end
@@ -152,5 +153,5 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "comments", "readers", column: "readers_id"
+  add_foreign_key "comments", "readers"
 end

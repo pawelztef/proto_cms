@@ -3,6 +3,6 @@ class Front::Posts::CommentsController < Front::CommentsController
   private
 
   def set_commentable
-    @commentable = Post.find(params[:post_id])
+    @commentable = Post.find_by_permalink!(params[:post_id])
   end
 end

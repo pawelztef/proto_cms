@@ -69,6 +69,7 @@ puts "Creating posts"
   post.content = Faker::Lorem.paragraph(sentence_count: 15)
   post.summary = summary
   post.save!
+  post.status = "published" if n.even?
 
   created_objects += 1
 end

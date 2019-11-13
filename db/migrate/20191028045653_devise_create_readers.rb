@@ -34,6 +34,7 @@ class DeviseCreateReaders < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
+      t.string :nickname
     end
 
     add_index :readers, :email,                unique: true

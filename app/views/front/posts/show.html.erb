@@ -48,6 +48,7 @@
   <!-- comments -->
   <div class="uk-container uk-container-small uk-margin-large-top">
     <%= render partial: "front/comments/form", locals: { commentable: @post } %>
+    <%= render @post.comments %>
   </div>
   <!-- /comments -->
   <!-- gallery -->
