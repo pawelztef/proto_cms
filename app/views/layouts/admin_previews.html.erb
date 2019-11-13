@@ -4,7 +4,7 @@
     <title><%= @title if @title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= favicon_link_tag url_for(Site.instance.favicon) %>
+    <%= site_favicon_tag  %>
     <%= render 'layouts/admin_cdns'%>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'application' %>

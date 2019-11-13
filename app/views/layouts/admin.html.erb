@@ -3,7 +3,7 @@
   <head>
     <title>Kidsee</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= favicon_link_tag url_for(Site.instance.favicon) %>
+    <%= site_favicon_tag  %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= Gon::Base.render_data %>
