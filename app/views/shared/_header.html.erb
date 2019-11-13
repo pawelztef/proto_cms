@@ -2,17 +2,6 @@
   <div class="uk-container">
     <nav id="navbar" data-uk-navbar="mode: click;">
       <div class="uk-navbar-left nav-overlay uk-visible@m">
-        <ul class="uk-navbar-nav">
-          <li>
-            <a href="#" title="Subscribe">Subscribe</a>
-          </li>
-          <% if reader_signed_in? %>
-            <li><a href= <%= destroy_user_session_path %> data-uk-icon="icon:  sign-out" title="Sign Out" data-method="delete" ></a></li>
-          <% end %>
-          <li>
-            <a href="#" title="Sign Up">Sign Up</a>
-          </li>
-        </ul>
       </div>
       <div class="pz-navbar-center uk-navbar-center nav-overlay">
         <% if Site.instance.logo.attached? %>
@@ -21,13 +10,18 @@
       </div>
       <div class="uk-navbar-right nav-overlay">
         <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
-        <div class="uk-navbar-item">
-          <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="facebook"></a>
-          <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="twitter"></a>
-          <a class="uk-visible@s" style="margin-right: 4px" href="#" data-uk-icon="instagram"></a>
-          <a class="uk-navbar-toggle uk-hidden@m" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-nav"></a>
-        </div>
-
+        <ul class="uk-navbar-nav">
+          <% if reader_signed_in? %>
+            <li><a href= <%= destroy_user_session_path %> data-uk-icon="icon:  sign-out" title="Sign Out" data-method="delete" ></a></li>
+          <% else %>
+            <li>
+              <a href="#" title="Subscribe">Sing_in</a>
+            </li>
+            <li>
+              <a href="#" title="Sign Up">Sign Up</a>
+            </li>
+          <% end %>
+        </ul>
       </div>
       <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
         <div class="uk-navbar-item uk-width-expand">
