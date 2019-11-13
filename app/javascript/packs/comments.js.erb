@@ -1,0 +1,10 @@
+$(() => {
+  const replyLinks = document.getElementsByClassName('reply-to-comment');
+  Array.from(replyLinks).forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      link.closest('header').nextElementSibling.getElementsByTagName('form')[0].classList.toggle('pz-d_none');
+    }); 
+  });
+})

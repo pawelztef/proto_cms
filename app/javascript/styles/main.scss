@@ -1,5 +1,5 @@
-
 .error_notification, .error { color: red; }
+
 #content > div > div > div.uk-width-medium.admin__right_column > div.uk-card.uk-card-large.uk-card-header.uk-card-default {
   padding: 36px;
 }
@@ -39,4 +39,8 @@
     background-color: #1e87f0;
     border-color: #1e87f0;
   }
+}
+
+.pz-d_none {
+  display: none;
 }
