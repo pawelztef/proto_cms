@@ -2,12 +2,8 @@ class ApplicationController < ActionController::Base
   layout :layout_by_controller
   before_action :set_navigation
 
-  def after_sign_in_path_for(resource)
-    admin_dashboard_index_path
-  end
-
   def after_sign_out_path_for(resource_or_scope)
-    new_user_session_path 
+    request.referrer
   end
 
   # TODO resue_from CanCan access denied

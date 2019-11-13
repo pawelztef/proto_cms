@@ -8,7 +8,7 @@ class Admin::SitesController < Admin::AdminsController
   def update
     HomePage.set_as_homepage(site_params[:home_page].to_i)
     @site = Site.update(site_params)
-    redirect_to admin_sites_path
+    redirect_to admin_sites_path, notice: "Site setting was successfully updated."
   end
 
   def destroy_img

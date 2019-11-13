@@ -15,7 +15,9 @@
         </ul>
       </div>
       <div class="pz-navbar-center uk-navbar-center nav-overlay">
-        <a class="uk-navbar-item uk-logo" href="#" title="Logo"><%= image_tag Site.instance.logo.variant(resize: "150x150"), class: 'branding-img' %></a>
+        <% if Site.instance.logo.attached? %>
+          <a class="uk-navbar-item uk-logo" href="#" title="Logo"><%= image_tag Site.instance.logo.variant(resize: "150x150"), class: 'branding-img' %></a>
+        <% end %>
       </div>
       <div class="uk-navbar-right nav-overlay">
         <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
