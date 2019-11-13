@@ -2,7 +2,7 @@
 
 class Front::Readers::SessionsController < Devise::SessionsController
   include Accessible
-  skip_before_action :check_user, except: [:new, :create]
+  skip_before_action :check_user, except: [:new, :create ]
 
   # before_action :configure_sign_in_params, only: [:create]
 

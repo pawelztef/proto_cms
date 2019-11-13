@@ -12,13 +12,13 @@
         <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
         <ul class="uk-navbar-nav">
           <% if reader_signed_in? %>
-            <li><a href= <%= destroy_user_session_path %> data-uk-icon="icon:  sign-out" title="Sign Out" data-method="delete" ></a></li>
+            <li><a href="<%= destroy_reader_session_path %>"  title="Sign Out" data-method="delete" >Log out</a></li>
           <% else %>
             <li>
-              <a href="#" title="Subscribe">Sing_in</a>
+              <a href="<%= new_reader_session_path %>" title="Sign in">Sing_in</a>
             </li>
             <li>
-              <a href="#" title="Sign Up">Sign Up</a>
+              <a href="<%= new_reader_registration_path %>" title="Sign Up">Sign Up</a>
             </li>
           <% end %>
         </ul>

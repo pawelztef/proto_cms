@@ -3,7 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :set_navigation
 
   def after_sign_out_path_for(resource_or_scope)
-    request.referrer
+    if resource_or_scope == :reader
+      return root_path 
+    elsif resource_or_scope == :user
+      return  new_user_session_path 
+    end
   end
 
   # TODO resue_from CanCan access denied
