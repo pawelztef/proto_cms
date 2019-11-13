@@ -4,6 +4,7 @@
     <title><%= @title if @title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= site_favicon_tag  %>
     <%= render 'layouts/admin_cdns'%>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.js"></script>
@@ -16,7 +17,6 @@
     <%#   <div class="uk-width-medium uk-padding-small"> %>
       <%#   </div> %>
     <%# </body> %>
-
   <body>
     <!--HEADER-->
     <%= render 'shared/header' %>
@@ -25,10 +25,10 @@
     <%= render 'shared/navigation' %>
     <!-- /NAVIGATION -->
     <!-- HERO -->
-    <%= render 'shared/hero' %>
+    <%# <%= render 'shared/hero' %1> %>
     <!-- HERO -->
     <!-- FEATURED -->
-    <%= render 'shared/featured' %>
+    <%# <%= render 'shared/featured' %1> %>
     <!-- /FEATURED -->
     <!--CONTENT-->
     <%= render 'shared/content' %>

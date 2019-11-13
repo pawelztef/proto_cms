@@ -6,13 +6,16 @@
           <li>
             <a href="#" title="Subscribe">Subscribe</a>
           </li>
+          <% if reader_signed_in? %>
+            <li><a href= <%= destroy_user_session_path %> data-uk-icon="icon:  sign-out" title="Sign Out" data-method="delete" ></a></li>
+          <% end %>
           <li>
             <a href="#" title="Sign Up">Sign Up</a>
           </li>
         </ul>
       </div>
-      <div class="uk-navbar-center nav-overlay">
-        <a class="uk-navbar-item uk-logo" href="#" title="Logo"><img src="img/n-logo.png" alt="Logo"></a>
+      <div class="pz-navbar-center uk-navbar-center nav-overlay">
+        <a class="uk-navbar-item uk-logo" href="#" title="Logo"><%= image_tag Site.instance.logo.variant(resize: "150x150"), class: 'branding-img' %></a>
       </div>
       <div class="uk-navbar-right nav-overlay">
         <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>

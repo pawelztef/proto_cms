@@ -19,4 +19,6 @@ import './front/hero.scss';
 import './front/navigation.scss';
 import './front/offcanvas.scss';
 import './front/default.scss';
+import './front/posts.scss';
+import './front/site.scss';
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_08_084200) do
+ActiveRecord::Schema.define(version: 2019_11_06_144306) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -50,6 +50,18 @@ ActiveRecord::Schema.define(version: 2019_10_08_084200) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "readers_id"
+    t.string "commentable_type"
+    t.bigint "commentable_id"
+    t.integer "parent_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["readers_id"], name: "index_comments_on_readers_id"
+  end
+
   create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -65,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_10_08_084200) do
     t.datetime "updated_at", null: false
     t.integer "status", default: 0
     t.string "ancestry"
+    t.string "type"
     t.index ["ancestry"], name: "index_pages_on_ancestry"
     t.index ["permalink"], name: "index_pages_on_permalink"
     t.index ["status"], name: "index_pages_on_status"
@@ -81,7 +94,19 @@ ActiveRecord::Schema.define(version: 2019_10_08_084200) do
     t.index ["permalink"], name: "index_posts_on_permalink"
   end
 
-  create_table "settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "readers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_readers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_readers_on_reset_password_token", unique: true
+  end
+
+  create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name"
     t.string "catch_phrase"
     t.datetime "created_at", null: false
@@ -127,4 +152,5 @@ ActiveRecord::Schema.define(version: 2019_10_08_084200) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "readers", column: "readers_id"
 end
