@@ -5,6 +5,6 @@ class Comment < ApplicationRecord
 
 
   def comments
-    Comment.where(commentable: commentable, prent_id: id)
+    Comment.where(commentable: commentable, parent_id: id)
   end
 end

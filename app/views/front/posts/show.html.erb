@@ -48,7 +48,9 @@
   <!-- comments -->
   <div class="uk-container uk-container-small uk-margin-large-top">
     <%= render partial: "front/comments/form", locals: { commentable: @post } %>
-    <%= render @post.comments %>
+    <ul class="uk-comment-list">
+      <%= render @post.comments.where(parent_id: nil), max_nesting: 5 %>
+    </ul>
   </div>
   <!-- /comments -->
   <!-- gallery -->

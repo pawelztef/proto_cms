@@ -1,10 +1,10 @@
-<%= form_with model: [commentable, Comment.new], local: true, html: { class: local_assigns[:class] } do |form| %>
+<%= form_with model: [commentable, Comment.new], local: true, html: { class: local_assigns[:class], data: {target: local_assigns[:target_id] }} do |form| %>
   <fieldset class="uk-fieldset">
     <div class="uk-margin">
       <%= form.text_area :body, placeholder: "Add a commnet", class: "uk-textarea" %>
     </div>
     <div class="uk-margin">
-      <%= form.hidden_field :parrent_id, value: local_assigns[:parrent_id] %>
+      <%= form.hidden_field :parent_id, value: local_assigns[:parent_id] %>
       <%= form.submit class: "uk-button uk-button-default uk-button-small" %>
     </div>
   </fieldset>

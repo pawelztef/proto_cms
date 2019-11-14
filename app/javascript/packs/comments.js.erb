@@ -4,7 +4,9 @@ $(() => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      link.closest('header').nextElementSibling.getElementsByTagName('form')[0].classList.toggle('pz-d_none');
+      const target = link.dataset.target;
+      const form = document.querySelector("form[data-target='" + target + "']" );
+      form.classList.toggle('pz-d_none');
     }); 
   });
 })
