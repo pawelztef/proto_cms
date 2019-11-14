@@ -1,0 +1,13 @@
+<% if @comment.parent_id? %>
+    const comments = document.querySelector("#<%= dom_id(@comment.parent) %>_comments")
+<% else %>
+    const comments = document.querySelector("#comments")
+<% end %>
+comments.insertAdjacentHTML('beforeend', '<%= j render partial: "front/comments/comment", locals: { comment: @comment}, format: :html %>')
+
+const form = comments.parentElement.querySelector('form')
+
+form.reset()
+form.classList.add("pz-d_none")
+const replyLinks = document.getElementsByClassName('reply-to-comment')
+window.Pz.initCommentsReplyLinks(replyLinks)

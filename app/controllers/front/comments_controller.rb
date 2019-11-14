@@ -10,7 +10,10 @@ class Front::CommentsController < ApplicationController
       @comment = @commentable.comments.new(comment_params)
       @comment.reader = current_reader
       if @comment.save
-        redirect_to @commentable
+        respond_to do |format|
+          format.html { redirect_to @commentable }
+          format.js
+        end
       else
         redirect_to @commentable, alert: "Somethings went wrong"
       end

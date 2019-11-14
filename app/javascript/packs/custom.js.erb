@@ -1,6 +1,7 @@
 import './slugify.js';
 import './ajax_links.js';
 import './media.js';
+import './comments.js';
 import categoriesMultiselect from './categories.js';
 import tagsMultiselect from './tags.js';
 import ckEditorInsertImage from './ckeditor_media.js.erb';
@@ -20,6 +21,10 @@ $(() => {
   avatarCustomUploadButton();
   faviconCustomUploadButton();
   logoCustomUploadButton();
+  commentsReplyLinks();
+  let replyLinks = document.getElementsByClassName('reply-to-comment');
+  window.Pz.initCommentsReplyLinks(replyLinks);
+  console.log('hi');
 });
 
 
@@ -39,12 +44,14 @@ let createTagSlug = function() {
   window.Pz.slugify(inputSource, inputTarget);
 }
 let createTagsMultiselect = function() {
-  const tags = gon.post_tags;
-  tagsMultiselect(tags);
+  if(gon) {
+  //const tags = gon.post_tags;
+  //tagsMultiselect(tags);
+  }
 }
 let createCategoriesMultiselect = function() {
-  const categories = gon.post_categories;
-  categoriesMultiselect(categories);
+  //const categories = gon.post_categories;
+  //categoriesMultiselect(categories);
 }
 
 let deleteLinksInit = function() {
@@ -94,4 +101,10 @@ let logoCustomUploadButton = function() {
   let customUploadBtn = document.getElementById("logo_button");
   let metaCont  = document.getElementById("logo_meta_info");
   customUploadButton(realInput, customUploadBtn, metaCont );
+}
+
+let commentsReplyLinks = function() {
+  console.log('xxx')
+  let replyLinks = document.getElementsByClassName('reply-to-comment')
+  window.Pz.initCommentsReplyLinks(replyLinks)
 }
