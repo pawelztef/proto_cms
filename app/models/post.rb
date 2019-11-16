@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  belongs_to :blog
   has_many :categorizations
   has_many :categories, :through => :categorizations
   has_many :tagizations
