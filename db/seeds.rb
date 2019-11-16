@@ -55,6 +55,16 @@ puts "Creating tags"
   created_objects += 1
 end
 
+puts "Creating Site"
+site = Site.instance
+site.update_attributes(name: "My site")
+created_objects += 1
+
+puts "Creating Blog"
+blog = site.blog
+blog.update_attributes(name: "My blog")
+created_objects += 1
+
 puts "Creating posts"
 
 10.times do |n|
@@ -68,8 +78,9 @@ puts "Creating posts"
   post.permalink = title.parameterize
   post.content = Faker::Lorem.paragraph(sentence_count: 15)
   post.summary = summary
-  post.save!
   post.status = "published" if n.even?
+  post.blog = blog
+  post.save!
 
   created_objects += 1
 end

@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2019_11_16_030243) do
   end
 
   create_table "sites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.string "company_name"
     t.string "catch_phrase"
     t.datetime "created_at", null: false
