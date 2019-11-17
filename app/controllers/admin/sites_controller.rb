@@ -6,9 +6,17 @@ class Admin::SitesController < Admin::AdminsController
   end
 
   def update
-    HomePage.set_as_homepage(site_params[:home_page].to_i)
-    @site = Site.update(site_params)
+    byebug
+    #HomePage.set_as_homepage(site_params[:home_page].to_i)
+    @site.update(site_params)
+    byebug
     redirect_to admin_sites_path, notice: "Site setting was successfully updated."
+  end
+
+  def settings_forms
+    respond_to do |format|
+      format.js
+    end
   end
 
   def destroy_img
@@ -32,6 +40,6 @@ class Admin::SitesController < Admin::AdminsController
     @title = "Settings"
   end
   def site_params
-    params.require(:site).permit(:company_name, :catch_phrase, :home_page, :logo, :favicon)
+    params.require(:site).permit(:company_name, :catch_phrase, :home_page, :logo, :favicon, blog: [:name])
   end
 end

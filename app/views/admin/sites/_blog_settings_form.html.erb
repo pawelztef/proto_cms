@@ -1,0 +1,15 @@
+<%= simple_form_for [:admin, @site], html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
+  <%= f.simple_fields_for :blog do |blog| %>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Blob name</label>
+    <div class="uk-form-controls">
+      <%= blog.input :name, required: false, label: false, input_html: {class: "uk-input"} %>
+    </div>
+  </div>
+  <% end %>
+  <div class="uk-margin">
+    <div class="uk-form-controls">
+      <%= f.button :submit, "Save", class: "uk-button uk-button-primary uk-margin-medium-top" %>
+    </div>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #                    :password => "secret",
   #                    :confirmation => "verification" }
   # end
-   
+
   devise_for :users,
     :path => 'users',
     :controllers => { :sessions => "admin/users/sessions",
@@ -19,8 +19,8 @@ Rails.application.routes.draw do
                       :registrations => "admin/users/registrations",
                       :unlocks => "admin/users/unlocks",
                       :confirmations => "admin/users/confirmations" },
-    :path_names => { :sign_in => "login",
-                     :sign_up => "new_user"}
+                      :path_names => { :sign_in => "login",
+                                       :sign_up => "new_user"}
 
   devise_for :readers, 
     :path => 'readers',
@@ -29,8 +29,8 @@ Rails.application.routes.draw do
                       :registrations => "front/readers/registrations",
                       :unlocks => "front/readers/unlocks",
                       :confirmations => "front/readers/confirmations"},
-    :path_names => { :sign_in => "login",
-                     :sign_up => "new_reader"}
+                      :path_names => { :sign_in => "login",
+                                       :sign_up => "new_reader"}
 
   # Admin Namespace
   namespace :admin do
@@ -49,7 +49,10 @@ Rails.application.routes.draw do
     resources :categories
     resources :tags
     resources :sites, path: :site_settings do
-      get 'destroy_img', on: :collection
+      collection do 
+        get 'destroy_img'
+        get 'settings_forms' 
+      end
     end
     resources :dashboard
     resources :users

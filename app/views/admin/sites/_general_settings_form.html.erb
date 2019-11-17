@@ -1,0 +1,80 @@
+<%= simple_form_for [:admin, @site], html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Company name</label>
+    <div class="uk-form-controls">
+      <%= f.input :company_name, required: false, label: false, input_html: {class: "uk-input"} %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Catch phrase</label>
+    <div class="uk-form-controls">
+      <%= f.input :catch_phrase, required: false, label: false, input_html: {class: "uk-input"} %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-select">Home page</label>
+    <div class="uk-form-controls">
+      <%= f.input :home_page, 
+        required: false, 
+        label: false, 
+        collection: Page.all, 
+        selected: HomePage.first.id,
+        label_method: :permalink, 
+        value_method: :id,
+        input_html: {class: "uk-select"} %>
+  </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text"> Logo </label>
+    <div class="uk-form-controls" uk-grid>
+      <div>
+        <% if @site.logo.attached? %>
+          <%= image_tag @site.logo.variant(resize: "185x185"), class: 'branding-img' %>
+        <% else %>
+          <%= image_pack_tag 'image-mock.svg', class: 'branding-img', width: "85", height: "85" %>
+        <% end %>
+      </div>
+      <div>
+        <div class="branding-btns-wrp uk-margin-small-bottom">
+          <%= f.input :logo, as: :file, label: false %>
+          <% if @site.logo.attached? %>
+            <button id="logo_button" class="uk-button uk-button-default" type="button" tabindex="-1">Change Image</button>
+            <%= link_to "Delete image",  destroy_img_admin_sites_path(button: "logo"), class: "uk-button uk-button-default"  %>
+          <% else %>
+            <button id="logo_button" class="uk-button uk-button-default" type="button" tabindex="-1">Add Image</button>
+          <% end %>
+        </div>
+        <span id="logo_meta_info" class="uk-margin-top"></span>
+      </div>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text"> Favicon</label>
+    <div class="uk-form-controls" uk-grid>
+      <div>
+        <% if @site.favicon.attached? %>
+          <%= image_tag @site.favicon.variant(resize: "38x38"), class: 'branding-img' %>
+        <% else %>
+          <%= image_pack_tag 'image-mock.svg', class: 'branding-img', width: "85", height: "85" %>
+        <% end %>
+      </div>
+      <div>
+        <div class="branding-btns-wrp uk-margin-small-bottom">
+          <%= f.input :favicon, as: :file, label: false %>
+          <% if @site.favicon.attached? %>
+            <button id="favicon_button" class="uk-button uk-button-default" type="button" tabindex="-1">Change image</button>
+            <%= link_to "Delete image",  destroy_img_admin_sites_path(button: "favicon"), class: "uk-button uk-button-default"  %>
+          <% else %>
+            <button id="favicon_button" class="uk-button uk-button-default" type="button" tabindex="-1">Add Image</button>
+          <% end %>
+        </div>
+        <span id="favicon_meta_info" class="uk-margin-top"></span>
+      </div>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <div class="uk-form-controls">
+      <%= f.button :submit, "Save", class: "uk-button uk-button-primary uk-margin-medium-top" %>
+    </div>
+  </div>
+<% end %>

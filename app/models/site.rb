@@ -5,6 +5,9 @@ class Site < ApplicationRecord
   has_one_attached :logo
   has_one_attached :favicon
   has_one :blog
+
+  accepts_nested_attributes_for :blog
+
   attr_accessor :home_page
 
   def self.instance

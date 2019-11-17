@@ -24,7 +24,6 @@ $(() => {
   commentsReplyLinks();
   let replyLinks = document.getElementsByClassName('reply-to-comment');
   window.Pz.initCommentsReplyLinks(replyLinks);
-  console.log('hi');
 });
 
 
@@ -45,13 +44,13 @@ let createTagSlug = function() {
 }
 let createTagsMultiselect = function() {
   if(gon) {
-  //const tags = gon.post_tags;
-  //tagsMultiselect(tags);
+  const tags = gon.post_tags;
+  tagsMultiselect(tags);
   }
 }
 let createCategoriesMultiselect = function() {
-  //const categories = gon.post_categories;
-  //categoriesMultiselect(categories);
+  const categories = gon.post_categories;
+  categoriesMultiselect(categories);
 }
 
 let deleteLinksInit = function() {

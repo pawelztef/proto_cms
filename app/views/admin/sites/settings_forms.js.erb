@@ -1,0 +1,5 @@
+for(var item of document.querySelectorAll(".pz-tab-link")) { 
+  item.classList.remove('pz-active') 
+}
+document.getElementById('settings-form-<%= params[:settings_form] %>').classList.add('pz-active')
+document.getElementById('settings-forms-con').innerHTML = '<%= j render partial: "#{params[:settings_form]}_settings_form", format: :html  %>'
