@@ -5,4 +5,8 @@ class Blog < ApplicationRecord
   # This ensures that only one Site row is created
   validates_inclusion_of :singleton_guard, :in => [0]
 
+  def self.instance
+    first_or_create!(singelton_guard: 0) 
+  end
+
 end

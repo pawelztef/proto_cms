@@ -16,10 +16,7 @@ class Site < ApplicationRecord
   end
 
   def blog
-    blog = Blog.first_or_create(permalink: "blog")
-    blog.site = self
-    blog.save!
-    blog
+    self.blog ||= Blog.instance
   end
 
 end
