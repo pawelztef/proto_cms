@@ -2,13 +2,13 @@
   <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-text">Company name</label>
     <div class="uk-form-controls">
-      <%= f.input :company_name, required: false, label: false, input_html: {class: "uk-input"} %>
+      <%= f.input :company_name, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
     </div>
   </div>
   <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-text">Catch phrase</label>
     <div class="uk-form-controls">
-      <%= f.input :catch_phrase, required: false, label: false, input_html: {class: "uk-input"} %>
+      <%= f.input :catch_phrase, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
     </div>
   </div>
   <div class="uk-margin">
@@ -21,7 +21,7 @@
         selected: HomePage.first.id,
         label_method: :permalink, 
         value_method: :id,
-        input_html: {class: "uk-select"} %>
+        input_html: {class: "uk-select uk-width-3-4"} %>
   </div>
   </div>
   <div class="uk-margin">

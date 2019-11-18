@@ -40,6 +40,16 @@ class Admin::SitesController < Admin::AdminsController
     @title = "Settings"
   end
   def site_params
-    params.require(:site).permit(:company_name, :catch_phrase, :home_page, :logo, :favicon, blog: [:name])
+    params.require(:site).permit(:company_name,
+                                 :catch_phrase,
+                                 :home_page,
+                                 :logo,
+                                 :favicon,
+                                 blog_attributes: [:name,
+                                                   :visible,
+                                                   :permalink,
+                                                   :commentable,
+                                                   :max_comment_nesting,
+                                                   :id])
   end
 end
