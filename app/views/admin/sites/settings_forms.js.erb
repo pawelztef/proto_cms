@@ -3,3 +3,9 @@ for(var item of document.querySelectorAll(".pz-tab-link")) {
 }
 document.getElementById('settings-form-<%= params[:settings_form] %>').classList.add('pz-active')
 document.getElementById('settings-forms-con').innerHTML = '<%= j render partial: "#{params[:settings_form]}_settings_form", format: :html  %>'
+
+var inputSource = document.querySelector('#site_blog_attributes_name');
+var inputTarget = document.querySelector('#site_blog_attributes_permalink');
+console.log(inputSource);
+console.log(inputTarget);
+window.Pz.slugify(inputSource, inputTarget);

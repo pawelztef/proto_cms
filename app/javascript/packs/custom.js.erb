@@ -12,6 +12,7 @@ $(() => {
   createPageSlug();
   createTagSlug();
   createCategorySlug();
+  createBlogSlug();
   createTagsMultiselect();
   createCategoriesMultiselect();
   deleteLinksInit();
@@ -42,6 +43,13 @@ let createTagSlug = function() {
   var inputTarget = document.querySelector('#tag_slug');
   window.Pz.slugify(inputSource, inputTarget);
 }
+
+let createBlogSlug = function() {
+  var inputSource = document.querySelector('#site_blog_attributes_name');
+  var inputTarget = document.querySelector('#site_blog_attributes_permalink');
+  window.Pz.slugify(inputSource, inputTarget);
+}
+
 let createTagsMultiselect = function() {
   if(gon) {
   const tags = gon.post_tags;
@@ -103,7 +111,6 @@ let logoCustomUploadButton = function() {
 }
 
 let commentsReplyLinks = function() {
-  console.log('xxx')
-  let replyLinks = document.getElementsByClassName('reply-to-comment')
-  window.Pz.initCommentsReplyLinks(replyLinks)
+  let replyLinks = document.getElementsByClassName('reply-to-comment');
+  window.Pz.initCommentsReplyLinks(replyLinks);
 }
