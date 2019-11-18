@@ -6,6 +6,7 @@ document.getElementById('settings-forms-con').innerHTML = '<%= j render partial:
 
 var inputSource = document.querySelector('#site_blog_attributes_name');
 var inputTarget = document.querySelector('#site_blog_attributes_permalink');
-console.log(inputSource);
-console.log(inputTarget);
-window.Pz.slugify(inputSource, inputTarget);
+
+if(inputSource != null && inputTarget != null) {
+  window.Pz.slugify(inputSource, inputTarget);
+}
