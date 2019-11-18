@@ -1,11 +1,38 @@
 <%= simple_form_for [:admin, @site], html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
   <%= f.simple_fields_for :blog do |blog| %>
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-text">Blob name</label>
-    <div class="uk-form-controls">
-      <%= blog.input :name, required: false, label: false, input_html: {class: "uk-input"} %>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Blog name</label>
+      <div class="uk-form-controls">
+        <%= blog.input :name, required: false, label: false, input_html: {class: "uk-input"} %>
+      </div>
     </div>
-  </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Permalink</label>
+      <div class="uk-form-controls">
+        <%= blog.input :permalink, required: false, label: false, input_html: {class: "uk-input"} %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-label">Visible</div>
+      <div class="uk-form-controls uk-form-controls-text">
+        <label class="pz-site-blog-label"><input class="uk-checkbox" type="checkbox"> Make your blog visible to others.</label>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <div class="uk-form-label">Commentable</div>
+      <div class="uk-form-controls uk-form-controls-text">
+        <label class="pz-site-blog-label"><input class="uk-checkbox" type="checkbox"> Allow comments on your posts.</label>
+      </div>
+    </div> 
+    <div class="uk-margin">
+      <div class="uk-form-label">Comments nesting</div>
+      <div class="uk-form-controls uk-form-controls-text">
+      <select class="uk-select">
+        <option>1</option>
+        <option>2</option>
+      </select>
+      </div>
+    </div>
   <% end %>
   <div class="uk-margin">
     <div class="uk-form-controls">

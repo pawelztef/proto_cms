@@ -1,6 +1,7 @@
 class Page < ApplicationRecord
 
   has_ancestry
+  belongs_to :site
 
   # validates_uniqueness_of :permalink
   validates_presence_of :name, :permalink

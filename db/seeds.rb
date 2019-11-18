@@ -23,14 +23,24 @@ admin.password_confirmation = 'password'
 admin.save!
 created_objects += 1
 
-puts "Creating pages"
+puts "Creating Site"
+site = Site.instance
+site.update_attributes(name: "My site")
+created_objects += 1
 
+puts "Creating Blog"
+blog = site.blog
+blog.update_attributes(name: "My blog")
+created_objects += 1
+
+puts "Creating pages"
 ["home", "about", "products", "contact"].each do |n| 
   page = Page.new
   page.name = n
   page.permalink = "perm_" + n
   page.content = "lorem ipsum"
   page.type = "HomePage" if n == "home"
+  page.site = site
   page.save!
   created_objects += 1
 end
@@ -55,15 +65,6 @@ puts "Creating tags"
   created_objects += 1
 end
 
-puts "Creating Site"
-site = Site.instance
-site.update_attributes(name: "My site")
-created_objects += 1
-
-puts "Creating Blog"
-blog = site.blog
-blog.update_attributes(name: "My blog")
-created_objects += 1
 
 puts "Creating posts"
 

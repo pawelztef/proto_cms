@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_16_030243) do
+ActiveRecord::Schema.define(version: 2019_11_17_134524) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -90,8 +90,10 @@ ActiveRecord::Schema.define(version: 2019_11_16_030243) do
     t.integer "status", default: 0
     t.string "ancestry"
     t.string "type"
+    t.bigint "site_id"
     t.index ["ancestry"], name: "index_pages_on_ancestry"
     t.index ["permalink"], name: "index_pages_on_permalink"
+    t.index ["site_id"], name: "index_pages_on_site_id"
     t.index ["status"], name: "index_pages_on_status"
   end
 
@@ -170,5 +172,6 @@ ActiveRecord::Schema.define(version: 2019_11_16_030243) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blogs", "sites"
   add_foreign_key "comments", "readers"
+  add_foreign_key "pages", "sites"
   add_foreign_key "posts", "blogs"
 end

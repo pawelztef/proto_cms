@@ -5,6 +5,7 @@ class Site < ApplicationRecord
   has_one_attached :logo
   has_one_attached :favicon
   has_one :blog
+  has_many :pages
 
   accepts_nested_attributes_for :blog
 
