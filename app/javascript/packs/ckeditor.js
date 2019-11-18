@@ -18,6 +18,10 @@ $(() => {
     CKEDITOR.replace( 'post_content', ckSettings );
   }
 
+  if(document.getElementById('home_page_content'))  {
+    CKEDITOR.replace( 'home_page_content', ckSettings );
+  }
+
   if(document.getElementById('page_content'))  {
     CKEDITOR.replace( 'page_content', ckSettings );
   }

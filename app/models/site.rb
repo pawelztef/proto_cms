@@ -6,10 +6,11 @@ class Site < ApplicationRecord
   has_one_attached :favicon
   has_one :blog
   has_many :pages
+  has_one :home_page
 
   accepts_nested_attributes_for :blog
 
-  attr_accessor :home_page
+  #attr_accessor :home_page
 
   def self.instance
     first_or_create!(singleton_guard: 0)

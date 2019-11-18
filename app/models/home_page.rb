@@ -1,11 +1,9 @@
 class HomePage < Page
 
-  def self.set_as_homepage(id)
-    Page.all.map { |n| n.type = (n.id == id) ? "HomePage" : nil ; n.save }
-  end
+  belongs_to :site
 
-  def self.get_page
-    HomePage.first
+  def self.instance
+    first_or_create!(name: 'home', permalink: 'home', site: Site.instance)
   end
 
   # future API development

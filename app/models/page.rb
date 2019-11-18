@@ -12,6 +12,13 @@ class Page < ApplicationRecord
   scope :draft, -> { where(status: :draft) }
 
 
+  def set_as_home
+    Page.update_all(type: "")
+    self.update_attribute(:type, "HomePage")
+  end
+
+
+
   def self.search_by_status(status)
     if status.blank?
       Page.order(:ancestry)

@@ -18,7 +18,7 @@
         required: false, 
         label: false, 
         collection: Page.all, 
-        selected: HomePage.first.id,
+        selected: HomePage.instance,
         label_method: :permalink, 
         value_method: :id,
         input_html: {class: "uk-select uk-width-3-4"} %>
