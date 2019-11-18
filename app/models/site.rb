@@ -15,8 +15,4 @@ class Site < ApplicationRecord
     first_or_create!(singleton_guard: 0)
   end
 
-  def blog
-    self.blog ||= Blog.instance
-  end
-
 end

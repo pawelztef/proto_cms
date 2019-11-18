@@ -1,4 +1,4 @@
-class AddSingeltonGuardToSites < ActiveRecord::Migration[5.2]
+class AddSingletonGuardToSites < ActiveRecord::Migration[5.2]
   def up
     add_column :sites, :singleton_guard, :integer, default: 0, unique: true
   end

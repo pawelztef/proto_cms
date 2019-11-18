@@ -29,8 +29,8 @@ site.update_attributes(name: "My site")
 created_objects += 1
 
 puts "Creating Blog"
-blog = site.blog
-blog.update_attributes(name: "My blog")
+blog = Blog.instance
+blog.update_attributes(name: "My blog", permalink: "my_blog")
 created_objects += 1
 
 puts "Creating pages"

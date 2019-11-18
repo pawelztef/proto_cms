@@ -6,7 +6,7 @@ class Blog < ApplicationRecord
   validates_inclusion_of :singleton_guard, :in => [0]
 
   def self.instance
-    first_or_create!(singelton_guard: 0) 
+    first_or_create!(singleton_guard: 0, site: Site.instance) 
   end
 
 end
