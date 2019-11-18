@@ -1,0 +1,19 @@
+current directory: /home/pawel/Projects/Rails/pawelztef.me/proto_cms/vendor/cache/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug
+/usr/share/rvm/rubies/ruby-2.6.0/bin/ruby -I /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/2.6.0 -r ./siteconf20191118-19168-1onu3m8.rb extconf.rb
+creating Makefile
+
+current directory: /home/pawel/Projects/Rails/pawelztef.me/proto_cms/vendor/cache/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/pawel/Projects/Rails/pawelztef.me/proto_cms/vendor/cache/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/pawel/Projects/Rails/pawelztef.me/proto_cms/vendor/cache/ruby/2.6.0/gems/byebug-11.0.1/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20191118-19168-ng22iv/byebug
