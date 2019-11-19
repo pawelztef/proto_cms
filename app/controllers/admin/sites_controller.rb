@@ -6,10 +6,8 @@ class Admin::SitesController < Admin::AdminsController
   end
 
   def update
-    byebug
-    #HomePage.set_as_homepage(site_params[:home_page].to_i)
+    @site.home_page = Page.find(params[:home_page_id]).set_as_home
     @site.update(site_params)
-    byebug
     redirect_to admin_sites_path, notice: "Site setting was successfully updated."
   end
 
@@ -42,7 +40,6 @@ class Admin::SitesController < Admin::AdminsController
   def site_params
     params.require(:site).permit(:company_name,
                                  :catch_phrase,
-                                 :home_page,
                                  :logo,
                                  :favicon,
                                  blog_attributes: [:name,

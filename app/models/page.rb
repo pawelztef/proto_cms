@@ -14,7 +14,8 @@ class Page < ApplicationRecord
 
   def set_as_home
     Page.update_all(type: "")
-    self.update_attribute(:type, "HomePage")
+    self.update_attributes(type: "HomePage", status: 1)
+    return self.becomes(HomePage)
   end
 
 

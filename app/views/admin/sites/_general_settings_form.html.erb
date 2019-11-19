@@ -14,15 +14,8 @@
   <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-select">Home page</label>
     <div class="uk-form-controls">
-      <%= f.input :home_page, 
-        required: false, 
-        label: false, 
-        collection: Page.all, 
-        selected: HomePage.instance,
-        label_method: :permalink, 
-        value_method: :id,
-        input_html: {class: "uk-select uk-width-3-4"} %>
-  </div>
+      <%= select_tag :home_page_id, options_for_select(Page.all.collect{ |p| [p.name, p.id]}, HomePage.instance.id), class: "uk-select uk-width-3-4" %>
+    </div>
   </div>
   <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-text"> Logo </label>
