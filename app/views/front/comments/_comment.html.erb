@@ -25,7 +25,7 @@
       class: "pz-d_none"} %>
 
   </article>
-  <ul class="uk-comment-list" id= <%= "#{dom_id(comment)}_comments" %> >
+  <ul class="uk-comment-list" >
     <%= render comment.comments, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting] %>
   </ul>
 </li>

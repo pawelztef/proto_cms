@@ -1,7 +1,6 @@
 import './slugify.js';
 import './ajax_links.js';
 import './media.js';
-import './comments.js';
 import categoriesMultiselect from './categories.js';
 import tagsMultiselect from './tags.js';
 import ckEditorInsertImage from './ckeditor_media.js.erb';
@@ -22,9 +21,6 @@ $(() => {
   avatarCustomUploadButton();
   faviconCustomUploadButton();
   logoCustomUploadButton();
-  commentsReplyLinks();
-  let replyLinks = document.getElementsByClassName('reply-to-comment');
-  window.Pz.initCommentsReplyLinks(replyLinks);
 });
 
 
@@ -110,7 +106,3 @@ let logoCustomUploadButton = function() {
   customUploadButton(realInput, customUploadBtn, metaCont );
 }
 
-let commentsReplyLinks = function() {
-  let replyLinks = document.getElementsByClassName('reply-to-comment');
-  window.Pz.initCommentsReplyLinks(replyLinks);
-}

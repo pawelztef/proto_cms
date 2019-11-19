@@ -1,16 +1,16 @@
 $(() => {
-  window.Pz = window.Pz || {};
-  Pz.initCommentsReplyLinks = function(replyLinks) {
-    Array.from(replyLinks).forEach((link) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const target = link.dataset.target;
-        const form = document.querySelector("form[data-target='" + target + "']" );
-        console.log(form)
-        form.classList.toggle('pz-d_none');
-      }); 
-    });
+  const replyLinks = document.getElementsByClassName('reply-to-comment');
+  if(replyLinks != null) {
+    console.log(replyLinks);
   }
+  Array.from(replyLinks).forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const target = link.dataset.target;
+      const form = document.querySelector("form[data-target='" + target + "']" );
+      console.log(form)
+      form.classList.toggle('pz-d_none');
+    }); 
+  });
 });
-
