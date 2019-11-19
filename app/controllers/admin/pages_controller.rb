@@ -63,7 +63,7 @@ class Admin::PagesController < Admin::AdminsController
 
   private
   def set_admin_page
-    @admin_page = Page.find_by_permalink!(params[:id])
+    @admin_page = Page.find_by_permalink!(params[:id]).becomes(Page)
   end
   def admin_page_params
     params.require(:page).permit(:parent_id, :permalink, :content, :name, :status)

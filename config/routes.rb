@@ -45,7 +45,6 @@ Rails.application.routes.draw do
       end
     end
 
-    get "home_page", to: "pages#edit"
 
     resources :posts
     resources :comments

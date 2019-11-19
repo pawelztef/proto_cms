@@ -18,14 +18,12 @@
         <%= f.input :permalink, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "permalink" } %>
       </div>
     </div>
-    <% if @admin_page %>
-      <div class="uk-width-1-4">
-        <label class="uk-form-label" for="form-stacked-text">Parent Page</label>
-        <div class="uk-form-controls">
-          <%= f.input :parent_id, collection: Page.order(:name),label: false, input_html: {class: "uk-select"}  %>
-        </div>
+    <div class="uk-width-1-4">
+      <label class="uk-form-label" for="form-stacked-text">Parent Page</label>
+      <div class="uk-form-controls">
+        <%= f.input :parent_id, collection: Page.order(:name),label: false, input_html: {class: "uk-select"}  %>
       </div>
-    <% end %>
+    </div>
     <div class="uk-width-1-4">
       <label class="uk-form-label" for="form-stacked-text">Status</label>
       <div class="uk-form-controls">
