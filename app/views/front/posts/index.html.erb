@@ -31,11 +31,8 @@
               </h2>
               <p class="uk-article-meta"><%= post.created_at.strftime("%d %b %Y") %> <span class="dot"></span> <%= read_time(post) %></p>
             </header>
-            <figure>
-            </figure>
             <p> <%= post.summary %></p>
             <%= link_to "READ MORE", post_path(post), class: "uk-button uk-button-default uk-button-small"  %>
-            <%# <a href="#" title="Read More" class="uk-button uk-button-default uk-button-small">READ MORE</a> %>
             <hr>
           </article>
         <% end %>
