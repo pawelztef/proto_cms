@@ -12,8 +12,9 @@
         </li>
       <% end %>
       <li>
-        <%= link_to "Posts", posts_path %>
+        <%= link_to "Posts", posts_path, class: ("uk-active" if @posts != nil) %>
       </li>
     </ul>
   </nav>
 </div>
+

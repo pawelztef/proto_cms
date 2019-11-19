@@ -1,7 +1,7 @@
 class Front::PagesController < ApplicationController
   layout "front"
   def show
-    @page = Page.find_by_permalink!(params[:id])
+    @page = Page.find_by_permalink!(params[:id]).becomes(Page)
     @title = @page.name
   end
 end
