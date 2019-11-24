@@ -6,7 +6,11 @@ class Admin::SitesController < Admin::AdminsController
   end
 
   def update
-    @site.home_page = Page.find(params[:home_page_id]).set_as_home
+    #@site.home_page = Page.find(params[:home_page_id]).set_as_home if params[:home_page_id]
+    if params[:home_page_id]
+      Page.find(params[:home_page_id]).set_as_home
+      @site.home_page = HomePage.instance
+    end
     @site.update(site_params)
     redirect_to admin_sites_path, notice: "Site setting was successfully updated."
   end
@@ -42,11 +46,13 @@ class Admin::SitesController < Admin::AdminsController
                                  :catch_phrase,
                                  :logo,
                                  :favicon,
+                                 :home_page_id,
                                  blog_attributes: [:name,
                                                    :visible,
                                                    :permalink,
                                                    :commentable,
                                                    :max_comment_nesting,
-                                                   :id])
+                                                   :id,
+                                                   :_destroy])
   end
 end
