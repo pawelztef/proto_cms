@@ -27,7 +27,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #222A30;
-  width: 240px;
+  width: 190px;
   z-index:2;
   transition: height 0.3s ease-out;
 }
@@ -94,7 +94,7 @@
   right: 0;
   z-index: 3;
   bottom: 0;
-  width: 240px;
+  width: 190px;
 }
 .left-logo {
   /* navbar height */
@@ -141,11 +141,11 @@ span.uk-margin-small-right.zmdi.zmdi-view-dashboard {
 @media screen and (min-width: 960px){
   #content {
     /* equal to left-col width */
-    margin-left: 240px;
+    margin-left: 190px;
   }
   #top-head {
     /* equal to left-col width */
-    left:240px;
+    left:190px;
   }
 }
 
