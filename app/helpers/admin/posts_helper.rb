@@ -9,16 +9,16 @@ module Admin::PostsHelper
   def generate_categories_labels post
     tags = ""
     post.categories.each do |cat|
-      tags << content_tag(:span, cat.name, class: "uk-label uk-label-default admin__posts-index_category-label").html_safe
+      tags << raw(content_tag(:span, cat.name, class: "uk-label uk-label-default admin__posts-index_category-label"))
     end
-    tags.html_safe
+    raw(tags)
   end
   def generate_tags_labels post
     tags = ""
     post.tags.each do |cat|
-      tags << content_tag(:span, cat.name, class: "uk-label uk-label-default admin__posts-index_category-label").html_safe
+      tags << raw(content_tag(:span, cat.name, class: "uk-label uk-label-default admin__posts-index_category-label"))
     end
-    tags.html_safe
+    raw(tags)
   end
 
   def generate_tabs_collection

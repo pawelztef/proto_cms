@@ -1,6 +1,6 @@
 module ApplicationHelper
   def standard_date(date)
-     date.strftime("%d-%m-%Y  %I:%M")
+    date.strftime("%d-%m-%Y  %I:%M")
   end
 
   def read_time(post)
@@ -10,5 +10,17 @@ module ApplicationHelper
   def site_favicon_tag
     favicon_link_tag url_for(Site.instance.favicon) if Site.instance.favicon.attached?
   end
- 
+
+  def max_nesting
+    Site.instance.blog.max_comment_nesting
+  end
+
+  def blog_commentable?
+    Site.instance.blog.commentable
+  end
+
+  def blog_visible?
+    Site.instance.blog.visible
+  end
+
 end

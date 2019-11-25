@@ -11,6 +11,7 @@
         <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
           <li><a href="#"><%= time_ago_in_words(comment.created_at) %> ago</a></li>
           <li><a href="#" class="reply-to-comment", data-target="<%= comment.id %>">Reply</a></li>
+          <li><%= link_to "Delete", [comment.commentable, comment], method: :delete if comment.reader == current_reader %></li>
         </ul>
       </div>
     </header>
