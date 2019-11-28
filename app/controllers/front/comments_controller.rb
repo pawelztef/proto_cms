@@ -1,4 +1,4 @@
-class Front::CommentsController < ApplicationController
+class Front::CommentsController < Front::FrontController
   layout "front"
   before_action :authenticate_reader!
 

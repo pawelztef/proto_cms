@@ -1,4 +1,4 @@
-class Front::PostsController < ApplicationController
+class Front::PostsController < Front::FrontController 
   layout 'blog'
   def index
     @posts = Post.all.where(status: 1)
