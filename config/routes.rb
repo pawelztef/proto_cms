@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'front/front#index'
+  root to: 'front/pages#index'
 
   # scope "/admin" do
   # EXAMPLE CONFIGURATIONS DEVISE PATHS
@@ -75,11 +75,7 @@ Rails.application.routes.draw do
       resources :comments
     end
 
-    resources :front do
-      collection do
-        # get 'index'
-        # get 'page/:permalink' 
-      end
-    end
+    get ':permalink', to: 'pages#show', as: :page
+
   end
 end
