@@ -58,4 +58,15 @@ class Page < ApplicationRecord
   def to_param
     permalink
   end
+
+  def home_page?
+    self.type == "HomePage"
+  end
+
+  def blog?
+    self.type == "Blog"
+  end
+
 end
+
+
