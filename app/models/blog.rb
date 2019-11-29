@@ -1,4 +1,4 @@
-class Blog < ApplicationRecord
+class Blog < Page
   belongs_to :site
   has_many :posts
   # The "singleton_guard" column is a unique column which must always be set to '0'
