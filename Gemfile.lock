@@ -44,6 +44,9 @@ GEM
       tzinfo (~> 1.1)
     ancestry (3.0.7)
       activerecord (>= 3.2.0)
+    annotate (3.0.3)
+      activerecord (>= 3.2, < 7.0)
+      rake (>= 10.4, < 14.0)
     arel (9.0.0)
     awesome_print (1.8.0)
     bcrypt (3.1.13)
@@ -209,6 +212,7 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
+  annotate
   awesome_print
   better_errors
   binding_of_caller
