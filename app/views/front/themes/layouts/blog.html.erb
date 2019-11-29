@@ -5,7 +5,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= site_favicon_tag  %>
-    <%= render 'layouts/admin_cdns'%>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.js"></script>
@@ -14,27 +13,27 @@
   </head>
   <body>
     <!--HEADER-->
-    <%= render 'shared/header' %>
+    <%= render 'front/themes/shared/header' %>
     <!--/HEADER-->
     <!-- NAVIGATION -->
-    <%= render 'shared/navigation' %>
+    <%= render 'front/themes/shared/navigation' %>
     <!-- /NAVIGATION -->
     <!-- HERO -->
-    <%# <%= render 'shared/hero' %1> %>
+    <%# <%= render 'front/themes/shared/hero' %1> %>
     <!-- HERO -->
     <!-- FEATURED -->
-    <%# <%= render 'shared/featured' %1> %>
+    <%# <%= render 'front/themes/shared/featured' %1> %>
     <!-- /FEATURED -->
     <!--CONTENT-->
     <%= yield %>
-    <%# <%= render 'shared/content' %1> %>
+    <%# <%= render 'front/themes/shared/content' %1> %>
     <%# <%= @page.content.html_safe %1> %>
     <!--/CONTENT-->
     <!--FOOTER-->
-    <%= render 'shared/footer' %>
+    <%= render 'front/themes/shared/footer' %>
     <!--/FOOTER-->
     <!-- OFFCANVAS -->
-    <%# <%= render 'shared/offcanvas' %1> %>
+    <%# <%= render 'front/themes/shared/offcanvas' %1> %>
     <!-- /OFFCANVAS -->
   </body>  
 </html>
