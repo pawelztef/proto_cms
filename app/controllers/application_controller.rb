@@ -19,9 +19,7 @@ class ApplicationController < ActionController::Base
 
   def layout_by_controller
     if devise_controller? && resource_name == :user
-      "admin_authentication"
-    elsif devise_controller? && resource_name == :caregiver
-      "front_authentication" 
+      "admin/layouts/admin_authentication"
     end
   end
 

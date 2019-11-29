@@ -1,8 +1,4 @@
 class Front::CommentsController < Front::FrontController
-  
-  gs
-  git commit
-  iUpdating front controller to inherit from main front controller.layout "front"
   before_action :authenticate_reader!
 
   def new
