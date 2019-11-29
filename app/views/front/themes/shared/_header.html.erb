@@ -1,0 +1,36 @@
+<header id="header" style="background-color: #fff;" data-uk-sticky="show-on-up: true; animation: uk-animation-fade; media: @l">
+  <div class="uk-container">
+    <nav id="navbar" data-uk-navbar="mode: click;">
+      <div class="uk-navbar-left nav-overlay uk-visible@m">
+      </div>
+      <div class="pz-navbar-center uk-navbar-center nav-overlay">
+        <% if Site.instance.logo.attached? %>
+          <a class="uk-navbar-item uk-logo" href="#" title="Logo"><%= image_tag Site.instance.logo.variant(resize: "150x150"), class: 'branding-img' %></a>
+        <% end %>
+      </div>
+      <div class="uk-navbar-right nav-overlay">
+        <a class="uk-navbar-toggle uk-visible@m" data-uk-search-icon data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+        <ul class="uk-navbar-nav">
+          <% if reader_signed_in? %>
+            <li><a href="<%= destroy_reader_session_path %>"  title="Sign Out" data-method="delete" >Log out</a></li>
+          <% else %>
+            <li>
+              <a href="<%= new_reader_session_path %>" title="Sign in">Sing_in</a>
+            </li>
+            <li>
+              <a href="<%= new_reader_registration_path %>" title="Sign Up">Sign Up</a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+        <div class="uk-navbar-item uk-width-expand">
+          <form class="uk-search uk-search-navbar uk-width-1-1">
+            <input class="uk-search-input" type="search" placeholder="Search...">
+          </form>
+        </div>
+        <a class="uk-navbar-toggle" data-uk-close data-uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+      </div>
+    </nav>
+  </div>
+</header>
