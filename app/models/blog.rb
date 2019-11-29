@@ -1,3 +1,27 @@
+# == Schema Information
+#
+# Table name: blogs
+#
+#  id                  :bigint           not null, primary key
+#  commentable         :boolean          default(FALSE)
+#  max_comment_nesting :integer          default(1)
+#  name                :string(255)
+#  permalink           :string(255)
+#  singleton_guard     :integer          default(0)
+#  visible             :boolean          default(FALSE)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  site_id             :bigint
+#
+# Indexes
+#
+#  index_blogs_on_site_id  (site_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (site_id => sites.id)
+#
+
 class Blog < ApplicationRecord
   belongs_to :site
   has_many :posts

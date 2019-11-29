@@ -1,3 +1,20 @@
+# == Schema Information
+#
+# Table name: categories
+#
+#  id          :bigint           not null, primary key
+#  ancestry    :string(255)
+#  description :text(65535)
+#  name        :string(255)
+#  slug        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+# Indexes
+#
+#  index_categories_on_ancestry  (ancestry)
+#
+
 class Category < ApplicationRecord
   has_many :categorizations
   has_many :posts, :through => :categorizations
