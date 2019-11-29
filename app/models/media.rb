@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: media
+#
+#  id         :bigint           not null, primary key
+#  caption    :text(65535)
+#  title      :string(255)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Media < ApplicationRecord
   include ActionView::Helpers::NumberHelper
   include Rails.application.routes.url_helpers

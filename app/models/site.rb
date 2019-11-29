@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: sites
+#
+#  id              :bigint           not null, primary key
+#  catch_phrase    :string(255)
+#  company_name    :string(255)
+#  name            :string(255)
+#  singleton_guard :integer          default(0)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class Site < ApplicationRecord
   # The "singleton_guard" column is a unique column which must always be set to '0'
   # This ensures that only one Site row is created

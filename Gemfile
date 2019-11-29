@@ -24,6 +24,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate'
   gem 'faker'
   gem 'awesome_print'
   gem 'meta_request'
