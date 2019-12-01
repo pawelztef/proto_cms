@@ -1,4 +1,4 @@
-class Front::CommentsController < Front::FrontController
+class Front::CommentsController < ApplicationController
   before_action :authenticate_reader!
 
   def new
