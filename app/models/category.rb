@@ -20,7 +20,7 @@ class Category < ApplicationRecord
   has_many :posts, :through => :categorizations
   has_ancestry
 
-  enum status: ContentStatus::STATUSES
+  enum status: PostStatus::STATUSES
 
   def get_stats
     base_set = {}

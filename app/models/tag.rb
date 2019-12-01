@@ -13,7 +13,7 @@
 class Tag < ApplicationRecord
   has_many :tagizations
   has_many :posts, :through => :tagizations
-  enum status: ContentStatus::STATUSES
+  enum status: PostStatus::STATUSES
 
   def get_stats
     base_set = {}
