@@ -9,7 +9,7 @@
     <div class="uk-width-1-4">
       <label class="uk-form-label" for="form-stacked-text">Name</label>
       <div class="uk-form-controls">
-        <%= f.input :name, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "name" } %>
+        <%= f.input :title, required: false, autofocus: false, label: false, input_html: { class: "uk-input", autocomplete: "name" } %>
       </div>
     </div>
     <div class="uk-width-1-4">
@@ -21,13 +21,13 @@
     <div class="uk-width-1-4">
       <label class="uk-form-label" for="form-stacked-text">Parent Page</label>
       <div class="uk-form-controls">
-        <%= f.input :parent_id, collection: Page.order(:name),label: false, input_html: {class: "uk-select"}  %>
+        <%= f.input :parent_id, collection: Page.order(:title),label: false, input_html: {class: "uk-select"}  %>
       </div>
     </div>
     <div class="uk-width-1-4">
       <label class="uk-form-label" for="form-stacked-text">Status</label>
       <div class="uk-form-controls">
-        <%= f.input :status, as: :select, collection: ContentStatus::STATUSES, label: false, input_html: {class: "uk-select"} %>
+        <%= f.input :status, as: :select, collection: PageStatus::STATUSES, label: false, input_html: {class: "uk-select"} %>
       </div>
     </div>
     <div class="uk-width-1-1">

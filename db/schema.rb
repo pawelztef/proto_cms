@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
   end
 
   create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "title"
     t.string "permalink"
     t.string "type"
     t.text "content"
@@ -105,9 +105,9 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.string "name"
     t.string "company_name"
     t.string "catch_phrase"
+    t.integer "singleton_guard", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "singleton_guard", default: 0
   end
 
   create_table "tagizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

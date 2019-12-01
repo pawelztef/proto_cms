@@ -3,7 +3,7 @@
     <div class="uk-card-header">
       <div class="uk-grid uk-grid-small">
         <%# TODO refactor published/unplished %>
-        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %>: <%= @admin_page.name %></div></div>
+        <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %>: <%= @admin_page.title %></div></div>
         <div class="uk-width-expand uk-text-right panel-icons">
           <a href= <%= admin_pages_path %> class="uk-icon-link" title="Back" data-uk-tooltip data-uk-icon="icon: arrow-left"></a>
         </div>

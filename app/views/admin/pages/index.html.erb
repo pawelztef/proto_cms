@@ -33,7 +33,7 @@
             <% @admin_pages.each do |admin_page| %>
               <tr>
                 <td><%= admin_page.id %></td>
-                <td><%= admin_page.name %></td>
+                <td><%= admin_page.title %></td>
                 <td><%= admin_page.permalink %></td>
                 <td><%= admin_page.status %></td>
                 <td><%= admin_page.ancestry %></td>
@@ -72,7 +72,7 @@
       <span>Show by status</span>
 
       <%= form_tag admin_pages_path, method: :get, class: "form__user-form uk-form-stacked" do |f| %>
-        <%= select_tag "status", options_for_select(ContentStatus::STATUSES), include_blank: "",  class: 'uk-select' %>
+        <%= select_tag "status", options_for_select(PageStatus::STATUSES), include_blank: "",  class: 'uk-select' %>
         <%= submit_tag :submit , class: "uk-button uk-button-primary uk-margin-top" %>
       <% end %>
 

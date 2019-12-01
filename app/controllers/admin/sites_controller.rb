@@ -47,7 +47,7 @@ class Admin::SitesController < Admin::AdminsController
                                  :logo,
                                  :favicon,
                                  :home_page_id,
-                                 blog_attributes: [:name,
+                                 blog_attributes: [:title,
                                                    :visible,
                                                    :permalink,
                                                    :commentable,

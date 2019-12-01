@@ -7,10 +7,10 @@
 #  commentable         :boolean          default(FALSE)
 #  content             :text(65535)
 #  max_comment_nesting :integer          default(1)
-#  name                :string(255)
 #  permalink           :string(255)
-#  status              :integer          default("draft")
+#  status              :integer          default("unvisible")
 #  summary             :text(65535)
+#  title               :string(255)
 #  type                :string(255)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -38,7 +38,7 @@ class Page < ApplicationRecord
   has_many :tags, :through => :tagizations
   belongs_to :site
 
-  validates_presence_of :name, :permalink
+  validates_presence_of :title, :permalink
 
   enum status: PageStatus::STATUSES
 

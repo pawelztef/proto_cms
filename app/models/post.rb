@@ -7,10 +7,10 @@
 #  commentable         :boolean          default(FALSE)
 #  content             :text(65535)
 #  max_comment_nesting :integer          default(1)
-#  name                :string(255)
 #  permalink           :string(255)
 #  status              :integer          default("draft")
 #  summary             :text(65535)
+#  title               :string(255)
 #  type                :string(255)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null

@@ -7,10 +7,10 @@
 #  commentable         :boolean          default(FALSE)
 #  content             :text(65535)
 #  max_comment_nesting :integer          default(1)
-#  name                :string(255)
 #  permalink           :string(255)
-#  status              :integer          default("draft")
+#  status              :integer          default("unvisible")
 #  summary             :text(65535)
+#  title               :string(255)
 #  type                :string(255)
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
@@ -31,7 +31,7 @@
 class HomePage < Page
 
   def self.instance
-    first_or_create!(name: 'home', permalink: 'home', site: Site.instance, status: 1)
+    first_or_create!(title: 'home', permalink: 'home', site: Site.instance, status: 1)
   end
 
 end

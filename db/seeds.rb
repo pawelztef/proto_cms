@@ -23,6 +23,7 @@ admin.password_confirmation = 'password'
 admin.save!
 created_objects += 1
 
+
 puts "Creating Site"
 site = Site.instance
 site.update_attributes(name: "My site")
@@ -30,16 +31,18 @@ created_objects += 1
 
 puts "Creating Blog"
 blog = Blog.instance
-blog.update_attributes(name: "My blog", permalink: "my_blog")
+created_objects += 1
+
+puts "Creating Home Page"
+blog = HomePage.instance
 created_objects += 1
 
 puts "Creating pages"
-["home", "about", "products", "contact"].each do |n| 
+["about", "products", "contact"].each do |n| 
   page = Page.new
-  page.name = n
-  page.permalink = "perm_" + n
-  page.content = "lorem ipsum"
-  page.type = "HomePage" if n == "home"
+  page.title = n
+  page.permalink = n
+  page.content = Faker::Lorem.paragraph(sentence_count: 15)
   page.site = site
   page.save!
   created_objects += 1
@@ -80,7 +83,7 @@ puts "Creating posts"
   post.content = Faker::Lorem.paragraph(sentence_count: 15)
   post.summary = summary
   post.status = "published" if n.even?
-  post.blog = blog
+  post.site = site
   post.save!
 
   created_objects += 1

@@ -22,7 +22,7 @@ module Admin::PostsHelper
   end
 
   def generate_tabs_collection
-    ContentStatus::STATUSES.dup << "all"
+    PostStatus::STATUSES.dup << "all"
   end
 
   def current_status?(status)
