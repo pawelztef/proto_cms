@@ -14,5 +14,6 @@ class CreatePages < ActiveRecord::Migration[5.2]
       t.timestamps
     end
     add_index :pages, :permalink
+    add_index :pages, :status
   end
 end

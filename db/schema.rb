@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_17_134524) do
+ActiveRecord::Schema.define(version: 2019_11_06_144306) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,18 +31,6 @@ ActiveRecord::Schema.define(version: 2019_11_17_134524) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
-  create_table "blogs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.boolean "visible", default: false
-    t.string "permalink"
-    t.boolean "commentable", default: false
-    t.integer "max_comment_nesting", default: 1
-    t.bigint "site_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["site_id"], name: "index_blogs_on_site_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,30 +72,20 @@ ActiveRecord::Schema.define(version: 2019_11_17_134524) do
   create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "permalink"
+    t.string "type"
     t.text "content"
+    t.text "summary"
+    t.integer "status", default: 0
+    t.boolean "commentable", default: false
+    t.integer "max_comment_nesting", default: 1
+    t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0
     t.string "ancestry"
-    t.string "type"
-    t.bigint "site_id"
     t.index ["ancestry"], name: "index_pages_on_ancestry"
     t.index ["permalink"], name: "index_pages_on_permalink"
     t.index ["site_id"], name: "index_pages_on_site_id"
     t.index ["status"], name: "index_pages_on_status"
-  end
-
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.string "permalink"
-    t.text "content"
-    t.text "summary"
-    t.integer "status", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "blog_id"
-    t.index ["blog_id"], name: "index_posts_on_blog_id"
-    t.index ["permalink"], name: "index_posts_on_permalink"
   end
 
   create_table "readers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -170,8 +148,6 @@ ActiveRecord::Schema.define(version: 2019_11_17_134524) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "blogs", "sites"
   add_foreign_key "comments", "readers"
   add_foreign_key "pages", "sites"
-  add_foreign_key "posts", "blogs"
 end
