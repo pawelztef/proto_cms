@@ -1,39 +1,41 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: pages
 #
-#  id         :bigint           not null, primary key
-#  content    :text(65535)
-#  permalink  :string(255)
-#  status     :integer          default("draft")
-#  summary    :text(65535)
-#  title      :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  blog_id    :bigint
+#  id                  :bigint           not null, primary key
+#  ancestry            :string(255)
+#  commentable         :boolean          default(FALSE)
+#  content             :text(65535)
+#  max_comment_nesting :integer          default(1)
+#  name                :string(255)
+#  permalink           :string(255)
+#  status              :integer          default("draft")
+#  summary             :text(65535)
+#  type                :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  site_id             :bigint
 #
 # Indexes
 #
-#  index_posts_on_blog_id    (blog_id)
-#  index_posts_on_permalink  (permalink)
+#  index_pages_on_ancestry   (ancestry)
+#  index_pages_on_permalink  (permalink)
+#  index_pages_on_site_id    (site_id)
+#  index_pages_on_status     (status)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (blog_id => blogs.id)
+#  fk_rails_...  (site_id => sites.id)
 #
 
-class Post < ApplicationRecord
-  belongs_to :blog
-  has_many :categorizations
-  has_many :categories, :through => :categorizations
-  has_many :tagizations
-  has_many :tags, :through => :tagizations
+class Post < Page
   has_many :comments, as: :commentable
 
-  enum status: ContentStatus::STATUSES
+  enum status: PostStatus::STATUSES
 
-  scope :published, ->  { where(status: :published) }
-  scope :draft, -> { where(status: :draft) }
+  PostStatus::STATUSES.each do |s|
+    scope s, -> { where(status: s) }
+  end
  
   attr_accessor :submit_option
 

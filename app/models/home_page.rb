@@ -2,16 +2,19 @@
 #
 # Table name: pages
 #
-#  id         :bigint           not null, primary key
-#  ancestry   :string(255)
-#  content    :text(65535)
-#  name       :string(255)
-#  permalink  :string(255)
-#  status     :integer          default("draft")
-#  type       :string(255)
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  site_id    :bigint
+#  id                  :bigint           not null, primary key
+#  ancestry            :string(255)
+#  commentable         :boolean          default(FALSE)
+#  content             :text(65535)
+#  max_comment_nesting :integer          default(1)
+#  name                :string(255)
+#  permalink           :string(255)
+#  status              :integer          default("draft")
+#  summary             :text(65535)
+#  type                :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  site_id             :bigint
 #
 # Indexes
 #
@@ -27,14 +30,8 @@
 
 class HomePage < Page
 
-  belongs_to :site
-
   def self.instance
     first_or_create!(name: 'home', permalink: 'home', site: Site.instance, status: 1)
   end
 
-  # future API development
-  def as_json(options={})
-    super(options.merge({ methods: :type }))
-  end
 end
