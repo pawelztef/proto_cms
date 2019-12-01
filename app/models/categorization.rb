@@ -6,7 +6,7 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :integer
-#  post_id     :integer
+#  page_id     :integer
 #
 
 class Categorization < ApplicationRecord
