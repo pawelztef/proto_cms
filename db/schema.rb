@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
   end
 
   create_table "categorizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_id"
+    t.integer "page_id"
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
   end
 
   create_table "tagizations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "post_id"
+    t.integer "page_id"
     t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
