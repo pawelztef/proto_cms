@@ -1,4 +1,4 @@
-class ContentStatus
+class PostStatus 
   STATUSES = %w(draft published).freeze
   def initialize(status)
     @status = status
