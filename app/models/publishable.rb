@@ -8,7 +8,7 @@
 #  content             :text(65535)
 #  max_comment_nesting :integer          default(1)
 #  permalink           :string(255)
-#  status              :integer          default("unvisible")
+#  status              :integer          default(0)
 #  summary             :text(65535)
 #  title               :string(255)
 #  type                :string(255)
@@ -28,36 +28,33 @@
 #  fk_rails_...  (site_id => sites.id)
 #
 
-class Page < Publishable
+class Publishable < ApplicationRecord
 
-  validates_presence_of :title, :permalink
+  has_ancestry
 
-  #TODO Eextract dynamic scopes based on statuses.
+  has_many :categorizations
+  has_many :categories, :through => :categorizations
+  has_many :tagizations
+  has_many :tags, :through => :tagizations
+  belongs_to :site
 
-  enum status: PageStatus::STATUSES
 
-  PageStatus::STATUSES.each do |s|
-    scope s, -> { where(status: s) }
+  def to_param
+    permalink
   end
 
-  def set_as_home
-    Page.update_all(type: "")
-    self.update_attributes(type: "HomePage", status: 1)
-    return self.becomes(HomePage)
+  # TODO create method wich dynamicaly creates below methods according to existing subclasses.
+
+  def home_page?
+    self.type == "HomePage"
   end
 
-  def set_as_blog
-    Page.update_all(type: "")
-    self.update_attributes(type: "Blog", status: 1)
-    return self.becomes(Blog)
+  def blog?
+    self.type == "Blog"
   end
 
-  def self.search_by_status(status)
-    if status.blank?
-      Page.order(:ancestry)
-    else
-      Page.where(status: status)
-    end
+  def post
+    self.type == "Post"
   end
 
 

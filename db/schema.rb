@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.text "caption"
   end
 
-  create_table "pages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "publishables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "permalink"
     t.string "type"
@@ -82,10 +82,10 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
-    t.index ["ancestry"], name: "index_pages_on_ancestry"
-    t.index ["permalink"], name: "index_pages_on_permalink"
-    t.index ["site_id"], name: "index_pages_on_site_id"
-    t.index ["status"], name: "index_pages_on_status"
+    t.index ["ancestry"], name: "index_publishables_on_ancestry"
+    t.index ["permalink"], name: "index_publishables_on_permalink"
+    t.index ["site_id"], name: "index_publishables_on_site_id"
+    t.index ["status"], name: "index_publishables_on_status"
   end
 
   create_table "readers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -149,5 +149,5 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "readers"
-  add_foreign_key "pages", "sites"
+  add_foreign_key "publishables", "sites"
 end

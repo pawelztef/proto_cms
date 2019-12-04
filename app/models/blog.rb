@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: pages
+# Table name: publishables
 #
 #  id                  :bigint           not null, primary key
 #  ancestry            :string(255)
@@ -18,17 +18,17 @@
 #
 # Indexes
 #
-#  index_pages_on_ancestry   (ancestry)
-#  index_pages_on_permalink  (permalink)
-#  index_pages_on_site_id    (site_id)
-#  index_pages_on_status     (status)
+#  index_publishables_on_ancestry   (ancestry)
+#  index_publishables_on_permalink  (permalink)
+#  index_publishables_on_site_id    (site_id)
+#  index_publishables_on_status     (status)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (site_id => sites.id)
 #
 
-class Blog < Page
+class Blog < Page 
 
   def self.instance
     first_or_create!(site: Site.instance, title: "Blog", permalink: "blog", status: 1) 
