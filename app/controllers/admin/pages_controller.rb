@@ -5,8 +5,7 @@ class Admin::PagesController < Admin::AdminsController
 
   def index
     @title = "List Pages"
-    byebug
-    @admin_pages = Page.where.not(type: Post).search_by_status(params[:status])
+    @admin_pages = Page.all.search_by_status(params[:status])
   end
 
   def show

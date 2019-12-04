@@ -6,8 +6,13 @@ class Front::PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find_by_permalink(params[:permalink])
-    render 'front/themes/pages/show'
+    @page = Page.find_by_permalink(params[:permalink]) 
+    if @page.visible
+      render 'front/themes/pages/show'
+    else 
+      # TODO redirect to 404
+      redirect_to root_path
+    end
   end
 
 end

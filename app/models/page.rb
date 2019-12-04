@@ -60,7 +60,7 @@ class Page < Publishable
     end
   end
 
-
 end
-
+require_dependency "home_page"
+require_dependency "blog"
 

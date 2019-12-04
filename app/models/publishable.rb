@@ -45,15 +45,15 @@ class Publishable < ApplicationRecord
 
   # TODO create method wich dynamicaly creates below methods according to existing subclasses.
 
-  def home_page?
+  def is_home_page?
     self.type == "HomePage"
   end
 
-  def blog?
+  def is_blog?
     self.type == "Blog"
   end
 
-  def post
+  def is_post?
     self.type == "Post"
   end
 

@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_navigation
-    @roots_pages = Page.roots.where(status: :published).map { |p| p.becomes(Page) }
+    @root_pages = Page.all.map { |p| p.becomes(Page) }
   end
 end

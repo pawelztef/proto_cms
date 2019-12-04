@@ -34,7 +34,7 @@ blog = Blog.instance
 created_objects += 1
 
 puts "Creating Home Page"
-blog = HomePage.instance
+home_page = HomePage.instance
 created_objects += 1
 
 puts "Creating pages"
@@ -84,6 +84,7 @@ puts "Creating posts"
   post.summary = summary
   post.status = "published" if n.even?
   post.site = site
+  post.parent = blog
   post.save!
 
   created_objects += 1
