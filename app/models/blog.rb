@@ -30,6 +30,10 @@
 
 class Blog < Page 
 
+  def posts
+    self.children
+  end
+
   def self.instance
     first_or_create!(site: Site.instance, title: "Blog", permalink: "blog", status: 1) 
   end
