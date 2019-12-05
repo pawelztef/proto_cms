@@ -15,12 +15,4 @@ module ApplicationHelper
     Site.instance.blog.max_comment_nesting
   end
 
-  def blog_commentable?
-    Site.instance.blog.commentable
-  end
-
-  def blog_visible?
-    Site.instance.blog.visible
-  end
-
 end
