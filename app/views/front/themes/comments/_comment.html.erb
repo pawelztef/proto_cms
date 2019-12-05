@@ -19,7 +19,7 @@
       <p><%= simple_format comment.body %></p>
     </div>
 
-    <%= render partial: "front/comments/form", locals: {
+    <%= render partial: "front/themes/comments/form", locals: {
       commentable: comment.commentable,
       parent_id: reply_to_id(comment, nesting, max_nesting),
       target_id: comment.id,

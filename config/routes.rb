@@ -75,7 +75,10 @@ Rails.application.routes.draw do
       resources :comments
     end
 
-    get ':permalink', to: 'pages#show', as: :page
+    
+
+    # get ':page', to: 'pages#show', as: :page
+    get '*page', to: 'pages#show', as: :page
 
   end
 end

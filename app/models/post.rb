@@ -30,6 +30,7 @@
 
 class Post < Publishable
   has_many :comments, as: :commentable
+  belongs_to :blog, foreign_key: :id
 
   enum status: PostStatus::STATUSES
 

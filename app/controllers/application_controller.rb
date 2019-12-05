@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
   protected
 
+  # TODO refactor all descendands controller and their layout and render paths
   def layout_by_controller
     if devise_controller? && resource_name == :user
       "admin/layouts/admin_authentication"

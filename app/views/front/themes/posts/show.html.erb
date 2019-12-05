@@ -16,7 +16,7 @@
   <!-- /text -->
   <!-- comments -->
   <div class="uk-container uk-container-small uk-margin-large-top" >
-    <%= render partial: "front/comments/form", locals: { commentable: @post } %>
+    <%= render partial: "front/themes/comments/form", locals: { commentable: @post } %>
     <ul class="uk-comment-list" id="comments">
       <%= render @post.comments.where(parent_id: nil), max_nesting: 5 %>
     </ul>

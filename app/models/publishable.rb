@@ -57,7 +57,6 @@ class Publishable < ApplicationRecord
     self.type == "Post"
   end
 
-
 end
 
 

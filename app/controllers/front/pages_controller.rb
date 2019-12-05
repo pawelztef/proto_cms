@@ -5,17 +5,19 @@ class Front::PagesController < ApplicationController
   append_before_action :check_visibility, only: :show, unless: -> { @page.nil? }
 
   def index
-    @page = HomePage.instance
+    @page ||= HomePage.instance
     render 'front/themes/pages/show'
   end
 
   def show
     case @page.class.name
     when "HomePage"
-      render 'front/themes/pages/show'
+      redirect_to root_url
     when "Blog"
+      @posts = Blog.instance.posts
       render 'front/themes/posts/index'
     else
+      byebug
       render 'front/themes/pages/show'
     end
   end
@@ -23,7 +25,7 @@ class Front::PagesController < ApplicationController
   private 
 
   def set_page
-    @page = Page.find_by_permalink(params[:permalink])
+    @page = Page.find_by_permalink(params[:page])
   end
 
   def check_visibility
