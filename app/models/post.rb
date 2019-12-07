@@ -30,14 +30,7 @@
 
 class Post < Publishable
   has_many :comments, as: :commentable
-  belongs_to :blog, foreign_key: :id
 
-  enum status: PostStatus::STATUSES
-
-  PostStatus::STATUSES.each do |s|
-    scope s, -> { where(status: s) }
-  end
- 
   attr_accessor :submit_option
 
   def self.search_by_status(status)

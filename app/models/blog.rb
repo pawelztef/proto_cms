@@ -30,9 +30,7 @@
 
 class Blog < Page 
 
-  has_many :posts
-
-  #alias posts children
+  alias posts children
 
   def self.instance
     first_or_create!(site: Site.instance, title: "Blog", permalink: "blog", status: 1) 

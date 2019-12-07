@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'front/pages#index'
+  root to: 'front/publishables#index'
 
   # scope "/admin" do
   # EXAMPLE CONFIGURATIONS DEVISE PATHS
@@ -77,8 +77,8 @@ Rails.application.routes.draw do
 
     
 
-    # get ':page', to: 'pages#show', as: :page
-    get '*page', to: 'pages#show', as: :page
+    get '*publishable', to: 'publishables#show', as: :page
+    get '*publishable/comment', to: 'publishables#new_comment', as: :new_comment_publishable
 
   end
 end

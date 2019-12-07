@@ -32,13 +32,6 @@ class Page < Publishable
 
   validates_presence_of :title, :permalink
 
-  #TODO Eextract dynamic scopes based on statuses.
-
-  enum status: PageStatus::STATUSES
-
-  PageStatus::STATUSES.each do |s|
-    scope s, -> { where(status: s) }
-  end
 
   def set_as_home
     Page.update_all(type: "")

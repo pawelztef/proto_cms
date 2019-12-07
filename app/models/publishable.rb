@@ -39,8 +39,13 @@ class Publishable < ApplicationRecord
   belongs_to :site
 
 
-  def to_param
-    permalink
+
+  #TODO Eextract dynamic scopes based on statuses.
+
+  enum status: PublishableStatus::STATUSES
+
+  PageStatus::STATUSES.each do |s|
+    scope s, -> { where(status: s) }
   end
 
   # TODO create method wich dynamicaly creates below methods according to existing subclasses.
@@ -55,6 +60,10 @@ class Publishable < ApplicationRecord
 
   def is_post?
     self.type == "Post"
+  end
+
+  def to_param
+    permalink
   end
 
 end
