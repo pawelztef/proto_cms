@@ -26,10 +26,17 @@ div.uk-form-controls{
 
 #settings-forms-con {
   .pz-site-blog-label {
+    .site_blog_status {
+    }
     display: flex;
     font-size: .8rem;   
-    .uk-checkbox {
+    align-items: baseline;
+    .radio, .uk-checkbox {
       margin-right: 10px;
+      font-size: .9rem;   
+      .uk-radio {
+        margin-right: 5px;
+      }
     }
   }
 }

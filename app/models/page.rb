@@ -34,13 +34,13 @@ class Page < Publishable
 
 
   def set_as_home
-    Page.update_all(type: "")
+    Page.update_all(type: "Page")
     self.update_attributes(type: "HomePage", status: 1)
     return self.becomes(HomePage)
   end
 
   def set_as_blog
-    Page.update_all(type: "")
+    Page.update_all(type: "Page")
     self.update_attributes(type: "Blog", status: 1)
     return self.becomes(Blog)
   end
