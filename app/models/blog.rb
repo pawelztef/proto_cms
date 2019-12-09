@@ -8,7 +8,7 @@
 #  content             :text(65535)
 #  max_comment_nesting :integer          default(1)
 #  permalink           :string(255)
-#  status              :integer          default("draft")
+#  status              :integer          default("unvisible")
 #  summary             :text(65535)
 #  title               :string(255)
 #  type                :string(255)
@@ -31,6 +31,12 @@
 class Blog < Publishable
 
   alias posts children
+
+  enum status: PageStatus::STATUSES
+
+  PageStatus::STATUSES.each do |s|
+    scope s, -> { where(status: s) }
+  end
 
   def self.instance
     first_or_create!(site: Site.instance, title: "Blog", permalink: "blog", status: 1) 

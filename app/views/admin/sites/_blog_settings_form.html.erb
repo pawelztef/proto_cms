@@ -16,7 +16,7 @@
       <div class="uk-form-label">Visibility</div>
       <div class="uk-form-controls uk-form-controls-text">
         <label class="pz-site-blog-label">
-          <%= blog.input :status, as: :radio_buttons, collection: PublishableStatus::STATUSES, label: false, input_html: {class: "uk-radio"} %>
+          <%= blog.input :status, as: :boolean, checked_value: "visible", unchecked_value: "unvisible", label: false, input_html: {class: "uk-checkbox"} %>
           <span>Make your blog visible to others.</span>
         </label>
       </div>

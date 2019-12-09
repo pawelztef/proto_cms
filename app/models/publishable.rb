@@ -39,6 +39,9 @@ class Publishable < ApplicationRecord
   belongs_to :site
 
 
+  validates_uniqueness_of :title, :permalink
+  validates_presence_of :title, :permalink
+
 
   #TODO Eextract dynamic scopes based on statuses.
 
