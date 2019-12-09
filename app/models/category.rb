@@ -20,13 +20,13 @@ class Category < ApplicationRecord
   has_many :posts, :through => :categorizations
   has_ancestry
 
-  enum status: PostStatus::STATUSES
+  enum status: PublishableStatus::STATUSES
 
   def get_stats
     base_set = {}
     current_set = {}
     base_set["all"] = 0
-    PostStatus::STATUSES.each { |status| base_set[status] = 0 }
+    PublishableStatus::STATUSES.each { |status| base_set[status] = 0 }
     if self.posts
       current_set = self.posts.group(:status).count unless self.posts.empty?
       current_set["all"] = current_set.inject(0) { |sum, hash| sum += hash[1] }
