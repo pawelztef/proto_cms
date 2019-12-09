@@ -28,7 +28,7 @@
 #  fk_rails_...  (site_id => sites.id)
 #
 
-class Blog < Page 
+class Blog < Publishable
 
   alias posts children
 

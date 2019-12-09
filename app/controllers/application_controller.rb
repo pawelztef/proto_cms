@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_navigation
-    @root_pages = Page.all.map { |p| p.becomes(Page) }
+    @root_pages = Publishable.where.not(type: "Post")
   end
 end

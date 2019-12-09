@@ -5,10 +5,12 @@
         <% if page.published? %>
           <li>
             <%= link_to page.title, page_path(page), class: ( "uk-active" if @publishable.becomes(Page) == page ) %>
-            <% if page.has_children? && !page.is_blog? %>
-              <div uk-dropdown>
-                <%= render "front/themes/shared/submenu_pages", pages: page.children if (page.has_children? && !page.is_blog?) %>
-              </div>
+            <% if page.has_children?  %>
+              <% unless page.is_blog? %>
+                <div uk-dropdown>
+                  <%= render "front/themes/shared/submenu_pages", pages: page.children %>
+                </div>
+              <% end %>
             <% end %>
           </li>
         <% end %>
@@ -16,4 +18,5 @@
     </ul>
   </nav>
 </div>
+
 
