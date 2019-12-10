@@ -2,19 +2,18 @@
 #
 # Table name: publishables
 #
-#  id                  :bigint           not null, primary key
-#  ancestry            :string(255)
-#  commentable         :boolean          default(FALSE)
-#  content             :text(65535)
-#  max_comment_nesting :integer          default(1)
-#  permalink           :string(255)
-#  status              :integer          default(0)
-#  summary             :text(65535)
-#  title               :string(255)
-#  type                :string(255)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  site_id             :bigint
+#  id          :bigint           not null, primary key
+#  ancestry    :string(255)
+#  commentable :boolean          default(FALSE)
+#  content     :text(65535)
+#  permalink   :string(255)
+#  status      :integer          default(0)
+#  summary     :text(65535)
+#  title       :string(255)
+#  type        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  site_id     :bigint
 #
 # Indexes
 #
@@ -43,10 +42,7 @@ class Publishable < ApplicationRecord
   validates_presence_of :title, :permalink
 
 
-  #TODO Eextract dynamic scopes based on statuses.
-
-
-  # TODO create method wich dynamicaly creates below methods according to existing subclasses.
+  # TODO methods is_page? & is_post need to be added
 
   def is_home_page?
     self.type == "HomePage"

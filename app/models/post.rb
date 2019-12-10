@@ -2,19 +2,18 @@
 #
 # Table name: publishables
 #
-#  id                  :bigint           not null, primary key
-#  ancestry            :string(255)
-#  commentable         :boolean          default(FALSE)
-#  content             :text(65535)
-#  max_comment_nesting :integer          default(1)
-#  permalink           :string(255)
-#  status              :integer          default("draft")
-#  summary             :text(65535)
-#  title               :string(255)
-#  type                :string(255)
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
-#  site_id             :bigint
+#  id          :bigint           not null, primary key
+#  ancestry    :string(255)
+#  commentable :boolean          default(FALSE)
+#  content     :text(65535)
+#  permalink   :string(255)
+#  status      :integer          default("draft")
+#  summary     :text(65535)
+#  title       :string(255)
+#  type        :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  site_id     :bigint
 #
 # Indexes
 #
@@ -34,7 +33,7 @@ class Post < Publishable
   attr_accessor :submit_option
 
   enum status: PublishableStatus::STATUSES
-  PageStatus::STATUSES.each do |s|
+  PublishableStatus::STATUSES.each do |s|
     scope s, -> { where(status: s) }
   end
 

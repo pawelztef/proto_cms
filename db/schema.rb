@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.text "summary"
     t.integer "status", default: 0
     t.boolean "commentable", default: false
-    t.integer "max_comment_nesting", default: 1
     t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -107,6 +106,8 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.string "catch_phrase"
     t.integer "home_page_id"
     t.integer "blog_page_id"
+    t.boolean "commentable", default: false
+    t.integer "max_comment_nesting", default: 1
     t.integer "singleton_guard", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

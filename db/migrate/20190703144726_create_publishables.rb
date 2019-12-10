@@ -8,7 +8,6 @@ class CreatePublishables < ActiveRecord::Migration[5.2]
       t.text :summary
       t.integer :status, default: 0
       t.boolean :commentable, default: false
-      t.integer :max_comment_nesting, default: 1
 
       t.references :site, foreign_key: true
       t.timestamps

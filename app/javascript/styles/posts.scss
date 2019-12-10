@@ -11,9 +11,15 @@
   padding-left: 0;
   position: relative;
 }
-.pz-active{
+.pz-active {
   color: #333 !important;
   border-color: #1e87f0 !important;
+  border-bottom: 1px solid;
+}
+#settings-forms-con > ul.pz-tab > li.uk-active {
+  color: #333 !important;
+  border-color: #1e87f0 !important;
+  border-bottom: 1px solid;
 }
 .pz-tab>*>a {
   display: block;

@@ -1,45 +1,48 @@
-<%= simple_form_for [:admin, @site], html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
-  <%= f.simple_fields_for :blog_page do |page| %>
-    <div class="uk-margin">
-      <label class="uk-form-label" for="form-horizontal-text">Blog name</label>
-      <div class="uk-form-controls">
-        <%= page.input :title, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
-      </div>
+<%= simple_form_for [:admin, @site], 
+  html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
+
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-select">Blog page</label>
+    <div class="uk-form-controls">
+      <%= f.collection_select :blog_page_id, Page.all, :id, :title, 
+        {selected: @site.blog_page_id, include_blank: "Please select page"},
+        {class: "uk-select uk-width-3-4"} %>
     </div>
-    <div class="uk-margin">
-      <label class="uk-form-label" for="form-horizontal-text">Permalink</label>
-      <div class="uk-form-controls">
-        <%= page.input :permalink, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
-      </div>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-form-label">Visibility</div>
+    <div class="uk-form-controls uk-form-controls-text">
+      <label class="pz-site-blog-label">
+        <%= f.input :visibility, as: :boolean, checked_value: 1, unchecked_value: 0,  label: false, 
+          input_html: {checked: @site.blog_page.visible?, class: "uk-checkbox"} %>
+        <span>Make your blog visible to others.</span>
+      </label>
     </div>
-    <div class="uk-margin">
-      <div class="uk-form-label">Visibility</div>
-      <div class="uk-form-controls uk-form-controls-text">
-        <label class="pz-site-blog-label">
-          <%= page.input :status, as: :boolean, checked_value: "visible", unchecked_value: "unvisible", label: false, input_html: {class: "uk-checkbox"} %>
-          <span>Make your blog visible to others.</span>
-        </label>
-      </div>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-form-label">Commentable</div>
+    <div class="uk-form-controls uk-form-controls-text">
+      <label class="pz-site-blog-label">
+        <%= f.input :commentable, label: false, as: :boolean, input_html: {class: "uk-checkbox"} %> 
+        <span>Allow comments on your posts.</span>
+      </label>
     </div>
-    <div class="uk-margin">
-      <div class="uk-form-label">Commentable</div>
-      <div class="uk-form-controls uk-form-controls-text">
-        <label class="pz-site-blog-label">
-          <%= page.input :commentable, label: false, as: :boolean, input_html: {class: "uk-checkbox"} %> 
-          <span>Allow comments on your posts.</span>
-        </label>
-      </div>
-    </div> 
-    <div class="uk-margin">
-      <div class="uk-form-label">Comments nesting</div>
-      <div class="uk-form-controls uk-form-controls-text">
-        <%= page.input :max_comment_nesting, collection: 1..10, selected: @site.blog_page.max_comment_nesting, label: false, input_html: {class: "uk-select uk-width-3-4" } %>
-      </div>
+  </div> 
+
+  <div class="uk-margin">
+    <div class="uk-form-label">Comments nesting</div>
+    <div class="uk-form-controls uk-form-controls-text">
+      <%= f.input :max_comment_nesting, collection: 1..10, selected: @site.max_comment_nesting, label: false,
+        input_html: {class: "uk-select uk-width-3-4" } %>
     </div>
-  <% end %>
+  </div>
+
   <div class="uk-margin">
     <div class="uk-form-controls">
       <%= f.button :submit, "Save", class: "uk-button uk-button-primary uk-margin-medium-top" %>
     </div>
   </div>
+
 <% end %>

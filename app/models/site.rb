@@ -2,15 +2,17 @@
 #
 # Table name: sites
 #
-#  id              :bigint           not null, primary key
-#  catch_phrase    :string(255)
-#  company_name    :string(255)
-#  name            :string(255)
-#  singleton_guard :integer          default(0)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  blog_page_id    :integer
-#  home_page_id    :integer
+#  id                  :bigint           not null, primary key
+#  catch_phrase        :string(255)
+#  commentable         :boolean          default(FALSE)
+#  company_name        :string(255)
+#  max_comment_nesting :integer          default(1)
+#  name                :string(255)
+#  singleton_guard     :integer          default(0)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  blog_page_id        :integer
+#  home_page_id        :integer
 #
 
 class Site < ApplicationRecord
@@ -20,12 +22,13 @@ class Site < ApplicationRecord
 
   has_one_attached :logo
   has_one_attached :favicon
-  has_many :pages
 
+  has_many :pages
 
   attr_accessor :home_page
   attr_accessor :blog_page
   attr_accessor :page
+  attr_accessor :visibility
 
   def self.instance
     first_or_create!(singleton_guard: 0)
