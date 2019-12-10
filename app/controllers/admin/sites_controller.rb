@@ -6,15 +6,14 @@ class Admin::SitesController < Admin::AdminsController
   end
 
   def update
-    #@site.home_page = Page.find(params[:home_page_id]).set_as_home if params[:home_page_id]
     byebug
-    if params[:home_page_id]
-      Page.find(params[:home_page_id]).set_as_home
-      @site.home_page = HomePage.instance
-    end
+    blog_page = Page.new(site_params[:blog_page].to_h)
+    blog_page.site = Site.instance
+    blog_page.save
+
     @site.update(site_params)
-    byebug
     redirect_to admin_sites_path, notice: "Site setting was successfully updated."
+    byebug
   end
 
   def settings_forms
@@ -50,7 +49,7 @@ class Admin::SitesController < Admin::AdminsController
                                  :favicon,
                                  :home_page_id,
                                  :blog_page_id,
-                                 blog_attributes: [:title,
+                                 blog_page: [:title,
                                                    :status,
                                                    :permalink,
                                                    :commentable,

@@ -29,22 +29,19 @@ site = Site.instance
 site.update_attributes(name: "My site")
 created_objects += 1
 
-puts "Creating Blog"
-blog = Blog.instance
-created_objects += 1
-
-puts "Creating Home Page"
-home_page = HomePage.instance
-created_objects += 1
 
 puts "Creating pages"
-["about", "products", "contact"].each do |n| 
+["default", "about", "products", "contact"].each do |n| 
   page = Page.new
   page.title = n
   page.permalink = n
   page.content = Faker::Lorem.paragraph(sentence_count: 15)
   page.site = site
   page.save!
+  if n == "default"
+    site.blog_page_id = page.id
+    site.home_page_id = page.id
+  end
   created_objects += 1
 end
 
@@ -75,7 +72,7 @@ puts "Creating posts"
   summary = ""
   10.times { |n| summary += Faker::Lorem.sentence(word_count: 15) }
 
-  title = Faker::Book.title
+  title = Faker::Book.unique.title
 
   post = Post.new
   post.title = title
@@ -84,7 +81,7 @@ puts "Creating posts"
   post.summary = summary
   post.status = "published" if n.even?
   post.site = site
-  post.parent = blog
+  # post.parent = Site.instance.blog_page
   post.save!
 
   created_objects += 1

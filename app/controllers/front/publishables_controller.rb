@@ -5,7 +5,7 @@ class Front::PublishablesController < ApplicationController
   append_before_action :check_status , only: :show, unless: -> { @publishable.nil? }
 
   def index
-    @publishable ||= HomePage.instance
+    @publishable = Site.instance.home_page
     render 'front/themes/pages/show'
   end
 

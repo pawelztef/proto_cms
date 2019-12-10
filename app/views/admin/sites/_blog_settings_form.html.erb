@@ -1,22 +1,22 @@
 <%= simple_form_for [:admin, @site], html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
-  <%= f.simple_fields_for :blog do |blog| %>
+  <%= f.simple_fields_for :blog_page do |page| %>
     <div class="uk-margin">
       <label class="uk-form-label" for="form-horizontal-text">Blog name</label>
       <div class="uk-form-controls">
-        <%= blog.input :title, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
+        <%= page.input :title, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
       </div>
     </div>
     <div class="uk-margin">
       <label class="uk-form-label" for="form-horizontal-text">Permalink</label>
       <div class="uk-form-controls">
-        <%= blog.input :permalink, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
+        <%= page.input :permalink, required: false, label: false, input_html: {class: "uk-input uk-width-3-4"} %>
       </div>
     </div>
     <div class="uk-margin">
       <div class="uk-form-label">Visibility</div>
       <div class="uk-form-controls uk-form-controls-text">
         <label class="pz-site-blog-label">
-          <%= blog.input :status, as: :boolean, checked_value: "visible", unchecked_value: "unvisible", label: false, input_html: {class: "uk-checkbox"} %>
+          <%= page.input :status, as: :boolean, checked_value: "visible", unchecked_value: "unvisible", label: false, input_html: {class: "uk-checkbox"} %>
           <span>Make your blog visible to others.</span>
         </label>
       </div>
@@ -25,7 +25,7 @@
       <div class="uk-form-label">Commentable</div>
       <div class="uk-form-controls uk-form-controls-text">
         <label class="pz-site-blog-label">
-          <%= blog.input :commentable, label: false, as: :boolean, input_html: {class: "uk-checkbox"} %> 
+          <%= page.input :commentable, label: false, as: :boolean, input_html: {class: "uk-checkbox"} %> 
           <span>Allow comments on your posts.</span>
         </label>
       </div>
@@ -33,7 +33,7 @@
     <div class="uk-margin">
       <div class="uk-form-label">Comments nesting</div>
       <div class="uk-form-controls uk-form-controls-text">
-        <%= blog.input :max_comment_nesting, collection: 1..10, selected: @site.blog.max_comment_nesting, label: false, input_html: {class: "uk-select uk-width-3-4" } %>
+        <%= page.input :max_comment_nesting, collection: 1..10, selected: @site.blog_page.max_comment_nesting, label: false, input_html: {class: "uk-select uk-width-3-4" } %>
       </div>
     </div>
   <% end %>

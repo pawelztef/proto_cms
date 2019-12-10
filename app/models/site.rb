@@ -9,6 +9,8 @@
 #  singleton_guard :integer          default(0)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  blog_page_id    :integer
+#  home_page_id    :integer
 #
 
 class Site < ApplicationRecord
@@ -18,15 +20,48 @@ class Site < ApplicationRecord
 
   has_one_attached :logo
   has_one_attached :favicon
-  has_one :blog
   has_many :pages
-  has_one :home_page
 
-  accepts_nested_attributes_for :blog
 
+  attr_accessor :home_page
+  attr_accessor :blog_page
+  attr_accessor :page
 
   def self.instance
     first_or_create!(singleton_guard: 0)
   end
+
+  def home_page
+    return nil if self.home_page_id.nil?
+    page = Page.find(self.home_page_id)
+    return page
+  end
+
+  def home_page=(page)
+    if page.is_a?(Page)
+      self.update(home_page_id: page.id)
+    elsif page.is_a?(Numeric)
+      self.update(home_page_id: id)
+    else
+      raise ArgumentError, "Attribute is incorrect"
+    end
+  end
+
+  def blog_page
+    return nil if self.blog_page_id.nil?
+    page = Page.find(self.blog_page_id)
+    return page 
+  end
+
+  def blog_page=(page)
+    if page.is_a?(Page)
+      self.update(blog_page_id: page.id)
+    elsif page.is_a?(Numeric)
+      self.update(blog_page: id)
+    else
+      raise ArgumentError, "Attribute is incorrect"
+    end
+  end
+
 
 end

@@ -8,7 +8,7 @@
 #  content             :text(65535)
 #  max_comment_nesting :integer          default(1)
 #  permalink           :string(255)
-#  status              :integer          default("draft")
+#  status              :integer          default(0)
 #  summary             :text(65535)
 #  title               :string(255)
 #  type                :string(255)
@@ -45,11 +45,6 @@ class Publishable < ApplicationRecord
 
   #TODO Eextract dynamic scopes based on statuses.
 
-  enum status: PublishableStatus::STATUSES
-
-  PageStatus::STATUSES.each do |s|
-    scope s, -> { where(status: s) }
-  end
 
   # TODO create method wich dynamicaly creates below methods according to existing subclasses.
 

@@ -33,6 +33,11 @@ class Post < Publishable
 
   attr_accessor :submit_option
 
+  enum status: PublishableStatus::STATUSES
+  PageStatus::STATUSES.each do |s|
+    scope s, -> { where(status: s) }
+  end
+
   def self.search_by_status(status)
     if status == "all" || !status.present?
       Post.all

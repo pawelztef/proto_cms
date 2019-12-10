@@ -8,7 +8,7 @@
 #  content             :text(65535)
 #  max_comment_nesting :integer          default(1)
 #  permalink           :string(255)
-#  status              :integer          default("draft")
+#  status              :integer          default(0)
 #  summary             :text(65535)
 #  title               :string(255)
 #  type                :string(255)
@@ -33,18 +33,6 @@ class Page < Publishable
   validates_presence_of :title, :permalink
 
 
-  def set_as_home
-    Page.update_all(type: "Page")
-    self.update_attributes(type: "HomePage", status: 1)
-    return self.becomes(HomePage)
-  end
-
-  def set_as_blog
-    Page.update_all(type: "Page")
-    self.update_attributes(type: "Blog", status: 1)
-    return self.becomes(Blog)
-  end
-
   def self.search_by_status(status)
     if status.blank?
       Page.order(:ancestry)
@@ -54,6 +42,4 @@ class Page < Publishable
   end
 
 end
-require_dependency "home_page"
-require_dependency "blog"
 
