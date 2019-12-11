@@ -1,6 +1,6 @@
 <ul class="uk-nav uk-dropdown-nav">
   <% pages.each do |subpage| %>
-    <% if subpage.published? %>
+    <% if subpage.visible? %>
       <li>
         <%= link_to subpage.title, page_path(subpage), class: "submenu-link" %>
         <%= render "front/themes/shared/submenu_pages", pages: subpage.children if (subpage.has_children? && !subpage.is_blog?) %>
