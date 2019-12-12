@@ -44,7 +44,7 @@ class Publishable < ApplicationRecord
 
   # TODO methods is_page? & is_post need to be added
 
-  def is_home_page?
+  def is_home?
     self.type == "HomePage"
   end
 

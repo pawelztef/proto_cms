@@ -1,12 +1,9 @@
 class Front::PagesController < Front::PublishablesController
   
-  def index
-    @publishable ||= HomePage.instance
-    render 'front/themes/pages/show'
-  end
 
   def show
-      render 'front/themes/pages/show'
+    @publishable = Page.find_by_permalink(params[:publishable])
+    render 'front/themes/pages/show', layout: default_layout
   end
 
 end

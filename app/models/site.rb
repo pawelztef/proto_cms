@@ -34,6 +34,11 @@ class Site < ApplicationRecord
     first_or_create!(singleton_guard: 0)
   end
 
+
+  def home_permalink
+    home_page.permalink
+  end
+
   def home_page
     return nil if self.home_page_id.nil?
     page = Page.find(self.home_page_id)
@@ -48,6 +53,10 @@ class Site < ApplicationRecord
     else
       raise ArgumentError, "Attribute is incorrect"
     end
+  end
+
+  def blog_permalink
+    blog_page.permalink
   end
 
   def blog_page
@@ -65,6 +74,5 @@ class Site < ApplicationRecord
       raise ArgumentError, "Attribute is incorrect"
     end
   end
-
 
 end

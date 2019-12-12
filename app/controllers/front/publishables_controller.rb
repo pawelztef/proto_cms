@@ -2,7 +2,6 @@ class Front::PublishablesController < ApplicationController
 
 
   def index
-    byebug
     @publishable = Site.instance.home_page
     render 'front/themes/pages/show', layout: default_layout
   end
