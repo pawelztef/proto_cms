@@ -6,6 +6,18 @@ class Front::PublishablesController < ApplicationController
     render 'front/themes/pages/show', layout: default_layout
   end
 
+  def show
+    @publishable = Page.find_by_permalink(params[:publishable])
+    if @publishable.is_home?
+      redirect_to root_path
+    elsif @publishable.is_blog?
+      @posts = Post.all
+      render 'front/themes/posts/index', layout: blog_layout
+    else
+      render 'front/themes/pages/show', layout: default_layout
+    end
+  end
+
   private 
 
   def set_publishable

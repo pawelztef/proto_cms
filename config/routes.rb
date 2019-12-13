@@ -1,25 +1,5 @@
-class BlogsConstraint
-  def initialize
-    @blog_permalink = Site.instance.blog_permalink
-  end
-  def matches?(request)
-    @blog_permalink == request.path_parameters[:publishable] 
-    byebug
-  end
-end
-
-class HomePagesConstraint
-  def initialize
-    @home_page_permalink = Site.instance.home_permalink
-  end
-  def matches?(request)
-    @home_page_permalink == request.path_parameters[:publishable]
-    byebug
-  end
-end
-
 Rails.application.routes.draw do
-  root to: 'front/homes#index'
+  root to: 'front/publishables#index'
 
   # scope "/admin" do
   # EXAMPLE CONFIGURATIONS DEVISE PATHS
@@ -98,9 +78,7 @@ Rails.application.routes.draw do
 
 
     # get '*publishable/comment', to: 'publishables#new_comment', as: :new_comment_publishable
-    get '*publishable', to: 'blogs#index', constraints: BlogsConstraint.new
-    get '*publishable', to: 'homes#show', constraints: HomePagesConstraint.new 
-    get '*publishable', to: 'pages#show'
+    get '*publishable', to: 'pages#show', as: :page
 
   end
 end

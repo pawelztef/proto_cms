@@ -2,7 +2,7 @@
   <% pages.each do |subpage| %>
     <% if subpage.visible? %>
       <li>
-        <%= link_to subpage.title, page_path(subpage), class: "submenu-link" %>
+        <%= link_to subpage.title, subpage.permalink, class: "submenu-link" %>
         <%= render "front/themes/shared/submenu_pages", pages: subpage.children if (subpage.has_children? && !subpage.is_blog?) %>
       </li>
     <% end %>

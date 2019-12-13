@@ -29,6 +29,7 @@
 
 class Publishable < ApplicationRecord
 
+
   has_ancestry
 
   has_many :categorizations
@@ -45,11 +46,11 @@ class Publishable < ApplicationRecord
   # TODO methods is_page? & is_post need to be added
 
   def is_home?
-    self.type == "HomePage"
+    self.id == Site.instance.home_page_id
   end
 
   def is_blog?
-    self.type == "Blog"
+    self.id == Site.instance.blog_page_id
   end
 
   def is_post?

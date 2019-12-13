@@ -20,6 +20,7 @@ class Site < ApplicationRecord
   # This ensures that only one Site row is created
   validates_inclusion_of :singleton_guard, :in => [0]
 
+
   has_one_attached :logo
   has_one_attached :favicon
 
