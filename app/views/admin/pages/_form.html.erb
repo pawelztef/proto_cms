@@ -1,4 +1,5 @@
 <%= simple_form_for [:admin, @admin_page],  class: "form__user-form uk-form-stacked" do |f| %>
+  <%= f.input :site_id, as: :hidden, input_html: {value: Site.instance.id }%>
   <div uk-grid>
     <div class="uk-width-1-1">
       <div class="uk-margin-small">

@@ -75,10 +75,9 @@ Rails.application.routes.draw do
       resources :comments
     end
 
-
-
     # get '*publishable/comment', to: 'publishables#new_comment', as: :new_comment_publishable
-    get '*publishable', to: 'pages#show', as: :page
+    # get '*publishable/:post_id', to: 'posts#show', as: :post_page
+    get '*publishable', to: 'publishables#show', as: :page
 
   end
 end

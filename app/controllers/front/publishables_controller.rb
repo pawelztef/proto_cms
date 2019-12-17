@@ -7,12 +7,18 @@ class Front::PublishablesController < ApplicationController
   end
 
   def show
-    @publishable = Page.find_by_permalink(params[:publishable])
+    @publishable = Publishable.find_by_permalink(params[:publishable])
     if @publishable.is_home?
       redirect_to root_path
     elsif @publishable.is_blog?
+      @blog = Site.instance.blog_page
       @posts = Post.all
       render 'front/themes/posts/index', layout: blog_layout
+    elsif @publishable.is_post?
+      # params[:publishable] = @publishable.permalink.prepend(Site.instance.blog_permalink)
+      render 'front/themes/posts/show', layout: blog_layout
+      # redirect_to controller: 'posts', action: 'show', params: {hello: 'yes'}
+      # redirect_to post_path @publishable
     else
       render 'front/themes/pages/show', layout: default_layout
     end

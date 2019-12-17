@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def set_navigation
-    @root_pages = Publishable.where.not(type: "Post")
+    @root_pages = Publishable.where.not(type: "Post").roots
   end
 end
