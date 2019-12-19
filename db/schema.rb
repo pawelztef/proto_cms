@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_06_144306) do
+ActiveRecord::Schema.define(version: 2019_12_19_170650) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.text "caption"
   end
 
+  create_table "publishable_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "permalink"
+    t.text "description"
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "publishables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "permalink"
@@ -81,8 +90,10 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
+    t.bigint "publishable_group_id"
     t.index ["ancestry"], name: "index_publishables_on_ancestry"
     t.index ["permalink"], name: "index_publishables_on_permalink"
+    t.index ["publishable_group_id"], name: "index_publishables_on_publishable_group_id"
     t.index ["site_id"], name: "index_publishables_on_site_id"
     t.index ["status"], name: "index_publishables_on_status"
   end
@@ -152,5 +163,6 @@ ActiveRecord::Schema.define(version: 2019_11_06_144306) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "readers"
+  add_foreign_key "publishables", "publishable_groups"
   add_foreign_key "publishables", "sites"
 end

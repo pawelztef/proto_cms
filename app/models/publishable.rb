@@ -2,28 +2,31 @@
 #
 # Table name: publishables
 #
-#  id          :bigint           not null, primary key
-#  ancestry    :string(255)
-#  commentable :boolean          default(FALSE)
-#  content     :text(65535)
-#  permalink   :string(255)
-#  status      :integer          default(0)
-#  summary     :text(65535)
-#  title       :string(255)
-#  type        :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  site_id     :bigint
+#  id                   :bigint           not null, primary key
+#  ancestry             :string(255)
+#  commentable          :boolean          default(FALSE)
+#  content              :text(65535)
+#  permalink            :string(255)
+#  status               :integer          default(0)
+#  summary              :text(65535)
+#  title                :string(255)
+#  type                 :string(255)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  publishable_group_id :bigint
+#  site_id              :bigint
 #
 # Indexes
 #
-#  index_publishables_on_ancestry   (ancestry)
-#  index_publishables_on_permalink  (permalink)
-#  index_publishables_on_site_id    (site_id)
-#  index_publishables_on_status     (status)
+#  index_publishables_on_ancestry              (ancestry)
+#  index_publishables_on_permalink             (permalink)
+#  index_publishables_on_publishable_group_id  (publishable_group_id)
+#  index_publishables_on_site_id               (site_id)
+#  index_publishables_on_status                (status)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (publishable_group_id => publishable_groups.id)
 #  fk_rails_...  (site_id => sites.id)
 #
 
@@ -37,12 +40,13 @@ class Publishable < ApplicationRecord
   has_many :tagizations
   has_many :tags, :through => :tagizations
   belongs_to :site
+  belongs_to :publishable_group
 
 
   validates_uniqueness_of :title, :permalink
   validates_presence_of :title, :permalink
 
-  before_save :update_permalink
+  #before_save :update_permalink
 
 
   # TODO methods is_page? & is_post need to be added
