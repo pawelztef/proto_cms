@@ -1,34 +1,102 @@
-<%= simple_form_for [:admin, @site], 
-  html: {class: "uk-form-stacked uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
+<div uk-grid>
+  <div class="uk-width-1-3@m">
+    <%= simple_form_for [:admin, @site], 
+      html: {class: "uk-form-stacked uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
+      <%= f.simple_fields_for :publishable_group do |p| %>
 
-  <div class="uk-margin">
-    <label class="uk-form-label" for="form-horizontal-select">Name</label>
-    <div class="uk-form-controls">
-    </div>
+        <div class="uk-margin">
+          <label class="uk-form-label" for="form-horizontal-select">Name</label>
+          <div class="uk-form-controls">
+            <%= p.input :name, required: false, label: false,
+              input_html: {class: "uk-input"} %>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <div class="uk-form-label">Permalink</div>
+          <div class="uk-form-controls uk-form-controls-text">
+            <%= p.input :permalink, required: false,
+              label: false, input_html: {class: "uk-input"} %>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <div class="uk-form-label">Description</div>
+          <div class="uk-form-controls uk-form-controls-text">
+            <%= p.input :description, as: :text, required: false, 
+              label: false, input_html: {class: "uk-input",
+                                         rows: 30} %>
+          </div>
+        </div> 
+
+        <div class="uk-margin">
+          <div class="uk-form-label">Icon</div>
+          <div class="uk-form-controls uk-form-controls-text">
+            <%= p.input :icon, required: false, label: false,
+              input_html: {class: "uk-input"} %>
+          </div>
+        </div>
+
+        <div class="uk-margin">
+          <div class="uk-form-controls">
+            <%= f.button :submit, "Save",
+              class: "uk-button uk-button-primary uk-margin-medium-top" %>
+          </div>
+        </div>
+
+      <% end %>
+    <% end %>
   </div>
-
-  <div class="uk-margin">
-    <div class="uk-form-label">Permalink</div>
-    <div class="uk-form-controls uk-form-controls-text">
-    </div>
+  <div class="uk-width-expand@m">
+    <table id="publishable_groups_table"
+           class="uk-table uk-table-justify uk-table-divider uk-padding uk-margin-large">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Permalink</th>
+          <th>Description</th>
+          <th>Comentable</th>
+          <th>Volume</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @groups.blank? %>
+          <tr>
+            <td colspan="6" class="uk-text-center">
+              No data!
+            </td>
+          </tr>
+        <% else %>
+          <% @groups.each do |group| %>
+            <tr>
+              <td><%= group.name %></td>
+              <td><%= group.permalink %></td>
+              <td><%= group.description %></td>
+              <td><%= group.commentable %></td>
+              <td><%= group.volume %></td>
+              <td>
+                <% if can?(:update, PublishableGroup) || can?(:destroy, PublishableGroup) %>
+                  <ul class="uk-iconnav">
+                    <% if can? :update, PublishableGroup %>
+                      <li><a href="<%= edit_admin_post_path(group) %>"
+                             uk-icon="icon: file-edit"></a></li>
+                    <% end %>
+                    <% if can? :destroy, PublishableGroup %>
+                      <li><a href= <%= admin_post_path(group)  %>
+                           uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  <ul class="uk-iconnav">
+                    <li>Not authorized</li>
+                  </ul>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
   </div>
-
-  <div class="uk-margin">
-    <div class="uk-form-label">Description</div>
-    <div class="uk-form-controls uk-form-controls-text">
-    </div>
-  </div> 
-
-  <div class="uk-margin">
-    <div class="uk-form-label">Icon</div>
-    <div class="uk-form-controls uk-form-controls-text">
-    </div>
-  </div>
-
-  <div class="uk-margin">
-    <div class="uk-form-controls">
-      <%= f.button :submit, "Save", class: "uk-button uk-button-primary uk-margin-medium-top" %>
-    </div>
-  </div>
-
-<% end %>
+</div>

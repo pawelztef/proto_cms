@@ -1,8 +1,10 @@
 class Admin::SitesController < Admin::AdminsController
   before_action :set_title
   before_action :set_instance
+  authorize_resource 
 
   def index
+    @groups = PublishableGroup.all
     render 'admin/sites/settings'
   end
 
@@ -14,20 +16,13 @@ class Admin::SitesController < Admin::AdminsController
   def update
     if @site.update(site_params)
       Page.find(site_params[:blog_page_id])
-          .update(status: site_params[:visibility].to_i) if site_params[:blog_page_id]
+        .update(status: site_params[:visibility].to_i) if site_params[:blog_page_id]
       redirect_to admin_sites_path, notice: "Site setting was successfully updated."
     else 
       flash[:alert] = "There were issues while saving your settings."
       render 'admin/sites/settings', locals: { page: blog_page.to_json, active_form: "blog" }
     end
   end
-
-
-  def create
- # def content_groups
-byebug
-  end
-
 
   def settings_forms
     respond_to do |format|
@@ -63,11 +58,15 @@ byebug
                                  :logo,
                                  :favicon,
                                  :home_page_id,
-                                 :blog_page_id,
-                                 :commentable,
-                                 :visibility,
-                                 :max_comment_nesting)
-    params.require(:content_group)
+                                 publishable_group_attributes: [
+                                   :name,
+                                   :permalink,
+                                   :description,
+                                   :commentable,
+                                   :max_comment_nesting,
+                                   :icon,
+                                   :site_id
+                                 ])
   end
 
 end

@@ -25,4 +25,7 @@
 class PublishableGroup < ApplicationRecord
   has_many :publishables
   belongs_to :site
+  def volume
+    self.publishables.count
+  end
 end

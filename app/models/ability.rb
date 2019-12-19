@@ -14,6 +14,12 @@ class Ability
         can :read, Post
         can :create, Post
         can :update, Post
+        can :read, PublishableGroup
+        can :create, PublishableGroup
+        can :update, PublishableGroup
+        can :read, Site
+        can :create, Site
+        can :update, Site
         can :read, Category
         can :create, Category
         can :update, Category
