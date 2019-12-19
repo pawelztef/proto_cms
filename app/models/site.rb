@@ -24,12 +24,9 @@ class Site < ApplicationRecord
   has_one_attached :logo
   has_one_attached :favicon
 
-  has_many :pages
+  has_many :publisheables
 
   attr_accessor :home_page
-  attr_accessor :blog_page
-  attr_accessor :page
-  attr_accessor :visibility
 
   def self.instance
     first_or_create!(singleton_guard: 0)
@@ -56,24 +53,5 @@ class Site < ApplicationRecord
     end
   end
 
-  def blog_permalink
-    blog_page.permalink
-  end
-
-  def blog_page
-    return nil if self.blog_page_id.nil?
-    page = Page.find(self.blog_page_id)
-    return page 
-  end
-
-  def blog_page=(page)
-    if page.is_a?(Page)
-      self.update(blog_page_id: page.id)
-    elsif page.is_a?(Numeric)
-      self.update(blog_page: id)
-    else
-      raise ArgumentError, "Attribute is incorrect"
-    end
-  end
 
 end

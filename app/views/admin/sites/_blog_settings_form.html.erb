@@ -14,7 +14,7 @@
     <div class="uk-form-label">Visibility</div>
     <div class="uk-form-controls uk-form-controls-text">
       <label class="pz-site-blog-label">
-        <%= f.input :visibility, as: :boolean, checked_value: 1, unchecked_value: 0,  label: false, 
+        <%# f.input :visibility, as: :boolean, checked_value: 1, unchecked_value: 0,  label: false, 
           input_html: {checked: @site.blog_page.visible?, class: "uk-checkbox"} %>
         <span>Make your blog visible to others.</span>
       </label>

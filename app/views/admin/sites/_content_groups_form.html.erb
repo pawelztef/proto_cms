@@ -1,0 +1,34 @@
+<%= simple_form_for [:admin, @site], 
+  html: {class: "uk-form-stacked uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
+
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-select">Name</label>
+    <div class="uk-form-controls">
+    </div>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-form-label">Permalink</div>
+    <div class="uk-form-controls uk-form-controls-text">
+    </div>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-form-label">Description</div>
+    <div class="uk-form-controls uk-form-controls-text">
+    </div>
+  </div> 
+
+  <div class="uk-margin">
+    <div class="uk-form-label">Icon</div>
+    <div class="uk-form-controls uk-form-controls-text">
+    </div>
+  </div>
+
+  <div class="uk-margin">
+    <div class="uk-form-controls">
+      <%= f.button :submit, "Save", class: "uk-button uk-button-primary uk-margin-medium-top" %>
+    </div>
+  </div>
+
+<% end %>
