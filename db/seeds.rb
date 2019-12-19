@@ -27,6 +27,7 @@ puts "Creating publishable groups"
   group.permalink = n
   group.description = n
   group.icon = "file"
+  group.site = site
   group.save!
   created_objects += 1
 end
@@ -43,7 +44,6 @@ group = PublishableGroup.find_by(name: "page")
   page.publishable_group = group
   page.save!
   if n == "default"
-    site.blog_page_id = page.id
     site.home_page_id = page.id
   end
   created_objects += 1

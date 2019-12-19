@@ -4,7 +4,7 @@
   <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-select">Blog page</label>
     <div class="uk-form-controls">
-      <%= f.collection_select :blog_page_id, Page.all, :id, :title, 
+      <%# f.collection_select :blog_page_id, Page.all, :id, :title, 
         {selected: @site.blog_page_id, include_blank: "Please select page"},
         {class: "uk-select uk-width-3-4"} %>
     </div>
@@ -25,7 +25,7 @@
     <div class="uk-form-label">Commentable</div>
     <div class="uk-form-controls uk-form-controls-text">
       <label class="pz-site-blog-label">
-        <%= f.input :commentable, label: false, as: :boolean, input_html: {class: "uk-checkbox"} %> 
+        <%# f.input :commentable, label: false, as: :boolean, input_html: {class: "uk-checkbox"} %> 
         <span>Allow comments on your posts.</span>
       </label>
     </div>
@@ -34,7 +34,7 @@
   <div class="uk-margin">
     <div class="uk-form-label">Comments nesting</div>
     <div class="uk-form-controls uk-form-controls-text">
-      <%= f.input :max_comment_nesting, collection: 1..10, selected: @site.max_comment_nesting, label: false,
+      <%# f.input :max_comment_nesting, collection: 1..10, selected: @site.max_comment_nesting, label: false,
         input_html: {class: "uk-select uk-width-3-4" } %>
     </div>
   </div>

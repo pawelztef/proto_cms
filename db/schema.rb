@@ -73,9 +73,13 @@ ActiveRecord::Schema.define(version: 2019_12_19_170650) do
     t.string "name"
     t.string "permalink"
     t.text "description"
+    t.boolean "commentable", default: false
+    t.integer "max_comment_nesting", default: 1
     t.string "icon"
+    t.bigint "site_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["site_id"], name: "index_publishable_groups_on_site_id"
   end
 
   create_table "publishables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -116,9 +120,6 @@ ActiveRecord::Schema.define(version: 2019_12_19_170650) do
     t.string "company_name"
     t.string "catch_phrase"
     t.integer "home_page_id"
-    t.integer "blog_page_id"
-    t.boolean "commentable", default: false
-    t.integer "max_comment_nesting", default: 1
     t.integer "singleton_guard", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -163,6 +164,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_170650) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "readers"
+  add_foreign_key "publishable_groups", "sites"
   add_foreign_key "publishables", "publishable_groups"
   add_foreign_key "publishables", "sites"
 end

@@ -23,6 +23,12 @@ class Admin::SitesController < Admin::AdminsController
   end
 
 
+  def create
+ # def content_groups
+byebug
+  end
+
+
   def settings_forms
     respond_to do |format|
       format.js
@@ -61,6 +67,7 @@ class Admin::SitesController < Admin::AdminsController
                                  :commentable,
                                  :visibility,
                                  :max_comment_nesting)
+    params.require(:content_group)
   end
 
 end

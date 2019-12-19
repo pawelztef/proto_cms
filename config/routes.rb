@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       collection do 
         get 'destroy_img'
         get 'settings_forms' 
+        post 'content_groups', to: :content_groups
       end
     end
     resources :dashboard
