@@ -24,7 +24,7 @@ group :development, :test do
 end
 
 group :development do
-gem "rails-erd"
+  gem "rails-erd"
   gem "rb-readline"
   gem "annotate"
   gem "faker"
