@@ -8,21 +8,13 @@
       </div>
     </div>
     <div class="uk-card-body">
+      <ul class="pz-tab">
+        <li><%= link_to "General", admin_settings_site_path, class: "pz-tab-link #{set_active_class('site')}" %></li>
+        <li><%= link_to "Content types",admin_settings_publishable_groups_path, class: "pz-tab-link #{set_active_class('publishable_group')}"  %></li>
+      </ul>  
       <div id="settings-forms-con">
-        <ul class="pz-tab" uk-switcher>
-          <li><a clas="pz-tab-link" href="#">General</a></li>
-          <li><a clas="pz-tab-link" href="#">Content Types</a></li>
-        </ul>  
-        <ul class="uk-switcher">
-          <li>
-            <%= render 'general_settings_form' %>
-          </li>
-          <li>
-            <%= render 'content_groups_form' %>
-          </li>
-        </ul>
+        <%= render partial: partial %>
       </div>
     </div>
   </div>
 </div>
-

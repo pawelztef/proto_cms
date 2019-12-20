@@ -48,12 +48,13 @@ Rails.application.routes.draw do
     resources :comments
     resources :categories
     resources :tags
-    resources :sites, path: :site_settings do
-      collection do 
-        get 'destroy_img'
-        get 'settings_forms' 
-        post 'content_groups', to: :content_groups
+    namespace :settings do
+      resource :site do
+        collection do 
+          get 'destroy_img'
+        end
       end
+      resources :publishable_groups
     end
     resources :dashboard
     resources :users

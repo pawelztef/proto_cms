@@ -1,4 +1,4 @@
-<%= simple_form_for [:admin, @site], html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
+<%= simple_form_for [:admin, :settings, @site], html: {class: "uk-form-horizontal uk-margin-remove-top uk-padding uk-margin-large"} do |f| %>
   <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-text">Company name</label>
     <div class="uk-form-controls">
@@ -34,7 +34,7 @@
           <%= f.input :logo, as: :file, label: false %>
           <% if @site.logo.attached? %>
             <button id="logo_button" class="uk-button uk-button-default" type="button" tabindex="-1">Change Image</button>
-            <%= link_to "Delete image",  destroy_img_admin_sites_path(button: "logo"), class: "uk-button uk-button-default"  %>
+            <%= link_to "Delete image",  destroy_img_admin_settings_site_path(button: "logo"), class: "uk-button uk-button-default"  %>
           <% else %>
             <button id="logo_button" class="uk-button uk-button-default" type="button" tabindex="-1">Add Image</button>
           <% end %>
@@ -58,7 +58,7 @@
           <%= f.input :favicon, as: :file, label: false %>
           <% if @site.favicon.attached? %>
             <button id="favicon_button" class="uk-button uk-button-default" type="button" tabindex="-1">Change image</button>
-            <%= link_to "Delete image",  destroy_img_admin_sites_path(button: "favicon"), class: "uk-button uk-button-default"  %>
+            <%= link_to "Delete image",  destroy_img_admin_settings_site_path(button: "favicon"), class: "uk-button uk-button-default"  %>
           <% else %>
             <button id="favicon_button" class="uk-button uk-button-default" type="button" tabindex="-1">Add Image</button>
           <% end %>
