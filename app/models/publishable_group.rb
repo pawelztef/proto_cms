@@ -28,4 +28,8 @@ class PublishableGroup < ApplicationRecord
   def volume
     self.publishables.count
   end
+
+  def to_param
+    permalink
+  end
 end

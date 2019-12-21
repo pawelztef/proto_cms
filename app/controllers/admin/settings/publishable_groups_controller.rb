@@ -22,8 +22,12 @@ class Admin::Settings::PublishableGroupsController < Admin::AdminsController
     end
   end
 
-  def edit
 
+  def edit
+    respond_to do |format|
+      format.js {render layout: false }
+      format.html
+    end
   end
 
   def update
@@ -36,6 +40,14 @@ class Admin::Settings::PublishableGroupsController < Admin::AdminsController
     end
   end
 
+
+  def destroy
+    @group.destroy
+    @groups = PublishableGroup.all
+    respond_to do |format|
+      format.js 
+    end
+  end
 
   private
 

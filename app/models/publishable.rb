@@ -46,8 +46,6 @@ class Publishable < ApplicationRecord
   validates_uniqueness_of :title, :permalink
   validates_presence_of :title, :permalink
 
-  #before_save :update_permalink
-
 
   # TODO methods is_page? & is_post need to be added
 
@@ -67,25 +65,6 @@ class Publishable < ApplicationRecord
     permalink
   end
 
-  # def permalink
-  #   return permalink
-  # end
-
-  # def permalink=(perm)
-  #   self.permalink=perm
-  # end
-  #
-  private
-
-  # TODO sanitizing from trialling spaces and slashes
-  def update_permalink
-      byebug
-    if self.permalink_changed? || self.ancestry_changed?
-      permalinks = self.ancestors.map { |m| m.permalink } << self.permalink
-      self.permalink = permalinks.join("/")
-      byebug
-    end
-  end
 end
 
 

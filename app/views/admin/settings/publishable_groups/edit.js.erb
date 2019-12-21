@@ -1,0 +1,9 @@
+document.getElementById("admin__publishable_groups_modal-target-container").innerHTML = "<%= j render "edit_groups_modal", group: @group %>";
+
+deleteLinks = document.getElementsByClassName("pz-delete-media");
+mediaCards = document.getElementsByClassName("uk-card-media");
+attachmentModal = document.getElementById("attachment-modal");
+modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
+
+window.Pz.modal(attachmentModal, modalCloseBtn);
+
