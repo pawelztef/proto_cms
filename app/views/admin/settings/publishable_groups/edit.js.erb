@@ -1,9 +1,16 @@
 document.getElementById("admin__publishable_groups_modal-target-container").innerHTML = "<%= j render "edit_groups_modal", group: @group %>";
 
 deleteLinks = document.getElementsByClassName("pz-delete-media");
-mediaCards = document.getElementsByClassName("uk-card-media");
-attachmentModal = document.getElementById("attachment-modal");
-modalCloseBtn = attachmentModal.getElementsByClassName('pz-modal-close-btn')[0];
+groupModal = document.getElementById("group-modal");
+modalCloseBtn = groupModal.getElementsByClassName('pz-modal-close-btn')[0];
 
-window.Pz.modal(attachmentModal, modalCloseBtn);
+window.Pz.modal(groupModal, modalCloseBtn);
 
+
+
+var submitButton = groupModal.querySelector("[type='submit']");
+
+submitButton.addEventListener('click', function(e) {
+  x = document.querySelector('.simple_form');
+  x.submit();
+});
