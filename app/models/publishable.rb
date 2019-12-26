@@ -47,20 +47,6 @@ class Publishable < ApplicationRecord
   validates_presence_of :title, :permalink
 
 
-  # TODO methods is_page? & is_post need to be added
-
-  def is_home?
-    self.id == Site.instance.home_page_id
-  end
-
-  def is_blog?
-    self.id == Site.instance.blog_page_id
-  end
-
-  def is_post?
-    self.type == "Post"
-  end
-
   def to_param
     permalink
   end

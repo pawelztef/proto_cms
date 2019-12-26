@@ -17,8 +17,8 @@ class Admin::Settings::PublishableGroupsController < Admin::AdminsController
       redirect_to admin_settings_publishable_groups_url,
       notice: "Content group setting was successfully updated."
     else 
-      render :index,
-      alert: "There were issues while saving your settings."
+      flash[:alert] = "There were issues while saving your settings."
+      render :index
     end
   end
 
@@ -31,12 +31,14 @@ class Admin::Settings::PublishableGroupsController < Admin::AdminsController
   end
 
   def update
-    if @group.update(site_params)
-      redirect_to admin_settings_site_path,
-        notice: "Content group setting was successfully updated."
+    byebug
+    if @group.update(group_params)
+    byebug
+      redirect_to admin_settings_publishable_groups_url,
+      notice: "Content group setting was successfully updated."
     else 
-      render admin_settings_site_path,
-        alert: "There were issues while saving your settings."
+      flash[:alert] = "There were issues while saving your settings."
+      render :index
     end
   end
 

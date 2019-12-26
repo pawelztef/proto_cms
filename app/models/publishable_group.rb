@@ -25,6 +25,10 @@
 class PublishableGroup < ApplicationRecord
   has_many :publishables
   belongs_to :site
+  
+  validates_presence_of :name, :permalink
+  validates_uniqueness_of :name, :permalink
+
   def volume
     self.publishables.count
   end
