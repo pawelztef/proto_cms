@@ -4,6 +4,7 @@ deleteLinks = document.getElementsByClassName("pz-delete-media");
 groupModal = document.getElementById("group-modal");
 modalCloseBtn = groupModal.getElementsByClassName('pz-modal-close-btn')[0];
 
+
 window.Pz.modal(groupModal, modalCloseBtn);
 
 
@@ -11,6 +12,6 @@ window.Pz.modal(groupModal, modalCloseBtn);
 var submitButton = groupModal.querySelector("[type='submit']");
 
 submitButton.addEventListener('click', function(e) {
-  x = document.querySelector('.simple_form');
+  x = document.getElementById('group-modal').getElementsByTagName('form')[0]
   x.submit();
 });
