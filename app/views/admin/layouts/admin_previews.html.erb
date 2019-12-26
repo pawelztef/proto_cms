@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= site_favicon_tag  %>
-    <%= render 'admin/layouts/admin_cdns'%>
+    <%= render 'admin/layouts/admin_styles_cdns'%>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'application' %>
   </head>
@@ -53,5 +53,6 @@
     </div>
     <!-- /OFFCANVAS -->
 
+    <%= render 'admin/layouts/admin_scripts_cdns'%>
   </body>
 </html>

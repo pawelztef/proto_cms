@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= site_favicon_tag  %>
-    <%= render 'admin/layouts/admin_cdns'%>
+    <%= render 'admin/layouts/admin_styles_cdns'%>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.js"></script>
@@ -20,5 +20,6 @@
       <%= yield %>
     </div>
     <%= render 'admin/shared/footer' %>
+    <%= render 'admin/layouts/admin_scripts_cdns'%>
   </body>
 </html>
