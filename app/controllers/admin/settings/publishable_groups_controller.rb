@@ -31,7 +31,6 @@ class Admin::Settings::PublishableGroupsController < Admin::AdminsController
   end
 
   def update
-    byebug
     if @group.update(group_params)
     byebug
       redirect_to admin_settings_publishable_groups_url,

@@ -1,5 +1,6 @@
 <div id="group-modal" class="pz-modal" >
   <div class="pz-modal-content">
+
     <div class="pz-modal-header">
       <div class="uk-flex uk-flex-between">
         <span class="uk-text-lead">Group Edit: <%= group.name %></span>
@@ -8,56 +9,49 @@
         </ul>
       </div>
     </div>
+
     <div class="uk-card-body uk-margin-left uk-margin-right">
-      <div uk-grid>
-        <div class="uk-width-1-2@m">
-          <%= simple_form_for [:admin, :settings, @group], 
-            action: "PATCH",
-            remote: true,
-            html: {class: "uk-form-stacked"} do |f| %>
-
-            <div class="uk-margin uk-margin-remove-top">
-              <label class="uk-form-label" for="form-horizontal-select">Name</label>
-              <div class="uk-form-controls">
-                <%= f.input :name, required: false, label: false,
-                  input_html: {class: "uk-input"} %>
-              </div>
-            </div>
-
-            <div class="uk-margin">
-              <div class="uk-form-label">Permalink</div>
-              <div class="uk-form-controls uk-form-controls-text">
-                <%= f.input :permalink, required: false,
-                  label: false, input_html: {class: "uk-input"} %>
-              </div>
-            </div>
-
-            <div class="uk-margin">
-              <div class="uk-form-label">Icon</div>
-              <div class="uk-form-controls uk-form-controls-text">
-                <%= f.input :icon, required: false, label: false,
-                  input_html: {class: "uk-input"} %>
-              </div>
-            </div>
-
+      <%= simple_form_for [:admin, :settings, @group], 
+        action: "PATCH",
+        remote: true,
+        html: {class: "uk-form-stacked"} do |f| %>
+        <div class="uk-margin uk-margin-remove-top">
+          <label class="uk-form-label" for="form-horizontal-select">Name</label>
+          <div class="uk-form-controls">
+            <%= f.input :name, required: false, label: false,
+              input_html: {class: "uk-input"} %>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <div class="uk-form-label">Permalink</div>
+          <div class="uk-form-controls uk-form-controls-text">
+            <%= f.input :permalink, required: false,
+              label: false, input_html: {class: "uk-input"} %>
+          </div>
+        </div>
+        <div class="uk-margin">
+          <div class="uk-form-label">Icon</div>
+          <div class="uk-form-controls uk-form-controls-text">
+            <%= f.input :icon, required: false, label: false,
+              input_html: {class: "uk-input"} %>
+          </div>
         </div>
 
-        <div class="uk-width-1-2@m">
-
-            <div class="uk-margin">
-              <div class="uk-form-label">Description</div>
-              <div class="uk-form-controls uk-form-controls-text">
-                <%= f.input :description, as: :text, required: false, 
-                  label: false, input_html: {class: "uk-input" } %>
-              </div>
-            </div> 
-
+        <div class="uk-margin">
+          <div class="uk-form-label">Commentable</div>
+          <%= f.input :commentable, as: :boolean, label: false,
+            input_html: {class: "uk-checkbox",
+                         checked: @group.commentable ? true : false } %>
         </div>
-      </div>
-    </div>
-    <div class="pz-modal-footer">
-            <%= f.button :submit, "Save",
-              class: "uk-button uk-button-primary" %>
+
+        <div class="uk-margin">
+          <div class="uk-form-label">Description</div>
+          <div class="uk-form-controls uk-form-controls-text">
+            <%= f.input :description, as: :text, required: false, 
+              label: false, input_html: {class: "uk-input" } %>
+          </div>
+        </div> 
+          <%= f.button :submit, "Save", class: "uk-button uk-button-primary" %> 
       <% end %>
     </div>
   </div>
