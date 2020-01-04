@@ -1,42 +1,121 @@
 <ul class="uk-nav uk-nav-default uk-nav-parent-icon" data-uk-nav>
+
   <li class="uk-nav-header">ACTIONS</li>
-  <li><a href="<%= admin_dashboard_index_path %>"> <span class="uk-margin-small-right zmdi zmdi-view-dashboard"></span>Dashboard </a></li>
-  <li class="uk-parent"><a href="#"><span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Users</a>
+
+  <li>
+    <a href="<%= admin_dashboard_index_path %>"> 
+      <span class="uk-margin-small-right zmdi zmdi-view-dashboard"></span>Dashboard 
+    </a>
+  </li>
+
+  <li class="uk-parent">
+    <a href="#">
+      <span data-uk-icon="icon: users" class="uk-margin-small-right"></span>Users
+    </a>
     <ul class="uk-nav-sub">
-      <li><a title="All Users" href="<%= admin_users_path %>"><span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>All Users</a></li>
-      <li><a title="Add User" href= <%= new_admin_user_path %>><span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>Add User</a></li>
+      <li>
+        <a title="All Users" href="<%= admin_users_path %>">
+          <span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>All Users
+        </a>
+      </li>
+      <li>
+        <a title="Add User" href= <%= new_admin_user_path %>>
+          <span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>Add User
+        </a>
+      </li>
     </ul>
   </li>
-  <li class="uk-parent"><a href="#"><span data-uk-icon="icon: album" class="uk-margin-small-right"></span>Pages</a>
+
+  <li class="uk-parent">
+    <a href="#">
+      <span data-uk-icon="icon: album" class="uk-margin-small-right"></span>Pages
+    </a>
     <ul class="uk-nav-sub">
-      <li><a title="All Pages" href="<%= admin_pages_path %>"><span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>All Pages</a></li>
-      <li><a title="Add User" href= <%= new_admin_page_path %>><span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>Add Page</a></li>
+      <li><a title="All Pages" href="<%= admin_pages_path %>">
+          <span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>All Pages
+        </a>
+      </li>
+      <li>
+        <a title="Add User" href= <%= new_admin_page_path %>>
+          <span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>Add Page
+        </a>
+      </li>
     </ul>
   </li>
-  <li class="uk-parent"><a href="#"><span data-uk-icon="icon: file-text" class="uk-margin-small-right"></span>Blog</a>
+
+  <li class="uk-parent">
+    <a href="#">
+      <span data-uk-icon="icon: file-text" class="uk-margin-small-right"></span>Blog
+    </a>
+
     <ul class="uk-nav-sub">
-      <li><a title="All Posts" href="<%= admin_posts_path %>"><span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>All Posts</a></li>
-      <li><a title="Add Post" href="<%= new_admin_post_path %>" ><span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>Add Post</a></li>
-      <li><a title="Categories" href="<%= admin_categories_path %>" ><span data-uk-icon="icon: hashtag; ratio: 0.8" class="uk-margin-small-right"></span>Categories</a></li>
-      <li><a title="Tags" href="<%= admin_tags_path %>" ><span data-uk-icon="icon: tag; ratio: 0.8" class="uk-margin-small-right"></span>Tags</a></li>
+
+      <li>
+        <a title="All Posts" href="<%= admin_posts_path %>">
+          <span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>All Posts
+        </a>
+      </li>
+
+      <li>
+        <a title="Add Post" href="<%= new_admin_post_path %>" >
+          <span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>Add Post
+        </a>
+      </li>
+
+      <li>
+        <a title="Categories" href="<%= admin_categories_path %>" >
+          <span data-uk-icon="icon: hashtag; ratio: 0.8" class="uk-margin-small-right"></span>Categories
+        </a>
+      </li>
+
+      <li>
+        <a title="Tags" href="<%= admin_tags_path %>" >
+          <span data-uk-icon="icon: tag; ratio: 0.8" class="uk-margin-small-right"></span>Tags
+        </a>
+      </li>
+
     </ul>
   </li>
-  <li><a href="#"><span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Comments</a></li>
-  <li><a href="<%= admin_media_index_path %>"><span data-uk-icon="icon: image" class="uk-margin-small-right"></span>Media</a></li>
+
+  <% if @publishable_groups %>
+    <% @publishable_groups.each do |group| %>
+
+      <li class="uk-parent">
+        <a href="#">
+          <span data-uk-icon="icon: <%= group.icon %>" class="uk-margin-small-right"></span>
+          <%= group.name.pluralize.capitalize %>
+        </a>
+        <ul class="uk-nav-sub">
+          <li>
+            <a title="All #{group.name.pluralize.capitalize}" href="<%= admin_pages_path %>">
+              <span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>
+              All <%= group.name.pluralize.capitalize %>
+            </a>
+          </li>
+          <li>
+            <a title="Add #{group.name.singluarize.capitalie}" href= <%= new_admin_page_path %>>
+              <span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>
+              Add <%= group.name.singularize.capitalize %>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+    <% end %>
+  <% end %>
+
+  <li>
+    <a href="#">
+      <span data-uk-icon="icon: comments" class="uk-margin-small-right"></span>Comments
+    </a>
+  </li>
+
+  <li>
+    <a href="<%= admin_media_index_path %>">
+      <span data-uk-icon="icon: image" class="uk-margin-small-right"></span>Media
+    </a>
+  </li>
+
 </ul>
-<div class="left-content-box uk-margin-top">
-  <%# <h5>Daily Reports</h5> %>
-  <%# <div> %>
-  <%#   <span class="uk-text-small">Traffic <small>(+50)</small></span> %>
-  <%#   <progress class="uk-progress" value="50" max="100"></progress> %>
-  <%# </div> %>
-  <%# <div> %>
-  <%#   <span class="uk-text-small">Income <small>(+78)</small></span> %>
-  <%#   <progress class="uk-progress success" value="78" max="100"></progress> %>
-  <%# </div> %>
-  <%# <div> %>
-  <%#   <span class="uk-text-small">Feedback <small>(-12)</small></span> %>
-  <%#   <progress class="uk-progress warning" value="12" max="100"></progress> %>
-  <%# </div> %>
-</div>
+
 
