@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'front/publishables#index'
 
+  # Devise Paths Configurations Example
   # scope "/admin" do
-  # EXAMPLE CONFIGURATIONS DEVISE PATHS
   # devise_for :admins, :controllers => { :registrations => "registrations" },
   #   :path => "admins",
   #   :path_names => { :sign_in => "login",
@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   #                    :password => "secret",
   #                    :confirmation => "verification" }
   # end
-
   devise_for :users,
     :path => 'users',
     :controllers => { :sessions => "admin/users/sessions",
@@ -21,7 +20,6 @@ Rails.application.routes.draw do
                       :confirmations => "admin/users/confirmations" },
                       :path_names => { :sign_in => "login",
                                        :sign_up => "new_user"}
-
   devise_for :readers, 
     :path => 'readers',
     :controllers => { :sessions => "front/readers/sessions",
@@ -31,8 +29,9 @@ Rails.application.routes.draw do
                       :confirmations => "front/readers/confirmations"},
                       :path_names => { :sign_in => "login",
                                        :sign_up => "new_reader"}
-
-  # Admin Namespace
+    
+  ### Admin Namespace ###
+    
   namespace :admin do
     resources :media do
       get 'stats', on: :member
@@ -59,15 +58,20 @@ Rails.application.routes.draw do
     resources :dashboard
     resources :users
     resources :posts
+    #resources :publishable_groups
+    get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
+    # get '*publishable', to: 'publishables#show', as: :page
   end
 
-  # Previews Namespace
+  ### Previews Namespace ###
+   
   namespace :previews do
     resources :pages, only: :show
     resources :posts, only: :show
   end
 
-  # Front Namespace
+  ### Front Namespace ###
+   
   scope module: :front do
     resources :readers
     resources :posts do
