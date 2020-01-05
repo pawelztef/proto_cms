@@ -87,13 +87,13 @@
         </a>
         <ul class="uk-nav-sub">
           <li>
-            <a title="All #{group.name.pluralize.capitalize}" href="<%= admin_pages_path %>">
+            <a title="All #{group.name.pluralize.capitalize}" href="<%= admin_publishable_group_path(group) %>">
               <span data-uk-icon="icon: list; ratio: 0.8" class="uk-margin-small-right"></span>
               All <%= group.name.pluralize.capitalize %>
             </a>
           </li>
           <li>
-            <a title="Add #{group.name.singluarize.capitalie}" href= <%= new_admin_page_path %>>
+            <a title="Add #{group.name.singluarize.capitalie}" href= <%= admin_publishable_group_path(group)  %>>
               <span data-uk-icon="icon: plus; ratio: 0.8" class="uk-margin-small-right"></span>
               Add <%= group.name.singularize.capitalize %>
             </a>
