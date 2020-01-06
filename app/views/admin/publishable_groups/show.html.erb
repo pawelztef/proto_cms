@@ -23,8 +23,6 @@
             <th>Status</th>
             <th>Title</th>
             <th>Author</th>
-            <th>Categories</th>
-            <th>Tags</th>
             <th>Updated at</th>
             <th>Actions</th>
           </tr>
@@ -39,11 +37,9 @@
           <% else %>
             <% @publishables.each do |publishable| %>
               <tr>
-                <%# <td><%= generate_status_label(publishable) %1></td> %>
+                <td><%= generate_status_label(publishable) %></td>
                 <td><%= publishable.title %></td>
                 <td><%= publishable.user.username %></td>
-                <%# <td><%= generate_categories_labels(publishable) %1></td> %>
-                <%# <td><%= generate_tags_labels(publishable) %1></td> %>
                 <td><%= standard_date(publishable.updated_at) %></td>
                 <td>
                   <% if can?(:update, Publishable) || can?(:destroy, Publishable) %>
