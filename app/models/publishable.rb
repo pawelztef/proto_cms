@@ -7,10 +7,9 @@
 #  commentable          :boolean          default(FALSE)
 #  content              :text(65535)
 #  permalink            :string(255)
-#  status               :integer          default(0)
+#  status               :integer          default("draft")
 #  summary              :text(65535)
 #  title                :string(255)
-#  type                 :string(255)
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
 #  publishable_group_id :bigint
