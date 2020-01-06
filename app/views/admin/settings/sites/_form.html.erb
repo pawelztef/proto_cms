@@ -14,8 +14,8 @@
   <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-select">Home page</label>
     <div class="uk-form-controls">
-      <%= f.collection_select :home_page_id, Page.all, :id, :title,
-        {selected: @site.home_page_id, include_blank: "Please select page" },
+      <%= f.collection_select :home_page_id, Publishable.all, :id, :title,
+        {selected: @site.home_page_id, include_blank: "Please select publishable" },
         {class: "uk-select uk-width-3-4"} %>
     </div>
   </div>
