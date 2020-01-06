@@ -32,7 +32,6 @@ class Admin::Settings::PublishableGroupsController < Admin::AdminsController
 
   def update
     if @group.update(group_params)
-    byebug
       redirect_to admin_settings_publishable_groups_url,
       notice: "Content group setting was successfully updated."
     else 

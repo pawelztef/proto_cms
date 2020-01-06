@@ -23,7 +23,6 @@ class Admin::PagesController < Admin::AdminsController
   def create
     @title = "New Page"
     @admin_page = Page.new(admin_page_params)
-    byebug
     respond_to do |format|
       if @admin_page.save
         format.html { redirect_to admin_pages_path, notice: 'Page was successfully created.' }
