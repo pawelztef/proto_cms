@@ -10,6 +10,7 @@ class CreatePublishables < ActiveRecord::Migration[5.2]
       t.boolean :commentable, default: false
 
       t.references :site, foreign_key: true
+      t.references :user, foreign_key: true
       t.timestamps
     end
     add_index :publishables, :permalink

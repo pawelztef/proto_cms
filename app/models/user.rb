@@ -31,6 +31,7 @@ class User < ApplicationRecord
   validates :username, :first_name, :second_name, :email, presence: true
 
   has_one_attached :avatar
+  has_many :publishables
 
   enum role: Role::ROLES
 

@@ -42,6 +42,7 @@ group = PublishableGroup.find_by(name: "page")
   page.content = Faker::Lorem.paragraph(sentence_count: 15)
   page.site = site
   page.publishable_group = group
+  page.user = admin
   page.save!
   if n == "default"
     site.home_page_id = page.id
@@ -82,6 +83,7 @@ group = PublishableGroup.find_by(name: 'post')
   post.summary = summary
   post.status = "published" if n.even?
   post.site = site
+  post.user = admin
   post.publishable_group = group
   post.save!
 

@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_170650) do
     t.integer "status", default: 0
     t.boolean "commentable", default: false
     t.bigint "site_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ancestry"
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_12_19_170650) do
     t.index ["publishable_group_id"], name: "index_publishables_on_publishable_group_id"
     t.index ["site_id"], name: "index_publishables_on_site_id"
     t.index ["status"], name: "index_publishables_on_status"
+    t.index ["user_id"], name: "index_publishables_on_user_id"
   end
 
   create_table "readers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -167,4 +169,5 @@ ActiveRecord::Schema.define(version: 2019_12_19_170650) do
   add_foreign_key "publishable_groups", "sites"
   add_foreign_key "publishables", "publishable_groups"
   add_foreign_key "publishables", "sites"
+  add_foreign_key "publishables", "users"
 end
