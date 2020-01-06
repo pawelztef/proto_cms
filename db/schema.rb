@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 2019_12_19_170650) do
   create_table "publishables", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "permalink"
-    t.string "type"
     t.text "content"
     t.text "summary"
     t.integer "status", default: 0

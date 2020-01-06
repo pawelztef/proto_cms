@@ -36,11 +36,12 @@ end
 puts "Creating pages"
 group = PublishableGroup.find_by(name: "page")
 ["default", "about", "products", "contact"].each do |n| 
-  page = Page.new
+  page = Publishable.new
   page.title = n
   page.permalink = n
   page.content = Faker::Lorem.paragraph(sentence_count: 15)
   page.site = site
+  page.status = "published" 
   page.publishable_group = group
   page.user = admin
   page.save!
@@ -76,7 +77,7 @@ group = PublishableGroup.find_by(name: 'post')
   10.times { |n| summary += Faker::Lorem.sentence(word_count: 15) }
   title = Faker::Book.unique.title
 
-  post = Post.new
+  post = Publishable.new
   post.title = title
   post.permalink = title.parameterize
   post.content = Faker::Lorem.paragraph(sentence_count: 15)
