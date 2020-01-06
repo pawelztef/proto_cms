@@ -3,7 +3,6 @@ class CreatePublishables < ActiveRecord::Migration[5.2]
     create_table :publishables do |t|
       t.string :title
       t.string :permalink
-      t.string :type
       t.text :content
       t.text :summary
       t.integer :status, default: 0
