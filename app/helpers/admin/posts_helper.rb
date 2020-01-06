@@ -1,7 +1,7 @@
 module Admin::PostsHelper
-  def generate_status_label post
-    tag.span class: post.status == "published" ? "uk-label uk-label-default" : "uk-label uk-label-warning" do
-      post.status
+  def generate_status_label publishable
+    tag.span class: publishable.status == "published" ? "uk-label uk-label-default" : "uk-label uk-label-warning" do
+      publishable.status
     end
   end
 
