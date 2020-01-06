@@ -14,7 +14,7 @@
 
 
       <ul class="pz-tab">
-        <%= render partial: 'status_link', collection: generate_tabs_collection, as: :status %>
+        <%# <%= render partial: 'status_link', collection: generate_tabs_collection, as: :status %1> %>
       </ul> 
 
       <table class="uk-table uk-table-justify uk-table-divider">
@@ -30,30 +30,30 @@
           </tr>
         </thead>
         <tbody>
-          <% if @admin_posts.blank? %>
+          <% if @publishables.blank? %>
             <tr>
               <td colspan="7" class="uk-text-center">
                 No data!
               </td>
             </tr>
           <% else %>
-            <% @admin_posts.each do |admin_post| %>
+            <% @publishables.each do |publishable| %>
               <tr>
-                <td><%= generate_status_label(admin_post) %></td>
-                <td><%= admin_post.title %></td>
+                <%# <td><%= generate_status_label(publishable) %1></td> %>
+                <td><%= publishable.title %></td>
                 <%# TODO assotioation with author %>
-                <td><%= "John Doe" %></td>
-                <td><%= generate_categories_labels(admin_post) %></td>
-                <td><%= generate_tags_labels(admin_post) %></td>
-                <td><%= standard_date(admin_post.updated_at) %></td>
+                <%# <td><%= "John Doe" %1></td> %>
+                <%# <td><%= generate_categories_labels(publishable) %1></td> %>
+                <%# <td><%= generate_tags_labels(publishable) %1></td> %>
+                <td><%= standard_date(publishable.updated_at) %></td>
                 <td>
                   <% if can?(:update, Post) || can?(:destroy, Post) %>
                     <ul class="uk-iconnav">
                       <% if can? :update, Post %>
-                        <li><a href="<%= edit_admin_post_path(admin_post) %>" uk-icon="icon: file-edit"></a></li>
+                        <li><a href="<%= edit_admin_post_path(publishable) %>" uk-icon="icon: file-edit"></a></li>
                       <% end %>
                       <% if can? :destroy, Post %>
-                        <li><a href= <%= admin_post_path(admin_post)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                        <li><a href= <%= admin_post_path(publishable)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
                       <% end %>
                     </ul>
                   <% else %>
