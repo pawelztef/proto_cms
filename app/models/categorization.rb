@@ -2,11 +2,11 @@
 #
 # Table name: categorizations
 #
-#  id          :bigint           not null, primary key
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  category_id :integer
-#  page_id     :integer
+#  id             :bigint           not null, primary key
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  category_id    :integer
+#  publishable_id :integer
 #
 
 class Categorization < ApplicationRecord

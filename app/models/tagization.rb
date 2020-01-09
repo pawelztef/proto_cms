@@ -2,11 +2,11 @@
 #
 # Table name: tagizations
 #
-#  id         :bigint           not null, primary key
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  page_id    :integer
-#  tag_id     :integer
+#  id            :bigint           not null, primary key
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  pulishable_id :integer
+#  tag_id        :integer
 #
 
 class Tagization < ApplicationRecord
