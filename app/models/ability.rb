@@ -8,12 +8,9 @@ class Ability
       if user.owner?
         can :manage, :all
       elsif user.admin?
-        can :read, Page
-        can :create, Page
-        can :update, Page
-        can :read, Post
-        can :create, Post
-        can :update, Post
+        can :read, Publishable
+        can :create, Publishable
+        can :update, Publishable
         can :read, PublishableGroup
         can :create, PublishableGroup
         can :update, PublishableGroup
@@ -31,8 +28,7 @@ class Ability
         can :update, User
       elsif user.editor?
         can :read, :all
-        can :manage, Page
-        can :manage, Post
+        can :manage, Publishable
         can :manage, Category
         can :manage, Tag
       end
