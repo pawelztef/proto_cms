@@ -33,20 +33,19 @@ Rails.application.routes.draw do
   ### Admin Namespace ###
     
   namespace :admin do
+
     resources :media do
       get 'stats', on: :member
       get "gallery", on: :collection
       post "update_image", constraints: { format: 'json' }
     end 
-    resources :pages do
-      member do
-        get "draft"
-      end
-    end
-    resources :posts
+
+
+
     resources :comments
     resources :categories
     resources :tags
+
     namespace :settings do
       resource :site do
         collection do 
@@ -55,11 +54,13 @@ Rails.application.routes.draw do
       end
       resources :publishable_groups
     end
+
     resources :dashboard
     resources :users
-    resources :posts
-    #resources :publishable_groups
-    get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
+    scope '/:publishable_group_id' do 
+      resources :publishables
+    end
+    # get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
     # get '*publishable', to: 'publishables#show', as: :page
   end
 
