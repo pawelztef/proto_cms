@@ -4,8 +4,8 @@
       <div class="uk-grid uk-grid-small">
         <div class="uk-width-auto"><div class="uk-card-title"><span uk-icon="album"></span><%= @title if @title %></div></div>
         <div class="uk-width-expand uk-text-right panel-icons">
-          <% if can? :create, Post %>
-            <a href= <%= new_admin_post_path %> class="uk-icon-link" title="Add Post" data-uk-tooltip data-uk-icon="icon: plus"></a>
+          <% if can? :create, Publishable %>
+            <%# <a href= <%= new_admin_post_path %1> class="uk-icon-link" title="Add Publishable" data-uk-tooltip data-uk-icon="icon: plus"></a> %>
           <% end %>
         </div>
       </div>
@@ -30,14 +30,14 @@
           </tr>
         </thead>
         <tbody>
-          <% if @admin_posts.blank? %>
+          <% if @admin_publishables.blank? %>
             <tr>
               <td colspan="7" class="uk-text-center">
                 No data!
               </td>
             </tr>
           <% else %>
-            <% @admin_posts.each do |admin_post| %>
+            <% @admin_publishables.each do |admin_post| %>
               <tr>
                 <td><%= generate_status_label(admin_post) %></td>
                 <td><%= admin_post.title %></td>
@@ -47,12 +47,12 @@
                 <td><%= generate_tags_labels(admin_post) %></td>
                 <td><%= standard_date(admin_post.updated_at) %></td>
                 <td>
-                  <% if can?(:update, Post) || can?(:destroy, Post) %>
+                  <% if can?(:update, Publishable) || can?(:destroy, Publishable) %>
                     <ul class="uk-iconnav">
-                      <% if can? :update, Post %>
+                      <% if can? :update, Publishable %>
                         <li><a href="<%= edit_admin_post_path(admin_post) %>" uk-icon="icon: file-edit"></a></li>
                       <% end %>
-                      <% if can? :destroy, Post %>
+                      <% if can? :destroy, Publishable %>
                         <li><a href= <%= admin_post_path(admin_post)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
                       <% end %>
                     </ul>
