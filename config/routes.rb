@@ -40,11 +40,7 @@ Rails.application.routes.draw do
       post "update_image", constraints: { format: 'json' }
     end 
 
-
-
     resources :comments
-    resources :categories
-    resources :tags
 
     namespace :settings do
       resource :site do
@@ -57,9 +53,11 @@ Rails.application.routes.draw do
 
     resources :dashboard
     resources :users
+
     scope '/:publishable_group_id' do 
       resources :publishables
     end
+
     # get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
     # get '*publishable', to: 'publishables#show', as: :page
   end
