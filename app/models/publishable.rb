@@ -37,10 +37,9 @@ class Publishable < ApplicationRecord
   has_ancestry
 
   has_many :comments, as: :commentable
-  has_many :categorizations
-  has_many :categories, :through => :categorizations
-  has_many :tagizations
-  has_many :tags, :through => :tagizations
+
+  has_many :taxons
+  has_many :categories, :through => :taxons
 
   belongs_to :user
   belongs_to :site
