@@ -12,4 +12,6 @@
 #
 
 class Taxon < ApplicationRecord
+  has_many :taxonomies
+  has_many :publishables, through: :taxonomies
 end

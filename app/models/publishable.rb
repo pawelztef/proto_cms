@@ -38,6 +38,8 @@ class Publishable < ApplicationRecord
 
   has_many :comments, as: :commentable
 
+  has_many :taxonomies
+  has_many :taxons, through: :taxonomies
 
   belongs_to :user
   belongs_to :site
