@@ -40,6 +40,7 @@ class Publishable < ApplicationRecord
 
   has_many :taxonomies
   has_many :taxons, through: :taxonomies
+  has_many :categories, through: :taxonomies
 
   belongs_to :user
   belongs_to :site
