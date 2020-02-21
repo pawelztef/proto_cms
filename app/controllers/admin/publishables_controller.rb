@@ -1,9 +1,11 @@
 class Admin::PublishablesController < Admin::AdminsController
+  before_action :set_admin_publishable, only: [:show, :edit, :update, :destroy]
+
   def index
     @admin_publishable_group = PublishableGroup.find_by_permalink(params[:publishable_group_id])
-    @admin_publishables = @admin_publishable_group.publishables
+    @admin_publishables = @admin_publishable_group.publishables.search_by_status(params[:status])
     @admin_publishable_stats = Publishable.get_stats
-    @title = "List Publishables of type #{@admin_publishable_group.name}"
+    @title = "List of #{@admin_publishable_group.name.capitalize.pluralize}"
   end
 
   def show
@@ -30,5 +32,10 @@ class Admin::PublishablesController < Admin::AdminsController
 
   end
 
+  private
+
+  def set_admin_publishable
+    @admin_publishable = Publishable.find_by_permalink!(params[:id]) 
+  end
 
 end

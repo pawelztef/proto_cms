@@ -50,10 +50,10 @@
                   <% if can?(:update, Publishable) || can?(:destroy, Publishable) %>
                     <ul class="uk-iconnav">
                       <% if can? :update, Publishable %>
-                        <li><a href="<%= edit_admin_post_path(admin_post) %>" uk-icon="icon: file-edit"></a></li>
+                        <li><a href="<%= edit_admin_publishable_group_publishable_path(@admin_publishable_group, admin_post) %>" uk-icon="icon: file-edit"></a></li>
                       <% end %>
                       <% if can? :destroy, Publishable %>
-                        <li><a href= <%= admin_post_path(admin_post)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
+                        <li><a href= <%= admin_publishable_group_publishable_path(@admin_publishable_group, admin_post)  %> uk-icon="icon: trash" data-method="delete" rel="nofollow"></a></li>
                       <% end %>
                     </ul>
                   <% else %>
@@ -70,4 +70,3 @@
     </div>
   </div>
 </div>
-
