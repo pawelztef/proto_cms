@@ -57,10 +57,7 @@ Rails.application.routes.draw do
 
     resources :dashboard
     resources :users
-    scope '/:publishable_group_id' do 
-      resources :publishables
-    end
-    # get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
+    get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
     # get '*publishable', to: 'publishables#show', as: :page
   end
 
