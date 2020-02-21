@@ -11,5 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Category < Taxon
+class Taxon < ApplicationRecord
+  has_many :taxonomies
+  has_many :publishables, through: :taxonomies
 end
