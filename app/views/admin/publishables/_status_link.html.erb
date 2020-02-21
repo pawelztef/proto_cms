@@ -1,5 +1,5 @@
 <li>
-  <%= link_to  admin_publishable_group_publishables_path(@admin_publishable_group), class: current_status?(status)  do %>
+  <%= link_to  admin_publishable_group_publishables_path(@admin_publishable_group, status: status), class: current_status?(status)  do %>
    <span><%= "#{status} (#{@admin_publishable_stats[status]})" %><span>
  <% end %> 
 </li>
