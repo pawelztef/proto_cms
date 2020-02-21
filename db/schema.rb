@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_11_135959) do
+ActiveRecord::Schema.define(version: 2020_02_21_084236) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -105,6 +105,13 @@ ActiveRecord::Schema.define(version: 2020_02_11_135959) do
     t.string "catch_phrase"
     t.integer "home_page_id"
     t.integer "singleton_guard", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "taxonomies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "publishable_id"
+    t.integer "taxon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
