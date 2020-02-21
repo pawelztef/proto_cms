@@ -29,9 +29,9 @@ Rails.application.routes.draw do
                       :confirmations => "front/readers/confirmations"},
                       :path_names => { :sign_in => "login",
                                        :sign_up => "new_reader"}
-    
+
   ### Admin Namespace ###
-    
+
   namespace :admin do
 
     resources :media do
@@ -56,20 +56,24 @@ Rails.application.routes.draw do
     end
 
     resources :dashboard
+
     resources :users
-    get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
-    # get '*publishable', to: 'publishables#show', as: :page
+
+    resources :publishable_groups do
+      resources :publishables
+    end
+
   end
 
   ### Previews Namespace ###
-   
+
   namespace :previews do
     resources :pages, only: :show
     resources :posts, only: :show
   end
 
   ### Front Namespace ###
-   
+
   scope module: :front do
     resources :readers
     resources :posts do
@@ -84,6 +88,7 @@ Rails.application.routes.draw do
     end
 
     # get '*publishable/comment', to: 'publishables#new_comment', as: :new_comment_publishable
+    # get '/:publishable_group_id', to: 'publishable_groups#show', as: :publishable_group
     # get '*publishable/:post_id', to: 'posts#show', as: :post_page
     # get '*publishable', to: 'publishables#show', as: :page
 
