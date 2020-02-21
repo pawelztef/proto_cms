@@ -12,4 +12,5 @@
 class Taxonomy < ApplicationRecord
   belongs_to :publishable
   belongs_to :taxon
+  belongs_to :category, class_name: "Taxon", foreign_key: "taxon_id"
 end
